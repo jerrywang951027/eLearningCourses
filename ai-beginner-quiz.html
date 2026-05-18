@@ -1,0 +1,915 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI for Builders: Interactive Quiz</title>
+    <style>
+        :root {
+            --bg: #10131a;
+            --panel: #181d27;
+            --panel-2: #202838;
+            --text: #eef2f7;
+            --muted: #a7b0c0;
+            --border: #354055;
+            --accent: #35c2a1;
+            --accent-2: #f2b84b;
+            --bad: #f46d75;
+            --good: #49d17d;
+            --focus: #86b7ff;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            background: var(--bg);
+            color: var(--text);
+            font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            line-height: 1.5;
+        }
+
+        button {
+            font: inherit;
+        }
+
+        .shell {
+            display: grid;
+            grid-template-columns: 300px minmax(0, 1fr);
+            min-height: 100vh;
+        }
+
+        aside {
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            overflow: auto;
+            border-right: 1px solid var(--border);
+            background: #141924;
+            padding: 24px;
+        }
+
+        .brand {
+            margin-bottom: 24px;
+        }
+
+        .eyebrow {
+            color: var(--accent);
+            font-size: 0.78rem;
+            font-weight: 800;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        h1 {
+            margin: 8px 0 10px;
+            font-size: clamp(1.8rem, 4vw, 3.4rem);
+            line-height: 1.05;
+            letter-spacing: 0;
+        }
+
+        h2 {
+            margin: 0 0 12px;
+            font-size: 1.25rem;
+        }
+
+        p {
+            margin: 0;
+            color: var(--muted);
+        }
+
+        .stats {
+            display: grid;
+            gap: 10px;
+            margin: 22px 0;
+        }
+
+        .stat {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            border: 1px solid var(--border);
+            background: var(--panel);
+            border-radius: 8px;
+            padding: 12px;
+        }
+
+        .stat strong {
+            color: var(--text);
+            font-size: 1.05rem;
+        }
+
+        .question-list {
+            display: grid;
+            grid-template-columns: repeat(5, minmax(0, 1fr));
+            gap: 8px;
+            margin-top: 18px;
+        }
+
+        .dot {
+            min-width: 0;
+            height: 38px;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            background: var(--panel);
+            color: var(--muted);
+            cursor: pointer;
+        }
+
+        .dot.current {
+            border-color: var(--accent);
+            color: var(--text);
+            background: rgba(53, 194, 161, 0.12);
+        }
+
+        .dot.correct {
+            border-color: rgba(73, 209, 125, 0.75);
+            color: var(--good);
+        }
+
+        .dot.wrong {
+            border-color: rgba(244, 109, 117, 0.75);
+            color: var(--bad);
+        }
+
+        main {
+            padding: 42px clamp(20px, 5vw, 64px);
+        }
+
+        .hero {
+            max-width: 980px;
+            margin-bottom: 28px;
+        }
+
+        .hero p {
+            max-width: 760px;
+            font-size: 1.05rem;
+        }
+
+        .quiz-card {
+            max-width: 980px;
+            border: 1px solid var(--border);
+            background: var(--panel);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .card-top {
+            display: flex;
+            justify-content: space-between;
+            gap: 18px;
+            border-bottom: 1px solid var(--border);
+            padding: 18px 20px;
+            background: var(--panel-2);
+        }
+
+        .topic {
+            color: var(--accent-2);
+            font-weight: 800;
+        }
+
+        .question {
+            padding: 24px 20px 10px;
+        }
+
+        .question h2 {
+            font-size: clamp(1.28rem, 2vw, 1.8rem);
+            line-height: 1.25;
+        }
+
+        .answers {
+            display: grid;
+            gap: 12px;
+            padding: 12px 20px 20px;
+        }
+
+        .answer {
+            width: 100%;
+            display: grid;
+            grid-template-columns: 36px minmax(0, 1fr);
+            align-items: start;
+            gap: 12px;
+            text-align: left;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            background: #151b26;
+            color: var(--text);
+            padding: 14px;
+            cursor: pointer;
+        }
+
+        .answer:hover,
+        .answer:focus-visible {
+            border-color: var(--focus);
+            outline: none;
+        }
+
+        .answer[disabled] {
+            cursor: default;
+            opacity: 1;
+        }
+
+        .answer.correct {
+            border-color: rgba(73, 209, 125, 0.85);
+            background: rgba(73, 209, 125, 0.1);
+        }
+
+        .answer.wrong {
+            border-color: rgba(244, 109, 117, 0.85);
+            background: rgba(244, 109, 117, 0.1);
+        }
+
+        .answer-copy {
+            display: grid;
+            gap: 8px;
+        }
+
+        .answer-text {
+            color: var(--text);
+        }
+
+        .choice-feedback {
+            display: none;
+            color: var(--muted);
+            font-size: 0.95rem;
+        }
+
+        .answer.wrong.revealed .choice-feedback {
+            display: block;
+        }
+
+        .answer.correct .choice-feedback strong {
+            color: var(--good);
+        }
+
+        .answer.wrong .choice-feedback strong {
+            color: var(--bad);
+        }
+
+        .letter {
+            display: inline-grid;
+            place-items: center;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: var(--panel-2);
+            color: var(--accent);
+            font-weight: 900;
+        }
+
+        .feedback {
+            border-top: 1px solid var(--border);
+            padding: 20px;
+            display: none;
+        }
+
+        .feedback.visible {
+            display: block;
+        }
+
+        .result {
+            display: inline-flex;
+            align-items: center;
+            min-height: 36px;
+            padding: 6px 12px;
+            border-radius: 999px;
+            margin-bottom: 14px;
+            font-weight: 800;
+        }
+
+        .result.good {
+            color: var(--good);
+            background: rgba(73, 209, 125, 0.1);
+        }
+
+        .result.bad {
+            color: var(--bad);
+            background: rgba(244, 109, 117, 0.1);
+        }
+
+        .explanations {
+            display: grid;
+            gap: 10px;
+        }
+
+        .explanation {
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 12px;
+            background: #151b26;
+        }
+
+        .explanation strong {
+            color: var(--text);
+        }
+
+        .controls {
+            max-width: 980px;
+            display: flex;
+            justify-content: space-between;
+            gap: 12px;
+            margin-top: 18px;
+        }
+
+        .btn {
+            min-height: 44px;
+            border: 1px solid var(--border);
+            border-radius: 7px;
+            background: var(--panel-2);
+            color: var(--text);
+            padding: 0 16px;
+            cursor: pointer;
+            font-weight: 800;
+        }
+
+        .btn.primary {
+            background: var(--accent);
+            border-color: var(--accent);
+            color: #07130f;
+        }
+
+        .btn:hover,
+        .btn:focus-visible {
+            border-color: var(--focus);
+            outline: none;
+        }
+
+        .summary {
+            max-width: 980px;
+            display: none;
+            border: 1px solid var(--border);
+            background: var(--panel);
+            border-radius: 8px;
+            padding: 22px;
+            margin-top: 22px;
+        }
+
+        .summary.visible {
+            display: block;
+        }
+
+        .summary h2 {
+            font-size: 1.7rem;
+        }
+
+        .bar {
+            height: 10px;
+            border-radius: 999px;
+            background: #0d1118;
+            overflow: hidden;
+            margin-top: 16px;
+        }
+
+        .bar span {
+            display: block;
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, var(--accent), var(--accent-2));
+            transition: width 0.25s ease;
+        }
+
+        @media (max-width: 860px) {
+            .shell {
+                display: block;
+            }
+
+            aside {
+                position: relative;
+                height: auto;
+            }
+
+            .question-list {
+                grid-template-columns: repeat(10, minmax(0, 1fr));
+            }
+
+            main {
+                padding-top: 28px;
+            }
+        }
+
+        @media (max-width: 520px) {
+            .card-top,
+            .controls {
+                flex-direction: column;
+            }
+
+            .question-list {
+                grid-template-columns: repeat(5, minmax(0, 1fr));
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="shell">
+        <aside>
+            <div class="brand">
+                <div class="eyebrow">AI for Builders</div>
+                <h2>20 Question Checkpoint</h2>
+                <p>Answer each question, then read why every choice is right or wrong.</p>
+            </div>
+
+            <div class="stats" aria-label="Quiz progress">
+                <div class="stat"><span>Answered</span><strong id="answeredStat">0/20</strong></div>
+                <div class="stat"><span>Score</span><strong id="scoreStat">0</strong></div>
+                <div class="stat"><span>Accuracy</span><strong id="accuracyStat">0%</strong></div>
+            </div>
+
+            <h2>Questions</h2>
+            <div class="question-list" id="questionList"></div>
+        </aside>
+
+        <main>
+            <div class="hero">
+                <div class="eyebrow">Interactive Review</div>
+                <h1>AI Beginner Guide Quiz</h1>
+                <p>This quiz is built from the 20 sections in <code>ai-beginner-guide.html</code>. Pick an answer to get instant grading and explanations for every option.</p>
+            </div>
+
+            <article class="quiz-card">
+                <div class="card-top">
+                    <div>
+                        <div class="topic" id="topic"></div>
+                        <p id="position"></p>
+                    </div>
+                    <p id="status">Choose one answer.</p>
+                </div>
+
+                <div class="question">
+                    <h2 id="questionText"></h2>
+                </div>
+
+                <div class="answers" id="answers"></div>
+
+                <section class="feedback" id="feedback" aria-live="polite">
+                    <div class="result" id="result"></div>
+                    <div class="explanations" id="explanations"></div>
+                </section>
+            </article>
+
+            <div class="controls">
+                <button class="btn" id="prevBtn" type="button">Previous</button>
+                <button class="btn primary" id="nextBtn" type="button">Next</button>
+            </div>
+
+            <section class="summary" id="summary">
+                <h2 id="summaryTitle">Quiz complete</h2>
+                <p id="summaryText"></p>
+                <div class="bar"><span id="summaryBar"></span></div>
+                <div class="controls">
+                    <button class="btn" id="reviewWrongBtn" type="button">Review Missed</button>
+                    <button class="btn primary" id="resetBtn" type="button">Restart Quiz</button>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script>
+        const questions = [
+            {
+                topic: "Welcome to AI",
+                question: "What mindset does the guide recommend when using AI for development?",
+                correct: 1,
+                choices: [
+                    { text: "AI should replace your technical judgment.", why: "Wrong. The guide says AI is not a replacement for your skills." },
+                    { text: "You are the pilot and AI is the co-pilot.", why: "Right. You provide direction, review output, and ensure quality." },
+                    { text: "AI should only be used after a product is finished.", why: "Wrong. The guide uses AI across design, coding, testing, and deployment." },
+                    { text: "AI is only useful for researchers.", why: "Wrong. The guide begins by saying AI is now practical for developers and builders." }
+                ]
+            },
+            {
+                topic: "How AI Thinks",
+                question: "Why must developers verify AI output?",
+                correct: 2,
+                choices: [
+                    { text: "AI always refuses to answer technical questions.", why: "Wrong. AI can answer technical questions, but answers still need review." },
+                    { text: "AI output is deterministic, so verification is optional.", why: "Wrong. The guide contrasts deterministic software with probabilistic AI." },
+                    { text: "AI can hallucinate libraries, APIs, or facts with confidence.", why: "Right. Hallucination is the core limitation highlighted in the guide." },
+                    { text: "AI has unlimited memory and may reveal too much context.", why: "Wrong. Models have limited context windows, not unlimited memory." }
+                ]
+            },
+            {
+                topic: "LLMs Explained",
+                question: "What is an LLM trained to do?",
+                correct: 0,
+                choices: [
+                    { text: "Learn statistical relationships in text and generate coherent text or code.", why: "Right. The guide defines LLMs this way." },
+                    { text: "Execute database migrations without source code.", why: "Wrong. An LLM generates text; execution is a separate tool or runtime action." },
+                    { text: "Store every current framework document permanently.", why: "Wrong. The guide notes models can have knowledge limits and context limits." },
+                    { text: "Guarantee production-safe code on the first try.", why: "Wrong. The guide repeatedly says to review and test AI-generated code." }
+                ]
+            },
+            {
+                topic: "Your AI Toolkit",
+                question: "Which tool category lets you chat with an entire codebase and generate multi-file changes?",
+                correct: 3,
+                choices: [
+                    { text: "Figma + AI", why: "Wrong. That category is for generating design mockups." },
+                    { text: "Google AI Studio", why: "Wrong. The guide lists it as a way to access Gemini models." },
+                    { text: "GitHub Trending", why: "Wrong. That is listed later as a way to stay updated." },
+                    { text: "AI-native editors like Cursor or Windsurf", why: "Right. The guide describes them as code editors that can chat with your codebase and make multi-file changes." }
+                ]
+            },
+            {
+                topic: "Prompt Engineering",
+                question: "Which prompt is closest to the guide's recommended style?",
+                correct: 2,
+                choices: [
+                    { text: "write code", why: "Wrong. It is too vague and gives no role, context, constraints, or output format." },
+                    { text: "make a login page fast", why: "Wrong. It gives a task but not enough technical detail or quality constraints." },
+                    { text: "Act as a senior frontend developer and create an accessible React login component with validation and Tailwind CSS.", why: "Right. It assigns a role, task, framework, requirements, and quality constraints." },
+                    { text: "do something with React maybe", why: "Wrong. It is ambiguous and gives the AI almost nothing to work with." }
+                ]
+            },
+            {
+                topic: "System Design",
+                question: "How does the guide recommend using AI during early architecture work?",
+                correct: 1,
+                choices: [
+                    { text: "Ask AI to skip requirements and start coding immediately.", why: "Wrong. The system design section happens before writing code." },
+                    { text: "Use AI to explore options, then refine a chosen architecture.", why: "Right. The guide calls this convergent thinking: start broad, choose, then refine." },
+                    { text: "Avoid asking about bottlenecks because AI cannot reason about them.", why: "Wrong. Bottlenecks are one of the suggested questions to ask AI." },
+                    { text: "Only use AI after the production incident happens.", why: "Wrong. The guide positions AI as useful during planning." }
+                ]
+            },
+            {
+                topic: "Frontend Development",
+                question: "Which frontend task does the guide explicitly say AI can help with?",
+                correct: 0,
+                choices: [
+                    { text: "Generating UI components from a description.", why: "Right. Component generation is the first frontend use case in the guide." },
+                    { text: "Replacing browsers so CSS never needs testing.", why: "Wrong. AI can help with CSS, but visual testing is still needed." },
+                    { text: "Making every design decision without human review.", why: "Wrong. The broader guide says the developer remains responsible for quality." },
+                    { text: "Only writing backend controllers.", why: "Wrong. Controllers are backend work, not the frontend focus here." }
+                ]
+            },
+            {
+                topic: "Backend Development",
+                question: "What caution does the guide give for AI-generated backend code?",
+                correct: 3,
+                choices: [
+                    { text: "Backend code should never use validation.", why: "Wrong. The guide's Express example includes validation with Zod." },
+                    { text: "Authentication code does not need review.", why: "Wrong. The guide says security is critical." },
+                    { text: "Generated routes should always skip error handling.", why: "Wrong. The guide includes error handling middleware in the endpoint example." },
+                    { text: "For auth or payments, review carefully and cross-reference official documentation.", why: "Right. The guide warns AI may generate older or less secure patterns." }
+                ]
+            },
+            {
+                topic: "Databases & AI",
+                question: "Which database task is a good fit for AI according to the guide?",
+                correct: 2,
+                choices: [
+                    { text: "Reading your mind to infer all entities without requirements.", why: "Wrong. You still need to describe entities and relationships." },
+                    { text: "Guaranteeing indexes are perfect for all future traffic.", why: "Wrong. AI can suggest indexes, but performance still needs validation." },
+                    { text: "Generating schemas, SQL queries, ORM definitions, and seed data.", why: "Right. These are all listed in the database section." },
+                    { text: "Deleting production data to make testing easier.", why: "Wrong. The guide talks about realistic mock data for development and testing, not destructive production work." }
+                ]
+            },
+            {
+                topic: "API Design",
+                question: "What is the API described as in the guide?",
+                correct: 1,
+                choices: [
+                    { text: "A replacement for frontend and backend architecture.", why: "Wrong. An API connects parts of the architecture; it does not replace them." },
+                    { text: "The contract between frontend and backend.", why: "Right. The guide uses exactly this framing." },
+                    { text: "A document that only backend developers can read.", why: "Wrong. API docs are meant to clarify shared behavior." },
+                    { text: "A database seeding script.", why: "Wrong. Seeding belongs to the database workflow, not API design." }
+                ]
+            },
+            {
+                topic: "Full-Stack Architecture",
+                question: "In a full-stack monorepo example, what does the guide include?",
+                correct: 0,
+                choices: [
+                    { text: "Frontend, backend, shared types, and TypeScript path configuration.", why: "Right. The Turborepo example includes those pieces." },
+                    { text: "Only a static HTML file with no backend.", why: "Wrong. The section is about connecting frontend and backend." },
+                    { text: "A single global variable for all environment settings.", why: "Wrong. The guide mentions managing environment variables across local, staging, and production." },
+                    { text: "No error handling in API calls.", why: "Wrong. The API client example includes centralized error handling." }
+                ]
+            },
+            {
+                topic: "Code Generation",
+                question: "What does the guide say about AI-generated code that looks correct?",
+                correct: 3,
+                choices: [
+                    { text: "Ship it immediately.", why: "Wrong. The guide says to run it and review it." },
+                    { text: "Never use it under any circumstances.", why: "Wrong. Code generation is presented as a major productivity boost." },
+                    { text: "Only use it for comments.", why: "Wrong. The guide lists components, APIs, middleware, config files, and setup." },
+                    { text: "Run it and check edge cases, security, and performance.", why: "Right. That is the review guidance in the section." }
+                ]
+            },
+            {
+                topic: "Debugging",
+                question: "What information makes AI debugging more effective?",
+                correct: 2,
+                choices: [
+                    { text: "Only the words 'it broke'.", why: "Wrong. That gives no useful context." },
+                    { text: "Only a screenshot of the app title.", why: "Wrong. The guide recommends the error, code, input, and expected versus actual output." },
+                    { text: "The error message, relevant code, input data, and expected versus actual output.", why: "Right. The guide says the error alone is often not enough." },
+                    { text: "A request to guess without seeing logs or code.", why: "Wrong. Guessing is weaker than providing concrete debugging context." }
+                ]
+            },
+            {
+                topic: "Testing & QA",
+                question: "Which testing use case appears in the guide?",
+                correct: 0,
+                choices: [
+                    { text: "Generating Jest unit tests for normal cases, edge cases, and errors.", why: "Right. This is the guide's unit test example." },
+                    { text: "Removing all tests because AI reviewed the code.", why: "Wrong. AI helps create and review tests; it does not eliminate the need for them." },
+                    { text: "Testing only happy paths forever.", why: "Wrong. The guide calls out edge cases and error throwing." },
+                    { text: "Using AI only for CSS color names.", why: "Wrong. The testing section covers unit tests, E2E tests, and code review." }
+                ]
+            },
+            {
+                topic: "DevOps & Deployment",
+                question: "What can AI help generate for deployment work?",
+                correct: 1,
+                choices: [
+                    { text: "Only marketing slogans.", why: "Wrong. The DevOps section focuses on technical artifacts." },
+                    { text: "Dockerfiles, CI/CD pipelines, and cloud infrastructure configuration.", why: "Right. These are the three deployment areas the guide lists." },
+                    { text: "Production credentials to paste into public tools.", why: "Wrong. The guide later warns never to paste sensitive credentials into public AI tools." },
+                    { text: "A browser UI that deploys without scripts or configuration.", why: "Wrong. The section specifically discusses scripts and configuration." }
+                ]
+            },
+            {
+                topic: "Project Planning",
+                question: "What project does the guide use for the practical planning phase?",
+                correct: 2,
+                choices: [
+                    { text: "A multiplayer game engine.", why: "Wrong. That is not the project named in the guide." },
+                    { text: "A photo editing desktop app.", why: "Wrong. The guide uses a web app project." },
+                    { text: "A personal finance tracker web app.", why: "Right. The planning section names this project directly." },
+                    { text: "A weather station firmware project.", why: "Wrong. The guide's project is full-stack web focused." }
+                ]
+            },
+            {
+                topic: "Project Build",
+                question: "What is the key build-phase strategy for AI-assisted development?",
+                correct: 1,
+                choices: [
+                    { text: "Ask AI to build the whole app at once.", why: "Wrong. The guide explicitly says not to do that." },
+                    { text: "Break the project into small chunks and build one component or API route at a time.", why: "Right. This is the central build-phase advice." },
+                    { text: "Avoid committing code until the entire app is finished.", why: "Wrong. The guide says to commit often after successful generation and review." },
+                    { text: "Ignore glue code between frontend and backend.", why: "Wrong. The guide says to use AI for API calls, state management, and routing logic." }
+                ]
+            },
+            {
+                topic: "Polish & Deploy",
+                question: "Which sequence best matches the polish phase?",
+                correct: 3,
+                choices: [
+                    { text: "Delete tests, skip documentation, and deploy blindly.", why: "Wrong. That is the opposite of the polish section." },
+                    { text: "Only write CSS animations.", why: "Wrong. Polish includes review, documentation, final tests, and deployment." },
+                    { text: "Start over with a new stack before deploying.", why: "Wrong. The guide focuses on refining and shipping the built app." },
+                    { text: "Review code, write documentation, run final testing, then deploy.", why: "Right. These are the four polish-and-deploy steps." }
+                ]
+            },
+            {
+                topic: "Best Practices",
+                question: "Which best practice is recommended when asking AI for large refactors?",
+                correct: 0,
+                choices: [
+                    { text: "Commit your code first so you have a rollback plan.", why: "Right. The guide recommends version control before large-scale refactors." },
+                    { text: "Paste production API keys to make answers more accurate.", why: "Wrong. The guide warns never to paste sensitive credentials into public AI tools." },
+                    { text: "Feed AI your entire massive codebase every time.", why: "Wrong. The guide recommends small, focused context." },
+                    { text: "Stop thinking through the code yourself.", why: "Wrong. The guide says not to outsource thinking." }
+                ]
+            },
+            {
+                topic: "Next Steps",
+                question: "What final direction does the guide give for becoming stronger with AI-assisted development?",
+                correct: 2,
+                choices: [
+                    { text: "Stay theoretical and avoid building projects.", why: "Wrong. The guide says theory is useless without practice." },
+                    { text: "Ignore new model and product updates.", why: "Wrong. The guide says to stay updated through developers, GitHub Trending, and official blogs." },
+                    { text: "Build something real, stay updated, and explore deeper topics like AI APIs and agents.", why: "Right. That summarizes the roadmap in the final section." },
+                    { text: "Use AI only for grammar checks.", why: "Wrong. The guide encourages using AI across full-stack development and as a core app feature." }
+                ]
+            }
+        ];
+
+        const state = {
+            current: 0,
+            answers: Array(questions.length).fill(null)
+        };
+
+        const topicEl = document.getElementById("topic");
+        const positionEl = document.getElementById("position");
+        const statusEl = document.getElementById("status");
+        const questionTextEl = document.getElementById("questionText");
+        const answersEl = document.getElementById("answers");
+        const feedbackEl = document.getElementById("feedback");
+        const resultEl = document.getElementById("result");
+        const explanationsEl = document.getElementById("explanations");
+        const questionListEl = document.getElementById("questionList");
+        const answeredStatEl = document.getElementById("answeredStat");
+        const scoreStatEl = document.getElementById("scoreStat");
+        const accuracyStatEl = document.getElementById("accuracyStat");
+        const prevBtn = document.getElementById("prevBtn");
+        const nextBtn = document.getElementById("nextBtn");
+        const summaryEl = document.getElementById("summary");
+        const summaryTitleEl = document.getElementById("summaryTitle");
+        const summaryTextEl = document.getElementById("summaryText");
+        const summaryBarEl = document.getElementById("summaryBar");
+        const reviewWrongBtn = document.getElementById("reviewWrongBtn");
+        const resetBtn = document.getElementById("resetBtn");
+
+        function score() {
+            return state.answers.reduce((total, answer, index) => {
+                return total + (answer === questions[index].correct ? 1 : 0);
+            }, 0);
+        }
+
+        function answeredCount() {
+            return state.answers.filter(answer => answer !== null).length;
+        }
+
+        function updateStats() {
+            const answered = answeredCount();
+            const currentScore = score();
+            const accuracy = answered === 0 ? 0 : Math.round((currentScore / answered) * 100);
+
+            answeredStatEl.textContent = `${answered}/${questions.length}`;
+            scoreStatEl.textContent = String(currentScore);
+            accuracyStatEl.textContent = `${accuracy}%`;
+        }
+
+        function renderQuestionList() {
+            questionListEl.innerHTML = "";
+
+            questions.forEach((question, index) => {
+                const button = document.createElement("button");
+                const selected = state.answers[index];
+                button.type = "button";
+                button.className = "dot";
+                button.textContent = String(index + 1);
+                button.setAttribute("aria-label", `Go to question ${index + 1}: ${question.topic}`);
+
+                if (index === state.current) button.classList.add("current");
+                if (selected !== null) {
+                    button.classList.add(selected === question.correct ? "correct" : "wrong");
+                }
+
+                button.addEventListener("click", () => {
+                    state.current = index;
+                    render();
+                });
+
+                questionListEl.appendChild(button);
+            });
+        }
+
+        function renderAnswers(question) {
+            const selected = state.answers[state.current];
+            answersEl.innerHTML = "";
+
+            question.choices.forEach((choice, index) => {
+                const button = document.createElement("button");
+                button.type = "button";
+                button.className = "answer";
+
+                if (selected !== null) {
+                    if (index === selected) {
+                        if (selected === question.correct) {
+                            button.classList.add("correct");
+                        } else {
+                            button.classList.add("wrong", "revealed");
+                        }
+                    }
+                }
+
+                button.innerHTML = `
+                    <span class="letter">${String.fromCharCode(65 + index)}</span>
+                    <span class="answer-copy">
+                        <span class="answer-text">${choice.text}</span>
+                        <span class="choice-feedback"><strong>Why your answer is wrong:</strong> ${choice.why}</span>
+                    </span>
+                `;
+                button.addEventListener("click", () => {
+                    state.answers[state.current] = index;
+                    render();
+                    if (answeredCount() === questions.length) showSummary();
+                });
+
+                answersEl.appendChild(button);
+            });
+        }
+
+        function renderFeedback(question) {
+            const selected = state.answers[state.current];
+            const shouldExplain = selected !== null && selected !== question.correct;
+            feedbackEl.classList.toggle("visible", shouldExplain);
+            explanationsEl.innerHTML = "";
+
+            if (selected === null) {
+                resultEl.textContent = "";
+                resultEl.className = "result";
+                return;
+            }
+
+            const isCorrect = selected === question.correct;
+            resultEl.className = `result ${isCorrect ? "good" : "bad"}`;
+            resultEl.textContent = isCorrect ? "Correct" : "Not quite. Try another answer.";
+
+            if (isCorrect) return;
+
+            const item = document.createElement("div");
+            item.className = "explanation";
+            item.innerHTML = `<strong>${String.fromCharCode(65 + selected)}. Why your answer is wrong:</strong> ${question.choices[selected].why}`;
+            explanationsEl.appendChild(item);
+        }
+
+        function renderSummaryIfNeeded() {
+            const complete = answeredCount() === questions.length;
+            summaryEl.classList.toggle("visible", complete);
+            if (!complete) return;
+
+            const currentScore = score();
+            const percent = Math.round((currentScore / questions.length) * 100);
+            summaryTitleEl.textContent = `Quiz complete: ${currentScore}/${questions.length}`;
+            summaryTextEl.textContent = percent >= 80
+                ? "Strong pass. Review any missed explanations, then move back into the guide and build something with the concepts."
+                : "Good checkpoint. The fastest improvement is to review missed questions and reread the matching guide sections.";
+            summaryBarEl.style.width = `${percent}%`;
+        }
+
+        function render() {
+            const question = questions[state.current];
+            const selected = state.answers[state.current];
+
+            topicEl.textContent = question.topic;
+            positionEl.textContent = `Question ${state.current + 1} of ${questions.length}`;
+            statusEl.textContent = selected === null
+                ? "Choose one answer."
+                : selected === question.correct
+                    ? "Correct. You can still change your answer."
+                    : "Not quite. Read the hint and try again.";
+            questionTextEl.textContent = question.question;
+
+            prevBtn.disabled = state.current === 0;
+            nextBtn.textContent = state.current === questions.length - 1 ? "Finish" : "Next";
+
+            renderAnswers(question);
+            renderFeedback(question);
+            renderQuestionList();
+            updateStats();
+            renderSummaryIfNeeded();
+        }
+
+        function showSummary() {
+            renderSummaryIfNeeded();
+            summaryEl.scrollIntoView({ behavior: "smooth", block: "nearest" });
+        }
+
+        prevBtn.addEventListener("click", () => {
+            if (state.current > 0) {
+                state.current -= 1;
+                render();
+            }
+        });
+
+        nextBtn.addEventListener("click", () => {
+            if (state.current < questions.length - 1) {
+                state.current += 1;
+                render();
+            } else {
+                showSummary();
+            }
+        });
+
+        reviewWrongBtn.addEventListener("click", () => {
+            const missedIndex = state.answers.findIndex((answer, index) => answer !== questions[index].correct);
+            if (missedIndex >= 0) {
+                state.current = missedIndex;
+                render();
+                window.scrollTo({ top: 0, behavior: "smooth" });
+            }
+        });
+
+        resetBtn.addEventListener("click", () => {
+            state.current = 0;
+            state.answers = Array(questions.length).fill(null);
+            summaryEl.classList.remove("visible");
+            summaryBarEl.style.width = "0%";
+            render();
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        });
+
+        document.addEventListener("keydown", (event) => {
+            if (event.key === "ArrowLeft" && state.current > 0) {
+                state.current -= 1;
+                render();
+            }
+            if (event.key === "ArrowRight" && state.current < questions.length - 1) {
+                state.current += 1;
+                render();
+            }
+        });
+
+        render();
+    </script>
+</body>
+</html>
