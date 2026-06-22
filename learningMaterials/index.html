@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Python Learning Materials</title>
+  <style>
+:root {
+  color-scheme: light;
+  --ink: #18202a;
+  --muted: #586575;
+  --line: #d9e0e8;
+  --panel: #ffffff;
+  --soft: #f5f7fa;
+  --accent: #176f7a;
+  --accent-2: #8a4f14;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  line-height: 1.55;
+  color: var(--ink);
+  background: #eef2f5;
+}
+header {
+  padding: 32px clamp(18px, 4vw, 56px);
+  background: #17212b;
+  color: #fff;
+}
+header a { color: #aee4ef; }
+main {
+  width: min(1120px, calc(100% - 32px));
+  margin: 28px auto 56px;
+}
+h1, h2, h3 { line-height: 1.2; }
+h1 { margin: 0 0 10px; font-size: clamp(2rem, 5vw, 3.3rem); }
+h2 { margin-top: 36px; padding-bottom: 8px; border-bottom: 1px solid var(--line); }
+h3 { margin-top: 24px; }
+.meta { color: #d9e7ed; max-width: 850px; }
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 16px;
+}
+.card, .page, .question, .challenge {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 18px;
+}
+.card a { color: var(--accent); font-weight: 700; text-decoration: none; }
+.pill {
+  display: inline-flex;
+  align-items: center;
+  min-height: 28px;
+  padding: 3px 9px;
+  border-radius: 999px;
+  background: #e8f3f5;
+  color: #125965;
+  font-size: 0.88rem;
+  font-weight: 700;
+}
+.note-pages {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 18px;
+}
+.options { list-style: none; padding: 0; margin: 12px 0; }
+.options li { padding: 7px 0; border-top: 1px solid #edf0f3; }
+.options label {
+  display: flex;
+  gap: 9px;
+  align-items: flex-start;
+  cursor: pointer;
+}
+.options input { margin-top: 5px; }
+.answer { color: var(--accent); font-weight: 800; }
+.reasons {
+  background: var(--soft);
+  border-left: 4px solid var(--accent);
+  padding: 10px 14px;
+  margin-top: 10px;
+}
+.quiz-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+button {
+  appearance: none;
+  border: 0;
+  border-radius: 6px;
+  padding: 9px 13px;
+  background: var(--accent);
+  color: #fff;
+  font-weight: 800;
+  cursor: pointer;
+}
+button:hover { background: #125965; }
+.feedback {
+  min-height: 24px;
+  font-weight: 800;
+}
+.feedback.correct { color: #0d6b3f; }
+.feedback.wrong { color: #a24118; }
+.choice-reason[hidden] { display: none; }
+pre {
+  overflow-x: auto;
+  padding: 14px;
+  border-radius: 8px;
+  background: #101820;
+  color: #eaf4f7;
+}
+code { font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace; }
+nav {
+  margin-top: 18px;
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+nav a {
+  color: #fff;
+  text-decoration: none;
+  border: 1px solid rgba(255,255,255,.28);
+  border-radius: 6px;
+  padding: 7px 10px;
+}
+.small { color: var(--muted); font-size: .95rem; }
+</style>
+  <script>
+document.addEventListener("click", (event) => {
+  const button = event.target.closest("[data-check-question]");
+  if (!button) return;
+
+  const question = button.closest(".question");
+  const selected = question.querySelector("input[type='radio']:checked");
+  const feedback = question.querySelector(".feedback");
+  const reason = question.querySelector(".choice-reason");
+
+  if (!selected) {
+    feedback.textContent = "Choose an answer first.";
+    feedback.className = "feedback wrong";
+    reason.hidden = true;
+    reason.textContent = "";
+    return;
+  }
+
+  const isCorrect = selected.dataset.correct === "true";
+  feedback.textContent = isCorrect ? "Right" : "Wrong";
+  feedback.className = isCorrect ? "feedback correct" : "feedback wrong";
+  reason.textContent = selected.dataset.reason;
+  reason.hidden = false;
+});
+</script>
+</head>
+<body>
+  <header>
+    <h1>Python Learning Materials</h1>
+    <p class="meta">Study materials based on <a href="https://www.youtube.com/watch?v=qwAFL1597eM">Python Tutorial for Beginners (with mini-projects)</a> by freeCodeCamp.org. Video duration: 8:41:53.</p>
+    
+  </header>
+  <main>
+<section class="page">
+  <h2>Course Study Pack</h2>
+  <p>This HTML pack groups the video into six study categories. Each category includes two pages of notes, a 20-question multiple-choice quiz with explanations for every option, and five small coding challenges with reference implementations.</p>
+  <p class="small">Original requested location was /learningMaterials, but this machine mounts root-level folders as read-only. The files are saved in the current writable workspace folder.</p>
+</section>
+<section class="grid">
+  <article class="card"><p class="pill">Basics</p><h2>Getting Started and Python Basics</h2><p>Intro, Chapter 1 - Getting Started, Chapter 2 - Python Basics</p><a href="./01-getting-started-and-python-basics.html">Open category</a></article><article class="card"><p class="pill">Types</p><h2>Operators, Data Types, Strings, and f-Strings</h2><p>Chapter 3 - Operators, Chapter 4 - Data Types, Chapter 13 - f-Strings</p><a href="./02-operators-data-types-strings.html">Open category</a></article><article class="card"><p class="pill">Flow</p><h2>User Input, Branching, and Loops</h2><p>Chapter 5 - User Input, Chapter 8 - Loops, Chapter 16 - Challenges</p><a href="./03-user-input-branching-loops.html">Open category</a></article><article class="card"><p class="pill">Collections</p><h2>Collections: Lists, Tuples, Dictionaries, and Sets</h2><p>Chapter 6 - Lists &amp; Tuples, Chapter 7 - Dictionaries &amp; Sets</p><a href="./04-collections.html">Open category</a></article><article class="card"><p class="pill">Functions</p><h2>Functions, Recursion, Scope, Closures, and Lambdas</h2><p>Chapter 9 - Functions, Chapter 10 - Recursion, Chapter 11 - Scope, Chapter 12 - Closures, Chapter 17 - Lambda &amp; Higher Order Functions</p><a href="./05-functions-recursion-scope.html">Open category</a></article><article class="card"><p class="pill">Projects</p><h2>Modules, Files, Environments, OOP, Errors, and Projects</h2><p>Chapter 14 - Modules, Chapter 15 - Command Line Arguments, Chapter 18 - Classes &amp; Objects, Chapter 19 - Exceptions &amp; Errors, Chapter 20 - OOP Project, Chapter 21 - Virtual Environments &amp; PIP, Chapter 22 - File Operations, Chapter 23 - Final Project</p><a href="./06-modules-files-oop-projects.html">Open category</a></article>
+</section></main>
+</body>
+</html>

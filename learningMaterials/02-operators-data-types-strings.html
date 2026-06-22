@@ -1,0 +1,454 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Operators, Data Types, Strings, and f-Strings</title>
+  <style>
+:root {
+  color-scheme: light;
+  --ink: #18202a;
+  --muted: #586575;
+  --line: #d9e0e8;
+  --panel: #ffffff;
+  --soft: #f5f7fa;
+  --accent: #176f7a;
+  --accent-2: #8a4f14;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  line-height: 1.55;
+  color: var(--ink);
+  background: #eef2f5;
+}
+header {
+  padding: 32px clamp(18px, 4vw, 56px);
+  background: #17212b;
+  color: #fff;
+}
+header a { color: #aee4ef; }
+main {
+  width: min(1120px, calc(100% - 32px));
+  margin: 28px auto 56px;
+}
+h1, h2, h3 { line-height: 1.2; }
+h1 { margin: 0 0 10px; font-size: clamp(2rem, 5vw, 3.3rem); }
+h2 { margin-top: 36px; padding-bottom: 8px; border-bottom: 1px solid var(--line); }
+h3 { margin-top: 24px; }
+.meta { color: #d9e7ed; max-width: 850px; }
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 16px;
+}
+.card, .page, .question, .challenge {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 18px;
+}
+.card a { color: var(--accent); font-weight: 700; text-decoration: none; }
+.pill {
+  display: inline-flex;
+  align-items: center;
+  min-height: 28px;
+  padding: 3px 9px;
+  border-radius: 999px;
+  background: #e8f3f5;
+  color: #125965;
+  font-size: 0.88rem;
+  font-weight: 700;
+}
+.note-pages {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 18px;
+}
+.options { list-style: none; padding: 0; margin: 12px 0; }
+.options li { padding: 7px 0; border-top: 1px solid #edf0f3; }
+.options label {
+  display: flex;
+  gap: 9px;
+  align-items: flex-start;
+  cursor: pointer;
+}
+.options input { margin-top: 5px; }
+.answer { color: var(--accent); font-weight: 800; }
+.reasons {
+  background: var(--soft);
+  border-left: 4px solid var(--accent);
+  padding: 10px 14px;
+  margin-top: 10px;
+}
+.quiz-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+button {
+  appearance: none;
+  border: 0;
+  border-radius: 6px;
+  padding: 9px 13px;
+  background: var(--accent);
+  color: #fff;
+  font-weight: 800;
+  cursor: pointer;
+}
+button:hover { background: #125965; }
+.feedback {
+  min-height: 24px;
+  font-weight: 800;
+}
+.feedback.correct { color: #0d6b3f; }
+.feedback.wrong { color: #a24118; }
+.choice-reason[hidden] { display: none; }
+pre {
+  overflow-x: auto;
+  padding: 14px;
+  border-radius: 8px;
+  background: #101820;
+  color: #eaf4f7;
+}
+code { font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace; }
+nav {
+  margin-top: 18px;
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+nav a {
+  color: #fff;
+  text-decoration: none;
+  border: 1px solid rgba(255,255,255,.28);
+  border-radius: 6px;
+  padding: 7px 10px;
+}
+.small { color: var(--muted); font-size: .95rem; }
+</style>
+  <script>
+document.addEventListener("click", (event) => {
+  const button = event.target.closest("[data-check-question]");
+  if (!button) return;
+
+  const question = button.closest(".question");
+  const selected = question.querySelector("input[type='radio']:checked");
+  const feedback = question.querySelector(".feedback");
+  const reason = question.querySelector(".choice-reason");
+
+  if (!selected) {
+    feedback.textContent = "Choose an answer first.";
+    feedback.className = "feedback wrong";
+    reason.hidden = true;
+    reason.textContent = "";
+    return;
+  }
+
+  const isCorrect = selected.dataset.correct === "true";
+  feedback.textContent = isCorrect ? "Right" : "Wrong";
+  feedback.className = isCorrect ? "feedback correct" : "feedback wrong";
+  reason.textContent = selected.dataset.reason;
+  reason.hidden = false;
+});
+</script>
+</head>
+<body>
+  <header>
+    <h1>Operators, Data Types, Strings, and f-Strings</h1>
+    <p class="meta">Study materials based on <a href="https://www.youtube.com/watch?v=qwAFL1597eM">Python Tutorial for Beginners (with mini-projects)</a> by freeCodeCamp.org. Video duration: 8:41:53.</p>
+    <nav><a href="./index.html">Index</a><a href="./01-getting-started-and-python-basics.html">Basics</a><a href="./02-operators-data-types-strings.html">Types</a><a href="./03-user-input-branching-loops.html">Flow</a><a href="./04-collections.html">Collections</a><a href="./05-functions-recursion-scope.html">Functions</a><a href="./06-modules-files-oop-projects.html">Projects</a></nav>
+  </header>
+  <main>
+<p><span class="pill">Chapter 3 - Operators, Chapter 4 - Data Types, Chapter 13 - f-Strings</span></p>
+<h2>Notes</h2>
+<section class="note-pages">
+  <article class="page"><h3>Page 1</h3><p>Operators are the vocabulary of computation. Arithmetic operators include +, -, *, /, //, %, and **. Regular division returns a float, floor division discards the fractional part, modulo returns a remainder, and exponentiation raises a number to a power.</p><p>Comparison operators produce booleans: ==, !=, &lt;, &lt;=, &gt;, and &gt;=. Assignment = and equality == are different ideas. Boolean operators and, or, and not combine truth values and short-circuit when the result is already known.</p><p>Core types shape behavior. Integers are whole numbers, floats approximate decimals, strings store text, booleans store truth, and None marks absence. Conversion functions like int(), float(), str(), and bool() should be used deliberately at program boundaries.</p><p>Operator precedence controls evaluation order, but readable code often uses parentheses even when they are not required. Clarity beats cleverness while learning.</p></article>
+  <article class="page"><h3>Page 2</h3><p>Strings are immutable sequences of characters. They support indexing, slicing, membership checks, concatenation, repetition, and methods such as strip(), lower(), upper(), split(), and replace(). Methods return new strings rather than changing the original.</p><p>Slicing uses text[start:stop:step], with stop excluded. That exclusion rule also appears in range() and many Python APIs. It makes lengths and indexes consistent once you internalize it.</p><p>f-strings are the cleanest way to build readable text from values: f'Total: {total:.2f}'. Format specifiers control decimal places, percentages, alignment, commas, and other display details.</p><p>The most common beginner bug here is mixing text and numbers. '3' + '4' is '34', but 3 + 4 is 7. Convert input once, keep calculations numeric, then format final output as text.</p></article>
+</section>
+<h2>Quiz: 20 Multiple-Choice Questions</h2>
+
+<section class="question">
+  <h3>1. What does 7 // 2 evaluate to?</h3>
+  <ul class="options">
+    <li><label><input type="radio" name="q-what-does-7-2-evaluate-to-0" data-correct="false" data-reason="This describes a different language feature, not the Python behavior being tested."><span><strong>A.</strong> 3.5</span></label></li><li><label><input type="radio" name="q-what-does-7-2-evaluate-to-0" data-correct="true" data-reason="Floor division returns the floored quotient."><span><strong>B.</strong> 3</span></label></li><li><label><input type="radio" name="q-what-does-7-2-evaluate-to-0" data-correct="false" data-reason="This would either fail or answer a narrower question than the one asked."><span><strong>C.</strong> 1</span></label></li><li><label><input type="radio" name="q-what-does-7-2-evaluate-to-0" data-correct="false" data-reason="This confuses a tool or keyword with the concept in the question."><span><strong>D.</strong> 14</span></label></li>
+  </ul>
+  <div class="quiz-actions">
+    <button type="button" data-check-question>Check</button>
+    <span class="feedback" aria-live="polite"></span>
+  </div>
+  <p class="reasons choice-reason" hidden></p>
+</section>
+
+<section class="question">
+  <h3>2. What does 7 % 2 evaluate to?</h3>
+  <ul class="options">
+    <li><label><input type="radio" name="q-what-does-7-2-evaluate-to-1" data-correct="true" data-reason="Modulo returns the remainder."><span><strong>A.</strong> 1</span></label></li><li><label><input type="radio" name="q-what-does-7-2-evaluate-to-1" data-correct="false" data-reason="This describes a different language feature, not the Python behavior being tested."><span><strong>B.</strong> 3</span></label></li><li><label><input type="radio" name="q-what-does-7-2-evaluate-to-1" data-correct="false" data-reason="This would either fail or answer a narrower question than the one asked."><span><strong>C.</strong> 3.5</span></label></li><li><label><input type="radio" name="q-what-does-7-2-evaluate-to-1" data-correct="false" data-reason="This confuses a tool or keyword with the concept in the question."><span><strong>D.</strong> 0</span></label></li>
+  </ul>
+  <div class="quiz-actions">
+    <button type="button" data-check-question>Check</button>
+    <span class="feedback" aria-live="polite"></span>
+  </div>
+  <p class="reasons choice-reason" hidden></p>
+</section>
+
+<section class="question">
+  <h3>3. Which operator tests equality?</h3>
+  <ul class="options">
+    <li><label><input type="radio" name="q-which-operator-tests-equality-2" data-correct="false" data-reason="This describes a different language feature, not the Python behavior being tested."><span><strong>A.</strong> =</span></label></li><li><label><input type="radio" name="q-which-operator-tests-equality-2" data-correct="false" data-reason="This would either fail or answer a narrower question than the one asked."><span><strong>B.</strong> =&gt;</span></label></li><li><label><input type="radio" name="q-which-operator-tests-equality-2" data-correct="false" data-reason="This confuses a tool or keyword with the concept in the question."><span><strong>C.</strong> :=:</span></label></li><li><label><input type="radio" name="q-which-operator-tests-equality-2" data-correct="true" data-reason="== compares two values."><span><strong>D.</strong> ==</span></label></li>
+  </ul>
+  <div class="quiz-actions">
+    <button type="button" data-check-question>Check</button>
+    <span class="feedback" aria-live="polite"></span>
+  </div>
+  <p class="reasons choice-reason" hidden></p>
+</section>
+
+<section class="question">
+  <h3>4. What is the type of 'hello'?</h3>
+  <ul class="options">
+    <li><label><input type="radio" name="q-what-is-the-type-of-hello-3" data-correct="false" data-reason="This describes a different language feature, not the Python behavior being tested."><span><strong>A.</strong> int</span></label></li><li><label><input type="radio" name="q-what-is-the-type-of-hello-3" data-correct="false" data-reason="This would either fail or answer a narrower question than the one asked."><span><strong>B.</strong> float</span></label></li><li><label><input type="radio" name="q-what-is-the-type-of-hello-3" data-correct="true" data-reason="Quoted text is a string."><span><strong>C.</strong> str</span></label></li><li><label><input type="radio" name="q-what-is-the-type-of-hello-3" data-correct="false" data-reason="This confuses a tool or keyword with the concept in the question."><span><strong>D.</strong> bool</span></label></li>
+  </ul>
+  <div class="quiz-actions">
+    <button type="button" data-check-question>Check</button>
+    <span class="feedback" aria-live="polite"></span>
+  </div>
+  <p class="reasons choice-reason" hidden></p>
+</section>
+
+<section class="question">
+  <h3>5. What does int('42') produce?</h3>
+  <ul class="options">
+    <li><label><input type="radio" name="q-what-does-int-42-produce-4" data-correct="false" data-reason="This describes a different language feature, not the Python behavior being tested."><span><strong>A.</strong> The string '42'</span></label></li><li><label><input type="radio" name="q-what-does-int-42-produce-4" data-correct="true" data-reason="int converts valid numeric text to an integer."><span><strong>B.</strong> The integer 42</span></label></li><li><label><input type="radio" name="q-what-does-int-42-produce-4" data-correct="false" data-reason="This would either fail or answer a narrower question than the one asked."><span><strong>C.</strong> A float 42.0</span></label></li><li><label><input type="radio" name="q-what-does-int-42-produce-4" data-correct="false" data-reason="This confuses a tool or keyword with the concept in the question."><span><strong>D.</strong> A boolean</span></label></li>
+  </ul>
+  <div class="quiz-actions">
+    <button type="button" data-check-question>Check</button>
+    <span class="feedback" aria-live="polite"></span>
+  </div>
+  <p class="reasons choice-reason" hidden></p>
+</section>
+
+<section class="question">
+  <h3>6. Which f-string is valid?</h3>
+  <ul class="options">
+    <li><label><input type="radio" name="q-which-f-string-is-valid-5" data-correct="true" data-reason="The f prefix belongs before the string literal."><span><strong>A.</strong> f'Hi {name}'</span></label></li><li><label><input type="radio" name="q-which-f-string-is-valid-5" data-correct="false" data-reason="This describes a different language feature, not the Python behavior being tested."><span><strong>B.</strong> 'Hi {name}'f</span></label></li><li><label><input type="radio" name="q-which-f-string-is-valid-5" data-correct="false" data-reason="This would either fail or answer a narrower question than the one asked."><span><strong>C.</strong> f(Hi {name})</span></label></li><li><label><input type="radio" name="q-which-f-string-is-valid-5" data-correct="false" data-reason="This confuses a tool or keyword with the concept in the question."><span><strong>D.</strong> format'Hi {name}'</span></label></li>
+  </ul>
+  <div class="quiz-actions">
+    <button type="button" data-check-question>Check</button>
+    <span class="feedback" aria-live="polite"></span>
+  </div>
+  <p class="reasons choice-reason" hidden></p>
+</section>
+
+<section class="question">
+  <h3>7. What does not True evaluate to?</h3>
+  <ul class="options">
+    <li><label><input type="radio" name="q-what-does-not-true-evaluate-to-6" data-correct="false" data-reason="This describes a different language feature, not the Python behavior being tested."><span><strong>A.</strong> True</span></label></li><li><label><input type="radio" name="q-what-does-not-true-evaluate-to-6" data-correct="false" data-reason="This would either fail or answer a narrower question than the one asked."><span><strong>B.</strong> None</span></label></li><li><label><input type="radio" name="q-what-does-not-true-evaluate-to-6" data-correct="false" data-reason="This confuses a tool or keyword with the concept in the question."><span><strong>C.</strong> 0</span></label></li><li><label><input type="radio" name="q-what-does-not-true-evaluate-to-6" data-correct="true" data-reason="not flips a boolean value."><span><strong>D.</strong> False</span></label></li>
+  </ul>
+  <div class="quiz-actions">
+    <button type="button" data-check-question>Check</button>
+    <span class="feedback" aria-live="polite"></span>
+  </div>
+  <p class="reasons choice-reason" hidden></p>
+</section>
+
+<section class="question">
+  <h3>8. Which checks age is at least 18?</h3>
+  <ul class="options">
+    <li><label><input type="radio" name="q-which-checks-age-is-at-least-18-7" data-correct="false" data-reason="This describes a different language feature, not the Python behavior being tested."><span><strong>A.</strong> age &gt; 18</span></label></li><li><label><input type="radio" name="q-which-checks-age-is-at-least-18-7" data-correct="false" data-reason="This would either fail or answer a narrower question than the one asked."><span><strong>B.</strong> age = 18</span></label></li><li><label><input type="radio" name="q-which-checks-age-is-at-least-18-7" data-correct="true" data-reason="&gt;= includes the boundary value."><span><strong>C.</strong> age &gt;= 18</span></label></li><li><label><input type="radio" name="q-which-checks-age-is-at-least-18-7" data-correct="false" data-reason="This confuses a tool or keyword with the concept in the question."><span><strong>D.</strong> age =&gt; 18</span></label></li>
+  </ul>
+  <div class="quiz-actions">
+    <button type="button" data-check-question>Check</button>
+    <span class="feedback" aria-live="polite"></span>
+  </div>
+  <p class="reasons choice-reason" hidden></p>
+</section>
+
+<section class="question">
+  <h3>9. What does 'Py' + 'thon' produce?</h3>
+  <ul class="options">
+    <li><label><input type="radio" name="q-what-does-py-thon-produce-8" data-correct="false" data-reason="This describes a different language feature, not the Python behavior being tested."><span><strong>A.</strong> Py thon</span></label></li><li><label><input type="radio" name="q-what-does-py-thon-produce-8" data-correct="true" data-reason="String concatenation joins exactly what is present."><span><strong>B.</strong> Python</span></label></li><li><label><input type="radio" name="q-what-does-py-thon-produce-8" data-correct="false" data-reason="This would either fail or answer a narrower question than the one asked."><span><strong>C.</strong> An error</span></label></li><li><label><input type="radio" name="q-what-does-py-thon-produce-8" data-correct="false" data-reason="This confuses a tool or keyword with the concept in the question."><span><strong>D.</strong> 5</span></label></li>
+  </ul>
+  <div class="quiz-actions">
+    <button type="button" data-check-question>Check</button>
+    <span class="feedback" aria-live="polite"></span>
+  </div>
+  <p class="reasons choice-reason" hidden></p>
+</section>
+
+<section class="question">
+  <h3>10. Why can '3' + 4 fail?</h3>
+  <ul class="options">
+    <li><label><input type="radio" name="q-why-can-3-4-fail-9" data-correct="true" data-reason="Mixed text-number addition requires explicit conversion."><span><strong>A.</strong> Python will not add str and int automatically</span></label></li><li><label><input type="radio" name="q-why-can-3-4-fail-9" data-correct="false" data-reason="This describes a different language feature, not the Python behavior being tested."><span><strong>B.</strong> 4 is too large</span></label></li><li><label><input type="radio" name="q-why-can-3-4-fail-9" data-correct="false" data-reason="This would either fail or answer a narrower question than the one asked."><span><strong>C.</strong> Strings cannot use +</span></label></li><li><label><input type="radio" name="q-why-can-3-4-fail-9" data-correct="false" data-reason="This confuses a tool or keyword with the concept in the question."><span><strong>D.</strong> Integers cannot use +</span></label></li>
+  </ul>
+  <div class="quiz-actions">
+    <button type="button" data-check-question>Check</button>
+    <span class="feedback" aria-live="polite"></span>
+  </div>
+  <p class="reasons choice-reason" hidden></p>
+</section>
+
+<section class="question">
+  <h3>11. What does 'python'[0] return?</h3>
+  <ul class="options">
+    <li><label><input type="radio" name="q-what-does-python-0-return-10" data-correct="false" data-reason="This describes a different language feature, not the Python behavior being tested."><span><strong>A.</strong> y</span></label></li><li><label><input type="radio" name="q-what-does-python-0-return-10" data-correct="false" data-reason="This would either fail or answer a narrower question than the one asked."><span><strong>B.</strong> python</span></label></li><li><label><input type="radio" name="q-what-does-python-0-return-10" data-correct="false" data-reason="This confuses a tool or keyword with the concept in the question."><span><strong>C.</strong> An error</span></label></li><li><label><input type="radio" name="q-what-does-python-0-return-10" data-correct="true" data-reason="String indexes start at zero."><span><strong>D.</strong> p</span></label></li>
+  </ul>
+  <div class="quiz-actions">
+    <button type="button" data-check-question>Check</button>
+    <span class="feedback" aria-live="polite"></span>
+  </div>
+  <p class="reasons choice-reason" hidden></p>
+</section>
+
+<section class="question">
+  <h3>12. What does 'python'[1:4] return?</h3>
+  <ul class="options">
+    <li><label><input type="radio" name="q-what-does-python-1-4-return-11" data-correct="false" data-reason="This describes a different language feature, not the Python behavior being tested."><span><strong>A.</strong> ytho</span></label></li><li><label><input type="radio" name="q-what-does-python-1-4-return-11" data-correct="false" data-reason="This would either fail or answer a narrower question than the one asked."><span><strong>B.</strong> pyt</span></label></li><li><label><input type="radio" name="q-what-does-python-1-4-return-11" data-correct="true" data-reason="The start is included and stop is excluded."><span><strong>C.</strong> yth</span></label></li><li><label><input type="radio" name="q-what-does-python-1-4-return-11" data-correct="false" data-reason="This confuses a tool or keyword with the concept in the question."><span><strong>D.</strong> tho</span></label></li>
+  </ul>
+  <div class="quiz-actions">
+    <button type="button" data-check-question>Check</button>
+    <span class="feedback" aria-live="polite"></span>
+  </div>
+  <p class="reasons choice-reason" hidden></p>
+</section>
+
+<section class="question">
+  <h3>13. Which method removes surrounding whitespace?</h3>
+  <ul class="options">
+    <li><label><input type="radio" name="q-which-method-removes-surrounding-whitespace-12" data-correct="false" data-reason="This describes a different language feature, not the Python behavior being tested."><span><strong>A.</strong> split()</span></label></li><li><label><input type="radio" name="q-which-method-removes-surrounding-whitespace-12" data-correct="true" data-reason="strip trims whitespace from both ends."><span><strong>B.</strong> strip()</span></label></li><li><label><input type="radio" name="q-which-method-removes-surrounding-whitespace-12" data-correct="false" data-reason="This would either fail or answer a narrower question than the one asked."><span><strong>C.</strong> upper()</span></label></li><li><label><input type="radio" name="q-which-method-removes-surrounding-whitespace-12" data-correct="false" data-reason="This confuses a tool or keyword with the concept in the question."><span><strong>D.</strong> find()</span></label></li>
+  </ul>
+  <div class="quiz-actions">
+    <button type="button" data-check-question>Check</button>
+    <span class="feedback" aria-live="polite"></span>
+  </div>
+  <p class="reasons choice-reason" hidden></p>
+</section>
+
+<section class="question">
+  <h3>14. What does 2 ** 3 mean?</h3>
+  <ul class="options">
+    <li><label><input type="radio" name="q-what-does-2-3-mean-13" data-correct="true" data-reason="** is exponentiation."><span><strong>A.</strong> 2 to the power of 3</span></label></li><li><label><input type="radio" name="q-what-does-2-3-mean-13" data-correct="false" data-reason="This describes a different language feature, not the Python behavior being tested."><span><strong>B.</strong> 2 times 3</span></label></li><li><label><input type="radio" name="q-what-does-2-3-mean-13" data-correct="false" data-reason="This would either fail or answer a narrower question than the one asked."><span><strong>C.</strong> 2 divided by 3</span></label></li><li><label><input type="radio" name="q-what-does-2-3-mean-13" data-correct="false" data-reason="This confuses a tool or keyword with the concept in the question."><span><strong>D.</strong> 2 modulo 3</span></label></li>
+  </ul>
+  <div class="quiz-actions">
+    <button type="button" data-check-question>Check</button>
+    <span class="feedback" aria-live="polite"></span>
+  </div>
+  <p class="reasons choice-reason" hidden></p>
+</section>
+
+<section class="question">
+  <h3>15. What is short-circuiting?</h3>
+  <ul class="options">
+    <li><label><input type="radio" name="q-what-is-short-circuiting-14" data-correct="false" data-reason="This describes a different language feature, not the Python behavior being tested."><span><strong>A.</strong> Turning off the computer</span></label></li><li><label><input type="radio" name="q-what-is-short-circuiting-14" data-correct="false" data-reason="This would either fail or answer a narrower question than the one asked."><span><strong>B.</strong> Rounding floats</span></label></li><li><label><input type="radio" name="q-what-is-short-circuiting-14" data-correct="false" data-reason="This confuses a tool or keyword with the concept in the question."><span><strong>C.</strong> Deleting variables</span></label></li><li><label><input type="radio" name="q-what-is-short-circuiting-14" data-correct="true" data-reason="and/or may skip the right side."><span><strong>D.</strong> Stopping a boolean expression once the result is known</span></label></li>
+  </ul>
+  <div class="quiz-actions">
+    <button type="button" data-check-question>Check</button>
+    <span class="feedback" aria-live="polite"></span>
+  </div>
+  <p class="reasons choice-reason" hidden></p>
+</section>
+
+<section class="question">
+  <h3>16. What does bool('') return?</h3>
+  <ul class="options">
+    <li><label><input type="radio" name="q-what-does-bool-return-15" data-correct="false" data-reason="This describes a different language feature, not the Python behavior being tested."><span><strong>A.</strong> True</span></label></li><li><label><input type="radio" name="q-what-does-bool-return-15" data-correct="false" data-reason="This would either fail or answer a narrower question than the one asked."><span><strong>B.</strong> None</span></label></li><li><label><input type="radio" name="q-what-does-bool-return-15" data-correct="true" data-reason="Empty strings are falsy."><span><strong>C.</strong> False</span></label></li><li><label><input type="radio" name="q-what-does-bool-return-15" data-correct="false" data-reason="This confuses a tool or keyword with the concept in the question."><span><strong>D.</strong> Error</span></label></li>
+  </ul>
+  <div class="quiz-actions">
+    <button type="button" data-check-question>Check</button>
+    <span class="feedback" aria-live="polite"></span>
+  </div>
+  <p class="reasons choice-reason" hidden></p>
+</section>
+
+<section class="question">
+  <h3>17. Which formats money to two decimals?</h3>
+  <ul class="options">
+    <li><label><input type="radio" name="q-which-formats-money-to-two-decimals-16" data-correct="false" data-reason="This describes a different language feature, not the Python behavior being tested."><span><strong>A.</strong> str(total)</span></label></li><li><label><input type="radio" name="q-which-formats-money-to-two-decimals-16" data-correct="true" data-reason=".2f formats a fixed two-decimal float display."><span><strong>B.</strong> f'${total:.2f}'</span></label></li><li><label><input type="radio" name="q-which-formats-money-to-two-decimals-16" data-correct="false" data-reason="This would either fail or answer a narrower question than the one asked."><span><strong>C.</strong> int(total)</span></label></li><li><label><input type="radio" name="q-which-formats-money-to-two-decimals-16" data-correct="false" data-reason="This confuses a tool or keyword with the concept in the question."><span><strong>D.</strong> total // 2</span></label></li>
+  </ul>
+  <div class="quiz-actions">
+    <button type="button" data-check-question>Check</button>
+    <span class="feedback" aria-live="polite"></span>
+  </div>
+  <p class="reasons choice-reason" hidden></p>
+</section>
+
+<section class="question">
+  <h3>18. What does upper() do?</h3>
+  <ul class="options">
+    <li><label><input type="radio" name="q-what-does-upper-do-17" data-correct="true" data-reason="Strings are immutable, so methods return new strings."><span><strong>A.</strong> Returns an uppercase copy</span></label></li><li><label><input type="radio" name="q-what-does-upper-do-17" data-correct="false" data-reason="This describes a different language feature, not the Python behavior being tested."><span><strong>B.</strong> Changes the original in place</span></label></li><li><label><input type="radio" name="q-what-does-upper-do-17" data-correct="false" data-reason="This would either fail or answer a narrower question than the one asked."><span><strong>C.</strong> Deletes spaces</span></label></li><li><label><input type="radio" name="q-what-does-upper-do-17" data-correct="false" data-reason="This confuses a tool or keyword with the concept in the question."><span><strong>D.</strong> Converts to int</span></label></li>
+  </ul>
+  <div class="quiz-actions">
+    <button type="button" data-check-question>Check</button>
+    <span class="feedback" aria-live="polite"></span>
+  </div>
+  <p class="reasons choice-reason" hidden></p>
+</section>
+
+<section class="question">
+  <h3>19. Which expression is True?</h3>
+  <ul class="options">
+    <li><label><input type="radio" name="q-which-expression-is-true-18" data-correct="false" data-reason="This describes a different language feature, not the Python behavior being tested."><span><strong>A.</strong> 5 &lt; 3</span></label></li><li><label><input type="radio" name="q-which-expression-is-true-18" data-correct="false" data-reason="This would either fail or answer a narrower question than the one asked."><span><strong>B.</strong> 5 == '5'</span></label></li><li><label><input type="radio" name="q-which-expression-is-true-18" data-correct="false" data-reason="This confuses a tool or keyword with the concept in the question."><span><strong>C.</strong> 5 = 5</span></label></li><li><label><input type="radio" name="q-which-expression-is-true-18" data-correct="true" data-reason="5 is not equal to 3."><span><strong>D.</strong> 5 != 3</span></label></li>
+  </ul>
+  <div class="quiz-actions">
+    <button type="button" data-check-question>Check</button>
+    <span class="feedback" aria-live="polite"></span>
+  </div>
+  <p class="reasons choice-reason" hidden></p>
+</section>
+
+<section class="question">
+  <h3>20. Why use parentheses in arithmetic?</h3>
+  <ul class="options">
+    <li><label><input type="radio" name="q-why-use-parentheses-in-arithmetic-19" data-correct="false" data-reason="This describes a different language feature, not the Python behavior being tested."><span><strong>A.</strong> To convert to string</span></label></li><li><label><input type="radio" name="q-why-use-parentheses-in-arithmetic-19" data-correct="false" data-reason="This would either fail or answer a narrower question than the one asked."><span><strong>B.</strong> To comment code</span></label></li><li><label><input type="radio" name="q-why-use-parentheses-in-arithmetic-19" data-correct="true" data-reason="Parentheses clarify precedence."><span><strong>C.</strong> To make order explicit</span></label></li><li><label><input type="radio" name="q-why-use-parentheses-in-arithmetic-19" data-correct="false" data-reason="This confuses a tool or keyword with the concept in the question."><span><strong>D.</strong> To install modules</span></label></li>
+  </ul>
+  <div class="quiz-actions">
+    <button type="button" data-check-question>Check</button>
+    <span class="feedback" aria-live="polite"></span>
+  </div>
+  <p class="reasons choice-reason" hidden></p>
+</section>
+<h2>Small Coding Challenges</h2>
+
+<section class="challenge">
+  <h3>1. Even Check</h3>
+  <p>Write is_even(n) using modulo.</p>
+  <p class="answer">Reference implementation:</p>
+  <pre><code>def is_even(n):
+    return n % 2 == 0</code></pre>
+</section>
+
+<section class="challenge">
+  <h3>2. Price Formatter</h3>
+  <p>Return a dollar amount with two decimal places.</p>
+  <p class="answer">Reference implementation:</p>
+  <pre><code>def format_price(amount):
+    return f&quot;${amount:.2f}&quot;</code></pre>
+</section>
+
+<section class="challenge">
+  <h3>3. Initials</h3>
+  <p>Return initials from first and last names.</p>
+  <p class="answer">Reference implementation:</p>
+  <pre><code>def initials(first, last):
+    return f&quot;{first[0].upper()}.{last[0].upper()}.&quot;</code></pre>
+</section>
+
+<section class="challenge">
+  <h3>4. Clean Username</h3>
+  <p>Trim spaces and lowercase a username.</p>
+  <p class="answer">Reference implementation:</p>
+  <pre><code>def clean_username(username):
+    return username.strip().lower()</code></pre>
+</section>
+
+<section class="challenge">
+  <h3>5. Circle Area</h3>
+  <p>Compute area from radius.</p>
+  <p class="answer">Reference implementation:</p>
+  <pre><code>def circle_area(radius):
+    return 3.14159 * radius ** 2</code></pre>
+</section></main>
+</body>
+</html>

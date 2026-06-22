@@ -1,0 +1,474 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>User Input, Branching, and Loops</title>
+  <style>
+:root {
+  color-scheme: light;
+  --ink: #18202a;
+  --muted: #586575;
+  --line: #d9e0e8;
+  --panel: #ffffff;
+  --soft: #f5f7fa;
+  --accent: #176f7a;
+  --accent-2: #8a4f14;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  line-height: 1.55;
+  color: var(--ink);
+  background: #eef2f5;
+}
+header {
+  padding: 32px clamp(18px, 4vw, 56px);
+  background: #17212b;
+  color: #fff;
+}
+header a { color: #aee4ef; }
+main {
+  width: min(1120px, calc(100% - 32px));
+  margin: 28px auto 56px;
+}
+h1, h2, h3 { line-height: 1.2; }
+h1 { margin: 0 0 10px; font-size: clamp(2rem, 5vw, 3.3rem); }
+h2 { margin-top: 36px; padding-bottom: 8px; border-bottom: 1px solid var(--line); }
+h3 { margin-top: 24px; }
+.meta { color: #d9e7ed; max-width: 850px; }
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 16px;
+}
+.card, .page, .question, .challenge {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 18px;
+}
+.card a { color: var(--accent); font-weight: 700; text-decoration: none; }
+.pill {
+  display: inline-flex;
+  align-items: center;
+  min-height: 28px;
+  padding: 3px 9px;
+  border-radius: 999px;
+  background: #e8f3f5;
+  color: #125965;
+  font-size: 0.88rem;
+  font-weight: 700;
+}
+.note-pages {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 18px;
+}
+.options { list-style: none; padding: 0; margin: 12px 0; }
+.options li { padding: 7px 0; border-top: 1px solid #edf0f3; }
+.options label {
+  display: flex;
+  gap: 9px;
+  align-items: flex-start;
+  cursor: pointer;
+}
+.options input { margin-top: 5px; }
+.answer { color: var(--accent); font-weight: 800; }
+.reasons {
+  background: var(--soft);
+  border-left: 4px solid var(--accent);
+  padding: 10px 14px;
+  margin-top: 10px;
+}
+.quiz-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+button {
+  appearance: none;
+  border: 0;
+  border-radius: 6px;
+  padding: 9px 13px;
+  background: var(--accent);
+  color: #fff;
+  font-weight: 800;
+  cursor: pointer;
+}
+button:hover { background: #125965; }
+.feedback {
+  min-height: 24px;
+  font-weight: 800;
+}
+.feedback.correct { color: #0d6b3f; }
+.feedback.wrong { color: #a24118; }
+.choice-reason[hidden] { display: none; }
+pre {
+  overflow-x: auto;
+  padding: 14px;
+  border-radius: 8px;
+  background: #101820;
+  color: #eaf4f7;
+}
+code { font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace; }
+nav {
+  margin-top: 18px;
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+nav a {
+  color: #fff;
+  text-decoration: none;
+  border: 1px solid rgba(255,255,255,.28);
+  border-radius: 6px;
+  padding: 7px 10px;
+}
+.small { color: var(--muted); font-size: .95rem; }
+</style>
+  <script>
+document.addEventListener("click", (event) => {
+  const button = event.target.closest("[data-check-question]");
+  if (!button) return;
+
+  const question = button.closest(".question");
+  const selected = question.querySelector("input[type='radio']:checked");
+  const feedback = question.querySelector(".feedback");
+  const reason = question.querySelector(".choice-reason");
+
+  if (!selected) {
+    feedback.textContent = "Choose an answer first.";
+    feedback.className = "feedback wrong";
+    reason.hidden = true;
+    reason.textContent = "";
+    return;
+  }
+
+  const isCorrect = selected.dataset.correct === "true";
+  feedback.textContent = isCorrect ? "Right" : "Wrong";
+  feedback.className = isCorrect ? "feedback correct" : "feedback wrong";
+  reason.textContent = selected.dataset.reason;
+  reason.hidden = false;
+});
+</script>
+</head>
+<body>
+  <header>
+    <h1>User Input, Branching, and Loops</h1>
+    <p class="meta">Study materials based on <a href="https://www.youtube.com/watch?v=qwAFL1597eM">Python Tutorial for Beginners (with mini-projects)</a> by freeCodeCamp.org. Video duration: 8:41:53.</p>
+    <nav><a href="./index.html">Index</a><a href="./01-getting-started-and-python-basics.html">Basics</a><a href="./02-operators-data-types-strings.html">Types</a><a href="./03-user-input-branching-loops.html">Flow</a><a href="./04-collections.html">Collections</a><a href="./05-functions-recursion-scope.html">Functions</a><a href="./06-modules-files-oop-projects.html">Projects</a></nav>
+  </header>
+  <main>
+<p><span class="pill">Chapter 5 - User Input, Chapter 8 - Loops, Chapter 16 - Challenges</span></p>
+<h2>Notes</h2>
+<section class="note-pages">
+  <article class="page"><h3>Page 1</h3><p>Interactive programs read input, interpret it, and respond. input() always returns a string, so numeric input must be converted before arithmetic. Clear prompts tell the user exactly what kind of value is expected.</p><p>Branching uses if, elif, and else. Conditions are checked in order, and the first true branch in an if chain runs. Use elif for mutually exclusive choices and separate if statements for independent checks.</p><p>A for loop iterates over a sequence or range and is best when the number of repetitions or items is known. A while loop repeats while a condition remains true and is best when the stopping point depends on runtime behavior.</p><p>range(stop) starts at zero and excludes stop. range(start, stop, step) gives direct control over counting. Like slicing, the stop value is excluded.</p></article>
+  <article class="page"><h3>Page 2</h3><p>break exits the nearest loop immediately. continue skips the rest of the current iteration and moves to the next one. Both are useful, but too many jumps can make loop logic harder to read.</p><p>Infinite loops usually happen when the loop condition never moves toward False. In while loops, make sure some state changes each time or that a break condition is reachable.</p><p>Input validation combines loops and branches: ask for a value, check or convert it, and repeat until it is usable. Later, exception handling makes conversion validation safer.</p><p>Small challenge projects such as calculators, guessing games, and menu systems usually follow the same shape: initialize state, prompt, branch on choice, update state, and display feedback.</p></article>
+</section>
+<h2>Quiz: 20 Multiple-Choice Questions</h2>
+
+<section class="question">
+  <h3>1. What does input() return?</h3>
+  <ul class="options">
+    <li><label><input type="radio" name="q-what-does-input-return-0" data-correct="false" data-reason="This describes a different language feature, not the Python behavior being tested."><span><strong>A.</strong> int</span></label></li><li><label><input type="radio" name="q-what-does-input-return-0" data-correct="false" data-reason="This would either fail or answer a narrower question than the one asked."><span><strong>B.</strong> float</span></label></li><li><label><input type="radio" name="q-what-does-input-return-0" data-correct="true" data-reason="input always returns text."><span><strong>C.</strong> str</span></label></li><li><label><input type="radio" name="q-what-does-input-return-0" data-correct="false" data-reason="This confuses a tool or keyword with the concept in the question."><span><strong>D.</strong> bool</span></label></li>
+  </ul>
+  <div class="quiz-actions">
+    <button type="button" data-check-question>Check</button>
+    <span class="feedback" aria-live="polite"></span>
+  </div>
+  <p class="reasons choice-reason" hidden></p>
+</section>
+
+<section class="question">
+  <h3>2. Which converts age input to int?</h3>
+  <ul class="options">
+    <li><label><input type="radio" name="q-which-converts-age-input-to-int-1" data-correct="false" data-reason="This describes a different language feature, not the Python behavior being tested."><span><strong>A.</strong> input(int)</span></label></li><li><label><input type="radio" name="q-which-converts-age-input-to-int-1" data-correct="true" data-reason="The input string is passed to int."><span><strong>B.</strong> int(input('Age: '))</span></label></li><li><label><input type="radio" name="q-which-converts-age-input-to-int-1" data-correct="false" data-reason="This would either fail or answer a narrower question than the one asked."><span><strong>C.</strong> str(input())</span></label></li><li><label><input type="radio" name="q-which-converts-age-input-to-int-1" data-correct="false" data-reason="This confuses a tool or keyword with the concept in the question."><span><strong>D.</strong> bool(input())</span></label></li>
+  </ul>
+  <div class="quiz-actions">
+    <button type="button" data-check-question>Check</button>
+    <span class="feedback" aria-live="polite"></span>
+  </div>
+  <p class="reasons choice-reason" hidden></p>
+</section>
+
+<section class="question">
+  <h3>3. When should elif be used?</h3>
+  <ul class="options">
+    <li><label><input type="radio" name="q-when-should-elif-be-used-2" data-correct="true" data-reason="elif continues one decision chain."><span><strong>A.</strong> For mutually exclusive alternatives</span></label></li><li><label><input type="radio" name="q-when-should-elif-be-used-2" data-correct="false" data-reason="This describes a different language feature, not the Python behavior being tested."><span><strong>B.</strong> For comments</span></label></li><li><label><input type="radio" name="q-when-should-elif-be-used-2" data-correct="false" data-reason="This would either fail or answer a narrower question than the one asked."><span><strong>C.</strong> For imports</span></label></li><li><label><input type="radio" name="q-when-should-elif-be-used-2" data-correct="false" data-reason="This confuses a tool or keyword with the concept in the question."><span><strong>D.</strong> For package installs</span></label></li>
+  </ul>
+  <div class="quiz-actions">
+    <button type="button" data-check-question>Check</button>
+    <span class="feedback" aria-live="polite"></span>
+  </div>
+  <p class="reasons choice-reason" hidden></p>
+</section>
+
+<section class="question">
+  <h3>4. What does else mean?</h3>
+  <ul class="options">
+    <li><label><input type="radio" name="q-what-does-else-mean-3" data-correct="false" data-reason="This describes a different language feature, not the Python behavior being tested."><span><strong>A.</strong> Run first</span></label></li><li><label><input type="radio" name="q-what-does-else-mean-3" data-correct="false" data-reason="This would either fail or answer a narrower question than the one asked."><span><strong>B.</strong> Repeat forever</span></label></li><li><label><input type="radio" name="q-what-does-else-mean-3" data-correct="false" data-reason="This confuses a tool or keyword with the concept in the question."><span><strong>C.</strong> End Python</span></label></li><li><label><input type="radio" name="q-what-does-else-mean-3" data-correct="true" data-reason="else is the fallback branch."><span><strong>D.</strong> Run if no previous condition matched</span></label></li>
+  </ul>
+  <div class="quiz-actions">
+    <button type="button" data-check-question>Check</button>
+    <span class="feedback" aria-live="polite"></span>
+  </div>
+  <p class="reasons choice-reason" hidden></p>
+</section>
+
+<section class="question">
+  <h3>5. Which loop fits a known count?</h3>
+  <ul class="options">
+    <li><label><input type="radio" name="q-which-loop-fits-a-known-count-4" data-correct="false" data-reason="This describes a different language feature, not the Python behavior being tested."><span><strong>A.</strong> try</span></label></li><li><label><input type="radio" name="q-which-loop-fits-a-known-count-4" data-correct="false" data-reason="This would either fail or answer a narrower question than the one asked."><span><strong>B.</strong> import</span></label></li><li><label><input type="radio" name="q-which-loop-fits-a-known-count-4" data-correct="true" data-reason="for loops are ideal for known iterables or ranges."><span><strong>C.</strong> for</span></label></li><li><label><input type="radio" name="q-which-loop-fits-a-known-count-4" data-correct="false" data-reason="This confuses a tool or keyword with the concept in the question."><span><strong>D.</strong> class</span></label></li>
+  </ul>
+  <div class="quiz-actions">
+    <button type="button" data-check-question>Check</button>
+    <span class="feedback" aria-live="polite"></span>
+  </div>
+  <p class="reasons choice-reason" hidden></p>
+</section>
+
+<section class="question">
+  <h3>6. Which loop fits repeating until q?</h3>
+  <ul class="options">
+    <li><label><input type="radio" name="q-which-loop-fits-repeating-until-q-5" data-correct="false" data-reason="This describes a different language feature, not the Python behavior being tested."><span><strong>A.</strong> def</span></label></li><li><label><input type="radio" name="q-which-loop-fits-repeating-until-q-5" data-correct="true" data-reason="while handles unknown duration based on a condition."><span><strong>B.</strong> while</span></label></li><li><label><input type="radio" name="q-which-loop-fits-repeating-until-q-5" data-correct="false" data-reason="This would either fail or answer a narrower question than the one asked."><span><strong>C.</strong> from</span></label></li><li><label><input type="radio" name="q-which-loop-fits-repeating-until-q-5" data-correct="false" data-reason="This confuses a tool or keyword with the concept in the question."><span><strong>D.</strong> return</span></label></li>
+  </ul>
+  <div class="quiz-actions">
+    <button type="button" data-check-question>Check</button>
+    <span class="feedback" aria-live="polite"></span>
+  </div>
+  <p class="reasons choice-reason" hidden></p>
+</section>
+
+<section class="question">
+  <h3>7. What does range(3) produce?</h3>
+  <ul class="options">
+    <li><label><input type="radio" name="q-what-does-range-3-produce-6" data-correct="true" data-reason="range starts at zero and excludes stop."><span><strong>A.</strong> 0, 1, 2</span></label></li><li><label><input type="radio" name="q-what-does-range-3-produce-6" data-correct="false" data-reason="This describes a different language feature, not the Python behavior being tested."><span><strong>B.</strong> 1, 2, 3</span></label></li><li><label><input type="radio" name="q-what-does-range-3-produce-6" data-correct="false" data-reason="This would either fail or answer a narrower question than the one asked."><span><strong>C.</strong> 0, 1, 2, 3</span></label></li><li><label><input type="radio" name="q-what-does-range-3-produce-6" data-correct="false" data-reason="This confuses a tool or keyword with the concept in the question."><span><strong>D.</strong> 3 only</span></label></li>
+  </ul>
+  <div class="quiz-actions">
+    <button type="button" data-check-question>Check</button>
+    <span class="feedback" aria-live="polite"></span>
+  </div>
+  <p class="reasons choice-reason" hidden></p>
+</section>
+
+<section class="question">
+  <h3>8. What does break do?</h3>
+  <ul class="options">
+    <li><label><input type="radio" name="q-what-does-break-do-7" data-correct="false" data-reason="This describes a different language feature, not the Python behavior being tested."><span><strong>A.</strong> Skips only a print</span></label></li><li><label><input type="radio" name="q-what-does-break-do-7" data-correct="false" data-reason="This would either fail or answer a narrower question than the one asked."><span><strong>B.</strong> Converts strings</span></label></li><li><label><input type="radio" name="q-what-does-break-do-7" data-correct="false" data-reason="This confuses a tool or keyword with the concept in the question."><span><strong>C.</strong> Creates a function</span></label></li><li><label><input type="radio" name="q-what-does-break-do-7" data-correct="true" data-reason="break leaves loop execution."><span><strong>D.</strong> Exits the nearest loop</span></label></li>
+  </ul>
+  <div class="quiz-actions">
+    <button type="button" data-check-question>Check</button>
+    <span class="feedback" aria-live="polite"></span>
+  </div>
+  <p class="reasons choice-reason" hidden></p>
+</section>
+
+<section class="question">
+  <h3>9. What does continue do?</h3>
+  <ul class="options">
+    <li><label><input type="radio" name="q-what-does-continue-do-8" data-correct="false" data-reason="This describes a different language feature, not the Python behavior being tested."><span><strong>A.</strong> Stops the whole program</span></label></li><li><label><input type="radio" name="q-what-does-continue-do-8" data-correct="false" data-reason="This would either fail or answer a narrower question than the one asked."><span><strong>B.</strong> Imports a module</span></label></li><li><label><input type="radio" name="q-what-does-continue-do-8" data-correct="true" data-reason="continue skips the remaining loop body."><span><strong>C.</strong> Moves to the next loop iteration</span></label></li><li><label><input type="radio" name="q-what-does-continue-do-8" data-correct="false" data-reason="This confuses a tool or keyword with the concept in the question."><span><strong>D.</strong> Returns from any function</span></label></li>
+  </ul>
+  <div class="quiz-actions">
+    <button type="button" data-check-question>Check</button>
+    <span class="feedback" aria-live="polite"></span>
+  </div>
+  <p class="reasons choice-reason" hidden></p>
+</section>
+
+<section class="question">
+  <h3>10. What often causes infinite loops?</h3>
+  <ul class="options">
+    <li><label><input type="radio" name="q-what-often-causes-infinite-loops-9" data-correct="false" data-reason="This describes a different language feature, not the Python behavior being tested."><span><strong>A.</strong> Using print</span></label></li><li><label><input type="radio" name="q-what-often-causes-infinite-loops-9" data-correct="true" data-reason="The loop needs a reachable stopping condition."><span><strong>B.</strong> The condition never becomes false</span></label></li><li><label><input type="radio" name="q-what-often-causes-infinite-loops-9" data-correct="false" data-reason="This would either fail or answer a narrower question than the one asked."><span><strong>C.</strong> Using strings</span></label></li><li><label><input type="radio" name="q-what-often-causes-infinite-loops-9" data-correct="false" data-reason="This confuses a tool or keyword with the concept in the question."><span><strong>D.</strong> Using comments</span></label></li>
+  </ul>
+  <div class="quiz-actions">
+    <button type="button" data-check-question>Check</button>
+    <span class="feedback" aria-live="polite"></span>
+  </div>
+  <p class="reasons choice-reason" hidden></p>
+</section>
+
+<section class="question">
+  <h3>11. Which checks whether choice is q?</h3>
+  <ul class="options">
+    <li><label><input type="radio" name="q-which-checks-whether-choice-is-q-10" data-correct="true" data-reason="== compares values."><span><strong>A.</strong> choice == 'q'</span></label></li><li><label><input type="radio" name="q-which-checks-whether-choice-is-q-10" data-correct="false" data-reason="This describes a different language feature, not the Python behavior being tested."><span><strong>B.</strong> choice = 'q'</span></label></li><li><label><input type="radio" name="q-which-checks-whether-choice-is-q-10" data-correct="false" data-reason="This would either fail or answer a narrower question than the one asked."><span><strong>C.</strong> choice =&gt; 'q'</span></label></li><li><label><input type="radio" name="q-which-checks-whether-choice-is-q-10" data-correct="false" data-reason="This confuses a tool or keyword with the concept in the question."><span><strong>D.</strong> choice :=: 'q'</span></label></li>
+  </ul>
+  <div class="quiz-actions">
+    <button type="button" data-check-question>Check</button>
+    <span class="feedback" aria-live="polite"></span>
+  </div>
+  <p class="reasons choice-reason" hidden></p>
+</section>
+
+<section class="question">
+  <h3>12. Why validate input?</h3>
+  <ul class="options">
+    <li><label><input type="radio" name="q-why-validate-input-11" data-correct="false" data-reason="This describes a different language feature, not the Python behavior being tested."><span><strong>A.</strong> Python refuses input</span></label></li><li><label><input type="radio" name="q-why-validate-input-11" data-correct="false" data-reason="This would either fail or answer a narrower question than the one asked."><span><strong>B.</strong> Validation removes loops</span></label></li><li><label><input type="radio" name="q-why-validate-input-11" data-correct="false" data-reason="This confuses a tool or keyword with the concept in the question."><span><strong>C.</strong> It makes code always shorter</span></label></li><li><label><input type="radio" name="q-why-validate-input-11" data-correct="true" data-reason="Programs should protect their assumptions."><span><strong>D.</strong> Users may enter unexpected values</span></label></li>
+  </ul>
+  <div class="quiz-actions">
+    <button type="button" data-check-question>Check</button>
+    <span class="feedback" aria-live="polite"></span>
+  </div>
+  <p class="reasons choice-reason" hidden></p>
+</section>
+
+<section class="question">
+  <h3>13. What does range(2, 6) yield?</h3>
+  <ul class="options">
+    <li><label><input type="radio" name="q-what-does-range-2-6-yield-12" data-correct="false" data-reason="This describes a different language feature, not the Python behavior being tested."><span><strong>A.</strong> 2, 3, 4, 5, 6</span></label></li><li><label><input type="radio" name="q-what-does-range-2-6-yield-12" data-correct="false" data-reason="This would either fail or answer a narrower question than the one asked."><span><strong>B.</strong> 0, 1, 2, 3, 4, 5</span></label></li><li><label><input type="radio" name="q-what-does-range-2-6-yield-12" data-correct="true" data-reason="The stop value is excluded."><span><strong>C.</strong> 2, 3, 4, 5</span></label></li><li><label><input type="radio" name="q-what-does-range-2-6-yield-12" data-correct="false" data-reason="This confuses a tool or keyword with the concept in the question."><span><strong>D.</strong> 6 only</span></label></li>
+  </ul>
+  <div class="quiz-actions">
+    <button type="button" data-check-question>Check</button>
+    <span class="feedback" aria-live="polite"></span>
+  </div>
+  <p class="reasons choice-reason" hidden></p>
+</section>
+
+<section class="question">
+  <h3>14. Which condition is true for a non-empty string?</h3>
+  <ul class="options">
+    <li><label><input type="radio" name="q-which-condition-is-true-for-a-non-empty-string-13" data-correct="false" data-reason="This describes a different language feature, not the Python behavior being tested."><span><strong>A.</strong> if len(username) &lt; 0</span></label></li><li><label><input type="radio" name="q-which-condition-is-true-for-a-non-empty-string-13" data-correct="true" data-reason="Non-empty strings are truthy."><span><strong>B.</strong> if username:</span></label></li><li><label><input type="radio" name="q-which-condition-is-true-for-a-non-empty-string-13" data-correct="false" data-reason="This would either fail or answer a narrower question than the one asked."><span><strong>C.</strong> if not username:</span></label></li><li><label><input type="radio" name="q-which-condition-is-true-for-a-non-empty-string-13" data-correct="false" data-reason="This confuses a tool or keyword with the concept in the question."><span><strong>D.</strong> if username == None only</span></label></li>
+  </ul>
+  <div class="quiz-actions">
+    <button type="button" data-check-question>Check</button>
+    <span class="feedback" aria-live="polite"></span>
+  </div>
+  <p class="reasons choice-reason" hidden></p>
+</section>
+
+<section class="question">
+  <h3>15. What branch is evaluated first?</h3>
+  <ul class="options">
+    <li><label><input type="radio" name="q-what-branch-is-evaluated-first-14" data-correct="true" data-reason="An if chain starts with if."><span><strong>A.</strong> if</span></label></li><li><label><input type="radio" name="q-what-branch-is-evaluated-first-14" data-correct="false" data-reason="This describes a different language feature, not the Python behavior being tested."><span><strong>B.</strong> else</span></label></li><li><label><input type="radio" name="q-what-branch-is-evaluated-first-14" data-correct="false" data-reason="This would either fail or answer a narrower question than the one asked."><span><strong>C.</strong> last elif</span></label></li><li><label><input type="radio" name="q-what-branch-is-evaluated-first-14" data-correct="false" data-reason="This confuses a tool or keyword with the concept in the question."><span><strong>D.</strong> random</span></label></li>
+  </ul>
+  <div class="quiz-actions">
+    <button type="button" data-check-question>Check</button>
+    <span class="feedback" aria-live="polite"></span>
+  </div>
+  <p class="reasons choice-reason" hidden></p>
+</section>
+
+<section class="question">
+  <h3>16. How do you loop over characters in text?</h3>
+  <ul class="options">
+    <li><label><input type="radio" name="q-how-do-you-loop-over-characters-in-text-15" data-correct="false" data-reason="This describes a different language feature, not the Python behavior being tested."><span><strong>A.</strong> while ch in text:</span></label></li><li><label><input type="radio" name="q-how-do-you-loop-over-characters-in-text-15" data-correct="false" data-reason="This would either fail or answer a narrower question than the one asked."><span><strong>B.</strong> if ch in text:</span></label></li><li><label><input type="radio" name="q-how-do-you-loop-over-characters-in-text-15" data-correct="false" data-reason="This confuses a tool or keyword with the concept in the question."><span><strong>C.</strong> def ch in text:</span></label></li><li><label><input type="radio" name="q-how-do-you-loop-over-characters-in-text-15" data-correct="true" data-reason="Strings are iterable."><span><strong>D.</strong> for ch in text:</span></label></li>
+  </ul>
+  <div class="quiz-actions">
+    <button type="button" data-check-question>Check</button>
+    <span class="feedback" aria-live="polite"></span>
+  </div>
+  <p class="reasons choice-reason" hidden></p>
+</section>
+
+<section class="question">
+  <h3>17. What should a prompt include?</h3>
+  <ul class="options">
+    <li><label><input type="radio" name="q-what-should-a-prompt-include-16" data-correct="false" data-reason="This describes a different language feature, not the Python behavior being tested."><span><strong>A.</strong> Only punctuation</span></label></li><li><label><input type="radio" name="q-what-should-a-prompt-include-16" data-correct="false" data-reason="This would either fail or answer a narrower question than the one asked."><span><strong>B.</strong> A traceback</span></label></li><li><label><input type="radio" name="q-what-should-a-prompt-include-16" data-correct="true" data-reason="Prompts should guide the user."><span><strong>C.</strong> Expected input</span></label></li><li><label><input type="radio" name="q-what-should-a-prompt-include-16" data-correct="false" data-reason="This confuses a tool or keyword with the concept in the question."><span><strong>D.</strong> No spaces ever</span></label></li>
+  </ul>
+  <div class="quiz-actions">
+    <button type="button" data-check-question>Check</button>
+    <span class="feedback" aria-live="polite"></span>
+  </div>
+  <p class="reasons choice-reason" hidden></p>
+</section>
+
+<section class="question">
+  <h3>18. Why keep branches small?</h3>
+  <ul class="options">
+    <li><label><input type="radio" name="q-why-keep-branches-small-17" data-correct="false" data-reason="This describes a different language feature, not the Python behavior being tested."><span><strong>A.</strong> Python forbids large branches</span></label></li><li><label><input type="radio" name="q-why-keep-branches-small-17" data-correct="true" data-reason="Small blocks reduce mental load."><span><strong>B.</strong> They are easier to read and test</span></label></li><li><label><input type="radio" name="q-why-keep-branches-small-17" data-correct="false" data-reason="This would either fail or answer a narrower question than the one asked."><span><strong>C.</strong> Variables disappear</span></label></li><li><label><input type="radio" name="q-why-keep-branches-small-17" data-correct="false" data-reason="This confuses a tool or keyword with the concept in the question."><span><strong>D.</strong> Imports stop working</span></label></li>
+  </ul>
+  <div class="quiz-actions">
+    <button type="button" data-check-question>Check</button>
+    <span class="feedback" aria-live="polite"></span>
+  </div>
+  <p class="reasons choice-reason" hidden></p>
+</section>
+
+<section class="question">
+  <h3>19. What happens after a true elif branch?</h3>
+  <ul class="options">
+    <li><label><input type="radio" name="q-what-happens-after-a-true-elif-branch-18" data-correct="true" data-reason="An if/elif/else chain selects one path."><span><strong>A.</strong> The rest of the chain is skipped</span></label></li><li><label><input type="radio" name="q-what-happens-after-a-true-elif-branch-18" data-correct="false" data-reason="This describes a different language feature, not the Python behavior being tested."><span><strong>B.</strong> All branches run</span></label></li><li><label><input type="radio" name="q-what-happens-after-a-true-elif-branch-18" data-correct="false" data-reason="This would either fail or answer a narrower question than the one asked."><span><strong>C.</strong> Variables are deleted</span></label></li><li><label><input type="radio" name="q-what-happens-after-a-true-elif-branch-18" data-correct="false" data-reason="This confuses a tool or keyword with the concept in the question."><span><strong>D.</strong> Python restarts</span></label></li>
+  </ul>
+  <div class="quiz-actions">
+    <button type="button" data-check-question>Check</button>
+    <span class="feedback" aria-live="polite"></span>
+  </div>
+  <p class="reasons choice-reason" hidden></p>
+</section>
+
+<section class="question">
+  <h3>20. Which counts 1 through 5?</h3>
+  <ul class="options">
+    <li><label><input type="radio" name="q-which-counts-1-through-5-19" data-correct="false" data-reason="This describes a different language feature, not the Python behavior being tested."><span><strong>A.</strong> for n in range(1, 5):</span></label></li><li><label><input type="radio" name="q-which-counts-1-through-5-19" data-correct="false" data-reason="This would either fail or answer a narrower question than the one asked."><span><strong>B.</strong> while True only</span></label></li><li><label><input type="radio" name="q-which-counts-1-through-5-19" data-correct="false" data-reason="This confuses a tool or keyword with the concept in the question."><span><strong>C.</strong> if n in range(5):</span></label></li><li><label><input type="radio" name="q-which-counts-1-through-5-19" data-correct="true" data-reason="range stop is excluded, so 6 includes 5."><span><strong>D.</strong> for n in range(1, 6):</span></label></li>
+  </ul>
+  <div class="quiz-actions">
+    <button type="button" data-check-question>Check</button>
+    <span class="feedback" aria-live="polite"></span>
+  </div>
+  <p class="reasons choice-reason" hidden></p>
+</section>
+<h2>Small Coding Challenges</h2>
+
+<section class="challenge">
+  <h3>1. Classify Number</h3>
+  <p>Return negative, zero, or positive.</p>
+  <p class="answer">Reference implementation:</p>
+  <pre><code>def classify(n):
+    if n &lt; 0:
+        return &quot;negative&quot;
+    if n == 0:
+        return &quot;zero&quot;
+    return &quot;positive&quot;</code></pre>
+</section>
+
+<section class="challenge">
+  <h3>2. Sum to N</h3>
+  <p>Sum integers from 1 through n.</p>
+  <p class="answer">Reference implementation:</p>
+  <pre><code>def sum_to_n(n):
+    total = 0
+    for value in range(1, n + 1):
+        total += value
+    return total</code></pre>
+</section>
+
+<section class="challenge">
+  <h3>3. Count Vowels</h3>
+  <p>Count vowels in a string.</p>
+  <p class="answer">Reference implementation:</p>
+  <pre><code>def count_vowels(text):
+    total = 0
+    for ch in text.lower():
+        if ch in &quot;aeiou&quot;:
+            total += 1
+    return total</code></pre>
+</section>
+
+<section class="challenge">
+  <h3>4. First Success</h3>
+  <p>Return True if any attempt equals the secret.</p>
+  <p class="answer">Reference implementation:</p>
+  <pre><code>def first_success(attempts, secret):
+    for attempt in attempts:
+        if attempt == secret:
+            return True
+    return False</code></pre>
+</section>
+
+<section class="challenge">
+  <h3>5. Menu Choice</h3>
+  <p>Map a, b, q to add, browse, quit.</p>
+  <p class="answer">Reference implementation:</p>
+  <pre><code>def handle_choice(choice):
+    if choice == &quot;a&quot;:
+        return &quot;add&quot;
+    elif choice == &quot;b&quot;:
+        return &quot;browse&quot;
+    elif choice == &quot;q&quot;:
+        return &quot;quit&quot;
+    return &quot;unknown&quot;</code></pre>
+</section></main>
+</body>
+</html>

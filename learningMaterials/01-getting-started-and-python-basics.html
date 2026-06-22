@@ -1,0 +1,454 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Getting Started and Python Basics</title>
+  <style>
+:root {
+  color-scheme: light;
+  --ink: #18202a;
+  --muted: #586575;
+  --line: #d9e0e8;
+  --panel: #ffffff;
+  --soft: #f5f7fa;
+  --accent: #176f7a;
+  --accent-2: #8a4f14;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  line-height: 1.55;
+  color: var(--ink);
+  background: #eef2f5;
+}
+header {
+  padding: 32px clamp(18px, 4vw, 56px);
+  background: #17212b;
+  color: #fff;
+}
+header a { color: #aee4ef; }
+main {
+  width: min(1120px, calc(100% - 32px));
+  margin: 28px auto 56px;
+}
+h1, h2, h3 { line-height: 1.2; }
+h1 { margin: 0 0 10px; font-size: clamp(2rem, 5vw, 3.3rem); }
+h2 { margin-top: 36px; padding-bottom: 8px; border-bottom: 1px solid var(--line); }
+h3 { margin-top: 24px; }
+.meta { color: #d9e7ed; max-width: 850px; }
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 16px;
+}
+.card, .page, .question, .challenge {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 18px;
+}
+.card a { color: var(--accent); font-weight: 700; text-decoration: none; }
+.pill {
+  display: inline-flex;
+  align-items: center;
+  min-height: 28px;
+  padding: 3px 9px;
+  border-radius: 999px;
+  background: #e8f3f5;
+  color: #125965;
+  font-size: 0.88rem;
+  font-weight: 700;
+}
+.note-pages {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 18px;
+}
+.options { list-style: none; padding: 0; margin: 12px 0; }
+.options li { padding: 7px 0; border-top: 1px solid #edf0f3; }
+.options label {
+  display: flex;
+  gap: 9px;
+  align-items: flex-start;
+  cursor: pointer;
+}
+.options input { margin-top: 5px; }
+.answer { color: var(--accent); font-weight: 800; }
+.reasons {
+  background: var(--soft);
+  border-left: 4px solid var(--accent);
+  padding: 10px 14px;
+  margin-top: 10px;
+}
+.quiz-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+button {
+  appearance: none;
+  border: 0;
+  border-radius: 6px;
+  padding: 9px 13px;
+  background: var(--accent);
+  color: #fff;
+  font-weight: 800;
+  cursor: pointer;
+}
+button:hover { background: #125965; }
+.feedback {
+  min-height: 24px;
+  font-weight: 800;
+}
+.feedback.correct { color: #0d6b3f; }
+.feedback.wrong { color: #a24118; }
+.choice-reason[hidden] { display: none; }
+pre {
+  overflow-x: auto;
+  padding: 14px;
+  border-radius: 8px;
+  background: #101820;
+  color: #eaf4f7;
+}
+code { font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace; }
+nav {
+  margin-top: 18px;
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+nav a {
+  color: #fff;
+  text-decoration: none;
+  border: 1px solid rgba(255,255,255,.28);
+  border-radius: 6px;
+  padding: 7px 10px;
+}
+.small { color: var(--muted); font-size: .95rem; }
+</style>
+  <script>
+document.addEventListener("click", (event) => {
+  const button = event.target.closest("[data-check-question]");
+  if (!button) return;
+
+  const question = button.closest(".question");
+  const selected = question.querySelector("input[type='radio']:checked");
+  const feedback = question.querySelector(".feedback");
+  const reason = question.querySelector(".choice-reason");
+
+  if (!selected) {
+    feedback.textContent = "Choose an answer first.";
+    feedback.className = "feedback wrong";
+    reason.hidden = true;
+    reason.textContent = "";
+    return;
+  }
+
+  const isCorrect = selected.dataset.correct === "true";
+  feedback.textContent = isCorrect ? "Right" : "Wrong";
+  feedback.className = isCorrect ? "feedback correct" : "feedback wrong";
+  reason.textContent = selected.dataset.reason;
+  reason.hidden = false;
+});
+</script>
+</head>
+<body>
+  <header>
+    <h1>Getting Started and Python Basics</h1>
+    <p class="meta">Study materials based on <a href="https://www.youtube.com/watch?v=qwAFL1597eM">Python Tutorial for Beginners (with mini-projects)</a> by freeCodeCamp.org. Video duration: 8:41:53.</p>
+    <nav><a href="./index.html">Index</a><a href="./01-getting-started-and-python-basics.html">Basics</a><a href="./02-operators-data-types-strings.html">Types</a><a href="./03-user-input-branching-loops.html">Flow</a><a href="./04-collections.html">Collections</a><a href="./05-functions-recursion-scope.html">Functions</a><a href="./06-modules-files-oop-projects.html">Projects</a></nav>
+  </header>
+  <main>
+<p><span class="pill">Intro, Chapter 1 - Getting Started, Chapter 2 - Python Basics</span></p>
+<h2>Notes</h2>
+<section class="note-pages">
+  <article class="page"><h3>Page 1</h3><p>A beginner Python workflow starts with installing Python, choosing an editor, creating a .py file, running it from the terminal, reading the output, and changing the code in small steps. The terminal matters because it is where scripts run, packages install, and errors show their most useful details.</p><p>Python executes a script from top to bottom unless control flow changes the path. Comments begin with # and should explain intent, not restate obvious code. The print() function displays values, while variables give names to values so a program can reuse and transform information.</p><p>Python is dynamically typed: names do not declare a permanent type, but every value has a runtime type. Important beginner values include strings, integers, floats, booleans, and None. The type() function is useful when you are unsure what kind of value you have.</p><p>Tracebacks are maps. The final line usually names the error type and message, and the lines above point to the file and line involved. Syntax errors mean Python cannot parse the program. Logic errors mean the program runs but does the wrong thing.</p></article>
+  <article class="page"><h3>Page 2</h3><p>Good Python style starts with clear names, consistent indentation, and small experiments. Use snake_case for variables and functions, reserve short names for tiny local contexts, and avoid shadowing built-ins such as list, str, or type.</p><p>Indentation defines blocks in Python. Code beneath if, for, while, def, and class must be consistently indented, conventionally with four spaces. Mixed or missing indentation changes meaning or raises errors.</p><p>Beginners often move from literals to variables: print(2 + 3) becomes left = 2, right = 3, print(left + right). That shift is important because it makes programs adaptable and easier to read.</p><p>The strongest early habit is prediction. Before running code, say what value or output you expect. When reality differs, the gap points directly to the concept you need to revisit.</p></article>
+</section>
+<h2>Quiz: 20 Multiple-Choice Questions</h2>
+
+<section class="question">
+  <h3>1. What does print('Hello') do?</h3>
+  <ul class="options">
+    <li><label><input type="radio" name="q-what-does-print-hello-do-0" data-correct="true" data-reason="print sends values to standard output."><span><strong>A.</strong> Displays Hello as output</span></label></li><li><label><input type="radio" name="q-what-does-print-hello-do-0" data-correct="false" data-reason="This describes a different language feature, not the Python behavior being tested."><span><strong>B.</strong> Stores Hello in a variable</span></label></li><li><label><input type="radio" name="q-what-does-print-hello-do-0" data-correct="false" data-reason="This would either fail or answer a narrower question than the one asked."><span><strong>C.</strong> Creates a Python file</span></label></li><li><label><input type="radio" name="q-what-does-print-hello-do-0" data-correct="false" data-reason="This confuses a tool or keyword with the concept in the question."><span><strong>D.</strong> Installs Python</span></label></li>
+  </ul>
+  <div class="quiz-actions">
+    <button type="button" data-check-question>Check</button>
+    <span class="feedback" aria-live="polite"></span>
+  </div>
+  <p class="reasons choice-reason" hidden></p>
+</section>
+
+<section class="question">
+  <h3>2. Which command commonly runs app.py?</h3>
+  <ul class="options">
+    <li><label><input type="radio" name="q-which-command-commonly-runs-app-py-1" data-correct="false" data-reason="This describes a different language feature, not the Python behavior being tested."><span><strong>A.</strong> pip app.py</span></label></li><li><label><input type="radio" name="q-which-command-commonly-runs-app-py-1" data-correct="false" data-reason="This would either fail or answer a narrower question than the one asked."><span><strong>B.</strong> print app.py</span></label></li><li><label><input type="radio" name="q-which-command-commonly-runs-app-py-1" data-correct="false" data-reason="This confuses a tool or keyword with the concept in the question."><span><strong>C.</strong> run-python app.py</span></label></li><li><label><input type="radio" name="q-which-command-commonly-runs-app-py-1" data-correct="true" data-reason="The Python interpreter executes the script file."><span><strong>D.</strong> python app.py</span></label></li>
+  </ul>
+  <div class="quiz-actions">
+    <button type="button" data-check-question>Check</button>
+    <span class="feedback" aria-live="polite"></span>
+  </div>
+  <p class="reasons choice-reason" hidden></p>
+</section>
+
+<section class="question">
+  <h3>3. What is a variable?</h3>
+  <ul class="options">
+    <li><label><input type="radio" name="q-what-is-a-variable-2" data-correct="false" data-reason="This describes a different language feature, not the Python behavior being tested."><span><strong>A.</strong> A comment</span></label></li><li><label><input type="radio" name="q-what-is-a-variable-2" data-correct="false" data-reason="This would either fail or answer a narrower question than the one asked."><span><strong>B.</strong> Only a number</span></label></li><li><label><input type="radio" name="q-what-is-a-variable-2" data-correct="true" data-reason="Variables bind readable names to objects."><span><strong>C.</strong> A name that refers to a value</span></label></li><li><label><input type="radio" name="q-what-is-a-variable-2" data-correct="false" data-reason="This confuses a tool or keyword with the concept in the question."><span><strong>D.</strong> A syntax error</span></label></li>
+  </ul>
+  <div class="quiz-actions">
+    <button type="button" data-check-question>Check</button>
+    <span class="feedback" aria-live="polite"></span>
+  </div>
+  <p class="reasons choice-reason" hidden></p>
+</section>
+
+<section class="question">
+  <h3>4. Which assignment is valid Python?</h3>
+  <ul class="options">
+    <li><label><input type="radio" name="q-which-assignment-is-valid-python-3" data-correct="false" data-reason="This describes a different language feature, not the Python behavior being tested."><span><strong>A.</strong> 'Ada' = name</span></label></li><li><label><input type="radio" name="q-which-assignment-is-valid-python-3" data-correct="true" data-reason="A single equals sign assigns the value on the right to the name on the left."><span><strong>B.</strong> name = 'Ada'</span></label></li><li><label><input type="radio" name="q-which-assignment-is-valid-python-3" data-correct="false" data-reason="This would either fail or answer a narrower question than the one asked."><span><strong>C.</strong> let name = 'Ada'</span></label></li><li><label><input type="radio" name="q-which-assignment-is-valid-python-3" data-correct="false" data-reason="This confuses a tool or keyword with the concept in the question."><span><strong>D.</strong> name :=: 'Ada'</span></label></li>
+  </ul>
+  <div class="quiz-actions">
+    <button type="button" data-check-question>Check</button>
+    <span class="feedback" aria-live="polite"></span>
+  </div>
+  <p class="reasons choice-reason" hidden></p>
+</section>
+
+<section class="question">
+  <h3>5. What does type(3.14) identify?</h3>
+  <ul class="options">
+    <li><label><input type="radio" name="q-what-does-type-3-14-identify-4" data-correct="true" data-reason="3.14 is a floating-point number."><span><strong>A.</strong> float</span></label></li><li><label><input type="radio" name="q-what-does-type-3-14-identify-4" data-correct="false" data-reason="This describes a different language feature, not the Python behavior being tested."><span><strong>B.</strong> int</span></label></li><li><label><input type="radio" name="q-what-does-type-3-14-identify-4" data-correct="false" data-reason="This would either fail or answer a narrower question than the one asked."><span><strong>C.</strong> str</span></label></li><li><label><input type="radio" name="q-what-does-type-3-14-identify-4" data-correct="false" data-reason="This confuses a tool or keyword with the concept in the question."><span><strong>D.</strong> bool</span></label></li>
+  </ul>
+  <div class="quiz-actions">
+    <button type="button" data-check-question>Check</button>
+    <span class="feedback" aria-live="polite"></span>
+  </div>
+  <p class="reasons choice-reason" hidden></p>
+</section>
+
+<section class="question">
+  <h3>6. Which line is a Python comment?</h3>
+  <ul class="options">
+    <li><label><input type="radio" name="q-which-line-is-a-python-comment-5" data-correct="false" data-reason="This describes a different language feature, not the Python behavior being tested."><span><strong>A.</strong> // calculate total</span></label></li><li><label><input type="radio" name="q-which-line-is-a-python-comment-5" data-correct="false" data-reason="This would either fail or answer a narrower question than the one asked."><span><strong>B.</strong> &lt;!-- calculate total --&gt;</span></label></li><li><label><input type="radio" name="q-which-line-is-a-python-comment-5" data-correct="false" data-reason="This confuses a tool or keyword with the concept in the question."><span><strong>C.</strong> /* calculate total */</span></label></li><li><label><input type="radio" name="q-which-line-is-a-python-comment-5" data-correct="true" data-reason="Python single-line comments begin with #."><span><strong>D.</strong> # calculate total</span></label></li>
+  </ul>
+  <div class="quiz-actions">
+    <button type="button" data-check-question>Check</button>
+    <span class="feedback" aria-live="polite"></span>
+  </div>
+  <p class="reasons choice-reason" hidden></p>
+</section>
+
+<section class="question">
+  <h3>7. What usually causes SyntaxError?</h3>
+  <ul class="options">
+    <li><label><input type="radio" name="q-what-usually-causes-syntaxerror-6" data-correct="false" data-reason="This describes a different language feature, not the Python behavior being tested."><span><strong>A.</strong> Wrong answer from valid code</span></label></li><li><label><input type="radio" name="q-what-usually-causes-syntaxerror-6" data-correct="false" data-reason="This would either fail or answer a narrower question than the one asked."><span><strong>B.</strong> Slow execution</span></label></li><li><label><input type="radio" name="q-what-usually-causes-syntaxerror-6" data-correct="true" data-reason="Syntax errors break Python grammar rules."><span><strong>C.</strong> Code Python cannot parse</span></label></li><li><label><input type="radio" name="q-what-usually-causes-syntaxerror-6" data-correct="false" data-reason="This confuses a tool or keyword with the concept in the question."><span><strong>D.</strong> Missing internet</span></label></li>
+  </ul>
+  <div class="quiz-actions">
+    <button type="button" data-check-question>Check</button>
+    <span class="feedback" aria-live="polite"></span>
+  </div>
+  <p class="reasons choice-reason" hidden></p>
+</section>
+
+<section class="question">
+  <h3>8. Why use descriptive names?</h3>
+  <ul class="options">
+    <li><label><input type="radio" name="q-why-use-descriptive-names-7" data-correct="false" data-reason="This describes a different language feature, not the Python behavior being tested."><span><strong>A.</strong> They make code run much faster</span></label></li><li><label><input type="radio" name="q-why-use-descriptive-names-7" data-correct="true" data-reason="Names are a major part of code readability."><span><strong>B.</strong> They make intent clearer</span></label></li><li><label><input type="radio" name="q-why-use-descriptive-names-7" data-correct="false" data-reason="This would either fail or answer a narrower question than the one asked."><span><strong>C.</strong> They replace tests</span></label></li><li><label><input type="radio" name="q-why-use-descriptive-names-7" data-correct="false" data-reason="This confuses a tool or keyword with the concept in the question."><span><strong>D.</strong> They prevent every bug</span></label></li>
+  </ul>
+  <div class="quiz-actions">
+    <button type="button" data-check-question>Check</button>
+    <span class="feedback" aria-live="polite"></span>
+  </div>
+  <p class="reasons choice-reason" hidden></p>
+</section>
+
+<section class="question">
+  <h3>9. What indentation is conventional for blocks?</h3>
+  <ul class="options">
+    <li><label><input type="radio" name="q-what-indentation-is-conventional-for-blocks-8" data-correct="true" data-reason="Four spaces is the standard Python convention."><span><strong>A.</strong> Four spaces</span></label></li><li><label><input type="radio" name="q-what-indentation-is-conventional-for-blocks-8" data-correct="false" data-reason="This describes a different language feature, not the Python behavior being tested."><span><strong>B.</strong> One tab mixed with spaces</span></label></li><li><label><input type="radio" name="q-what-indentation-is-conventional-for-blocks-8" data-correct="false" data-reason="This would either fail or answer a narrower question than the one asked."><span><strong>C.</strong> No indentation</span></label></li><li><label><input type="radio" name="q-what-indentation-is-conventional-for-blocks-8" data-correct="false" data-reason="This confuses a tool or keyword with the concept in the question."><span><strong>D.</strong> Random indentation</span></label></li>
+  </ul>
+  <div class="quiz-actions">
+    <button type="button" data-check-question>Check</button>
+    <span class="feedback" aria-live="polite"></span>
+  </div>
+  <p class="reasons choice-reason" hidden></p>
+</section>
+
+<section class="question">
+  <h3>10. What does None represent?</h3>
+  <ul class="options">
+    <li><label><input type="radio" name="q-what-does-none-represent-9" data-correct="false" data-reason="This describes a different language feature, not the Python behavior being tested."><span><strong>A.</strong> The number zero</span></label></li><li><label><input type="radio" name="q-what-does-none-represent-9" data-correct="false" data-reason="This would either fail or answer a narrower question than the one asked."><span><strong>B.</strong> The string 'None'</span></label></li><li><label><input type="radio" name="q-what-does-none-represent-9" data-correct="false" data-reason="This confuses a tool or keyword with the concept in the question."><span><strong>C.</strong> A loop</span></label></li><li><label><input type="radio" name="q-what-does-none-represent-9" data-correct="true" data-reason="None is Python's null-like singleton."><span><strong>D.</strong> An intentional absence of a value</span></label></li>
+  </ul>
+  <div class="quiz-actions">
+    <button type="button" data-check-question>Check</button>
+    <span class="feedback" aria-live="polite"></span>
+  </div>
+  <p class="reasons choice-reason" hidden></p>
+</section>
+
+<section class="question">
+  <h3>11. Which is a string literal?</h3>
+  <ul class="options">
+    <li><label><input type="radio" name="q-which-is-a-string-literal-10" data-correct="false" data-reason="This describes a different language feature, not the Python behavior being tested."><span><strong>A.</strong> 42</span></label></li><li><label><input type="radio" name="q-which-is-a-string-literal-10" data-correct="false" data-reason="This would either fail or answer a narrower question than the one asked."><span><strong>B.</strong> True</span></label></li><li><label><input type="radio" name="q-which-is-a-string-literal-10" data-correct="true" data-reason="Quotes make text into a string."><span><strong>C.</strong> '42'</span></label></li><li><label><input type="radio" name="q-which-is-a-string-literal-10" data-correct="false" data-reason="This confuses a tool or keyword with the concept in the question."><span><strong>D.</strong> None</span></label></li>
+  </ul>
+  <div class="quiz-actions">
+    <button type="button" data-check-question>Check</button>
+    <span class="feedback" aria-live="polite"></span>
+  </div>
+  <p class="reasons choice-reason" hidden></p>
+</section>
+
+<section class="question">
+  <h3>12. What is the best first traceback habit?</h3>
+  <ul class="options">
+    <li><label><input type="radio" name="q-what-is-the-best-first-traceback-habit-11" data-correct="false" data-reason="This describes a different language feature, not the Python behavior being tested."><span><strong>A.</strong> Delete the file</span></label></li><li><label><input type="radio" name="q-what-is-the-best-first-traceback-habit-11" data-correct="true" data-reason="The last line summarizes what failed."><span><strong>B.</strong> Read the last line for the error type</span></label></li><li><label><input type="radio" name="q-what-is-the-best-first-traceback-habit-11" data-correct="false" data-reason="This would either fail or answer a narrower question than the one asked."><span><strong>C.</strong> Ignore line numbers</span></label></li><li><label><input type="radio" name="q-what-is-the-best-first-traceback-habit-11" data-correct="false" data-reason="This confuses a tool or keyword with the concept in the question."><span><strong>D.</strong> Restart immediately</span></label></li>
+  </ul>
+  <div class="quiz-actions">
+    <button type="button" data-check-question>Check</button>
+    <span class="feedback" aria-live="polite"></span>
+  </div>
+  <p class="reasons choice-reason" hidden></p>
+</section>
+
+<section class="question">
+  <h3>13. How does a simple script execute?</h3>
+  <ul class="options">
+    <li><label><input type="radio" name="q-how-does-a-simple-script-execute-12" data-correct="true" data-reason="Top-level statements run in order unless control flow changes it."><span><strong>A.</strong> Generally top to bottom</span></label></li><li><label><input type="radio" name="q-how-does-a-simple-script-execute-12" data-correct="false" data-reason="This describes a different language feature, not the Python behavior being tested."><span><strong>B.</strong> Alphabetically by variable</span></label></li><li><label><input type="radio" name="q-how-does-a-simple-script-execute-12" data-correct="false" data-reason="This would either fail or answer a narrower question than the one asked."><span><strong>C.</strong> From the middle</span></label></li><li><label><input type="radio" name="q-how-does-a-simple-script-execute-12" data-correct="false" data-reason="This confuses a tool or keyword with the concept in the question."><span><strong>D.</strong> Only comments first</span></label></li>
+  </ul>
+  <div class="quiz-actions">
+    <button type="button" data-check-question>Check</button>
+    <span class="feedback" aria-live="polite"></span>
+  </div>
+  <p class="reasons choice-reason" hidden></p>
+</section>
+
+<section class="question">
+  <h3>14. Which variable name is most Pythonic?</h3>
+  <ul class="options">
+    <li><label><input type="radio" name="q-which-variable-name-is-most-pythonic-13" data-correct="false" data-reason="This describes a different language feature, not the Python behavior being tested."><span><strong>A.</strong> TotalPrice</span></label></li><li><label><input type="radio" name="q-which-variable-name-is-most-pythonic-13" data-correct="false" data-reason="This would either fail or answer a narrower question than the one asked."><span><strong>B.</strong> total-price</span></label></li><li><label><input type="radio" name="q-which-variable-name-is-most-pythonic-13" data-correct="false" data-reason="This confuses a tool or keyword with the concept in the question."><span><strong>C.</strong> total price</span></label></li><li><label><input type="radio" name="q-which-variable-name-is-most-pythonic-13" data-correct="true" data-reason="snake_case is the convention for variables and functions."><span><strong>D.</strong> total_price</span></label></li>
+  </ul>
+  <div class="quiz-actions">
+    <button type="button" data-check-question>Check</button>
+    <span class="feedback" aria-live="polite"></span>
+  </div>
+  <p class="reasons choice-reason" hidden></p>
+</section>
+
+<section class="question">
+  <h3>15. Why run code in small increments?</h3>
+  <ul class="options">
+    <li><label><input type="radio" name="q-why-run-code-in-small-increments-14" data-correct="false" data-reason="This describes a different language feature, not the Python behavior being tested."><span><strong>A.</strong> To avoid saving</span></label></li><li><label><input type="radio" name="q-why-run-code-in-small-increments-14" data-correct="false" data-reason="This would either fail or answer a narrower question than the one asked."><span><strong>B.</strong> To skip syntax rules</span></label></li><li><label><input type="radio" name="q-why-run-code-in-small-increments-14" data-correct="true" data-reason="Smaller changes make debugging easier."><span><strong>C.</strong> To catch mistakes sooner</span></label></li><li><label><input type="radio" name="q-why-run-code-in-small-increments-14" data-correct="false" data-reason="This confuses a tool or keyword with the concept in the question."><span><strong>D.</strong> To remove variables</span></label></li>
+  </ul>
+  <div class="quiz-actions">
+    <button type="button" data-check-question>Check</button>
+    <span class="feedback" aria-live="polite"></span>
+  </div>
+  <p class="reasons choice-reason" hidden></p>
+</section>
+
+<section class="question">
+  <h3>16. Which value is a boolean?</h3>
+  <ul class="options">
+    <li><label><input type="radio" name="q-which-value-is-a-boolean-15" data-correct="false" data-reason="This describes a different language feature, not the Python behavior being tested."><span><strong>A.</strong> 'True'</span></label></li><li><label><input type="radio" name="q-which-value-is-a-boolean-15" data-correct="true" data-reason="True and False are boolean literals."><span><strong>B.</strong> True</span></label></li><li><label><input type="radio" name="q-which-value-is-a-boolean-15" data-correct="false" data-reason="This would either fail or answer a narrower question than the one asked."><span><strong>C.</strong> 3.0</span></label></li><li><label><input type="radio" name="q-which-value-is-a-boolean-15" data-correct="false" data-reason="This confuses a tool or keyword with the concept in the question."><span><strong>D.</strong> none</span></label></li>
+  </ul>
+  <div class="quiz-actions">
+    <button type="button" data-check-question>Check</button>
+    <span class="feedback" aria-live="polite"></span>
+  </div>
+  <p class="reasons choice-reason" hidden></p>
+</section>
+
+<section class="question">
+  <h3>17. What is an expression?</h3>
+  <ul class="options">
+    <li><label><input type="radio" name="q-what-is-an-expression-16" data-correct="true" data-reason="Expressions produce values."><span><strong>A.</strong> Code that evaluates to a value</span></label></li><li><label><input type="radio" name="q-what-is-an-expression-16" data-correct="false" data-reason="This describes a different language feature, not the Python behavior being tested."><span><strong>B.</strong> Only a full file</span></label></li><li><label><input type="radio" name="q-what-is-an-expression-16" data-correct="false" data-reason="This would either fail or answer a narrower question than the one asked."><span><strong>C.</strong> A package installer</span></label></li><li><label><input type="radio" name="q-what-is-an-expression-16" data-correct="false" data-reason="This confuses a tool or keyword with the concept in the question."><span><strong>D.</strong> A comment</span></label></li>
+  </ul>
+  <div class="quiz-actions">
+    <button type="button" data-check-question>Check</button>
+    <span class="feedback" aria-live="polite"></span>
+  </div>
+  <p class="reasons choice-reason" hidden></p>
+</section>
+
+<section class="question">
+  <h3>18. What does \n mean in a string?</h3>
+  <ul class="options">
+    <li><label><input type="radio" name="q-what-does-n-mean-in-a-string-17" data-correct="false" data-reason="This describes a different language feature, not the Python behavior being tested."><span><strong>A.</strong> A new variable</span></label></li><li><label><input type="radio" name="q-what-does-n-mean-in-a-string-17" data-correct="false" data-reason="This would either fail or answer a narrower question than the one asked."><span><strong>B.</strong> A number</span></label></li><li><label><input type="radio" name="q-what-does-n-mean-in-a-string-17" data-correct="false" data-reason="This confuses a tool or keyword with the concept in the question."><span><strong>C.</strong> No output</span></label></li><li><label><input type="radio" name="q-what-does-n-mean-in-a-string-17" data-correct="true" data-reason="\n is the newline escape sequence."><span><strong>D.</strong> A newline</span></label></li>
+  </ul>
+  <div class="quiz-actions">
+    <button type="button" data-check-question>Check</button>
+    <span class="feedback" aria-live="polite"></span>
+  </div>
+  <p class="reasons choice-reason" hidden></p>
+</section>
+
+<section class="question">
+  <h3>19. Which tool installs third-party packages?</h3>
+  <ul class="options">
+    <li><label><input type="radio" name="q-which-tool-installs-third-party-packages-18" data-correct="false" data-reason="This describes a different language feature, not the Python behavior being tested."><span><strong>A.</strong> print</span></label></li><li><label><input type="radio" name="q-which-tool-installs-third-party-packages-18" data-correct="false" data-reason="This would either fail or answer a narrower question than the one asked."><span><strong>B.</strong> type</span></label></li><li><label><input type="radio" name="q-which-tool-installs-third-party-packages-18" data-correct="true" data-reason="pip is Python's package installer."><span><strong>C.</strong> pip</span></label></li><li><label><input type="radio" name="q-which-tool-installs-third-party-packages-18" data-correct="false" data-reason="This confuses a tool or keyword with the concept in the question."><span><strong>D.</strong> if</span></label></li>
+  </ul>
+  <div class="quiz-actions">
+    <button type="button" data-check-question>Check</button>
+    <span class="feedback" aria-live="polite"></span>
+  </div>
+  <p class="reasons choice-reason" hidden></p>
+</section>
+
+<section class="question">
+  <h3>20. What is a logic error?</h3>
+  <ul class="options">
+    <li><label><input type="radio" name="q-what-is-a-logic-error-19" data-correct="false" data-reason="This describes a different language feature, not the Python behavior being tested."><span><strong>A.</strong> Invalid grammar</span></label></li><li><label><input type="radio" name="q-what-is-a-logic-error-19" data-correct="true" data-reason="Logic errors are behavioral mistakes."><span><strong>B.</strong> Valid code that produces the wrong result</span></label></li><li><label><input type="radio" name="q-what-is-a-logic-error-19" data-correct="false" data-reason="This would either fail or answer a narrower question than the one asked."><span><strong>C.</strong> Missing Python installation</span></label></li><li><label><input type="radio" name="q-what-is-a-logic-error-19" data-correct="false" data-reason="This confuses a tool or keyword with the concept in the question."><span><strong>D.</strong> A harmless comment</span></label></li>
+  </ul>
+  <div class="quiz-actions">
+    <button type="button" data-check-question>Check</button>
+    <span class="feedback" aria-live="polite"></span>
+  </div>
+  <p class="reasons choice-reason" hidden></p>
+</section>
+<h2>Small Coding Challenges</h2>
+
+<section class="challenge">
+  <h3>1. Greeting Function</h3>
+  <p>Write greet(name) that returns Hello, &lt;name&gt;!.</p>
+  <p class="answer">Reference implementation:</p>
+  <pre><code>def greet(name):
+    return f&quot;Hello, {name}!&quot;</code></pre>
+</section>
+
+<section class="challenge">
+  <h3>2. Type Name</h3>
+  <p>Write type_name(value) that returns the runtime type name.</p>
+  <p class="answer">Reference implementation:</p>
+  <pre><code>def type_name(value):
+    return type(value).__name__</code></pre>
+</section>
+
+<section class="challenge">
+  <h3>3. Full Name</h3>
+  <p>Combine first and last names with a space.</p>
+  <p class="answer">Reference implementation:</p>
+  <pre><code>def full_name(first, last):
+    return first + &quot; &quot; + last</code></pre>
+</section>
+
+<section class="challenge">
+  <h3>4. Receipt Total</h3>
+  <p>Return subtotal plus tax by rate.</p>
+  <p class="answer">Reference implementation:</p>
+  <pre><code>def total_with_tax(subtotal, tax_rate):
+    return subtotal + subtotal * tax_rate</code></pre>
+</section>
+
+<section class="challenge">
+  <h3>5. Debug Message</h3>
+  <p>Return a labelled value such as age=31.</p>
+  <p class="answer">Reference implementation:</p>
+  <pre><code>def debug_value(name, value):
+    return f&quot;{name}={value}&quot;</code></pre>
+</section></main>
+</body>
+</html>

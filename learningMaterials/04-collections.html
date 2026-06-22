@@ -1,0 +1,460 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Collections: Lists, Tuples, Dictionaries, and Sets</title>
+  <style>
+:root {
+  color-scheme: light;
+  --ink: #18202a;
+  --muted: #586575;
+  --line: #d9e0e8;
+  --panel: #ffffff;
+  --soft: #f5f7fa;
+  --accent: #176f7a;
+  --accent-2: #8a4f14;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  line-height: 1.55;
+  color: var(--ink);
+  background: #eef2f5;
+}
+header {
+  padding: 32px clamp(18px, 4vw, 56px);
+  background: #17212b;
+  color: #fff;
+}
+header a { color: #aee4ef; }
+main {
+  width: min(1120px, calc(100% - 32px));
+  margin: 28px auto 56px;
+}
+h1, h2, h3 { line-height: 1.2; }
+h1 { margin: 0 0 10px; font-size: clamp(2rem, 5vw, 3.3rem); }
+h2 { margin-top: 36px; padding-bottom: 8px; border-bottom: 1px solid var(--line); }
+h3 { margin-top: 24px; }
+.meta { color: #d9e7ed; max-width: 850px; }
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 16px;
+}
+.card, .page, .question, .challenge {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 18px;
+}
+.card a { color: var(--accent); font-weight: 700; text-decoration: none; }
+.pill {
+  display: inline-flex;
+  align-items: center;
+  min-height: 28px;
+  padding: 3px 9px;
+  border-radius: 999px;
+  background: #e8f3f5;
+  color: #125965;
+  font-size: 0.88rem;
+  font-weight: 700;
+}
+.note-pages {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 18px;
+}
+.options { list-style: none; padding: 0; margin: 12px 0; }
+.options li { padding: 7px 0; border-top: 1px solid #edf0f3; }
+.options label {
+  display: flex;
+  gap: 9px;
+  align-items: flex-start;
+  cursor: pointer;
+}
+.options input { margin-top: 5px; }
+.answer { color: var(--accent); font-weight: 800; }
+.reasons {
+  background: var(--soft);
+  border-left: 4px solid var(--accent);
+  padding: 10px 14px;
+  margin-top: 10px;
+}
+.quiz-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+button {
+  appearance: none;
+  border: 0;
+  border-radius: 6px;
+  padding: 9px 13px;
+  background: var(--accent);
+  color: #fff;
+  font-weight: 800;
+  cursor: pointer;
+}
+button:hover { background: #125965; }
+.feedback {
+  min-height: 24px;
+  font-weight: 800;
+}
+.feedback.correct { color: #0d6b3f; }
+.feedback.wrong { color: #a24118; }
+.choice-reason[hidden] { display: none; }
+pre {
+  overflow-x: auto;
+  padding: 14px;
+  border-radius: 8px;
+  background: #101820;
+  color: #eaf4f7;
+}
+code { font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace; }
+nav {
+  margin-top: 18px;
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+nav a {
+  color: #fff;
+  text-decoration: none;
+  border: 1px solid rgba(255,255,255,.28);
+  border-radius: 6px;
+  padding: 7px 10px;
+}
+.small { color: var(--muted); font-size: .95rem; }
+</style>
+  <script>
+document.addEventListener("click", (event) => {
+  const button = event.target.closest("[data-check-question]");
+  if (!button) return;
+
+  const question = button.closest(".question");
+  const selected = question.querySelector("input[type='radio']:checked");
+  const feedback = question.querySelector(".feedback");
+  const reason = question.querySelector(".choice-reason");
+
+  if (!selected) {
+    feedback.textContent = "Choose an answer first.";
+    feedback.className = "feedback wrong";
+    reason.hidden = true;
+    reason.textContent = "";
+    return;
+  }
+
+  const isCorrect = selected.dataset.correct === "true";
+  feedback.textContent = isCorrect ? "Right" : "Wrong";
+  feedback.className = isCorrect ? "feedback correct" : "feedback wrong";
+  reason.textContent = selected.dataset.reason;
+  reason.hidden = false;
+});
+</script>
+</head>
+<body>
+  <header>
+    <h1>Collections: Lists, Tuples, Dictionaries, and Sets</h1>
+    <p class="meta">Study materials based on <a href="https://www.youtube.com/watch?v=qwAFL1597eM">Python Tutorial for Beginners (with mini-projects)</a> by freeCodeCamp.org. Video duration: 8:41:53.</p>
+    <nav><a href="./index.html">Index</a><a href="./01-getting-started-and-python-basics.html">Basics</a><a href="./02-operators-data-types-strings.html">Types</a><a href="./03-user-input-branching-loops.html">Flow</a><a href="./04-collections.html">Collections</a><a href="./05-functions-recursion-scope.html">Functions</a><a href="./06-modules-files-oop-projects.html">Projects</a></nav>
+  </header>
+  <main>
+<p><span class="pill">Chapter 6 - Lists &amp; Tuples, Chapter 7 - Dictionaries &amp; Sets</span></p>
+<h2>Notes</h2>
+<section class="note-pages">
+  <article class="page"><h3>Page 1</h3><p>Collections manage groups of values. Lists are ordered and mutable, making them useful for tasks, scores, rows, names, and other sequences that may change. They support indexing, slicing, appending, inserting, removing, sorting, and iteration.</p><p>Tuples are ordered and immutable. They fit fixed records such as coordinates, RGB values, and multiple return values. Tuple unpacking assigns positions to names, as in x, y = point.</p><p>Dictionaries map keys to values. They are natural for labeled data such as settings, user profiles, inventory counts, and lookup tables. Access with data[key] when the key must exist; use get(key, default) when absence is expected.</p><p>Sets store unique values and are excellent for membership tests, duplicate removal, union, intersection, and difference operations.</p></article>
+  <article class="page"><h3>Page 2</h3><p>Choose collections by meaning. Use a list when order and change matter. Use a tuple when a fixed positional group matters. Use a dictionary when labels map to values. Use a set when uniqueness or fast membership matters.</p><p>Many real structures combine collections: a list of dictionaries for table rows, a dictionary of lists for grouping, or a set of seen IDs while scanning records.</p><p>Loop directly over values when indexes are unnecessary. Use enumerate() when you need index and value. Use dict.items() when you need both keys and values.</p><p>Avoid modifying a list while iterating over it unless you are iterating over a copy or building a new collection. Mutation during iteration can skip items and create subtle bugs.</p></article>
+</section>
+<h2>Quiz: 20 Multiple-Choice Questions</h2>
+
+<section class="question">
+  <h3>1. Which collection is ordered and mutable?</h3>
+  <ul class="options">
+    <li><label><input type="radio" name="q-which-collection-is-ordered-and-mutable-0" data-correct="false" data-reason="This describes a different language feature, not the Python behavior being tested."><span><strong>A.</strong> tuple</span></label></li><li><label><input type="radio" name="q-which-collection-is-ordered-and-mutable-0" data-correct="false" data-reason="This would either fail or answer a narrower question than the one asked."><span><strong>B.</strong> set</span></label></li><li><label><input type="radio" name="q-which-collection-is-ordered-and-mutable-0" data-correct="false" data-reason="This confuses a tool or keyword with the concept in the question."><span><strong>C.</strong> int</span></label></li><li><label><input type="radio" name="q-which-collection-is-ordered-and-mutable-0" data-correct="true" data-reason="Lists preserve order and can be changed."><span><strong>D.</strong> list</span></label></li>
+  </ul>
+  <div class="quiz-actions">
+    <button type="button" data-check-question>Check</button>
+    <span class="feedback" aria-live="polite"></span>
+  </div>
+  <p class="reasons choice-reason" hidden></p>
+</section>
+
+<section class="question">
+  <h3>2. Which collection is ordered and immutable?</h3>
+  <ul class="options">
+    <li><label><input type="radio" name="q-which-collection-is-ordered-and-immutable-1" data-correct="false" data-reason="This describes a different language feature, not the Python behavior being tested."><span><strong>A.</strong> list</span></label></li><li><label><input type="radio" name="q-which-collection-is-ordered-and-immutable-1" data-correct="false" data-reason="This would either fail or answer a narrower question than the one asked."><span><strong>B.</strong> dict</span></label></li><li><label><input type="radio" name="q-which-collection-is-ordered-and-immutable-1" data-correct="true" data-reason="Tuples preserve order and cannot be reassigned by position."><span><strong>C.</strong> tuple</span></label></li><li><label><input type="radio" name="q-which-collection-is-ordered-and-immutable-1" data-correct="false" data-reason="This confuses a tool or keyword with the concept in the question."><span><strong>D.</strong> set</span></label></li>
+  </ul>
+  <div class="quiz-actions">
+    <button type="button" data-check-question>Check</button>
+    <span class="feedback" aria-live="polite"></span>
+  </div>
+  <p class="reasons choice-reason" hidden></p>
+</section>
+
+<section class="question">
+  <h3>3. Which maps keys to values?</h3>
+  <ul class="options">
+    <li><label><input type="radio" name="q-which-maps-keys-to-values-2" data-correct="false" data-reason="This describes a different language feature, not the Python behavior being tested."><span><strong>A.</strong> list</span></label></li><li><label><input type="radio" name="q-which-maps-keys-to-values-2" data-correct="true" data-reason="Dictionaries are key-value mappings."><span><strong>B.</strong> dict</span></label></li><li><label><input type="radio" name="q-which-maps-keys-to-values-2" data-correct="false" data-reason="This would either fail or answer a narrower question than the one asked."><span><strong>C.</strong> tuple</span></label></li><li><label><input type="radio" name="q-which-maps-keys-to-values-2" data-correct="false" data-reason="This confuses a tool or keyword with the concept in the question."><span><strong>D.</strong> str</span></label></li>
+  </ul>
+  <div class="quiz-actions">
+    <button type="button" data-check-question>Check</button>
+    <span class="feedback" aria-live="polite"></span>
+  </div>
+  <p class="reasons choice-reason" hidden></p>
+</section>
+
+<section class="question">
+  <h3>4. Which stores unique values?</h3>
+  <ul class="options">
+    <li><label><input type="radio" name="q-which-stores-unique-values-3" data-correct="true" data-reason="Sets remove duplicates."><span><strong>A.</strong> set</span></label></li><li><label><input type="radio" name="q-which-stores-unique-values-3" data-correct="false" data-reason="This describes a different language feature, not the Python behavior being tested."><span><strong>B.</strong> list</span></label></li><li><label><input type="radio" name="q-which-stores-unique-values-3" data-correct="false" data-reason="This would either fail or answer a narrower question than the one asked."><span><strong>C.</strong> tuple</span></label></li><li><label><input type="radio" name="q-which-stores-unique-values-3" data-correct="false" data-reason="This confuses a tool or keyword with the concept in the question."><span><strong>D.</strong> float</span></label></li>
+  </ul>
+  <div class="quiz-actions">
+    <button type="button" data-check-question>Check</button>
+    <span class="feedback" aria-live="polite"></span>
+  </div>
+  <p class="reasons choice-reason" hidden></p>
+</section>
+
+<section class="question">
+  <h3>5. What does append do?</h3>
+  <ul class="options">
+    <li><label><input type="radio" name="q-what-does-append-do-4" data-correct="false" data-reason="This describes a different language feature, not the Python behavior being tested."><span><strong>A.</strong> Deletes an item</span></label></li><li><label><input type="radio" name="q-what-does-append-do-4" data-correct="false" data-reason="This would either fail or answer a narrower question than the one asked."><span><strong>B.</strong> Sorts a list</span></label></li><li><label><input type="radio" name="q-what-does-append-do-4" data-correct="false" data-reason="This confuses a tool or keyword with the concept in the question."><span><strong>C.</strong> Creates a tuple</span></label></li><li><label><input type="radio" name="q-what-does-append-do-4" data-correct="true" data-reason="append extends the list by one element."><span><strong>D.</strong> Adds one item to the end of a list</span></label></li>
+  </ul>
+  <div class="quiz-actions">
+    <button type="button" data-check-question>Check</button>
+    <span class="feedback" aria-live="polite"></span>
+  </div>
+  <p class="reasons choice-reason" hidden></p>
+</section>
+
+<section class="question">
+  <h3>6. What does names[0] access?</h3>
+  <ul class="options">
+    <li><label><input type="radio" name="q-what-does-names-0-access-5" data-correct="false" data-reason="This describes a different language feature, not the Python behavior being tested."><span><strong>A.</strong> The second item</span></label></li><li><label><input type="radio" name="q-what-does-names-0-access-5" data-correct="false" data-reason="This would either fail or answer a narrower question than the one asked."><span><strong>B.</strong> The last item always</span></label></li><li><label><input type="radio" name="q-what-does-names-0-access-5" data-correct="true" data-reason="Python indexes start at zero."><span><strong>C.</strong> The first item</span></label></li><li><label><input type="radio" name="q-what-does-names-0-access-5" data-correct="false" data-reason="This confuses a tool or keyword with the concept in the question."><span><strong>D.</strong> All items</span></label></li>
+  </ul>
+  <div class="quiz-actions">
+    <button type="button" data-check-question>Check</button>
+    <span class="feedback" aria-live="polite"></span>
+  </div>
+  <p class="reasons choice-reason" hidden></p>
+</section>
+
+<section class="question">
+  <h3>7. What is KeyError commonly about?</h3>
+  <ul class="options">
+    <li><label><input type="radio" name="q-what-is-keyerror-commonly-about-6" data-correct="false" data-reason="This describes a different language feature, not the Python behavior being tested."><span><strong>A.</strong> A successful sort</span></label></li><li><label><input type="radio" name="q-what-is-keyerror-commonly-about-6" data-correct="true" data-reason="dict[key] raises KeyError when absent."><span><strong>B.</strong> A missing dictionary key</span></label></li><li><label><input type="radio" name="q-what-is-keyerror-commonly-about-6" data-correct="false" data-reason="This would either fail or answer a narrower question than the one asked."><span><strong>C.</strong> A tuple unpack success</span></label></li><li><label><input type="radio" name="q-what-is-keyerror-commonly-about-6" data-correct="false" data-reason="This confuses a tool or keyword with the concept in the question."><span><strong>D.</strong> A set union</span></label></li>
+  </ul>
+  <div class="quiz-actions">
+    <button type="button" data-check-question>Check</button>
+    <span class="feedback" aria-live="polite"></span>
+  </div>
+  <p class="reasons choice-reason" hidden></p>
+</section>
+
+<section class="question">
+  <h3>8. Why use dict.get()?</h3>
+  <ul class="options">
+    <li><label><input type="radio" name="q-why-use-dict-get-7" data-correct="true" data-reason="get handles absence without raising KeyError."><span><strong>A.</strong> To provide a default for missing keys</span></label></li><li><label><input type="radio" name="q-why-use-dict-get-7" data-correct="false" data-reason="This describes a different language feature, not the Python behavior being tested."><span><strong>B.</strong> To make lists immutable</span></label></li><li><label><input type="radio" name="q-why-use-dict-get-7" data-correct="false" data-reason="This would either fail or answer a narrower question than the one asked."><span><strong>C.</strong> To delete dictionaries</span></label></li><li><label><input type="radio" name="q-why-use-dict-get-7" data-correct="false" data-reason="This confuses a tool or keyword with the concept in the question."><span><strong>D.</strong> To sort keys only</span></label></li>
+  </ul>
+  <div class="quiz-actions">
+    <button type="button" data-check-question>Check</button>
+    <span class="feedback" aria-live="polite"></span>
+  </div>
+  <p class="reasons choice-reason" hidden></p>
+</section>
+
+<section class="question">
+  <h3>9. How do you loop over key-value pairs?</h3>
+  <ul class="options">
+    <li><label><input type="radio" name="q-how-do-you-loop-over-key-value-pairs-8" data-correct="false" data-reason="This describes a different language feature, not the Python behavior being tested."><span><strong>A.</strong> for k, v in data:</span></label></li><li><label><input type="radio" name="q-how-do-you-loop-over-key-value-pairs-8" data-correct="false" data-reason="This would either fail or answer a narrower question than the one asked."><span><strong>B.</strong> for data.items in k:</span></label></li><li><label><input type="radio" name="q-how-do-you-loop-over-key-value-pairs-8" data-correct="false" data-reason="This confuses a tool or keyword with the concept in the question."><span><strong>C.</strong> for k = v in data:</span></label></li><li><label><input type="radio" name="q-how-do-you-loop-over-key-value-pairs-8" data-correct="true" data-reason="items returns key-value pairs."><span><strong>D.</strong> for k, v in data.items():</span></label></li>
+  </ul>
+  <div class="quiz-actions">
+    <button type="button" data-check-question>Check</button>
+    <span class="feedback" aria-live="polite"></span>
+  </div>
+  <p class="reasons choice-reason" hidden></p>
+</section>
+
+<section class="question">
+  <h3>10. When is enumerate useful?</h3>
+  <ul class="options">
+    <li><label><input type="radio" name="q-when-is-enumerate-useful-9" data-correct="false" data-reason="This describes a different language feature, not the Python behavior being tested."><span><strong>A.</strong> When importing modules</span></label></li><li><label><input type="radio" name="q-when-is-enumerate-useful-9" data-correct="false" data-reason="This would either fail or answer a narrower question than the one asked."><span><strong>B.</strong> When converting floats</span></label></li><li><label><input type="radio" name="q-when-is-enumerate-useful-9" data-correct="true" data-reason="enumerate yields pairs of index and item."><span><strong>C.</strong> When you need index and value</span></label></li><li><label><input type="radio" name="q-when-is-enumerate-useful-9" data-correct="false" data-reason="This confuses a tool or keyword with the concept in the question."><span><strong>D.</strong> When stopping Python</span></label></li>
+  </ul>
+  <div class="quiz-actions">
+    <button type="button" data-check-question>Check</button>
+    <span class="feedback" aria-live="polite"></span>
+  </div>
+  <p class="reasons choice-reason" hidden></p>
+</section>
+
+<section class="question">
+  <h3>11. What does set([1, 1, 2]) represent?</h3>
+  <ul class="options">
+    <li><label><input type="radio" name="q-what-does-set-1-1-2-represent-10" data-correct="false" data-reason="This describes a different language feature, not the Python behavior being tested."><span><strong>A.</strong> [1, 1, 2]</span></label></li><li><label><input type="radio" name="q-what-does-set-1-1-2-represent-10" data-correct="true" data-reason="A set keeps unique elements."><span><strong>B.</strong> {1, 2}</span></label></li><li><label><input type="radio" name="q-what-does-set-1-1-2-represent-10" data-correct="false" data-reason="This would either fail or answer a narrower question than the one asked."><span><strong>C.</strong> (1, 1, 2)</span></label></li><li><label><input type="radio" name="q-what-does-set-1-1-2-represent-10" data-correct="false" data-reason="This confuses a tool or keyword with the concept in the question."><span><strong>D.</strong> An error</span></label></li>
+  </ul>
+  <div class="quiz-actions">
+    <button type="button" data-check-question>Check</button>
+    <span class="feedback" aria-live="polite"></span>
+  </div>
+  <p class="reasons choice-reason" hidden></p>
+</section>
+
+<section class="question">
+  <h3>12. Which set operation finds shared elements?</h3>
+  <ul class="options">
+    <li><label><input type="radio" name="q-which-set-operation-finds-shared-elements-11" data-correct="true" data-reason="Intersection returns elements in both sets."><span><strong>A.</strong> intersection</span></label></li><li><label><input type="radio" name="q-which-set-operation-finds-shared-elements-11" data-correct="false" data-reason="This describes a different language feature, not the Python behavior being tested."><span><strong>B.</strong> append</span></label></li><li><label><input type="radio" name="q-which-set-operation-finds-shared-elements-11" data-correct="false" data-reason="This would either fail or answer a narrower question than the one asked."><span><strong>C.</strong> get</span></label></li><li><label><input type="radio" name="q-which-set-operation-finds-shared-elements-11" data-correct="false" data-reason="This confuses a tool or keyword with the concept in the question."><span><strong>D.</strong> index</span></label></li>
+  </ul>
+  <div class="quiz-actions">
+    <button type="button" data-check-question>Check</button>
+    <span class="feedback" aria-live="polite"></span>
+  </div>
+  <p class="reasons choice-reason" hidden></p>
+</section>
+
+<section class="question">
+  <h3>13. Why avoid mutating a list during iteration?</h3>
+  <ul class="options">
+    <li><label><input type="radio" name="q-why-avoid-mutating-a-list-during-iteration-12" data-correct="false" data-reason="This describes a different language feature, not the Python behavior being tested."><span><strong>A.</strong> Python forbids all loops</span></label></li><li><label><input type="radio" name="q-why-avoid-mutating-a-list-during-iteration-12" data-correct="false" data-reason="This would either fail or answer a narrower question than the one asked."><span><strong>B.</strong> It changes strings only</span></label></li><li><label><input type="radio" name="q-why-avoid-mutating-a-list-during-iteration-12" data-correct="false" data-reason="This confuses a tool or keyword with the concept in the question."><span><strong>C.</strong> It makes tuples mutable</span></label></li><li><label><input type="radio" name="q-why-avoid-mutating-a-list-during-iteration-12" data-correct="true" data-reason="Changing length/order while iterating is risky."><span><strong>D.</strong> It can skip or confuse items</span></label></li>
+  </ul>
+  <div class="quiz-actions">
+    <button type="button" data-check-question>Check</button>
+    <span class="feedback" aria-live="polite"></span>
+  </div>
+  <p class="reasons choice-reason" hidden></p>
+</section>
+
+<section class="question">
+  <h3>14. Best structure for a coordinate pair?</h3>
+  <ul class="options">
+    <li><label><input type="radio" name="q-best-structure-for-a-coordinate-pair-13" data-correct="false" data-reason="This describes a different language feature, not the Python behavior being tested."><span><strong>A.</strong> set</span></label></li><li><label><input type="radio" name="q-best-structure-for-a-coordinate-pair-13" data-correct="false" data-reason="This would either fail or answer a narrower question than the one asked."><span><strong>B.</strong> bool</span></label></li><li><label><input type="radio" name="q-best-structure-for-a-coordinate-pair-13" data-correct="true" data-reason="A coordinate is a fixed positional group."><span><strong>C.</strong> tuple</span></label></li><li><label><input type="radio" name="q-best-structure-for-a-coordinate-pair-13" data-correct="false" data-reason="This confuses a tool or keyword with the concept in the question."><span><strong>D.</strong> None</span></label></li>
+  </ul>
+  <div class="quiz-actions">
+    <button type="button" data-check-question>Check</button>
+    <span class="feedback" aria-live="polite"></span>
+  </div>
+  <p class="reasons choice-reason" hidden></p>
+</section>
+
+<section class="question">
+  <h3>15. Best structure for inventory counts by product?</h3>
+  <ul class="options">
+    <li><label><input type="radio" name="q-best-structure-for-inventory-counts-by-product-14" data-correct="false" data-reason="This describes a different language feature, not the Python behavior being tested."><span><strong>A.</strong> float</span></label></li><li><label><input type="radio" name="q-best-structure-for-inventory-counts-by-product-14" data-correct="true" data-reason="Product names map naturally to counts."><span><strong>B.</strong> dict</span></label></li><li><label><input type="radio" name="q-best-structure-for-inventory-counts-by-product-14" data-correct="false" data-reason="This would either fail or answer a narrower question than the one asked."><span><strong>C.</strong> tuple only</span></label></li><li><label><input type="radio" name="q-best-structure-for-inventory-counts-by-product-14" data-correct="false" data-reason="This confuses a tool or keyword with the concept in the question."><span><strong>D.</strong> None</span></label></li>
+  </ul>
+  <div class="quiz-actions">
+    <button type="button" data-check-question>Check</button>
+    <span class="feedback" aria-live="polite"></span>
+  </div>
+  <p class="reasons choice-reason" hidden></p>
+</section>
+
+<section class="question">
+  <h3>16. What does list slicing return?</h3>
+  <ul class="options">
+    <li><label><input type="radio" name="q-what-does-list-slicing-return-15" data-correct="true" data-reason="List slices create list objects with selected items."><span><strong>A.</strong> A new list segment</span></label></li><li><label><input type="radio" name="q-what-does-list-slicing-return-15" data-correct="false" data-reason="This describes a different language feature, not the Python behavior being tested."><span><strong>B.</strong> The same list always</span></label></li><li><label><input type="radio" name="q-what-does-list-slicing-return-15" data-correct="false" data-reason="This would either fail or answer a narrower question than the one asked."><span><strong>C.</strong> A dictionary</span></label></li><li><label><input type="radio" name="q-what-does-list-slicing-return-15" data-correct="false" data-reason="This confuses a tool or keyword with the concept in the question."><span><strong>D.</strong> A boolean</span></label></li>
+  </ul>
+  <div class="quiz-actions">
+    <button type="button" data-check-question>Check</button>
+    <span class="feedback" aria-live="polite"></span>
+  </div>
+  <p class="reasons choice-reason" hidden></p>
+</section>
+
+<section class="question">
+  <h3>17. What does del data[key] do?</h3>
+  <ul class="options">
+    <li><label><input type="radio" name="q-what-does-del-data-key-do-16" data-correct="false" data-reason="This describes a different language feature, not the Python behavior being tested."><span><strong>A.</strong> Prints a value</span></label></li><li><label><input type="radio" name="q-what-does-del-data-key-do-16" data-correct="false" data-reason="This would either fail or answer a narrower question than the one asked."><span><strong>B.</strong> Creates a set</span></label></li><li><label><input type="radio" name="q-what-does-del-data-key-do-16" data-correct="false" data-reason="This confuses a tool or keyword with the concept in the question."><span><strong>C.</strong> Sorts a dict</span></label></li><li><label><input type="radio" name="q-what-does-del-data-key-do-16" data-correct="true" data-reason="del removes the key-value pair."><span><strong>D.</strong> Deletes a dictionary entry</span></label></li>
+  </ul>
+  <div class="quiz-actions">
+    <button type="button" data-check-question>Check</button>
+    <span class="feedback" aria-live="polite"></span>
+  </div>
+  <p class="reasons choice-reason" hidden></p>
+</section>
+
+<section class="question">
+  <h3>18. Which supports duplicates?</h3>
+  <ul class="options">
+    <li><label><input type="radio" name="q-which-supports-duplicates-17" data-correct="false" data-reason="This describes a different language feature, not the Python behavior being tested."><span><strong>A.</strong> set</span></label></li><li><label><input type="radio" name="q-which-supports-duplicates-17" data-correct="false" data-reason="This would either fail or answer a narrower question than the one asked."><span><strong>B.</strong> Only bool</span></label></li><li><label><input type="radio" name="q-which-supports-duplicates-17" data-correct="true" data-reason="Lists can contain repeated values."><span><strong>C.</strong> list</span></label></li><li><label><input type="radio" name="q-which-supports-duplicates-17" data-correct="false" data-reason="This confuses a tool or keyword with the concept in the question."><span><strong>D.</strong> None</span></label></li>
+  </ul>
+  <div class="quiz-actions">
+    <button type="button" data-check-question>Check</button>
+    <span class="feedback" aria-live="polite"></span>
+  </div>
+  <p class="reasons choice-reason" hidden></p>
+</section>
+
+<section class="question">
+  <h3>19. What is tuple unpacking?</h3>
+  <ul class="options">
+    <li><label><input type="radio" name="q-what-is-tuple-unpacking-18" data-correct="false" data-reason="This describes a different language feature, not the Python behavior being tested."><span><strong>A.</strong> Deleting a tuple</span></label></li><li><label><input type="radio" name="q-what-is-tuple-unpacking-18" data-correct="true" data-reason="Unpacking maps positions to variables."><span><strong>B.</strong> Assigning tuple elements to names</span></label></li><li><label><input type="radio" name="q-what-is-tuple-unpacking-18" data-correct="false" data-reason="This would either fail or answer a narrower question than the one asked."><span><strong>C.</strong> Sorting in place</span></label></li><li><label><input type="radio" name="q-what-is-tuple-unpacking-18" data-correct="false" data-reason="This confuses a tool or keyword with the concept in the question."><span><strong>D.</strong> Converting dict to set</span></label></li>
+  </ul>
+  <div class="quiz-actions">
+    <button type="button" data-check-question>Check</button>
+    <span class="feedback" aria-live="polite"></span>
+  </div>
+  <p class="reasons choice-reason" hidden></p>
+</section>
+
+<section class="question">
+  <h3>20. Best structure for seen IDs?</h3>
+  <ul class="options">
+    <li><label><input type="radio" name="q-best-structure-for-seen-ids-19" data-correct="true" data-reason="Sets are efficient for membership tests."><span><strong>A.</strong> set</span></label></li><li><label><input type="radio" name="q-best-structure-for-seen-ids-19" data-correct="false" data-reason="This describes a different language feature, not the Python behavior being tested."><span><strong>B.</strong> string</span></label></li><li><label><input type="radio" name="q-best-structure-for-seen-ids-19" data-correct="false" data-reason="This would either fail or answer a narrower question than the one asked."><span><strong>C.</strong> float</span></label></li><li><label><input type="radio" name="q-best-structure-for-seen-ids-19" data-correct="false" data-reason="This confuses a tool or keyword with the concept in the question."><span><strong>D.</strong> print</span></label></li>
+  </ul>
+  <div class="quiz-actions">
+    <button type="button" data-check-question>Check</button>
+    <span class="feedback" aria-live="polite"></span>
+  </div>
+  <p class="reasons choice-reason" hidden></p>
+</section>
+<h2>Small Coding Challenges</h2>
+
+<section class="challenge">
+  <h3>1. Unique Words</h3>
+  <p>Return sorted unique lowercase words.</p>
+  <p class="answer">Reference implementation:</p>
+  <pre><code>def unique_words(text):
+    return sorted(set(text.lower().split()))</code></pre>
+</section>
+
+<section class="challenge">
+  <h3>2. Inventory Total</h3>
+  <p>Sum all counts in an inventory dict.</p>
+  <p class="answer">Reference implementation:</p>
+  <pre><code>def inventory_total(inventory):
+    total = 0
+    for count in inventory.values():
+        total += count
+    return total</code></pre>
+</section>
+
+<section class="challenge">
+  <h3>3. Top Score</h3>
+  <p>Return largest score or None for empty.</p>
+  <p class="answer">Reference implementation:</p>
+  <pre><code>def top_score(scores):
+    if not scores:
+        return None
+    return max(scores)</code></pre>
+</section>
+
+<section class="challenge">
+  <h3>4. Email Lookup</h3>
+  <p>Return email by username or missing.</p>
+  <p class="answer">Reference implementation:</p>
+  <pre><code>def lookup_email(users, username):
+    return users.get(username, &quot;missing&quot;)</code></pre>
+</section>
+
+<section class="challenge">
+  <h3>5. Format Point</h3>
+  <p>Unpack (x, y) and return a labelled string.</p>
+  <p class="answer">Reference implementation:</p>
+  <pre><code>def format_point(point):
+    x, y = point
+    return f&quot;(x={x}, y={y})&quot;</code></pre>
+</section></main>
+</body>
+</html>

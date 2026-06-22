@@ -1,0 +1,462 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Functions, Recursion, Scope, Closures, and Lambdas</title>
+  <style>
+:root {
+  color-scheme: light;
+  --ink: #18202a;
+  --muted: #586575;
+  --line: #d9e0e8;
+  --panel: #ffffff;
+  --soft: #f5f7fa;
+  --accent: #176f7a;
+  --accent-2: #8a4f14;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  line-height: 1.55;
+  color: var(--ink);
+  background: #eef2f5;
+}
+header {
+  padding: 32px clamp(18px, 4vw, 56px);
+  background: #17212b;
+  color: #fff;
+}
+header a { color: #aee4ef; }
+main {
+  width: min(1120px, calc(100% - 32px));
+  margin: 28px auto 56px;
+}
+h1, h2, h3 { line-height: 1.2; }
+h1 { margin: 0 0 10px; font-size: clamp(2rem, 5vw, 3.3rem); }
+h2 { margin-top: 36px; padding-bottom: 8px; border-bottom: 1px solid var(--line); }
+h3 { margin-top: 24px; }
+.meta { color: #d9e7ed; max-width: 850px; }
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 16px;
+}
+.card, .page, .question, .challenge {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 18px;
+}
+.card a { color: var(--accent); font-weight: 700; text-decoration: none; }
+.pill {
+  display: inline-flex;
+  align-items: center;
+  min-height: 28px;
+  padding: 3px 9px;
+  border-radius: 999px;
+  background: #e8f3f5;
+  color: #125965;
+  font-size: 0.88rem;
+  font-weight: 700;
+}
+.note-pages {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 18px;
+}
+.options { list-style: none; padding: 0; margin: 12px 0; }
+.options li { padding: 7px 0; border-top: 1px solid #edf0f3; }
+.options label {
+  display: flex;
+  gap: 9px;
+  align-items: flex-start;
+  cursor: pointer;
+}
+.options input { margin-top: 5px; }
+.answer { color: var(--accent); font-weight: 800; }
+.reasons {
+  background: var(--soft);
+  border-left: 4px solid var(--accent);
+  padding: 10px 14px;
+  margin-top: 10px;
+}
+.quiz-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+button {
+  appearance: none;
+  border: 0;
+  border-radius: 6px;
+  padding: 9px 13px;
+  background: var(--accent);
+  color: #fff;
+  font-weight: 800;
+  cursor: pointer;
+}
+button:hover { background: #125965; }
+.feedback {
+  min-height: 24px;
+  font-weight: 800;
+}
+.feedback.correct { color: #0d6b3f; }
+.feedback.wrong { color: #a24118; }
+.choice-reason[hidden] { display: none; }
+pre {
+  overflow-x: auto;
+  padding: 14px;
+  border-radius: 8px;
+  background: #101820;
+  color: #eaf4f7;
+}
+code { font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace; }
+nav {
+  margin-top: 18px;
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+nav a {
+  color: #fff;
+  text-decoration: none;
+  border: 1px solid rgba(255,255,255,.28);
+  border-radius: 6px;
+  padding: 7px 10px;
+}
+.small { color: var(--muted); font-size: .95rem; }
+</style>
+  <script>
+document.addEventListener("click", (event) => {
+  const button = event.target.closest("[data-check-question]");
+  if (!button) return;
+
+  const question = button.closest(".question");
+  const selected = question.querySelector("input[type='radio']:checked");
+  const feedback = question.querySelector(".feedback");
+  const reason = question.querySelector(".choice-reason");
+
+  if (!selected) {
+    feedback.textContent = "Choose an answer first.";
+    feedback.className = "feedback wrong";
+    reason.hidden = true;
+    reason.textContent = "";
+    return;
+  }
+
+  const isCorrect = selected.dataset.correct === "true";
+  feedback.textContent = isCorrect ? "Right" : "Wrong";
+  feedback.className = isCorrect ? "feedback correct" : "feedback wrong";
+  reason.textContent = selected.dataset.reason;
+  reason.hidden = false;
+});
+</script>
+</head>
+<body>
+  <header>
+    <h1>Functions, Recursion, Scope, Closures, and Lambdas</h1>
+    <p class="meta">Study materials based on <a href="https://www.youtube.com/watch?v=qwAFL1597eM">Python Tutorial for Beginners (with mini-projects)</a> by freeCodeCamp.org. Video duration: 8:41:53.</p>
+    <nav><a href="./index.html">Index</a><a href="./01-getting-started-and-python-basics.html">Basics</a><a href="./02-operators-data-types-strings.html">Types</a><a href="./03-user-input-branching-loops.html">Flow</a><a href="./04-collections.html">Collections</a><a href="./05-functions-recursion-scope.html">Functions</a><a href="./06-modules-files-oop-projects.html">Projects</a></nav>
+  </header>
+  <main>
+<p><span class="pill">Chapter 9 - Functions, Chapter 10 - Recursion, Chapter 11 - Scope, Chapter 12 - Closures, Chapter 17 - Lambda &amp; Higher Order Functions</span></p>
+<h2>Notes</h2>
+<section class="note-pages">
+  <article class="page"><h3>Page 1</h3><p>Functions package behavior behind a name. A strong function has a clear job, meaningful parameters, and a predictable return value. print() displays information, while return sends data back to the caller.</p><p>Parameters are local names that receive arguments. Defaults are useful, but mutable defaults like [] should be avoided because the object is created once and reused across calls.</p><p>Scope describes where names are visible. Local names created inside a function are not available outside. Globals exist at module level, but changing them inside functions creates hidden dependencies.</p><p>Passing values in and returning values out is usually cleaner than reaching into outer state. It makes functions easier to test and reason about.</p></article>
+  <article class="page"><h3>Page 2</h3><p>Recursion is when a function calls itself to solve a smaller version of a problem. It needs a base case and a recursive step that moves toward that base case. Without a base case, recursion continues until Python raises an error.</p><p>Closures happen when an inner function remembers variables from an outer function. They are useful for factory functions that create configured behavior.</p><p>Lambda expressions create small anonymous functions. They are useful for short key functions, filters, and transformations, but multi-step logic should usually use def.</p><p>Higher order functions accept functions as arguments or return functions. sorted(key=...), map(), and filter() are common examples, though list comprehensions are often more readable than map/filter for beginners.</p></article>
+</section>
+<h2>Quiz: 20 Multiple-Choice Questions</h2>
+
+<section class="question">
+  <h3>1. What does return do?</h3>
+  <ul class="options">
+    <li><label><input type="radio" name="q-what-does-return-do-0" data-correct="true" data-reason="return exits a function and provides a result."><span><strong>A.</strong> Sends a value back to the caller</span></label></li><li><label><input type="radio" name="q-what-does-return-do-0" data-correct="false" data-reason="This describes a different language feature, not the Python behavior being tested."><span><strong>B.</strong> Always prints output</span></label></li><li><label><input type="radio" name="q-what-does-return-do-0" data-correct="false" data-reason="This would either fail or answer a narrower question than the one asked."><span><strong>C.</strong> Imports modules</span></label></li><li><label><input type="radio" name="q-what-does-return-do-0" data-correct="false" data-reason="This confuses a tool or keyword with the concept in the question."><span><strong>D.</strong> Starts a loop</span></label></li>
+  </ul>
+  <div class="quiz-actions">
+    <button type="button" data-check-question>Check</button>
+    <span class="feedback" aria-live="polite"></span>
+  </div>
+  <p class="reasons choice-reason" hidden></p>
+</section>
+
+<section class="question">
+  <h3>2. No explicit return means what?</h3>
+  <ul class="options">
+    <li><label><input type="radio" name="q-no-explicit-return-means-what-1" data-correct="false" data-reason="This describes a different language feature, not the Python behavior being tested."><span><strong>A.</strong> It returns 0</span></label></li><li><label><input type="radio" name="q-no-explicit-return-means-what-1" data-correct="false" data-reason="This would either fail or answer a narrower question than the one asked."><span><strong>B.</strong> It returns printed text</span></label></li><li><label><input type="radio" name="q-no-explicit-return-means-what-1" data-correct="false" data-reason="This confuses a tool or keyword with the concept in the question."><span><strong>C.</strong> It cannot run</span></label></li><li><label><input type="radio" name="q-no-explicit-return-means-what-1" data-correct="true" data-reason="Python implicitly returns None."><span><strong>D.</strong> The function returns None</span></label></li>
+  </ul>
+  <div class="quiz-actions">
+    <button type="button" data-check-question>Check</button>
+    <span class="feedback" aria-live="polite"></span>
+  </div>
+  <p class="reasons choice-reason" hidden></p>
+</section>
+
+<section class="question">
+  <h3>3. What is a parameter?</h3>
+  <ul class="options">
+    <li><label><input type="radio" name="q-what-is-a-parameter-2" data-correct="false" data-reason="This describes a different language feature, not the Python behavior being tested."><span><strong>A.</strong> A file extension</span></label></li><li><label><input type="radio" name="q-what-is-a-parameter-2" data-correct="false" data-reason="This would either fail or answer a narrower question than the one asked."><span><strong>B.</strong> A package installer</span></label></li><li><label><input type="radio" name="q-what-is-a-parameter-2" data-correct="true" data-reason="Parameters receive input values."><span><strong>C.</strong> A local name for an argument</span></label></li><li><label><input type="radio" name="q-what-is-a-parameter-2" data-correct="false" data-reason="This confuses a tool or keyword with the concept in the question."><span><strong>D.</strong> A traceback</span></label></li>
+  </ul>
+  <div class="quiz-actions">
+    <button type="button" data-check-question>Check</button>
+    <span class="feedback" aria-live="polite"></span>
+  </div>
+  <p class="reasons choice-reason" hidden></p>
+</section>
+
+<section class="question">
+  <h3>4. Why avoid items=[] as a default?</h3>
+  <ul class="options">
+    <li><label><input type="radio" name="q-why-avoid-items-as-a-default-3" data-correct="false" data-reason="This describes a different language feature, not the Python behavior being tested."><span><strong>A.</strong> Lists cannot be parameters</span></label></li><li><label><input type="radio" name="q-why-avoid-items-as-a-default-3" data-correct="true" data-reason="Mutable defaults are created once."><span><strong>B.</strong> The list is shared across calls</span></label></li><li><label><input type="radio" name="q-why-avoid-items-as-a-default-3" data-correct="false" data-reason="This would either fail or answer a narrower question than the one asked."><span><strong>C.</strong> Defaults never work</span></label></li><li><label><input type="radio" name="q-why-avoid-items-as-a-default-3" data-correct="false" data-reason="This confuses a tool or keyword with the concept in the question."><span><strong>D.</strong> It is faster</span></label></li>
+  </ul>
+  <div class="quiz-actions">
+    <button type="button" data-check-question>Check</button>
+    <span class="feedback" aria-live="polite"></span>
+  </div>
+  <p class="reasons choice-reason" hidden></p>
+</section>
+
+<section class="question">
+  <h3>5. What is local scope?</h3>
+  <ul class="options">
+    <li><label><input type="radio" name="q-what-is-local-scope-4" data-correct="true" data-reason="Local variables are limited to their function."><span><strong>A.</strong> Names available inside a function context</span></label></li><li><label><input type="radio" name="q-what-is-local-scope-4" data-correct="false" data-reason="This describes a different language feature, not the Python behavior being tested."><span><strong>B.</strong> Every file on the computer</span></label></li><li><label><input type="radio" name="q-what-is-local-scope-4" data-correct="false" data-reason="This would either fail or answer a narrower question than the one asked."><span><strong>C.</strong> Only imports</span></label></li><li><label><input type="radio" name="q-what-is-local-scope-4" data-correct="false" data-reason="This confuses a tool or keyword with the concept in the question."><span><strong>D.</strong> Only strings</span></label></li>
+  </ul>
+  <div class="quiz-actions">
+    <button type="button" data-check-question>Check</button>
+    <span class="feedback" aria-live="polite"></span>
+  </div>
+  <p class="reasons choice-reason" hidden></p>
+</section>
+
+<section class="question">
+  <h3>6. Why avoid changing globals?</h3>
+  <ul class="options">
+    <li><label><input type="radio" name="q-why-avoid-changing-globals-5" data-correct="false" data-reason="This describes a different language feature, not the Python behavior being tested."><span><strong>A.</strong> Globals are impossible</span></label></li><li><label><input type="radio" name="q-why-avoid-changing-globals-5" data-correct="false" data-reason="This would either fail or answer a narrower question than the one asked."><span><strong>B.</strong> Functions cannot read globals</span></label></li><li><label><input type="radio" name="q-why-avoid-changing-globals-5" data-correct="false" data-reason="This confuses a tool or keyword with the concept in the question."><span><strong>C.</strong> It removes all bugs</span></label></li><li><label><input type="radio" name="q-why-avoid-changing-globals-5" data-correct="true" data-reason="Explicit inputs and outputs are clearer."><span><strong>D.</strong> It hides dependencies</span></label></li>
+  </ul>
+  <div class="quiz-actions">
+    <button type="button" data-check-question>Check</button>
+    <span class="feedback" aria-live="polite"></span>
+  </div>
+  <p class="reasons choice-reason" hidden></p>
+</section>
+
+<section class="question">
+  <h3>7. What must recursion have?</h3>
+  <ul class="options">
+    <li><label><input type="radio" name="q-what-must-recursion-have-6" data-correct="false" data-reason="This describes a different language feature, not the Python behavior being tested."><span><strong>A.</strong> A class</span></label></li><li><label><input type="radio" name="q-what-must-recursion-have-6" data-correct="false" data-reason="This would either fail or answer a narrower question than the one asked."><span><strong>B.</strong> A file handle</span></label></li><li><label><input type="radio" name="q-what-must-recursion-have-6" data-correct="true" data-reason="The base case stops recursive calls."><span><strong>C.</strong> A base case</span></label></li><li><label><input type="radio" name="q-what-must-recursion-have-6" data-correct="false" data-reason="This confuses a tool or keyword with the concept in the question."><span><strong>D.</strong> A lambda</span></label></li>
+  </ul>
+  <div class="quiz-actions">
+    <button type="button" data-check-question>Check</button>
+    <span class="feedback" aria-live="polite"></span>
+  </div>
+  <p class="reasons choice-reason" hidden></p>
+</section>
+
+<section class="question">
+  <h3>8. What is the recursive step?</h3>
+  <ul class="options">
+    <li><label><input type="radio" name="q-what-is-the-recursive-step-7" data-correct="false" data-reason="This describes a different language feature, not the Python behavior being tested."><span><strong>A.</strong> Printing forever</span></label></li><li><label><input type="radio" name="q-what-is-the-recursive-step-7" data-correct="true" data-reason="The recursive step moves toward the base case."><span><strong>B.</strong> Calling the function on a smaller problem</span></label></li><li><label><input type="radio" name="q-what-is-the-recursive-step-7" data-correct="false" data-reason="This would either fail or answer a narrower question than the one asked."><span><strong>C.</strong> Importing sys</span></label></li><li><label><input type="radio" name="q-what-is-the-recursive-step-7" data-correct="false" data-reason="This confuses a tool or keyword with the concept in the question."><span><strong>D.</strong> Deleting names</span></label></li>
+  </ul>
+  <div class="quiz-actions">
+    <button type="button" data-check-question>Check</button>
+    <span class="feedback" aria-live="polite"></span>
+  </div>
+  <p class="reasons choice-reason" hidden></p>
+</section>
+
+<section class="question">
+  <h3>9. When is a loop often clearer?</h3>
+  <ul class="options">
+    <li><label><input type="radio" name="q-when-is-a-loop-often-clearer-8" data-correct="true" data-reason="Loops are direct for linear repetition."><span><strong>A.</strong> Simple counting repetition</span></label></li><li><label><input type="radio" name="q-when-is-a-loop-often-clearer-8" data-correct="false" data-reason="This describes a different language feature, not the Python behavior being tested."><span><strong>B.</strong> Never</span></label></li><li><label><input type="radio" name="q-when-is-a-loop-often-clearer-8" data-correct="false" data-reason="This would either fail or answer a narrower question than the one asked."><span><strong>C.</strong> Only for imports</span></label></li><li><label><input type="radio" name="q-when-is-a-loop-often-clearer-8" data-correct="false" data-reason="This confuses a tool or keyword with the concept in the question."><span><strong>D.</strong> When no code is needed</span></label></li>
+  </ul>
+  <div class="quiz-actions">
+    <button type="button" data-check-question>Check</button>
+    <span class="feedback" aria-live="polite"></span>
+  </div>
+  <p class="reasons choice-reason" hidden></p>
+</section>
+
+<section class="question">
+  <h3>10. What is a closure?</h3>
+  <ul class="options">
+    <li><label><input type="radio" name="q-what-is-a-closure-9" data-correct="false" data-reason="This describes a different language feature, not the Python behavior being tested."><span><strong>A.</strong> A closed file only</span></label></li><li><label><input type="radio" name="q-what-is-a-closure-9" data-correct="false" data-reason="This would either fail or answer a narrower question than the one asked."><span><strong>B.</strong> A list copy</span></label></li><li><label><input type="radio" name="q-what-is-a-closure-9" data-correct="false" data-reason="This confuses a tool or keyword with the concept in the question."><span><strong>C.</strong> A syntax error</span></label></li><li><label><input type="radio" name="q-what-is-a-closure-9" data-correct="true" data-reason="Closures retain lexical state."><span><strong>D.</strong> An inner function remembering outer variables</span></label></li>
+  </ul>
+  <div class="quiz-actions">
+    <button type="button" data-check-question>Check</button>
+    <span class="feedback" aria-live="polite"></span>
+  </div>
+  <p class="reasons choice-reason" hidden></p>
+</section>
+
+<section class="question">
+  <h3>11. What is a lambda?</h3>
+  <ul class="options">
+    <li><label><input type="radio" name="q-what-is-a-lambda-10" data-correct="false" data-reason="This describes a different language feature, not the Python behavior being tested."><span><strong>A.</strong> A dictionary key only</span></label></li><li><label><input type="radio" name="q-what-is-a-lambda-10" data-correct="false" data-reason="This would either fail or answer a narrower question than the one asked."><span><strong>B.</strong> A package manager</span></label></li><li><label><input type="radio" name="q-what-is-a-lambda-10" data-correct="true" data-reason="lambda creates a function value."><span><strong>C.</strong> A small anonymous function expression</span></label></li><li><label><input type="radio" name="q-what-is-a-lambda-10" data-correct="false" data-reason="This confuses a tool or keyword with the concept in the question."><span><strong>D.</strong> A loop keyword</span></label></li>
+  </ul>
+  <div class="quiz-actions">
+    <button type="button" data-check-question>Check</button>
+    <span class="feedback" aria-live="polite"></span>
+  </div>
+  <p class="reasons choice-reason" hidden></p>
+</section>
+
+<section class="question">
+  <h3>12. What is higher order behavior?</h3>
+  <ul class="options">
+    <li><label><input type="radio" name="q-what-is-higher-order-behavior-11" data-correct="false" data-reason="This describes a different language feature, not the Python behavior being tested."><span><strong>A.</strong> Only adding numbers</span></label></li><li><label><input type="radio" name="q-what-is-higher-order-behavior-11" data-correct="true" data-reason="Higher order functions operate on functions."><span><strong>B.</strong> Accepting or returning functions</span></label></li><li><label><input type="radio" name="q-what-is-higher-order-behavior-11" data-correct="false" data-reason="This would either fail or answer a narrower question than the one asked."><span><strong>C.</strong> Only reading files</span></label></li><li><label><input type="radio" name="q-what-is-higher-order-behavior-11" data-correct="false" data-reason="This confuses a tool or keyword with the concept in the question."><span><strong>D.</strong> Only printing strings</span></label></li>
+  </ul>
+  <div class="quiz-actions">
+    <button type="button" data-check-question>Check</button>
+    <span class="feedback" aria-live="polite"></span>
+  </div>
+  <p class="reasons choice-reason" hidden></p>
+</section>
+
+<section class="question">
+  <h3>13. What does sorted(words, key=len) do?</h3>
+  <ul class="options">
+    <li><label><input type="radio" name="q-what-does-sorted-words-key-len-do-12" data-correct="true" data-reason="key supplies comparison values."><span><strong>A.</strong> Sorts by word length</span></label></li><li><label><input type="radio" name="q-what-does-sorted-words-key-len-do-12" data-correct="false" data-reason="This describes a different language feature, not the Python behavior being tested."><span><strong>B.</strong> Sorts only alphabetically</span></label></li><li><label><input type="radio" name="q-what-does-sorted-words-key-len-do-12" data-correct="false" data-reason="This would either fail or answer a narrower question than the one asked."><span><strong>C.</strong> Deletes long words</span></label></li><li><label><input type="radio" name="q-what-does-sorted-words-key-len-do-12" data-correct="false" data-reason="This confuses a tool or keyword with the concept in the question."><span><strong>D.</strong> Returns lengths only</span></label></li>
+  </ul>
+  <div class="quiz-actions">
+    <button type="button" data-check-question>Check</button>
+    <span class="feedback" aria-live="polite"></span>
+  </div>
+  <p class="reasons choice-reason" hidden></p>
+</section>
+
+<section class="question">
+  <h3>14. What is a docstring?</h3>
+  <ul class="options">
+    <li><label><input type="radio" name="q-what-is-a-docstring-13" data-correct="false" data-reason="This describes a different language feature, not the Python behavior being tested."><span><strong>A.</strong> Any printed string</span></label></li><li><label><input type="radio" name="q-what-is-a-docstring-13" data-correct="false" data-reason="This would either fail or answer a narrower question than the one asked."><span><strong>B.</strong> A list method</span></label></li><li><label><input type="radio" name="q-what-is-a-docstring-13" data-correct="false" data-reason="This confuses a tool or keyword with the concept in the question."><span><strong>C.</strong> A syntax error</span></label></li><li><label><input type="radio" name="q-what-is-a-docstring-13" data-correct="true" data-reason="Docstrings attach documentation to code objects."><span><strong>D.</strong> A string documenting a function/module/class</span></label></li>
+  </ul>
+  <div class="quiz-actions">
+    <button type="button" data-check-question>Check</button>
+    <span class="feedback" aria-live="polite"></span>
+  </div>
+  <p class="reasons choice-reason" hidden></p>
+</section>
+
+<section class="question">
+  <h3>15. Which function is easiest to test?</h3>
+  <ul class="options">
+    <li><label><input type="radio" name="q-which-function-is-easiest-to-test-14" data-correct="false" data-reason="This describes a different language feature, not the Python behavior being tested."><span><strong>A.</strong> One that changes hidden globals</span></label></li><li><label><input type="radio" name="q-which-function-is-easiest-to-test-14" data-correct="false" data-reason="This would either fail or answer a narrower question than the one asked."><span><strong>B.</strong> One that asks input everywhere</span></label></li><li><label><input type="radio" name="q-which-function-is-easiest-to-test-14" data-correct="true" data-reason="Deterministic functions are simpler to test."><span><strong>C.</strong> One with clear inputs and returned output</span></label></li><li><label><input type="radio" name="q-which-function-is-easiest-to-test-14" data-correct="false" data-reason="This confuses a tool or keyword with the concept in the question."><span><strong>D.</strong> One that never returns</span></label></li>
+  </ul>
+  <div class="quiz-actions">
+    <button type="button" data-check-question>Check</button>
+    <span class="feedback" aria-live="polite"></span>
+  </div>
+  <p class="reasons choice-reason" hidden></p>
+</section>
+
+<section class="question">
+  <h3>16. What does *args collect?</h3>
+  <ul class="options">
+    <li><label><input type="radio" name="q-what-does-args-collect-15" data-correct="false" data-reason="This describes a different language feature, not the Python behavior being tested."><span><strong>A.</strong> Extra keyword arguments</span></label></li><li><label><input type="radio" name="q-what-does-args-collect-15" data-correct="true" data-reason="*args gathers positional values into a tuple."><span><strong>B.</strong> Extra positional arguments</span></label></li><li><label><input type="radio" name="q-what-does-args-collect-15" data-correct="false" data-reason="This would either fail or answer a narrower question than the one asked."><span><strong>C.</strong> Only files</span></label></li><li><label><input type="radio" name="q-what-does-args-collect-15" data-correct="false" data-reason="This confuses a tool or keyword with the concept in the question."><span><strong>D.</strong> Only errors</span></label></li>
+  </ul>
+  <div class="quiz-actions">
+    <button type="button" data-check-question>Check</button>
+    <span class="feedback" aria-live="polite"></span>
+  </div>
+  <p class="reasons choice-reason" hidden></p>
+</section>
+
+<section class="question">
+  <h3>17. What does **kwargs collect?</h3>
+  <ul class="options">
+    <li><label><input type="radio" name="q-what-does-kwargs-collect-16" data-correct="true" data-reason="**kwargs gathers named values into a dict."><span><strong>A.</strong> Extra keyword arguments</span></label></li><li><label><input type="radio" name="q-what-does-kwargs-collect-16" data-correct="false" data-reason="This describes a different language feature, not the Python behavior being tested."><span><strong>B.</strong> Only numbers</span></label></li><li><label><input type="radio" name="q-what-does-kwargs-collect-16" data-correct="false" data-reason="This would either fail or answer a narrower question than the one asked."><span><strong>C.</strong> All imports</span></label></li><li><label><input type="radio" name="q-what-does-kwargs-collect-16" data-correct="false" data-reason="This confuses a tool or keyword with the concept in the question."><span><strong>D.</strong> Return values</span></label></li>
+  </ul>
+  <div class="quiz-actions">
+    <button type="button" data-check-question>Check</button>
+    <span class="feedback" aria-live="polite"></span>
+  </div>
+  <p class="reasons choice-reason" hidden></p>
+</section>
+
+<section class="question">
+  <h3>18. Why split a large function?</h3>
+  <ul class="options">
+    <li><label><input type="radio" name="q-why-split-a-large-function-17" data-correct="false" data-reason="This describes a different language feature, not the Python behavior being tested."><span><strong>A.</strong> Python cannot run long functions</span></label></li><li><label><input type="radio" name="q-why-split-a-large-function-17" data-correct="false" data-reason="This would either fail or answer a narrower question than the one asked."><span><strong>B.</strong> It removes variables</span></label></li><li><label><input type="radio" name="q-why-split-a-large-function-17" data-correct="false" data-reason="This confuses a tool or keyword with the concept in the question."><span><strong>C.</strong> It forces recursion</span></label></li><li><label><input type="radio" name="q-why-split-a-large-function-17" data-correct="true" data-reason="Small focused functions are easier to read."><span><strong>D.</strong> To give each smaller function a clear purpose</span></label></li>
+  </ul>
+  <div class="quiz-actions">
+    <button type="button" data-check-question>Check</button>
+    <span class="feedback" aria-live="polite"></span>
+  </div>
+  <p class="reasons choice-reason" hidden></p>
+</section>
+
+<section class="question">
+  <h3>19. What is a pure function?</h3>
+  <ul class="options">
+    <li><label><input type="radio" name="q-what-is-a-pure-function-18" data-correct="false" data-reason="This describes a different language feature, not the Python behavior being tested."><span><strong>A.</strong> A function that only prints</span></label></li><li><label><input type="radio" name="q-what-is-a-pure-function-18" data-correct="false" data-reason="This would either fail or answer a narrower question than the one asked."><span><strong>B.</strong> A function with no parameters ever</span></label></li><li><label><input type="radio" name="q-what-is-a-pure-function-18" data-correct="true" data-reason="Pure functions are predictable."><span><strong>C.</strong> Same input gives same output without side effects</span></label></li><li><label><input type="radio" name="q-what-is-a-pure-function-18" data-correct="false" data-reason="This confuses a tool or keyword with the concept in the question."><span><strong>D.</strong> A function that changes globals</span></label></li>
+  </ul>
+  <div class="quiz-actions">
+    <button type="button" data-check-question>Check</button>
+    <span class="feedback" aria-live="polite"></span>
+  </div>
+  <p class="reasons choice-reason" hidden></p>
+</section>
+
+<section class="question">
+  <h3>20. When should lambda be avoided?</h3>
+  <ul class="options">
+    <li><label><input type="radio" name="q-when-should-lambda-be-avoided-19" data-correct="false" data-reason="This describes a different language feature, not the Python behavior being tested."><span><strong>A.</strong> When expression is tiny</span></label></li><li><label><input type="radio" name="q-when-should-lambda-be-avoided-19" data-correct="true" data-reason="Complex behavior deserves a named function."><span><strong>B.</strong> When logic is multi-step</span></label></li><li><label><input type="radio" name="q-when-should-lambda-be-avoided-19" data-correct="false" data-reason="This would either fail or answer a narrower question than the one asked."><span><strong>C.</strong> When used as a simple key</span></label></li><li><label><input type="radio" name="q-when-should-lambda-be-avoided-19" data-correct="false" data-reason="This confuses a tool or keyword with the concept in the question."><span><strong>D.</strong> When returning x + 1</span></label></li>
+  </ul>
+  <div class="quiz-actions">
+    <button type="button" data-check-question>Check</button>
+    <span class="feedback" aria-live="polite"></span>
+  </div>
+  <p class="reasons choice-reason" hidden></p>
+</section>
+<h2>Small Coding Challenges</h2>
+
+<section class="challenge">
+  <h3>1. Safe Average</h3>
+  <p>Return the average, or 0 for an empty list.</p>
+  <p class="answer">Reference implementation:</p>
+  <pre><code>def average(numbers):
+    if not numbers:
+        return 0
+    return sum(numbers) / len(numbers)</code></pre>
+</section>
+
+<section class="challenge">
+  <h3>2. Factorial</h3>
+  <p>Implement factorial recursively.</p>
+  <p class="answer">Reference implementation:</p>
+  <pre><code>def factorial(n):
+    if n &lt; 0:
+        raise ValueError(&quot;n must be non-negative&quot;)
+    if n in (0, 1):
+        return 1
+    return n * factorial(n - 1)</code></pre>
+</section>
+
+<section class="challenge">
+  <h3>3. Multiplier Closure</h3>
+  <p>Return a function that multiplies by a fixed factor.</p>
+  <p class="answer">Reference implementation:</p>
+  <pre><code>def make_multiplier(factor):
+    def multiply(value):
+        return value * factor
+    return multiply</code></pre>
+</section>
+
+<section class="challenge">
+  <h3>4. Sort People</h3>
+  <p>Sort a list of dicts by age.</p>
+  <p class="answer">Reference implementation:</p>
+  <pre><code>def sort_by_age(people):
+    return sorted(people, key=lambda person: person[&quot;age&quot;])</code></pre>
+</section>
+
+<section class="challenge">
+  <h3>5. Discount</h3>
+  <p>Apply a percent discount to a price.</p>
+  <p class="answer">Reference implementation:</p>
+  <pre><code>def apply_discount(price, percent):
+    return price * (1 - percent / 100)</code></pre>
+</section></main>
+</body>
+</html>

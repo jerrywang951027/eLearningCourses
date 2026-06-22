@@ -1,0 +1,479 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Modules, Files, Environments, OOP, Errors, and Projects</title>
+  <style>
+:root {
+  color-scheme: light;
+  --ink: #18202a;
+  --muted: #586575;
+  --line: #d9e0e8;
+  --panel: #ffffff;
+  --soft: #f5f7fa;
+  --accent: #176f7a;
+  --accent-2: #8a4f14;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  line-height: 1.55;
+  color: var(--ink);
+  background: #eef2f5;
+}
+header {
+  padding: 32px clamp(18px, 4vw, 56px);
+  background: #17212b;
+  color: #fff;
+}
+header a { color: #aee4ef; }
+main {
+  width: min(1120px, calc(100% - 32px));
+  margin: 28px auto 56px;
+}
+h1, h2, h3 { line-height: 1.2; }
+h1 { margin: 0 0 10px; font-size: clamp(2rem, 5vw, 3.3rem); }
+h2 { margin-top: 36px; padding-bottom: 8px; border-bottom: 1px solid var(--line); }
+h3 { margin-top: 24px; }
+.meta { color: #d9e7ed; max-width: 850px; }
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 16px;
+}
+.card, .page, .question, .challenge {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 18px;
+}
+.card a { color: var(--accent); font-weight: 700; text-decoration: none; }
+.pill {
+  display: inline-flex;
+  align-items: center;
+  min-height: 28px;
+  padding: 3px 9px;
+  border-radius: 999px;
+  background: #e8f3f5;
+  color: #125965;
+  font-size: 0.88rem;
+  font-weight: 700;
+}
+.note-pages {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 18px;
+}
+.options { list-style: none; padding: 0; margin: 12px 0; }
+.options li { padding: 7px 0; border-top: 1px solid #edf0f3; }
+.options label {
+  display: flex;
+  gap: 9px;
+  align-items: flex-start;
+  cursor: pointer;
+}
+.options input { margin-top: 5px; }
+.answer { color: var(--accent); font-weight: 800; }
+.reasons {
+  background: var(--soft);
+  border-left: 4px solid var(--accent);
+  padding: 10px 14px;
+  margin-top: 10px;
+}
+.quiz-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+button {
+  appearance: none;
+  border: 0;
+  border-radius: 6px;
+  padding: 9px 13px;
+  background: var(--accent);
+  color: #fff;
+  font-weight: 800;
+  cursor: pointer;
+}
+button:hover { background: #125965; }
+.feedback {
+  min-height: 24px;
+  font-weight: 800;
+}
+.feedback.correct { color: #0d6b3f; }
+.feedback.wrong { color: #a24118; }
+.choice-reason[hidden] { display: none; }
+pre {
+  overflow-x: auto;
+  padding: 14px;
+  border-radius: 8px;
+  background: #101820;
+  color: #eaf4f7;
+}
+code { font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace; }
+nav {
+  margin-top: 18px;
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+nav a {
+  color: #fff;
+  text-decoration: none;
+  border: 1px solid rgba(255,255,255,.28);
+  border-radius: 6px;
+  padding: 7px 10px;
+}
+.small { color: var(--muted); font-size: .95rem; }
+</style>
+  <script>
+document.addEventListener("click", (event) => {
+  const button = event.target.closest("[data-check-question]");
+  if (!button) return;
+
+  const question = button.closest(".question");
+  const selected = question.querySelector("input[type='radio']:checked");
+  const feedback = question.querySelector(".feedback");
+  const reason = question.querySelector(".choice-reason");
+
+  if (!selected) {
+    feedback.textContent = "Choose an answer first.";
+    feedback.className = "feedback wrong";
+    reason.hidden = true;
+    reason.textContent = "";
+    return;
+  }
+
+  const isCorrect = selected.dataset.correct === "true";
+  feedback.textContent = isCorrect ? "Right" : "Wrong";
+  feedback.className = isCorrect ? "feedback correct" : "feedback wrong";
+  reason.textContent = selected.dataset.reason;
+  reason.hidden = false;
+});
+</script>
+</head>
+<body>
+  <header>
+    <h1>Modules, Files, Environments, OOP, Errors, and Projects</h1>
+    <p class="meta">Study materials based on <a href="https://www.youtube.com/watch?v=qwAFL1597eM">Python Tutorial for Beginners (with mini-projects)</a> by freeCodeCamp.org. Video duration: 8:41:53.</p>
+    <nav><a href="./index.html">Index</a><a href="./01-getting-started-and-python-basics.html">Basics</a><a href="./02-operators-data-types-strings.html">Types</a><a href="./03-user-input-branching-loops.html">Flow</a><a href="./04-collections.html">Collections</a><a href="./05-functions-recursion-scope.html">Functions</a><a href="./06-modules-files-oop-projects.html">Projects</a></nav>
+  </header>
+  <main>
+<p><span class="pill">Chapter 14 - Modules, Chapter 15 - Command Line Arguments, Chapter 18 - Classes &amp; Objects, Chapter 19 - Exceptions &amp; Errors, Chapter 20 - OOP Project, Chapter 21 - Virtual Environments &amp; PIP, Chapter 22 - File Operations, Chapter 23 - Final Project</span></p>
+<h2>Notes</h2>
+<section class="note-pages">
+  <article class="page"><h3>Page 1</h3><p>Modules keep code organized. A module is a Python file that can be imported. The standard library provides modules for math, paths, JSON, command-line arguments, dates, random values, and more. Your own files can also become modules when you separate reusable logic from scripts.</p><p>Virtual environments isolate dependencies. Create one with python -m venv .venv, activate it, and install packages with pip. Recording dependencies lets another person reproduce your project.</p><p>File operations persist data. Use with open(...) or pathlib methods so files are closed properly. Prefer structured formats like JSON or CSV when data needs to be read back reliably.</p><p>Command-line programs receive input through arguments. sys.argv is the raw list; argparse is better for real tools because it defines options, help text, types, defaults, and validation.</p></article>
+  <article class="page"><h3>Page 2</h3><p>Object-oriented programming groups state and behavior. A class is a blueprint; an object is an instance. __init__ initializes state, self refers to the current instance, attributes store data, and methods define behavior.</p><p>Exceptions communicate failure. Catch specific exceptions such as ValueError, KeyError, and FileNotFoundError. Raise exceptions when a function cannot honestly complete its contract.</p><p>Projects combine all course pieces: data structures, functions, loops, modules, files, classes, and error handling. Separate core logic from input/output so the logic can be tested without a user sitting at the keyboard.</p><p>Build the smallest working version first, then add features. When code becomes hard to change, look for repeated blocks, hidden global state, and functions or classes with too many responsibilities.</p></article>
+</section>
+<h2>Quiz: 20 Multiple-Choice Questions</h2>
+
+<section class="question">
+  <h3>1. What is a module?</h3>
+  <ul class="options">
+    <li><label><input type="radio" name="q-what-is-a-module-0" data-correct="false" data-reason="This describes a different language feature, not the Python behavior being tested."><span><strong>A.</strong> Only a folder</span></label></li><li><label><input type="radio" name="q-what-is-a-module-0" data-correct="true" data-reason="A .py file can define importable names."><span><strong>B.</strong> A Python file that can be imported</span></label></li><li><label><input type="radio" name="q-what-is-a-module-0" data-correct="false" data-reason="This would either fail or answer a narrower question than the one asked."><span><strong>C.</strong> Only a website</span></label></li><li><label><input type="radio" name="q-what-is-a-module-0" data-correct="false" data-reason="This confuses a tool or keyword with the concept in the question."><span><strong>D.</strong> A syntax error</span></label></li>
+  </ul>
+  <div class="quiz-actions">
+    <button type="button" data-check-question>Check</button>
+    <span class="feedback" aria-live="polite"></span>
+  </div>
+  <p class="reasons choice-reason" hidden></p>
+</section>
+
+<section class="question">
+  <h3>2. What does import math do?</h3>
+  <ul class="options">
+    <li><label><input type="radio" name="q-what-does-import-math-do-1" data-correct="true" data-reason="import makes module names available."><span><strong>A.</strong> Loads the math module namespace</span></label></li><li><label><input type="radio" name="q-what-does-import-math-do-1" data-correct="false" data-reason="This describes a different language feature, not the Python behavior being tested."><span><strong>B.</strong> Installs math online</span></label></li><li><label><input type="radio" name="q-what-does-import-math-do-1" data-correct="false" data-reason="This would either fail or answer a narrower question than the one asked."><span><strong>C.</strong> Deletes math</span></label></li><li><label><input type="radio" name="q-what-does-import-math-do-1" data-correct="false" data-reason="This confuses a tool or keyword with the concept in the question."><span><strong>D.</strong> Runs pip</span></label></li>
+  </ul>
+  <div class="quiz-actions">
+    <button type="button" data-check-question>Check</button>
+    <span class="feedback" aria-live="polite"></span>
+  </div>
+  <p class="reasons choice-reason" hidden></p>
+</section>
+
+<section class="question">
+  <h3>3. Which module parses CLI options?</h3>
+  <ul class="options">
+    <li><label><input type="radio" name="q-which-module-parses-cli-options-2" data-correct="false" data-reason="This describes a different language feature, not the Python behavior being tested."><span><strong>A.</strong> random</span></label></li><li><label><input type="radio" name="q-which-module-parses-cli-options-2" data-correct="false" data-reason="This would either fail or answer a narrower question than the one asked."><span><strong>B.</strong> print</span></label></li><li><label><input type="radio" name="q-which-module-parses-cli-options-2" data-correct="false" data-reason="This confuses a tool or keyword with the concept in the question."><span><strong>C.</strong> venv only</span></label></li><li><label><input type="radio" name="q-which-module-parses-cli-options-2" data-correct="true" data-reason="argparse builds command-line interfaces."><span><strong>D.</strong> argparse</span></label></li>
+  </ul>
+  <div class="quiz-actions">
+    <button type="button" data-check-question>Check</button>
+    <span class="feedback" aria-live="polite"></span>
+  </div>
+  <p class="reasons choice-reason" hidden></p>
+</section>
+
+<section class="question">
+  <h3>4. What is sys.argv[0]?</h3>
+  <ul class="options">
+    <li><label><input type="radio" name="q-what-is-sys-argv-0-3" data-correct="false" data-reason="This describes a different language feature, not the Python behavior being tested."><span><strong>A.</strong> The first user argument</span></label></li><li><label><input type="radio" name="q-what-is-sys-argv-0-3" data-correct="false" data-reason="This would either fail or answer a narrower question than the one asked."><span><strong>B.</strong> The Python version</span></label></li><li><label><input type="radio" name="q-what-is-sys-argv-0-3" data-correct="true" data-reason="argv[0] is the invocation path."><span><strong>C.</strong> The script name/path</span></label></li><li><label><input type="radio" name="q-what-is-sys-argv-0-3" data-correct="false" data-reason="This confuses a tool or keyword with the concept in the question."><span><strong>D.</strong> A package</span></label></li>
+  </ul>
+  <div class="quiz-actions">
+    <button type="button" data-check-question>Check</button>
+    <span class="feedback" aria-live="polite"></span>
+  </div>
+  <p class="reasons choice-reason" hidden></p>
+</section>
+
+<section class="question">
+  <h3>5. Why use a virtual environment?</h3>
+  <ul class="options">
+    <li><label><input type="radio" name="q-why-use-a-virtual-environment-4" data-correct="false" data-reason="This describes a different language feature, not the Python behavior being tested."><span><strong>A.</strong> To replace Python syntax</span></label></li><li><label><input type="radio" name="q-why-use-a-virtual-environment-4" data-correct="true" data-reason="venv keeps project packages separate."><span><strong>B.</strong> To isolate project dependencies</span></label></li><li><label><input type="radio" name="q-why-use-a-virtual-environment-4" data-correct="false" data-reason="This would either fail or answer a narrower question than the one asked."><span><strong>C.</strong> To delete pip</span></label></li><li><label><input type="radio" name="q-why-use-a-virtual-environment-4" data-correct="false" data-reason="This confuses a tool or keyword with the concept in the question."><span><strong>D.</strong> To make code impossible</span></label></li>
+  </ul>
+  <div class="quiz-actions">
+    <button type="button" data-check-question>Check</button>
+    <span class="feedback" aria-live="polite"></span>
+  </div>
+  <p class="reasons choice-reason" hidden></p>
+</section>
+
+<section class="question">
+  <h3>6. Which creates a venv?</h3>
+  <ul class="options">
+    <li><label><input type="radio" name="q-which-creates-a-venv-5" data-correct="true" data-reason="venv is executed as a Python module."><span><strong>A.</strong> python -m venv .venv</span></label></li><li><label><input type="radio" name="q-which-creates-a-venv-5" data-correct="false" data-reason="This describes a different language feature, not the Python behavior being tested."><span><strong>B.</strong> python install .venv</span></label></li><li><label><input type="radio" name="q-which-creates-a-venv-5" data-correct="false" data-reason="This would either fail or answer a narrower question than the one asked."><span><strong>C.</strong> pip venv start</span></label></li><li><label><input type="radio" name="q-which-creates-a-venv-5" data-correct="false" data-reason="This confuses a tool or keyword with the concept in the question."><span><strong>D.</strong> import .venv</span></label></li>
+  </ul>
+  <div class="quiz-actions">
+    <button type="button" data-check-question>Check</button>
+    <span class="feedback" aria-live="polite"></span>
+  </div>
+  <p class="reasons choice-reason" hidden></p>
+</section>
+
+<section class="question">
+  <h3>7. What does pip do?</h3>
+  <ul class="options">
+    <li><label><input type="radio" name="q-what-does-pip-do-6" data-correct="false" data-reason="This describes a different language feature, not the Python behavior being tested."><span><strong>A.</strong> Runs if statements</span></label></li><li><label><input type="radio" name="q-what-does-pip-do-6" data-correct="false" data-reason="This would either fail or answer a narrower question than the one asked."><span><strong>B.</strong> Formats strings</span></label></li><li><label><input type="radio" name="q-what-does-pip-do-6" data-correct="false" data-reason="This confuses a tool or keyword with the concept in the question."><span><strong>C.</strong> Creates loops</span></label></li><li><label><input type="radio" name="q-what-does-pip-do-6" data-correct="true" data-reason="pip manages Python dependencies."><span><strong>D.</strong> Installs and manages packages</span></label></li>
+  </ul>
+  <div class="quiz-actions">
+    <button type="button" data-check-question>Check</button>
+    <span class="feedback" aria-live="polite"></span>
+  </div>
+  <p class="reasons choice-reason" hidden></p>
+</section>
+
+<section class="question">
+  <h3>8. Why use with open(...) as f?</h3>
+  <ul class="options">
+    <li><label><input type="radio" name="q-why-use-with-open-as-f-7" data-correct="false" data-reason="This describes a different language feature, not the Python behavior being tested."><span><strong>A.</strong> It never reads files</span></label></li><li><label><input type="radio" name="q-why-use-with-open-as-f-7" data-correct="false" data-reason="This would either fail or answer a narrower question than the one asked."><span><strong>B.</strong> It imports modules</span></label></li><li><label><input type="radio" name="q-why-use-with-open-as-f-7" data-correct="true" data-reason="Context managers handle cleanup."><span><strong>C.</strong> It closes the file automatically</span></label></li><li><label><input type="radio" name="q-why-use-with-open-as-f-7" data-correct="false" data-reason="This confuses a tool or keyword with the concept in the question."><span><strong>D.</strong> It converts everything to lists</span></label></li>
+  </ul>
+  <div class="quiz-actions">
+    <button type="button" data-check-question>Check</button>
+    <span class="feedback" aria-live="polite"></span>
+  </div>
+  <p class="reasons choice-reason" hidden></p>
+</section>
+
+<section class="question">
+  <h3>9. What does file mode w do?</h3>
+  <ul class="options">
+    <li><label><input type="radio" name="q-what-does-file-mode-w-do-8" data-correct="false" data-reason="This describes a different language feature, not the Python behavior being tested."><span><strong>A.</strong> Reads only</span></label></li><li><label><input type="radio" name="q-what-does-file-mode-w-do-8" data-correct="true" data-reason="w truncates or creates for writing."><span><strong>B.</strong> Writes and replaces existing content</span></label></li><li><label><input type="radio" name="q-what-does-file-mode-w-do-8" data-correct="false" data-reason="This would either fail or answer a narrower question than the one asked."><span><strong>C.</strong> Appends only</span></label></li><li><label><input type="radio" name="q-what-does-file-mode-w-do-8" data-correct="false" data-reason="This confuses a tool or keyword with the concept in the question."><span><strong>D.</strong> Binary reads only</span></label></li>
+  </ul>
+  <div class="quiz-actions">
+    <button type="button" data-check-question>Check</button>
+    <span class="feedback" aria-live="polite"></span>
+  </div>
+  <p class="reasons choice-reason" hidden></p>
+</section>
+
+<section class="question">
+  <h3>10. What does file mode a do?</h3>
+  <ul class="options">
+    <li><label><input type="radio" name="q-what-does-file-mode-a-do-9" data-correct="true" data-reason="a writes after existing content."><span><strong>A.</strong> Appends to the end</span></label></li><li><label><input type="radio" name="q-what-does-file-mode-a-do-9" data-correct="false" data-reason="This describes a different language feature, not the Python behavior being tested."><span><strong>B.</strong> Erases then reads</span></label></li><li><label><input type="radio" name="q-what-does-file-mode-a-do-9" data-correct="false" data-reason="This would either fail or answer a narrower question than the one asked."><span><strong>C.</strong> Imports a file</span></label></li><li><label><input type="radio" name="q-what-does-file-mode-a-do-9" data-correct="false" data-reason="This confuses a tool or keyword with the concept in the question."><span><strong>D.</strong> Makes a directory</span></label></li>
+  </ul>
+  <div class="quiz-actions">
+    <button type="button" data-check-question>Check</button>
+    <span class="feedback" aria-live="polite"></span>
+  </div>
+  <p class="reasons choice-reason" hidden></p>
+</section>
+
+<section class="question">
+  <h3>11. Which module handles JSON?</h3>
+  <ul class="options">
+    <li><label><input type="radio" name="q-which-module-handles-json-10" data-correct="false" data-reason="This describes a different language feature, not the Python behavior being tested."><span><strong>A.</strong> math</span></label></li><li><label><input type="radio" name="q-which-module-handles-json-10" data-correct="false" data-reason="This would either fail or answer a narrower question than the one asked."><span><strong>B.</strong> this</span></label></li><li><label><input type="radio" name="q-which-module-handles-json-10" data-correct="false" data-reason="This confuses a tool or keyword with the concept in the question."><span><strong>C.</strong> keyword only</span></label></li><li><label><input type="radio" name="q-which-module-handles-json-10" data-correct="true" data-reason="json reads and writes JSON data."><span><strong>D.</strong> json</span></label></li>
+  </ul>
+  <div class="quiz-actions">
+    <button type="button" data-check-question>Check</button>
+    <span class="feedback" aria-live="polite"></span>
+  </div>
+  <p class="reasons choice-reason" hidden></p>
+</section>
+
+<section class="question">
+  <h3>12. Why use pathlib?</h3>
+  <ul class="options">
+    <li><label><input type="radio" name="q-why-use-pathlib-11" data-correct="false" data-reason="This describes a different language feature, not the Python behavior being tested."><span><strong>A.</strong> It removes all errors</span></label></li><li><label><input type="radio" name="q-why-use-pathlib-11" data-correct="false" data-reason="This would either fail or answer a narrower question than the one asked."><span><strong>B.</strong> It only works online</span></label></li><li><label><input type="radio" name="q-why-use-pathlib-11" data-correct="true" data-reason="Path objects make filesystem code clearer."><span><strong>C.</strong> Cleaner path joining and helpers</span></label></li><li><label><input type="radio" name="q-why-use-pathlib-11" data-correct="false" data-reason="This confuses a tool or keyword with the concept in the question."><span><strong>D.</strong> It replaces all functions</span></label></li>
+  </ul>
+  <div class="quiz-actions">
+    <button type="button" data-check-question>Check</button>
+    <span class="feedback" aria-live="polite"></span>
+  </div>
+  <p class="reasons choice-reason" hidden></p>
+</section>
+
+<section class="question">
+  <h3>13. What is a class?</h3>
+  <ul class="options">
+    <li><label><input type="radio" name="q-what-is-a-class-12" data-correct="false" data-reason="This describes a different language feature, not the Python behavior being tested."><span><strong>A.</strong> Only a loop</span></label></li><li><label><input type="radio" name="q-what-is-a-class-12" data-correct="true" data-reason="Classes define object state and behavior."><span><strong>B.</strong> A blueprint for objects</span></label></li><li><label><input type="radio" name="q-what-is-a-class-12" data-correct="false" data-reason="This would either fail or answer a narrower question than the one asked."><span><strong>C.</strong> Only a file</span></label></li><li><label><input type="radio" name="q-what-is-a-class-12" data-correct="false" data-reason="This confuses a tool or keyword with the concept in the question."><span><strong>D.</strong> A package installer</span></label></li>
+  </ul>
+  <div class="quiz-actions">
+    <button type="button" data-check-question>Check</button>
+    <span class="feedback" aria-live="polite"></span>
+  </div>
+  <p class="reasons choice-reason" hidden></p>
+</section>
+
+<section class="question">
+  <h3>14. What is an object?</h3>
+  <ul class="options">
+    <li><label><input type="radio" name="q-what-is-an-object-13" data-correct="true" data-reason="Objects are concrete values made from classes."><span><strong>A.</strong> An instance of a class</span></label></li><li><label><input type="radio" name="q-what-is-an-object-13" data-correct="false" data-reason="This describes a different language feature, not the Python behavior being tested."><span><strong>B.</strong> Only a string</span></label></li><li><label><input type="radio" name="q-what-is-an-object-13" data-correct="false" data-reason="This would either fail or answer a narrower question than the one asked."><span><strong>C.</strong> A syntax error</span></label></li><li><label><input type="radio" name="q-what-is-an-object-13" data-correct="false" data-reason="This confuses a tool or keyword with the concept in the question."><span><strong>D.</strong> A comment</span></label></li>
+  </ul>
+  <div class="quiz-actions">
+    <button type="button" data-check-question>Check</button>
+    <span class="feedback" aria-live="polite"></span>
+  </div>
+  <p class="reasons choice-reason" hidden></p>
+</section>
+
+<section class="question">
+  <h3>15. What does self refer to?</h3>
+  <ul class="options">
+    <li><label><input type="radio" name="q-what-does-self-refer-to-14" data-correct="false" data-reason="This describes a different language feature, not the Python behavior being tested."><span><strong>A.</strong> The Python interpreter</span></label></li><li><label><input type="radio" name="q-what-does-self-refer-to-14" data-correct="false" data-reason="This would either fail or answer a narrower question than the one asked."><span><strong>B.</strong> The terminal</span></label></li><li><label><input type="radio" name="q-what-does-self-refer-to-14" data-correct="false" data-reason="This confuses a tool or keyword with the concept in the question."><span><strong>C.</strong> The file only</span></label></li><li><label><input type="radio" name="q-what-does-self-refer-to-14" data-correct="true" data-reason="self gives methods access to instance attributes."><span><strong>D.</strong> The current instance</span></label></li>
+  </ul>
+  <div class="quiz-actions">
+    <button type="button" data-check-question>Check</button>
+    <span class="feedback" aria-live="polite"></span>
+  </div>
+  <p class="reasons choice-reason" hidden></p>
+</section>
+
+<section class="question">
+  <h3>16. What is __init__ for?</h3>
+  <ul class="options">
+    <li><label><input type="radio" name="q-what-is-init-for-15" data-correct="false" data-reason="This describes a different language feature, not the Python behavior being tested."><span><strong>A.</strong> Deleting modules</span></label></li><li><label><input type="radio" name="q-what-is-init-for-15" data-correct="false" data-reason="This would either fail or answer a narrower question than the one asked."><span><strong>B.</strong> Catching every error</span></label></li><li><label><input type="radio" name="q-what-is-init-for-15" data-correct="true" data-reason="__init__ runs when a new instance is created."><span><strong>C.</strong> Initializing new objects</span></label></li><li><label><input type="radio" name="q-what-is-init-for-15" data-correct="false" data-reason="This confuses a tool or keyword with the concept in the question."><span><strong>D.</strong> Installing packages</span></label></li>
+  </ul>
+  <div class="quiz-actions">
+    <button type="button" data-check-question>Check</button>
+    <span class="feedback" aria-live="polite"></span>
+  </div>
+  <p class="reasons choice-reason" hidden></p>
+</section>
+
+<section class="question">
+  <h3>17. Which exception fits invalid numeric input?</h3>
+  <ul class="options">
+    <li><label><input type="radio" name="q-which-exception-fits-invalid-numeric-input-16" data-correct="false" data-reason="This describes a different language feature, not the Python behavior being tested."><span><strong>A.</strong> KeyError only</span></label></li><li><label><input type="radio" name="q-which-exception-fits-invalid-numeric-input-16" data-correct="true" data-reason="int('abc') raises ValueError."><span><strong>B.</strong> ValueError</span></label></li><li><label><input type="radio" name="q-which-exception-fits-invalid-numeric-input-16" data-correct="false" data-reason="This would either fail or answer a narrower question than the one asked."><span><strong>C.</strong> ImportError always</span></label></li><li><label><input type="radio" name="q-which-exception-fits-invalid-numeric-input-16" data-correct="false" data-reason="This confuses a tool or keyword with the concept in the question."><span><strong>D.</strong> StopIteration only</span></label></li>
+  </ul>
+  <div class="quiz-actions">
+    <button type="button" data-check-question>Check</button>
+    <span class="feedback" aria-live="polite"></span>
+  </div>
+  <p class="reasons choice-reason" hidden></p>
+</section>
+
+<section class="question">
+  <h3>18. Why catch specific exceptions?</h3>
+  <ul class="options">
+    <li><label><input type="radio" name="q-why-catch-specific-exceptions-17" data-correct="true" data-reason="Specific catches keep unexpected failures visible."><span><strong>A.</strong> To avoid hiding unrelated bugs</span></label></li><li><label><input type="radio" name="q-why-catch-specific-exceptions-17" data-correct="false" data-reason="This describes a different language feature, not the Python behavior being tested."><span><strong>B.</strong> Because broad catches are faster</span></label></li><li><label><input type="radio" name="q-why-catch-specific-exceptions-17" data-correct="false" data-reason="This would either fail or answer a narrower question than the one asked."><span><strong>C.</strong> Because Python forbids broad catches</span></label></li><li><label><input type="radio" name="q-why-catch-specific-exceptions-17" data-correct="false" data-reason="This confuses a tool or keyword with the concept in the question."><span><strong>D.</strong> To remove try blocks</span></label></li>
+  </ul>
+  <div class="quiz-actions">
+    <button type="button" data-check-question>Check</button>
+    <span class="feedback" aria-live="polite"></span>
+  </div>
+  <p class="reasons choice-reason" hidden></p>
+</section>
+
+<section class="question">
+  <h3>19. Why separate core logic from input?</h3>
+  <ul class="options">
+    <li><label><input type="radio" name="q-why-separate-core-logic-from-input-18" data-correct="false" data-reason="This describes a different language feature, not the Python behavior being tested."><span><strong>A.</strong> Input becomes impossible</span></label></li><li><label><input type="radio" name="q-why-separate-core-logic-from-input-18" data-correct="false" data-reason="This would either fail or answer a narrower question than the one asked."><span><strong>B.</strong> Files cannot be read</span></label></li><li><label><input type="radio" name="q-why-separate-core-logic-from-input-18" data-correct="false" data-reason="This confuses a tool or keyword with the concept in the question."><span><strong>C.</strong> Classes stop working</span></label></li><li><label><input type="radio" name="q-why-separate-core-logic-from-input-18" data-correct="true" data-reason="Tests can call pure logic directly."><span><strong>D.</strong> Core logic becomes easier to test</span></label></li>
+  </ul>
+  <div class="quiz-actions">
+    <button type="button" data-check-question>Check</button>
+    <span class="feedback" aria-live="polite"></span>
+  </div>
+  <p class="reasons choice-reason" hidden></p>
+</section>
+
+<section class="question">
+  <h3>20. What is the smallest working version strategy?</h3>
+  <ul class="options">
+    <li><label><input type="radio" name="q-what-is-the-smallest-working-version-strategy-19" data-correct="false" data-reason="This describes a different language feature, not the Python behavior being tested."><span><strong>A.</strong> Write every feature before running</span></label></li><li><label><input type="radio" name="q-what-is-the-smallest-working-version-strategy-19" data-correct="false" data-reason="This would either fail or answer a narrower question than the one asked."><span><strong>B.</strong> Avoid testing until the end</span></label></li><li><label><input type="radio" name="q-what-is-the-smallest-working-version-strategy-19" data-correct="true" data-reason="Incremental work gives faster feedback."><span><strong>C.</strong> Build one useful slice, then add features</span></label></li><li><label><input type="radio" name="q-what-is-the-smallest-working-version-strategy-19" data-correct="false" data-reason="This confuses a tool or keyword with the concept in the question."><span><strong>D.</strong> Optimize everything first</span></label></li>
+  </ul>
+  <div class="quiz-actions">
+    <button type="button" data-check-question>Check</button>
+    <span class="feedback" aria-live="polite"></span>
+  </div>
+  <p class="reasons choice-reason" hidden></p>
+</section>
+<h2>Small Coding Challenges</h2>
+
+<section class="challenge">
+  <h3>1. Read Lines</h3>
+  <p>Return stripped non-empty lines from a file.</p>
+  <p class="answer">Reference implementation:</p>
+  <pre><code>from pathlib import Path
+
+def read_nonempty_lines(path):
+    return [line.strip() for line in Path(path).read_text().splitlines() if line.strip()]</code></pre>
+</section>
+
+<section class="challenge">
+  <h3>2. Write JSON</h3>
+  <p>Write a dictionary to JSON with indentation.</p>
+  <p class="answer">Reference implementation:</p>
+  <pre><code>import json
+from pathlib import Path
+
+def write_json(path, data):
+    Path(path).write_text(json.dumps(data, indent=2))</code></pre>
+</section>
+
+<section class="challenge">
+  <h3>3. Bank Account</h3>
+  <p>Create a class with deposit and withdraw validation.</p>
+  <p class="answer">Reference implementation:</p>
+  <pre><code>class BankAccount:
+    def __init__(self, owner, balance=0):
+        self.owner = owner
+        self.balance = balance
+
+    def deposit(self, amount):
+        if amount &lt;= 0:
+            raise ValueError(&quot;deposit amount must be positive&quot;)
+        self.balance += amount
+
+    def withdraw(self, amount):
+        if amount &lt;= 0:
+            raise ValueError(&quot;withdraw amount must be positive&quot;)
+        if amount &gt; self.balance:
+            raise ValueError(&quot;insufficient funds&quot;)
+        self.balance -= amount</code></pre>
+</section>
+
+<section class="challenge">
+  <h3>4. Safe Integer</h3>
+  <p>Convert text to int, returning None for invalid values.</p>
+  <p class="answer">Reference implementation:</p>
+  <pre><code>def safe_int(text):
+    try:
+        return int(text)
+    except ValueError:
+        return None</code></pre>
+</section>
+
+<section class="challenge">
+  <h3>5. Project Boundary</h3>
+  <p>Separate parsing from adding logic.</p>
+  <p class="answer">Reference implementation:</p>
+  <pre><code>def add(a, b):
+    return a + b
+
+def parse_and_add(left_text, right_text):
+    return add(int(left_text), int(right_text))</code></pre>
+</section></main>
+</body>
+</html>
