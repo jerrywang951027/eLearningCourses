@@ -106,6 +106,28 @@ button:hover { background: #125965; }
 .feedback.correct { color: #0d6b3f; }
 .feedback.wrong { color: #a24118; }
 .choice-reason[hidden] { display: none; }
+.code-entry {
+  width: 100%;
+  min-height: 190px;
+  margin-top: 10px;
+  padding: 12px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  resize: vertical;
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: var(--ink);
+  background: #fbfcfd;
+}
+.challenge-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin: 12px 0;
+}
+.solution[hidden] { display: none; }
 pre {
   overflow-x: auto;
   padding: 14px;
@@ -152,6 +174,17 @@ document.addEventListener("click", (event) => {
   feedback.className = isCorrect ? "feedback correct" : "feedback wrong";
   reason.textContent = selected.dataset.reason;
   reason.hidden = false;
+});
+
+document.addEventListener("click", (event) => {
+  const button = event.target.closest("[data-reveal-solution]");
+  if (!button) return;
+
+  const challenge = button.closest(".challenge");
+  const solution = challenge.querySelector(".solution");
+  const isHidden = solution.hidden;
+  solution.hidden = !isHidden;
+  button.textContent = isHidden ? "Hide reference implementation" : "Reveal reference implementation";
 });
 </script>
 </head>
@@ -414,29 +447,55 @@ document.addEventListener("click", (event) => {
 <section class="challenge">
   <h3>1. Read Lines</h3>
   <p>Return stripped non-empty lines from a file.</p>
-  <p class="answer">Reference implementation:</p>
-  <pre><code>from pathlib import Path
+  <label>
+    <span class="answer">Your code:</span>
+    <textarea class="code-entry" spellcheck="false" autocapitalize="off" autocomplete="off" placeholder="Write your Python solution here..."></textarea>
+  </label>
+  <div class="challenge-actions">
+    <button type="button" data-reveal-solution>Reveal reference implementation</button>
+  </div>
+  <div class="solution" hidden>
+    <p class="answer">Reference implementation:</p>
+    <pre><code>from pathlib import Path
 
 def read_nonempty_lines(path):
     return [line.strip() for line in Path(path).read_text().splitlines() if line.strip()]</code></pre>
+  </div>
 </section>
 
 <section class="challenge">
   <h3>2. Write JSON</h3>
   <p>Write a dictionary to JSON with indentation.</p>
-  <p class="answer">Reference implementation:</p>
-  <pre><code>import json
+  <label>
+    <span class="answer">Your code:</span>
+    <textarea class="code-entry" spellcheck="false" autocapitalize="off" autocomplete="off" placeholder="Write your Python solution here..."></textarea>
+  </label>
+  <div class="challenge-actions">
+    <button type="button" data-reveal-solution>Reveal reference implementation</button>
+  </div>
+  <div class="solution" hidden>
+    <p class="answer">Reference implementation:</p>
+    <pre><code>import json
 from pathlib import Path
 
 def write_json(path, data):
     Path(path).write_text(json.dumps(data, indent=2))</code></pre>
+  </div>
 </section>
 
 <section class="challenge">
   <h3>3. Bank Account</h3>
   <p>Create a class with deposit and withdraw validation.</p>
-  <p class="answer">Reference implementation:</p>
-  <pre><code>class BankAccount:
+  <label>
+    <span class="answer">Your code:</span>
+    <textarea class="code-entry" spellcheck="false" autocapitalize="off" autocomplete="off" placeholder="Write your Python solution here..."></textarea>
+  </label>
+  <div class="challenge-actions">
+    <button type="button" data-reveal-solution>Reveal reference implementation</button>
+  </div>
+  <div class="solution" hidden>
+    <p class="answer">Reference implementation:</p>
+    <pre><code>class BankAccount:
     def __init__(self, owner, balance=0):
         self.owner = owner
         self.balance = balance
@@ -452,28 +511,47 @@ def write_json(path, data):
         if amount &gt; self.balance:
             raise ValueError(&quot;insufficient funds&quot;)
         self.balance -= amount</code></pre>
+  </div>
 </section>
 
 <section class="challenge">
   <h3>4. Safe Integer</h3>
   <p>Convert text to int, returning None for invalid values.</p>
-  <p class="answer">Reference implementation:</p>
-  <pre><code>def safe_int(text):
+  <label>
+    <span class="answer">Your code:</span>
+    <textarea class="code-entry" spellcheck="false" autocapitalize="off" autocomplete="off" placeholder="Write your Python solution here..."></textarea>
+  </label>
+  <div class="challenge-actions">
+    <button type="button" data-reveal-solution>Reveal reference implementation</button>
+  </div>
+  <div class="solution" hidden>
+    <p class="answer">Reference implementation:</p>
+    <pre><code>def safe_int(text):
     try:
         return int(text)
     except ValueError:
         return None</code></pre>
+  </div>
 </section>
 
 <section class="challenge">
   <h3>5. Project Boundary</h3>
   <p>Separate parsing from adding logic.</p>
-  <p class="answer">Reference implementation:</p>
-  <pre><code>def add(a, b):
+  <label>
+    <span class="answer">Your code:</span>
+    <textarea class="code-entry" spellcheck="false" autocapitalize="off" autocomplete="off" placeholder="Write your Python solution here..."></textarea>
+  </label>
+  <div class="challenge-actions">
+    <button type="button" data-reveal-solution>Reveal reference implementation</button>
+  </div>
+  <div class="solution" hidden>
+    <p class="answer">Reference implementation:</p>
+    <pre><code>def add(a, b):
     return a + b
 
 def parse_and_add(left_text, right_text):
     return add(int(left_text), int(right_text))</code></pre>
+  </div>
 </section></main>
 </body>
 </html>

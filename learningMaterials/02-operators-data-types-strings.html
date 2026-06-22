@@ -106,6 +106,28 @@ button:hover { background: #125965; }
 .feedback.correct { color: #0d6b3f; }
 .feedback.wrong { color: #a24118; }
 .choice-reason[hidden] { display: none; }
+.code-entry {
+  width: 100%;
+  min-height: 190px;
+  margin-top: 10px;
+  padding: 12px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  resize: vertical;
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: var(--ink);
+  background: #fbfcfd;
+}
+.challenge-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin: 12px 0;
+}
+.solution[hidden] { display: none; }
 pre {
   overflow-x: auto;
   padding: 14px;
@@ -152,6 +174,17 @@ document.addEventListener("click", (event) => {
   feedback.className = isCorrect ? "feedback correct" : "feedback wrong";
   reason.textContent = selected.dataset.reason;
   reason.hidden = false;
+});
+
+document.addEventListener("click", (event) => {
+  const button = event.target.closest("[data-reveal-solution]");
+  if (!button) return;
+
+  const challenge = button.closest(".challenge");
+  const solution = challenge.querySelector(".solution");
+  const isHidden = solution.hidden;
+  solution.hidden = !isHidden;
+  button.textContent = isHidden ? "Hide reference implementation" : "Reveal reference implementation";
 });
 </script>
 </head>
@@ -414,41 +447,86 @@ document.addEventListener("click", (event) => {
 <section class="challenge">
   <h3>1. Even Check</h3>
   <p>Write is_even(n) using modulo.</p>
-  <p class="answer">Reference implementation:</p>
-  <pre><code>def is_even(n):
+  <label>
+    <span class="answer">Your code:</span>
+    <textarea class="code-entry" spellcheck="false" autocapitalize="off" autocomplete="off" placeholder="Write your Python solution here..."></textarea>
+  </label>
+  <div class="challenge-actions">
+    <button type="button" data-reveal-solution>Reveal reference implementation</button>
+  </div>
+  <div class="solution" hidden>
+    <p class="answer">Reference implementation:</p>
+    <pre><code>def is_even(n):
     return n % 2 == 0</code></pre>
+  </div>
 </section>
 
 <section class="challenge">
   <h3>2. Price Formatter</h3>
   <p>Return a dollar amount with two decimal places.</p>
-  <p class="answer">Reference implementation:</p>
-  <pre><code>def format_price(amount):
+  <label>
+    <span class="answer">Your code:</span>
+    <textarea class="code-entry" spellcheck="false" autocapitalize="off" autocomplete="off" placeholder="Write your Python solution here..."></textarea>
+  </label>
+  <div class="challenge-actions">
+    <button type="button" data-reveal-solution>Reveal reference implementation</button>
+  </div>
+  <div class="solution" hidden>
+    <p class="answer">Reference implementation:</p>
+    <pre><code>def format_price(amount):
     return f&quot;${amount:.2f}&quot;</code></pre>
+  </div>
 </section>
 
 <section class="challenge">
   <h3>3. Initials</h3>
   <p>Return initials from first and last names.</p>
-  <p class="answer">Reference implementation:</p>
-  <pre><code>def initials(first, last):
+  <label>
+    <span class="answer">Your code:</span>
+    <textarea class="code-entry" spellcheck="false" autocapitalize="off" autocomplete="off" placeholder="Write your Python solution here..."></textarea>
+  </label>
+  <div class="challenge-actions">
+    <button type="button" data-reveal-solution>Reveal reference implementation</button>
+  </div>
+  <div class="solution" hidden>
+    <p class="answer">Reference implementation:</p>
+    <pre><code>def initials(first, last):
     return f&quot;{first[0].upper()}.{last[0].upper()}.&quot;</code></pre>
+  </div>
 </section>
 
 <section class="challenge">
   <h3>4. Clean Username</h3>
   <p>Trim spaces and lowercase a username.</p>
-  <p class="answer">Reference implementation:</p>
-  <pre><code>def clean_username(username):
+  <label>
+    <span class="answer">Your code:</span>
+    <textarea class="code-entry" spellcheck="false" autocapitalize="off" autocomplete="off" placeholder="Write your Python solution here..."></textarea>
+  </label>
+  <div class="challenge-actions">
+    <button type="button" data-reveal-solution>Reveal reference implementation</button>
+  </div>
+  <div class="solution" hidden>
+    <p class="answer">Reference implementation:</p>
+    <pre><code>def clean_username(username):
     return username.strip().lower()</code></pre>
+  </div>
 </section>
 
 <section class="challenge">
   <h3>5. Circle Area</h3>
   <p>Compute area from radius.</p>
-  <p class="answer">Reference implementation:</p>
-  <pre><code>def circle_area(radius):
+  <label>
+    <span class="answer">Your code:</span>
+    <textarea class="code-entry" spellcheck="false" autocapitalize="off" autocomplete="off" placeholder="Write your Python solution here..."></textarea>
+  </label>
+  <div class="challenge-actions">
+    <button type="button" data-reveal-solution>Reveal reference implementation</button>
+  </div>
+  <div class="solution" hidden>
+    <p class="answer">Reference implementation:</p>
+    <pre><code>def circle_area(radius):
     return 3.14159 * radius ** 2</code></pre>
+  </div>
 </section></main>
 </body>
 </html>

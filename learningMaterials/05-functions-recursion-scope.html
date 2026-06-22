@@ -106,6 +106,28 @@ button:hover { background: #125965; }
 .feedback.correct { color: #0d6b3f; }
 .feedback.wrong { color: #a24118; }
 .choice-reason[hidden] { display: none; }
+.code-entry {
+  width: 100%;
+  min-height: 190px;
+  margin-top: 10px;
+  padding: 12px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  resize: vertical;
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: var(--ink);
+  background: #fbfcfd;
+}
+.challenge-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin: 12px 0;
+}
+.solution[hidden] { display: none; }
 pre {
   overflow-x: auto;
   padding: 14px;
@@ -152,6 +174,17 @@ document.addEventListener("click", (event) => {
   feedback.className = isCorrect ? "feedback correct" : "feedback wrong";
   reason.textContent = selected.dataset.reason;
   reason.hidden = false;
+});
+
+document.addEventListener("click", (event) => {
+  const button = event.target.closest("[data-reveal-solution]");
+  if (!button) return;
+
+  const challenge = button.closest(".challenge");
+  const solution = challenge.querySelector(".solution");
+  const isHidden = solution.hidden;
+  solution.hidden = !isHidden;
+  button.textContent = isHidden ? "Hide reference implementation" : "Reveal reference implementation";
 });
 </script>
 </head>
@@ -414,49 +447,94 @@ document.addEventListener("click", (event) => {
 <section class="challenge">
   <h3>1. Safe Average</h3>
   <p>Return the average, or 0 for an empty list.</p>
-  <p class="answer">Reference implementation:</p>
-  <pre><code>def average(numbers):
+  <label>
+    <span class="answer">Your code:</span>
+    <textarea class="code-entry" spellcheck="false" autocapitalize="off" autocomplete="off" placeholder="Write your Python solution here..."></textarea>
+  </label>
+  <div class="challenge-actions">
+    <button type="button" data-reveal-solution>Reveal reference implementation</button>
+  </div>
+  <div class="solution" hidden>
+    <p class="answer">Reference implementation:</p>
+    <pre><code>def average(numbers):
     if not numbers:
         return 0
     return sum(numbers) / len(numbers)</code></pre>
+  </div>
 </section>
 
 <section class="challenge">
   <h3>2. Factorial</h3>
   <p>Implement factorial recursively.</p>
-  <p class="answer">Reference implementation:</p>
-  <pre><code>def factorial(n):
+  <label>
+    <span class="answer">Your code:</span>
+    <textarea class="code-entry" spellcheck="false" autocapitalize="off" autocomplete="off" placeholder="Write your Python solution here..."></textarea>
+  </label>
+  <div class="challenge-actions">
+    <button type="button" data-reveal-solution>Reveal reference implementation</button>
+  </div>
+  <div class="solution" hidden>
+    <p class="answer">Reference implementation:</p>
+    <pre><code>def factorial(n):
     if n &lt; 0:
         raise ValueError(&quot;n must be non-negative&quot;)
     if n in (0, 1):
         return 1
     return n * factorial(n - 1)</code></pre>
+  </div>
 </section>
 
 <section class="challenge">
   <h3>3. Multiplier Closure</h3>
   <p>Return a function that multiplies by a fixed factor.</p>
-  <p class="answer">Reference implementation:</p>
-  <pre><code>def make_multiplier(factor):
+  <label>
+    <span class="answer">Your code:</span>
+    <textarea class="code-entry" spellcheck="false" autocapitalize="off" autocomplete="off" placeholder="Write your Python solution here..."></textarea>
+  </label>
+  <div class="challenge-actions">
+    <button type="button" data-reveal-solution>Reveal reference implementation</button>
+  </div>
+  <div class="solution" hidden>
+    <p class="answer">Reference implementation:</p>
+    <pre><code>def make_multiplier(factor):
     def multiply(value):
         return value * factor
     return multiply</code></pre>
+  </div>
 </section>
 
 <section class="challenge">
   <h3>4. Sort People</h3>
   <p>Sort a list of dicts by age.</p>
-  <p class="answer">Reference implementation:</p>
-  <pre><code>def sort_by_age(people):
+  <label>
+    <span class="answer">Your code:</span>
+    <textarea class="code-entry" spellcheck="false" autocapitalize="off" autocomplete="off" placeholder="Write your Python solution here..."></textarea>
+  </label>
+  <div class="challenge-actions">
+    <button type="button" data-reveal-solution>Reveal reference implementation</button>
+  </div>
+  <div class="solution" hidden>
+    <p class="answer">Reference implementation:</p>
+    <pre><code>def sort_by_age(people):
     return sorted(people, key=lambda person: person[&quot;age&quot;])</code></pre>
+  </div>
 </section>
 
 <section class="challenge">
   <h3>5. Discount</h3>
   <p>Apply a percent discount to a price.</p>
-  <p class="answer">Reference implementation:</p>
-  <pre><code>def apply_discount(price, percent):
+  <label>
+    <span class="answer">Your code:</span>
+    <textarea class="code-entry" spellcheck="false" autocapitalize="off" autocomplete="off" placeholder="Write your Python solution here..."></textarea>
+  </label>
+  <div class="challenge-actions">
+    <button type="button" data-reveal-solution>Reveal reference implementation</button>
+  </div>
+  <div class="solution" hidden>
+    <p class="answer">Reference implementation:</p>
+    <pre><code>def apply_discount(price, percent):
     return price * (1 - percent / 100)</code></pre>
+  </div>
 </section></main>
 </body>
 </html>

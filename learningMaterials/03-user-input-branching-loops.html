@@ -106,6 +106,28 @@ button:hover { background: #125965; }
 .feedback.correct { color: #0d6b3f; }
 .feedback.wrong { color: #a24118; }
 .choice-reason[hidden] { display: none; }
+.code-entry {
+  width: 100%;
+  min-height: 190px;
+  margin-top: 10px;
+  padding: 12px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  resize: vertical;
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: var(--ink);
+  background: #fbfcfd;
+}
+.challenge-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin: 12px 0;
+}
+.solution[hidden] { display: none; }
 pre {
   overflow-x: auto;
   padding: 14px;
@@ -152,6 +174,17 @@ document.addEventListener("click", (event) => {
   feedback.className = isCorrect ? "feedback correct" : "feedback wrong";
   reason.textContent = selected.dataset.reason;
   reason.hidden = false;
+});
+
+document.addEventListener("click", (event) => {
+  const button = event.target.closest("[data-reveal-solution]");
+  if (!button) return;
+
+  const challenge = button.closest(".challenge");
+  const solution = challenge.querySelector(".solution");
+  const isHidden = solution.hidden;
+  solution.hidden = !isHidden;
+  button.textContent = isHidden ? "Hide reference implementation" : "Reveal reference implementation";
 });
 </script>
 </head>
@@ -414,54 +447,98 @@ document.addEventListener("click", (event) => {
 <section class="challenge">
   <h3>1. Classify Number</h3>
   <p>Return negative, zero, or positive.</p>
-  <p class="answer">Reference implementation:</p>
-  <pre><code>def classify(n):
+  <label>
+    <span class="answer">Your code:</span>
+    <textarea class="code-entry" spellcheck="false" autocapitalize="off" autocomplete="off" placeholder="Write your Python solution here..."></textarea>
+  </label>
+  <div class="challenge-actions">
+    <button type="button" data-reveal-solution>Reveal reference implementation</button>
+  </div>
+  <div class="solution" hidden>
+    <p class="answer">Reference implementation:</p>
+    <pre><code>def classify(n):
     if n &lt; 0:
         return &quot;negative&quot;
     if n == 0:
         return &quot;zero&quot;
     return &quot;positive&quot;</code></pre>
+  </div>
 </section>
 
 <section class="challenge">
   <h3>2. Sum to N</h3>
   <p>Sum integers from 1 through n.</p>
-  <p class="answer">Reference implementation:</p>
-  <pre><code>def sum_to_n(n):
+  <label>
+    <span class="answer">Your code:</span>
+    <textarea class="code-entry" spellcheck="false" autocapitalize="off" autocomplete="off" placeholder="Write your Python solution here..."></textarea>
+  </label>
+  <div class="challenge-actions">
+    <button type="button" data-reveal-solution>Reveal reference implementation</button>
+  </div>
+  <div class="solution" hidden>
+    <p class="answer">Reference implementation:</p>
+    <pre><code>def sum_to_n(n):
     total = 0
     for value in range(1, n + 1):
         total += value
     return total</code></pre>
+  </div>
 </section>
 
 <section class="challenge">
   <h3>3. Count Vowels</h3>
   <p>Count vowels in a string.</p>
-  <p class="answer">Reference implementation:</p>
-  <pre><code>def count_vowels(text):
+  <label>
+    <span class="answer">Your code:</span>
+    <textarea class="code-entry" spellcheck="false" autocapitalize="off" autocomplete="off" placeholder="Write your Python solution here..."></textarea>
+  </label>
+  <div class="challenge-actions">
+    <button type="button" data-reveal-solution>Reveal reference implementation</button>
+  </div>
+  <div class="solution" hidden>
+    <p class="answer">Reference implementation:</p>
+    <pre><code>def count_vowels(text):
     total = 0
     for ch in text.lower():
         if ch in &quot;aeiou&quot;:
             total += 1
     return total</code></pre>
+  </div>
 </section>
 
 <section class="challenge">
   <h3>4. First Success</h3>
   <p>Return True if any attempt equals the secret.</p>
-  <p class="answer">Reference implementation:</p>
-  <pre><code>def first_success(attempts, secret):
+  <label>
+    <span class="answer">Your code:</span>
+    <textarea class="code-entry" spellcheck="false" autocapitalize="off" autocomplete="off" placeholder="Write your Python solution here..."></textarea>
+  </label>
+  <div class="challenge-actions">
+    <button type="button" data-reveal-solution>Reveal reference implementation</button>
+  </div>
+  <div class="solution" hidden>
+    <p class="answer">Reference implementation:</p>
+    <pre><code>def first_success(attempts, secret):
     for attempt in attempts:
         if attempt == secret:
             return True
     return False</code></pre>
+  </div>
 </section>
 
 <section class="challenge">
   <h3>5. Menu Choice</h3>
   <p>Map a, b, q to add, browse, quit.</p>
-  <p class="answer">Reference implementation:</p>
-  <pre><code>def handle_choice(choice):
+  <label>
+    <span class="answer">Your code:</span>
+    <textarea class="code-entry" spellcheck="false" autocapitalize="off" autocomplete="off" placeholder="Write your Python solution here..."></textarea>
+  </label>
+  <div class="challenge-actions">
+    <button type="button" data-reveal-solution>Reveal reference implementation</button>
+  </div>
+  <div class="solution" hidden>
+    <p class="answer">Reference implementation:</p>
+    <pre><code>def handle_choice(choice):
     if choice == &quot;a&quot;:
         return &quot;add&quot;
     elif choice == &quot;b&quot;:
@@ -469,6 +546,7 @@ document.addEventListener("click", (event) => {
     elif choice == &quot;q&quot;:
         return &quot;quit&quot;
     return &quot;unknown&quot;</code></pre>
+  </div>
 </section></main>
 </body>
 </html>

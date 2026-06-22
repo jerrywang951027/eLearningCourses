@@ -106,6 +106,28 @@ button:hover { background: #125965; }
 .feedback.correct { color: #0d6b3f; }
 .feedback.wrong { color: #a24118; }
 .choice-reason[hidden] { display: none; }
+.code-entry {
+  width: 100%;
+  min-height: 190px;
+  margin-top: 10px;
+  padding: 12px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  resize: vertical;
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: var(--ink);
+  background: #fbfcfd;
+}
+.challenge-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin: 12px 0;
+}
+.solution[hidden] { display: none; }
 pre {
   overflow-x: auto;
   padding: 14px;
@@ -152,6 +174,17 @@ document.addEventListener("click", (event) => {
   feedback.className = isCorrect ? "feedback correct" : "feedback wrong";
   reason.textContent = selected.dataset.reason;
   reason.hidden = false;
+});
+
+document.addEventListener("click", (event) => {
+  const button = event.target.closest("[data-reveal-solution]");
+  if (!button) return;
+
+  const challenge = button.closest(".challenge");
+  const solution = challenge.querySelector(".solution");
+  const isHidden = solution.hidden;
+  solution.hidden = !isHidden;
+  button.textContent = isHidden ? "Hide reference implementation" : "Reveal reference implementation";
 });
 </script>
 </head>
@@ -414,47 +447,92 @@ document.addEventListener("click", (event) => {
 <section class="challenge">
   <h3>1. Unique Words</h3>
   <p>Return sorted unique lowercase words.</p>
-  <p class="answer">Reference implementation:</p>
-  <pre><code>def unique_words(text):
+  <label>
+    <span class="answer">Your code:</span>
+    <textarea class="code-entry" spellcheck="false" autocapitalize="off" autocomplete="off" placeholder="Write your Python solution here..."></textarea>
+  </label>
+  <div class="challenge-actions">
+    <button type="button" data-reveal-solution>Reveal reference implementation</button>
+  </div>
+  <div class="solution" hidden>
+    <p class="answer">Reference implementation:</p>
+    <pre><code>def unique_words(text):
     return sorted(set(text.lower().split()))</code></pre>
+  </div>
 </section>
 
 <section class="challenge">
   <h3>2. Inventory Total</h3>
   <p>Sum all counts in an inventory dict.</p>
-  <p class="answer">Reference implementation:</p>
-  <pre><code>def inventory_total(inventory):
+  <label>
+    <span class="answer">Your code:</span>
+    <textarea class="code-entry" spellcheck="false" autocapitalize="off" autocomplete="off" placeholder="Write your Python solution here..."></textarea>
+  </label>
+  <div class="challenge-actions">
+    <button type="button" data-reveal-solution>Reveal reference implementation</button>
+  </div>
+  <div class="solution" hidden>
+    <p class="answer">Reference implementation:</p>
+    <pre><code>def inventory_total(inventory):
     total = 0
     for count in inventory.values():
         total += count
     return total</code></pre>
+  </div>
 </section>
 
 <section class="challenge">
   <h3>3. Top Score</h3>
   <p>Return largest score or None for empty.</p>
-  <p class="answer">Reference implementation:</p>
-  <pre><code>def top_score(scores):
+  <label>
+    <span class="answer">Your code:</span>
+    <textarea class="code-entry" spellcheck="false" autocapitalize="off" autocomplete="off" placeholder="Write your Python solution here..."></textarea>
+  </label>
+  <div class="challenge-actions">
+    <button type="button" data-reveal-solution>Reveal reference implementation</button>
+  </div>
+  <div class="solution" hidden>
+    <p class="answer">Reference implementation:</p>
+    <pre><code>def top_score(scores):
     if not scores:
         return None
     return max(scores)</code></pre>
+  </div>
 </section>
 
 <section class="challenge">
   <h3>4. Email Lookup</h3>
   <p>Return email by username or missing.</p>
-  <p class="answer">Reference implementation:</p>
-  <pre><code>def lookup_email(users, username):
+  <label>
+    <span class="answer">Your code:</span>
+    <textarea class="code-entry" spellcheck="false" autocapitalize="off" autocomplete="off" placeholder="Write your Python solution here..."></textarea>
+  </label>
+  <div class="challenge-actions">
+    <button type="button" data-reveal-solution>Reveal reference implementation</button>
+  </div>
+  <div class="solution" hidden>
+    <p class="answer">Reference implementation:</p>
+    <pre><code>def lookup_email(users, username):
     return users.get(username, &quot;missing&quot;)</code></pre>
+  </div>
 </section>
 
 <section class="challenge">
   <h3>5. Format Point</h3>
   <p>Unpack (x, y) and return a labelled string.</p>
-  <p class="answer">Reference implementation:</p>
-  <pre><code>def format_point(point):
+  <label>
+    <span class="answer">Your code:</span>
+    <textarea class="code-entry" spellcheck="false" autocapitalize="off" autocomplete="off" placeholder="Write your Python solution here..."></textarea>
+  </label>
+  <div class="challenge-actions">
+    <button type="button" data-reveal-solution>Reveal reference implementation</button>
+  </div>
+  <div class="solution" hidden>
+    <p class="answer">Reference implementation:</p>
+    <pre><code>def format_point(point):
     x, y = point
     return f&quot;(x={x}, y={y})&quot;</code></pre>
+  </div>
 </section></main>
 </body>
 </html>

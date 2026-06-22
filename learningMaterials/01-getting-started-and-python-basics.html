@@ -106,6 +106,28 @@ button:hover { background: #125965; }
 .feedback.correct { color: #0d6b3f; }
 .feedback.wrong { color: #a24118; }
 .choice-reason[hidden] { display: none; }
+.code-entry {
+  width: 100%;
+  min-height: 190px;
+  margin-top: 10px;
+  padding: 12px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  resize: vertical;
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: var(--ink);
+  background: #fbfcfd;
+}
+.challenge-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin: 12px 0;
+}
+.solution[hidden] { display: none; }
 pre {
   overflow-x: auto;
   padding: 14px;
@@ -152,6 +174,17 @@ document.addEventListener("click", (event) => {
   feedback.className = isCorrect ? "feedback correct" : "feedback wrong";
   reason.textContent = selected.dataset.reason;
   reason.hidden = false;
+});
+
+document.addEventListener("click", (event) => {
+  const button = event.target.closest("[data-reveal-solution]");
+  if (!button) return;
+
+  const challenge = button.closest(".challenge");
+  const solution = challenge.querySelector(".solution");
+  const isHidden = solution.hidden;
+  solution.hidden = !isHidden;
+  button.textContent = isHidden ? "Hide reference implementation" : "Reveal reference implementation";
 });
 </script>
 </head>
@@ -414,41 +447,86 @@ document.addEventListener("click", (event) => {
 <section class="challenge">
   <h3>1. Greeting Function</h3>
   <p>Write greet(name) that returns Hello, &lt;name&gt;!.</p>
-  <p class="answer">Reference implementation:</p>
-  <pre><code>def greet(name):
+  <label>
+    <span class="answer">Your code:</span>
+    <textarea class="code-entry" spellcheck="false" autocapitalize="off" autocomplete="off" placeholder="Write your Python solution here..."></textarea>
+  </label>
+  <div class="challenge-actions">
+    <button type="button" data-reveal-solution>Reveal reference implementation</button>
+  </div>
+  <div class="solution" hidden>
+    <p class="answer">Reference implementation:</p>
+    <pre><code>def greet(name):
     return f&quot;Hello, {name}!&quot;</code></pre>
+  </div>
 </section>
 
 <section class="challenge">
   <h3>2. Type Name</h3>
   <p>Write type_name(value) that returns the runtime type name.</p>
-  <p class="answer">Reference implementation:</p>
-  <pre><code>def type_name(value):
+  <label>
+    <span class="answer">Your code:</span>
+    <textarea class="code-entry" spellcheck="false" autocapitalize="off" autocomplete="off" placeholder="Write your Python solution here..."></textarea>
+  </label>
+  <div class="challenge-actions">
+    <button type="button" data-reveal-solution>Reveal reference implementation</button>
+  </div>
+  <div class="solution" hidden>
+    <p class="answer">Reference implementation:</p>
+    <pre><code>def type_name(value):
     return type(value).__name__</code></pre>
+  </div>
 </section>
 
 <section class="challenge">
   <h3>3. Full Name</h3>
   <p>Combine first and last names with a space.</p>
-  <p class="answer">Reference implementation:</p>
-  <pre><code>def full_name(first, last):
+  <label>
+    <span class="answer">Your code:</span>
+    <textarea class="code-entry" spellcheck="false" autocapitalize="off" autocomplete="off" placeholder="Write your Python solution here..."></textarea>
+  </label>
+  <div class="challenge-actions">
+    <button type="button" data-reveal-solution>Reveal reference implementation</button>
+  </div>
+  <div class="solution" hidden>
+    <p class="answer">Reference implementation:</p>
+    <pre><code>def full_name(first, last):
     return first + &quot; &quot; + last</code></pre>
+  </div>
 </section>
 
 <section class="challenge">
   <h3>4. Receipt Total</h3>
   <p>Return subtotal plus tax by rate.</p>
-  <p class="answer">Reference implementation:</p>
-  <pre><code>def total_with_tax(subtotal, tax_rate):
+  <label>
+    <span class="answer">Your code:</span>
+    <textarea class="code-entry" spellcheck="false" autocapitalize="off" autocomplete="off" placeholder="Write your Python solution here..."></textarea>
+  </label>
+  <div class="challenge-actions">
+    <button type="button" data-reveal-solution>Reveal reference implementation</button>
+  </div>
+  <div class="solution" hidden>
+    <p class="answer">Reference implementation:</p>
+    <pre><code>def total_with_tax(subtotal, tax_rate):
     return subtotal + subtotal * tax_rate</code></pre>
+  </div>
 </section>
 
 <section class="challenge">
   <h3>5. Debug Message</h3>
   <p>Return a labelled value such as age=31.</p>
-  <p class="answer">Reference implementation:</p>
-  <pre><code>def debug_value(name, value):
+  <label>
+    <span class="answer">Your code:</span>
+    <textarea class="code-entry" spellcheck="false" autocapitalize="off" autocomplete="off" placeholder="Write your Python solution here..."></textarea>
+  </label>
+  <div class="challenge-actions">
+    <button type="button" data-reveal-solution>Reveal reference implementation</button>
+  </div>
+  <div class="solution" hidden>
+    <p class="answer">Reference implementation:</p>
+    <pre><code>def debug_value(name, value):
     return f&quot;{name}={value}&quot;</code></pre>
+  </div>
 </section></main>
 </body>
 </html>
