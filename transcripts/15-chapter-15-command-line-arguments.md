@@ -1,0 +1,205 @@
+# Chapter 15 - Command Line Arguments
+
+Source: Python Tutorial for Beginners (with mini-projects) by freeCodeCamp.org
+URL: https://www.youtube.com/watch?v=qwAFL1597eM
+Time range: 04:59:47-05:20:39
+
+## Transcript
+
+- [04:59:53] and we're going to create a new file and let's call this file hello underscore person.py to accept
+- [05:00:00] arguments from the command line that is values that we will pass in to the programs that we call
+- [05:00:07] we need to use a module so we will import argparse and that is part of the python standard library
+- [05:00:15] when we previously discussed python modules i gave a link to the python module index and
+- [05:00:21] we can see the argparse module right here it says command line option and argument parsing library
+- [05:00:28] i also want to call your attention to the python standard library page and this shows kind of the
+- [05:00:35] different modules instead of in the index that we had on the other page it shows them kind of in
+- [05:00:41] feature areas here so different things you can look at a different way to find the same thing
+- [05:00:46] so if i search the page with control f for arg parse we can once again find it under generic
+- [05:00:53] operating system services so just another way to find the modules that you would be looking for
+- [05:00:59] back in vs code let's go ahead and define a parser and we'll set this equal to arg parse
+- [05:01:05] and then dot then we'll say argument parser and from there we'll use parentheses and we're only
+- [05:01:13] going to pass in some of the basic settings that we can for this argument parser but if you look
+- [05:01:19] back at that module page for arg parser you will see many other settings as well here we'll just
+- [05:01:25] say description equals and then we'll say provides a personal greeting whoa i'm not spelling good
+- [05:01:33] today there we go provides a personal greeting so we have set the basic description for our argument
+- [05:01:39] parser now let's say parser dot add argument and there we'll go ahead and pass a few different
+- [05:01:47] values first we're going to put in a value that you could use at the command line as a flag so
+- [05:01:52] just dash in this will be short for name so we'll also say you could also provide dash dash name
+- [05:02:02] which is just a long version of the same thing so you could use either one of these at the command
+- [05:02:07] line and i'll show you how then there's another setting here we'll call meta var and we set that
+- [05:02:13] equal to name as well now this is just the display name if you get a message that refers back to this
+- [05:02:19] argument now we're going to say this is required so here we just set that equal to true and then we
+- [05:02:25] can also provide a help message and here let's just say the name of the person to greet and that
+- [05:02:33] should be all we need to add this argument to our parser now let's say args equals parser dot
+- [05:02:44] parse underscore args and that is a method on parser so we just call that and now we should
+- [05:02:51] get those different arguments so when we want to print a message at this point let me define
+- [05:02:56] the message and i'll use an f string so we'll have f and a quotation and i'll say hello and
+- [05:03:02] then inside of this we'll say args dot name now where is name coming from let me put an exclamation
+- [05:03:10] mark behind this but where is name coming from what you see this value right here that says name
+- [05:03:15] now that's pretty much what it's going to refer to however if you want to assign something
+- [05:03:20] different we could say dest and set that equal to let's say first name then you would no longer use
+- [05:03:29] name here you would use first name for example so either way i usually use dest off and we just
+- [05:03:36] refer back to name so let me go ahead and remove that and we'll see how that works as well i'll
+- [05:03:42] quickly click yes here but underneath our last one we actually need to go ahead and print our
+- [05:03:46] message also so there is a basic example of using the arg parser now let's go ahead and use this in
+- [05:03:54] a terminal window i'm going to press ctrl in the back tick to open our terminal window that i've
+- [05:03:59] already got over here on the right ctrl b to hide the file tree so we can see a little bit more of
+- [05:04:04] our code and then alt z to wrap any code down that was extending out of the window so now it
+- [05:04:10] wraps down to a second line now we can't use the play button like we used to to call this file
+- [05:04:16] because we need to pass an argument so we're just going to type right here in the terminal and i'll
+- [05:04:22] type pi because i'm on windows but if you're on mac or linux you're probably going to need to type
+- [05:04:26] python 3 i'll type pi then i want the file name which is hello underscore person dot pi but if
+- [05:04:34] i press enter right now i'm going to get an error let's go ahead and do it to see what happens
+- [05:04:40] and it says we have an error it shows the usage here and of course the dash h is for help then
+- [05:04:46] we have the dash n and it's referring to a name and then it says the error the following arguments
+- [05:04:52] are required that's because we required this argument over here so let's try this once again
+- [05:04:58] or let's even see what the help does so let's go ahead and pull this up again and then just do dash
+- [05:05:03] h for help and let's see what we get now we get our provides a personal greeting so that's the
+- [05:05:09] description we passed in up here and it shows the options and of course dash h for help and dash n
+- [05:05:16] for name the name of the person to greet so let's once again pull that up and now instead of dash
+- [05:05:22] h i'll say dash n and i'll pass in my name as a string just dave and we get back hello dave now
+- [05:05:29] that's what's expected let's once again close our terminal window for the time being and now let's
+- [05:05:34] create a function just above everything we have even the import which i know is something you
+- [05:05:39] haven't seen me do before but let's do it this time and let's say def hello and we're going to
+- [05:05:45] pass in not only a name but also a language that i'll abbreviate as lang now inside this function
+- [05:05:52] i'm going to define a dictionary called greetings inside the dictionary i'm going to use
+- [05:05:58] english and i'll match that to the value of hello that needs to be a string also after that let me
+- [05:06:06] copy these lines down with shift alt and the down arrow twice and i'm going to change these so the
+- [05:06:12] second one is going to be spanish and that will be ola and then the third will be german and that
+- [05:06:22] and that will be close instead of hello as we say in english it's hallow with an a okay after
+- [05:06:30] those three let's go ahead and define our message once again message equals an f string and inside
+- [05:06:37] of this string it's going to start with the value that we get from the dictionary so greetings and
+- [05:06:42] then we're going to refer to whatever we get in that lang param that is up here and then after
+- [05:06:49] that we want a space and then we're going to use the name param value the parameter so as we pass
+- [05:06:56] these values in remember they're called arguments but when we define a function these are parameters
+- [05:07:01] or as i often say params okay now we're going to have a print once again for that message so that's
+- [05:07:08] what our hello function is going to do it's going to determine the language we're going to have a
+- [05:07:13] name and we're going to say hello in the requested language now someone could import this function
+- [05:07:20] from this file if they wanted to and if you remember what we learned about modules we can
+- [05:07:24] go ahead and put our if name equals main here to then only run the code underneath if this file
+- [05:07:31] is actually the file being ran and it's not having the hello function imported from somewhere so
+- [05:07:36] we'll say if two underscores name two more underscores and we'll say equals and we need
+- [05:07:43] two equal signs as well then we'll have two underscores main and two more underscores
+- [05:07:50] and then our colon now everything is going to need to be tabbed over so i'll highlight everything
+- [05:07:56] and tab over once and now remember we have a second argument so let's add another argument
+- [05:08:02] to our parser underneath so we'll say parser dot add argument and now here we're going to call this
+- [05:08:08] one l instead of dash n so i've dash l we'll also have dash dash lang and then we'll have a
+- [05:08:17] meta var and just to point out that they're not the same here i'll put the full word language
+- [05:08:23] instead of lang but we're still going to refer to lang when we get the value after that on the
+- [05:08:28] next line i'm once again going to say required equals true and then we can pass choices so we
+- [05:08:35] can have specific choices here and if these choices are not correct then an error will occur once
+- [05:08:41] again so here we'll make sure that the values we want are passed either english or spanish
+- [05:08:49] or german are the choices and then after those choices let's go ahead and put in a help value
+- [05:08:57] as well and here we'll say the language of the greeting and that's that's good enough just the
+- [05:09:05] language of the greeting okay now that we've defined that we need to change what we're doing
+- [05:09:10] below we still want to get the args from the parser with parse args but then here we're not
+- [05:09:15] just going to print this we're going to call our hello function so we'll say hello and we'll pass
+- [05:09:22] in the args dot name and then we'll also pass in the args dot lang so quickly to review before we
+- [05:09:30] use this code we just created our hello function above and then if this is the file that's called
+- [05:09:36] into action then we'll use the arg parse so that's why the import is down here it's not needed up
+- [05:09:42] here at all and then we'll go ahead and use this and we pass the two arguments to the parser
+- [05:09:49] and then we call the hello function with those values let's once again press control in the back
+- [05:09:54] tick to open a terminal i can clear this out by typing clear as well just so we start at the top
+- [05:10:00] and now let's go ahead and say pi or once again if you're on mac or linux python3 and we'll have
+- [05:10:06] hello underscore person dot pi now all of the same errors will apply so if we don't pass a name
+- [05:10:14] we would get an error and likewise if we don't pass a language we would get an error but even
+- [05:10:20] if we pass an incorrect language like french for example we should get an error let's check that out
+- [05:10:27] and yes we do have an error it says invalid choice french we should choose from english
+- [05:10:32] french we should choose from english spanish or german so let's go ahead and choose one of those
+- [05:10:39] i'll enter in german and press enter and we have hallo dave and i can see i forgot to put an
+- [05:10:47] exclamation mark inside of that function greeting so let's go ahead and put that back
+- [05:10:53] seems like we have to have an exclamation mark with a happy greeting right so after german let's
+- [05:10:58] put in spanish now to test this out and we have hola dave with the exclamation mark let's once
+- [05:11:05] again close the terminal here in vs code and let's show the file tree again by clicking the
+- [05:11:09] explore icon over here and now as we have in previous lessons let's create a new file let's
+- [05:11:16] call this file rps 8 dot pi because we're going to pull in the code from our previous example of
+- [05:11:23] rock paper scissors and that file was called rps 7 in the previous lesson so let's just paste in
+- [05:11:30] the code from rps 7 that we had and we did learn how to make a module with our rock paper scissors
+- [05:11:37] game but now we're going to go ahead and pass in a command line argument to the game so we can
+- [05:11:42] personalize the game but before we do that and i do want to thank amod and those that comment on
+- [05:11:48] the videos but especially thanks to amod for catching this one because in a previous lesson
+- [05:11:53] the one on f strings we created three f strings inside of our rock paper scissors game and as he
+- [05:11:59] noted we no longer need to use the string constructor here in lines 63 through 65 because
+- [05:12:08] you can just pass game count into this f string and it will go ahead and show it without using
+- [05:12:14] that string constructor so it will just make it a string as you create that f string so we can go
+- [05:12:19] ahead and select all three instances of the str and that parentheses and i did that with control
+- [05:12:26] d after i selected the first one then i'll press backspace then of course we need to get rid of the
+- [05:12:32] closing parentheses on those and this will still work without that string constructor now that said
+- [05:12:39] and i'll save those changes i do want to highlight that on lines 33 and 35 you still need the string
+- [05:12:47] constructor here and that's because we're applying it to that enum value and then we're calling a
+- [05:12:53] string method so we really need a string there specifically and it's not being converted
+- [05:13:01] before that happens so you need to go ahead and leave that string constructor on these two lines
+- [05:13:06] but on 63 through 65 here when we have the game count player wins and python wins thank you amod
+- [05:13:13] for pointing that out because i did miss that it didn't cause an error there was no problem
+- [05:13:18] other than it's just not needed so we might as well remove it so now let's scroll to the
+- [05:13:22] bottom of the file where we're calling rock paper scissors here and we're going to change
+- [05:13:27] this just a little bit i'm going to start by pulling this rock paper scissors definition
+- [05:13:32] here where we set it equal to rps to create our closure i'm just going to control x to cut that
+- [05:13:38] and go ahead and put it right above the call to the function here and then let's go back to
+- [05:13:43] our hello person because this code that we use with arg parse is kind of boilerplate and that
+- [05:13:48] means we're not changing much of this right here we want to get a name to go ahead and pass to our
+- [05:13:53] game and personalize that so let's just copy all of this the import arg parse all the way down
+- [05:14:00] to where we set the args equal to parser dot parse args and control c to copy and then let's bring it
+- [05:14:08] over to our rock paper scissors game and this is going to go before we define rock paper scissors
+- [05:14:14] there so right after the if name equals main i will paste this in now we're not using the language
+- [05:14:20] argument so then i can go ahead and remove that piece of it now let's change our description just
+- [05:14:25] a little bit so here we'll say provides a personalized so there we'll just change that word
+- [05:14:30] to personalized game experience and now here instead of the name of the person to greet
+- [05:14:36] we'll say the name of the person playing the game playing the game and alt z once again to wrap any
+- [05:14:44] code down that wants to extend off the screen now i'm going to remove an extra line here and then
+- [05:14:49] all we need to do is pass our args dot name to rps and now we're finished with this part but now
+- [05:14:57] we're passing the name value to our rock paper scissors game but our game is not handling that
+- [05:15:03] yet let's start by going to the top of the file where the function begins and now we know it's
+- [05:15:07] going to receive a param so i'll say name and let's put a default value just in case this would
+- [05:15:13] be used somewhere that it doesn't receive that name so we don't have an error if that happens
+- [05:15:18] and we'll just make the default value player one after that we need to go ahead and put in another
+- [05:15:25] non-local here and pass name because it's coming from above from rps as it goes into the play rps
+- [05:15:33] function now let's scroll down and see where else we can use it and one place would be here where
+- [05:15:38] we ask the player to enter any of the numbers for rock paper or scissors let's make this an
+- [05:15:43] f string and then we'll go ahead and put name in front here so i'll say name and a comma and then
+- [05:15:51] we could just make that a lowercase e and then underneath here we could also make this an f
+- [05:15:56] string and use that value so we could say whoops not that let's go ahead quote and then we need a
+- [05:16:03] curly brace and name and then let's put a comma and then there we'll just put a lowercase y for
+- [05:16:11] you must enter as well and you know what let's be a little nicer here let's put please in both of
+- [05:16:17] these so we'll say please enter and instead of you must enter we'll say once again please and
+- [05:16:25] need to get rid of that t there so it would be like dave please enter one two or three scrolling
+- [05:16:31] down just a little bit further we have another line here where it says u so let's change that
+- [05:16:36] we already have an f string so now i'll just go ahead and remove that capital y and we'll put in
+- [05:16:44] name once again i'll put in a comma and a lowercase u so dave you chose and then it would give that
+- [05:16:49] value now we have our nested decide winner function so once again we need a non-local
+- [05:16:56] for that name value if we're going to use it inside of this function and we definitely are
+- [05:17:01] so instead of just you win now we could have an f string so this once again needs to be an
+- [05:17:08] f here and then we can put in our name value so name comma you win and now let's just copy this
+- [05:17:16] because it's also used on a couple of other lines so ctrl c there and then we'll highlight this
+- [05:17:22] ctrl d to select the next one that's identical and then ctrl v to paste and we have that same
+- [05:17:28] f string for all of the winning messages let's scroll just a little bit more and here on 56
+- [05:17:35] where we have python wins well that works but we could personalize that a little bit more once
+- [05:17:40] again we need to make that an f string if we do and i hope i haven't missed any of those slash
+- [05:17:45] in and then let's say sorry comma and put in name once again we could put in a couple of dots so
+- [05:17:54] sorry dave and then we could even put in an emoji so let's find a sad emoji here and i just typed
+- [05:18:01] the windows key plus period on windows to bring up this emoji menu so i have a little sad face
+- [05:18:07] with the message that python won instead of me okay after that one let's look a little bit further
+- [05:18:14] and yes we can provide another one here on line 67 i'm sorry on line 66 where we say player it
+- [05:18:21] doesn't need to say player now it could have a personalized name so let's put in name and after
+- [05:18:26] that we need an apostrophe s now we can use that apostrophe because on the outside we have double
+- [05:18:32] quotes so that single quote doesn't cause an issue and how about we do the same for the play
+- [05:18:37] again message so we'll put an f here to make this an f string and instead of play again question
+- [05:18:42] mark we'll have play again comma and then we'll put in that personalized name so it's going to
+- [05:18:48] ask play again dave for example and let's see if there's any other instances as we scroll down and
+- [05:18:54] yes we've got thank you for playing which is fine we could personalize that but let's personalize
+- [05:18:59] the buy message instead so we can say buy and then just put name in one more time so now we've
+- [05:19:06] personalized our entire game now i know i went over that a little bit quickly but we covered
+- [05:19:11] concepts we had before from the f strings to the non-local definitions where we pulled that value
+- [05:19:16] into the other functions that were nested okay let's hide the file tree with control b
+- [05:19:22] and then i'll press control and the back tick to open our terminal up again i'll type clear just
+- [05:19:27] to clear everything out and now let's go ahead and start our rps 8 file once again we can't use
+- [05:19:33] the play button like we used to at the top because we need to pass in these arguments so i'm going to
+- [05:19:38] say pi and you might need to say python 3 just depending on your operating system then i'll go
+- [05:19:44] ahead and say rps 8.py and i'm going to pass my name with the dash n as dave and let's see what
+- [05:19:52] we get it says dave please enter and so i'm going to choose rock and we got a tie game but we can
+- [05:19:59] see dave's wins are zero and that says play again dave so i did personalize that fairly well let's
+- [05:20:06] see if we get something else let me choose a number that is not one two or three like five
+- [05:20:11] dave please enter one two or three so it's also being polite and working as expected another tie
+- [05:20:17] game let's go ahead and play till someone wins and we've got three tie games let's go ahead and
+- [05:20:24] play again and now we won and it says dave you win so that's exactly what we wanted for this game
+- [05:20:32] so now you know how to pass command line arguments and we've personalized our rock paper scissors game

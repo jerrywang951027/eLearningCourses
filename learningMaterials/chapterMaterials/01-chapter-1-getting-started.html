@@ -1,0 +1,428 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Chapter 1 - Getting Started</title>
+  <style>
+:root {
+  --ink: #18202a;
+  --muted: #586575;
+  --line: #d9e0e8;
+  --panel: #ffffff;
+  --soft: #f5f7fa;
+  --accent: #176f7a;
+  --wrong: #a24118;
+  --right: #0d6b3f;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  line-height: 1.55;
+  color: var(--ink);
+  background: #eef2f5;
+}
+header {
+  padding: 32px clamp(18px, 4vw, 56px);
+  background: #17212b;
+  color: #fff;
+}
+header a { color: #aee4ef; }
+main {
+  width: min(1120px, calc(100% - 32px));
+  margin: 28px auto 56px;
+}
+h1, h2, h3 { line-height: 1.2; }
+h1 { margin: 0 0 10px; font-size: clamp(2rem, 5vw, 3.25rem); }
+h2 { margin-top: 36px; padding-bottom: 8px; border-bottom: 1px solid var(--line); }
+nav { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 18px; }
+nav a {
+  color: #fff;
+  text-decoration: none;
+  border: 1px solid rgba(255,255,255,.28);
+  border-radius: 6px;
+  padding: 7px 10px;
+}
+.meta { color: #d9e7ed; max-width: 850px; }
+.grid, .note-pages {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 16px;
+}
+.card, .page, .question, .challenge {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 18px;
+}
+.card a { color: var(--accent); font-weight: 800; text-decoration: none; }
+.pill {
+  display: inline-flex;
+  align-items: center;
+  min-height: 28px;
+  padding: 3px 9px;
+  border-radius: 999px;
+  background: #e8f3f5;
+  color: #125965;
+  font-size: 0.88rem;
+  font-weight: 800;
+}
+.options { list-style: none; padding: 0; margin: 12px 0; }
+.options li { padding: 7px 0; border-top: 1px solid #edf0f3; }
+.options label { display: flex; gap: 9px; align-items: flex-start; cursor: pointer; }
+.options input { margin-top: 5px; }
+button {
+  appearance: none;
+  border: 0;
+  border-radius: 6px;
+  padding: 9px 13px;
+  background: var(--accent);
+  color: #fff;
+  font-weight: 800;
+  cursor: pointer;
+}
+button:hover { background: #125965; }
+.feedback { min-height: 24px; font-weight: 800; }
+.feedback.correct { color: var(--right); }
+.feedback.wrong { color: var(--wrong); }
+.reason {
+  background: var(--soft);
+  border-left: 4px solid var(--accent);
+  padding: 10px 14px;
+  margin-top: 10px;
+}
+.reason[hidden], .solution[hidden] { display: none; }
+.code-entry {
+  width: 100%;
+  min-height: 170px;
+  margin-top: 10px;
+  padding: 12px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  resize: vertical;
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: var(--ink);
+  background: #fbfcfd;
+}
+pre {
+  overflow-x: auto;
+  padding: 14px;
+  border-radius: 8px;
+  background: #101820;
+  color: #eaf4f7;
+}
+code { font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace; }
+</style>
+  <script>
+document.addEventListener("click", (event) => {
+  const checkButton = event.target.closest("[data-check-question]");
+  if (checkButton) {
+    const question = checkButton.closest(".question");
+    const selected = question.querySelector("input[type='radio']:checked");
+    const feedback = question.querySelector(".feedback");
+    const reason = question.querySelector(".reason");
+    if (!selected) {
+      feedback.textContent = "Choose an answer first.";
+      feedback.className = "feedback wrong";
+      reason.hidden = true;
+      reason.textContent = "";
+      return;
+    }
+    const correct = selected.dataset.correct === "true";
+    feedback.textContent = correct ? "Right" : "Wrong";
+    feedback.className = correct ? "feedback correct" : "feedback wrong";
+    reason.textContent = selected.dataset.reason;
+    reason.hidden = false;
+  }
+
+  const revealButton = event.target.closest("[data-reveal-solution]");
+  if (revealButton) {
+    const challenge = revealButton.closest(".challenge");
+    const solution = challenge.querySelector(".solution");
+    const hidden = solution.hidden;
+    solution.hidden = !hidden;
+    revealButton.textContent = hidden ? "Hide reference implementation" : "Reveal reference implementation";
+  }
+});
+</script>
+</head>
+<body>
+  <header>
+    <h1>Chapter 1 - Getting Started</h1>
+    <p class="meta">Chapter-specific materials generated from the transcript for <a href="https://www.youtube.com/watch?v=qwAFL1597eM">Python Tutorial for Beginners (with mini-projects)</a>.</p>
+    <nav>
+      <a href="../index.html">Main Python Materials</a>
+      <a href="./index.html">Chapter Materials</a>
+      <a href="../../index.html">Course Catalog</a>
+    </nav>
+  </header>
+  <main>
+<p><span class="pill">00:01:23-00:14:50</span></p>
+<p>Transcript file: <a href="../../transcripts/01-chapter-1-getting-started.md">01-chapter-1-getting-started.md</a></p>
+
+<h2>Notes</h2>
+<section class="note-pages">
+  <article class="page"><h3>Page 1</h3><p>Chapter 1 explains why Python is worth learning. The transcript lists beginner-friendly syntax, versatility, a large community, rapid prototyping, and job opportunities. This chapter is less about Python syntax and more about setting up the environment and understanding why the language is practical.</p><p>The first setup step is downloading Python from python.org. The instructor points out that the site should detect the operating system and show an appropriate download. He also notes that older operating systems may need older Python versions, which is an important compatibility detail.</p><p>The second setup step is installing a code editor. The course uses Visual Studio Code, so following along is easiest with VS Code installed. The instructor then installs the Microsoft Python extension, which provides Python support such as IntelliSense, linting, debugging, and editor integration.</p></article>
+  <article class="page"><h3>Page 2</h3><p>After Python and VS Code are installed, the chapter creates a project folder and a first Python file named hello.py. This teaches a basic habit: keep course code in an organized folder instead of scattering files around the machine.</p><p>The chapter introduces the Python REPL, which is an interactive prompt for quick experiments. On Windows the instructor uses py; on Mac and Linux he notes python3. The REPL is useful for quick checks, while .py files are better for saved programs.</p><p>The first script prints a greeting. The chapter also shows that Python files can be run from the terminal with py hello.py or python3 hello.py depending on platform. That gives the learner the core edit-run loop needed for the rest of the course.</p></article>
+</section>
+
+<h2>Quiz</h2>
+<section class="question">
+  <h3>1. What is the main practical goal of Chapter 1?</h3>
+  <ul class="options">
+    <li><label><input type="radio" name="q-1-0" data-correct="false" data-reason="Wrong: this is not what the chapter transcript says or demonstrates."><span><strong>A.</strong> Teach object-oriented programming</span></label></li><li><label><input type="radio" name="q-1-0" data-correct="true" data-reason="Right: the chapter focuses on environment setup and first execution."><span><strong>B.</strong> Set up Python, VS Code, and a first runnable script</span></label></li><li><label><input type="radio" name="q-1-0" data-correct="false" data-reason="Wrong: this confuses the chapter topic with a different Python concept."><span><strong>C.</strong> Build the final project</span></label></li><li><label><input type="radio" name="q-1-0" data-correct="false" data-reason="Wrong: this skips an important detail emphasized in the chapter."><span><strong>D.</strong> Explain every Python data type</span></label></li>
+  </ul>
+  <button type="button" data-check-question>Check</button>
+  <span class="feedback" aria-live="polite"></span>
+  <p class="reason" hidden></p>
+</section>
+<section class="question">
+  <h3>2. Where does the instructor direct learners to download Python?</h3>
+  <ul class="options">
+    <li><label><input type="radio" name="q-1-1" data-correct="true" data-reason="Right: Python is downloaded from python.org."><span><strong>A.</strong> python.org</span></label></li><li><label><input type="radio" name="q-1-1" data-correct="false" data-reason="Wrong: this is not what the chapter transcript says or demonstrates."><span><strong>B.</strong> npmjs.com</span></label></li><li><label><input type="radio" name="q-1-1" data-correct="false" data-reason="Wrong: this confuses the chapter topic with a different Python concept."><span><strong>C.</strong> code.visualstudio.com only</span></label></li><li><label><input type="radio" name="q-1-1" data-correct="false" data-reason="Wrong: this skips an important detail emphasized in the chapter."><span><strong>D.</strong> A private file share</span></label></li>
+  </ul>
+  <button type="button" data-check-question>Check</button>
+  <span class="feedback" aria-live="polite"></span>
+  <p class="reason" hidden></p>
+</section>
+<section class="question">
+  <h3>3. Which editor does the instructor use in the course?</h3>
+  <ul class="options">
+    <li><label><input type="radio" name="q-1-2" data-correct="false" data-reason="Wrong: this is not what the chapter transcript says or demonstrates."><span><strong>A.</strong> Vim only</span></label></li><li><label><input type="radio" name="q-1-2" data-correct="false" data-reason="Wrong: this confuses the chapter topic with a different Python concept."><span><strong>B.</strong> Notepad only</span></label></li><li><label><input type="radio" name="q-1-2" data-correct="false" data-reason="Wrong: this skips an important detail emphasized in the chapter."><span><strong>C.</strong> Xcode only</span></label></li><li><label><input type="radio" name="q-1-2" data-correct="true" data-reason="Right: the transcript recommends VS Code for following along."><span><strong>D.</strong> Visual Studio Code</span></label></li>
+  </ul>
+  <button type="button" data-check-question>Check</button>
+  <span class="feedback" aria-live="polite"></span>
+  <p class="reason" hidden></p>
+</section>
+<section class="question">
+  <h3>4. Which VS Code extension is installed?</h3>
+  <ul class="options">
+    <li><label><input type="radio" name="q-1-3" data-correct="false" data-reason="Wrong: this is not what the chapter transcript says or demonstrates."><span><strong>A.</strong> Prettier only</span></label></li><li><label><input type="radio" name="q-1-3" data-correct="false" data-reason="Wrong: this confuses the chapter topic with a different Python concept."><span><strong>B.</strong> Docker only</span></label></li><li><label><input type="radio" name="q-1-3" data-correct="true" data-reason="Right: the instructor searches for and installs the Microsoft Python extension."><span><strong>C.</strong> Python from Microsoft</span></label></li><li><label><input type="radio" name="q-1-3" data-correct="false" data-reason="Wrong: this skips an important detail emphasized in the chapter."><span><strong>D.</strong> ESLint only</span></label></li>
+  </ul>
+  <button type="button" data-check-question>Check</button>
+  <span class="feedback" aria-live="polite"></span>
+  <p class="reason" hidden></p>
+</section>
+<section class="question">
+  <h3>5. What is the first project folder named in the chapter?</h3>
+  <ul class="options">
+    <li><label><input type="radio" name="q-1-4" data-correct="false" data-reason="Wrong: this is not what the chapter transcript says or demonstrates."><span><strong>A.</strong> FinalProject</span></label></li><li><label><input type="radio" name="q-1-4" data-correct="true" data-reason="Right: the transcript creates a Lesson01 folder for the first lesson."><span><strong>B.</strong> Lesson01</span></label></li><li><label><input type="radio" name="q-1-4" data-correct="false" data-reason="Wrong: this confuses the chapter topic with a different Python concept."><span><strong>C.</strong> venv</span></label></li><li><label><input type="radio" name="q-1-4" data-correct="false" data-reason="Wrong: this skips an important detail emphasized in the chapter."><span><strong>D.</strong> Downloads</span></label></li>
+  </ul>
+  <button type="button" data-check-question>Check</button>
+  <span class="feedback" aria-live="polite"></span>
+  <p class="reason" hidden></p>
+</section>
+<section class="question">
+  <h3>6. What is the first Python file named?</h3>
+  <ul class="options">
+    <li><label><input type="radio" name="q-1-5" data-correct="true" data-reason="Right: the first saved Python script is hello.py."><span><strong>A.</strong> hello.py</span></label></li><li><label><input type="radio" name="q-1-5" data-correct="false" data-reason="Wrong: this is not what the chapter transcript says or demonstrates."><span><strong>B.</strong> index.html</span></label></li><li><label><input type="radio" name="q-1-5" data-correct="false" data-reason="Wrong: this confuses the chapter topic with a different Python concept."><span><strong>C.</strong> main.js</span></label></li><li><label><input type="radio" name="q-1-5" data-correct="false" data-reason="Wrong: this skips an important detail emphasized in the chapter."><span><strong>D.</strong> style.css</span></label></li>
+  </ul>
+  <button type="button" data-check-question>Check</button>
+  <span class="feedback" aria-live="polite"></span>
+  <p class="reason" hidden></p>
+</section>
+<section class="question">
+  <h3>7. What does REPL stand for conceptually in this chapter?</h3>
+  <ul class="options">
+    <li><label><input type="radio" name="q-1-6" data-correct="false" data-reason="Wrong: this is not what the chapter transcript says or demonstrates."><span><strong>A.</strong> A package installer</span></label></li><li><label><input type="radio" name="q-1-6" data-correct="false" data-reason="Wrong: this confuses the chapter topic with a different Python concept."><span><strong>B.</strong> A graphics library</span></label></li><li><label><input type="radio" name="q-1-6" data-correct="false" data-reason="Wrong: this skips an important detail emphasized in the chapter."><span><strong>C.</strong> A web server</span></label></li><li><label><input type="radio" name="q-1-6" data-correct="true" data-reason="Right: the chapter uses the REPL to type Python interactively."><span><strong>D.</strong> An interactive Python prompt for quick commands</span></label></li>
+  </ul>
+  <button type="button" data-check-question>Check</button>
+  <span class="feedback" aria-live="polite"></span>
+  <p class="reason" hidden></p>
+</section>
+<section class="question">
+  <h3>8. Which command does the instructor use on Windows to start Python?</h3>
+  <ul class="options">
+    <li><label><input type="radio" name="q-1-7" data-correct="false" data-reason="Wrong: this is not what the chapter transcript says or demonstrates."><span><strong>A.</strong> python3 only</span></label></li><li><label><input type="radio" name="q-1-7" data-correct="false" data-reason="Wrong: this confuses the chapter topic with a different Python concept."><span><strong>B.</strong> npm start</span></label></li><li><label><input type="radio" name="q-1-7" data-correct="true" data-reason="Right: he uses py on Windows and notes python3 for Mac/Linux."><span><strong>C.</strong> py</span></label></li><li><label><input type="radio" name="q-1-7" data-correct="false" data-reason="Wrong: this skips an important detail emphasized in the chapter."><span><strong>D.</strong> gcc</span></label></li>
+  </ul>
+  <button type="button" data-check-question>Check</button>
+  <span class="feedback" aria-live="polite"></span>
+  <p class="reason" hidden></p>
+</section>
+<section class="question">
+  <h3>9. Why create an organized lesson folder?</h3>
+  <ul class="options">
+    <li><label><input type="radio" name="q-1-8" data-correct="false" data-reason="Wrong: this is not what the chapter transcript says or demonstrates."><span><strong>A.</strong> To make Python syntax optional</span></label></li><li><label><input type="radio" name="q-1-8" data-correct="true" data-reason="Right: organized folders keep project files manageable."><span><strong>B.</strong> To keep course files easy to find and run</span></label></li><li><label><input type="radio" name="q-1-8" data-correct="false" data-reason="Wrong: this confuses the chapter topic with a different Python concept."><span><strong>C.</strong> To install VS Code</span></label></li><li><label><input type="radio" name="q-1-8" data-correct="false" data-reason="Wrong: this skips an important detail emphasized in the chapter."><span><strong>D.</strong> To avoid using the terminal</span></label></li>
+  </ul>
+  <button type="button" data-check-question>Check</button>
+  <span class="feedback" aria-live="polite"></span>
+  <p class="reason" hidden></p>
+</section>
+<section class="question">
+  <h3>10. What does the first script demonstrate?</h3>
+  <ul class="options">
+    <li><label><input type="radio" name="q-1-9" data-correct="true" data-reason="Right: the first file uses print to display a greeting."><span><strong>A.</strong> Printing a greeting from a Python file</span></label></li><li><label><input type="radio" name="q-1-9" data-correct="false" data-reason="Wrong: this is not what the chapter transcript says or demonstrates."><span><strong>B.</strong> Connecting to a database</span></label></li><li><label><input type="radio" name="q-1-9" data-correct="false" data-reason="Wrong: this confuses the chapter topic with a different Python concept."><span><strong>C.</strong> Training an AI model</span></label></li><li><label><input type="radio" name="q-1-9" data-correct="false" data-reason="Wrong: this skips an important detail emphasized in the chapter."><span><strong>D.</strong> Creating a class hierarchy</span></label></li>
+  </ul>
+  <button type="button" data-check-question>Check</button>
+  <span class="feedback" aria-live="polite"></span>
+  <p class="reason" hidden></p>
+</section>
+<section class="question">
+  <h3>11. How does the chapter suggest running hello.py on Windows?</h3>
+  <ul class="options">
+    <li><label><input type="radio" name="q-1-10" data-correct="false" data-reason="Wrong: this is not what the chapter transcript says or demonstrates."><span><strong>A.</strong> node hello.py</span></label></li><li><label><input type="radio" name="q-1-10" data-correct="false" data-reason="Wrong: this confuses the chapter topic with a different Python concept."><span><strong>B.</strong> pip hello.py</span></label></li><li><label><input type="radio" name="q-1-10" data-correct="false" data-reason="Wrong: this skips an important detail emphasized in the chapter."><span><strong>C.</strong> open hello.py</span></label></li><li><label><input type="radio" name="q-1-10" data-correct="true" data-reason="Right: the transcript uses py hello.py from the terminal."><span><strong>D.</strong> py hello.py</span></label></li>
+  </ul>
+  <button type="button" data-check-question>Check</button>
+  <span class="feedback" aria-live="polite"></span>
+  <p class="reason" hidden></p>
+</section>
+<section class="question">
+  <h3>12. What is one reason the chapter gives for learning Python?</h3>
+  <ul class="options">
+    <li><label><input type="radio" name="q-1-11" data-correct="false" data-reason="Wrong: this is not what the chapter transcript says or demonstrates."><span><strong>A.</strong> It only works for one task</span></label></li><li><label><input type="radio" name="q-1-11" data-correct="false" data-reason="Wrong: this confuses the chapter topic with a different Python concept."><span><strong>B.</strong> It has no community</span></label></li><li><label><input type="radio" name="q-1-11" data-correct="true" data-reason="Right: versatility, community, prototyping, and jobs are all mentioned."><span><strong>C.</strong> It is versatile and has strong job demand</span></label></li><li><label><input type="radio" name="q-1-11" data-correct="false" data-reason="Wrong: this skips an important detail emphasized in the chapter."><span><strong>D.</strong> It cannot prototype quickly</span></label></li>
+  </ul>
+  <button type="button" data-check-question>Check</button>
+  <span class="feedback" aria-live="polite"></span>
+  <p class="reason" hidden></p>
+</section>
+<section class="question">
+  <h3>13. What does IntelliSense help with in an editor?</h3>
+  <ul class="options">
+    <li><label><input type="radio" name="q-1-12" data-correct="false" data-reason="Wrong: this is not what the chapter transcript says or demonstrates."><span><strong>A.</strong> Buying Python</span></label></li><li><label><input type="radio" name="q-1-12" data-correct="true" data-reason="Right: the Python extension includes IntelliSense support."><span><strong>B.</strong> Code assistance while writing</span></label></li><li><label><input type="radio" name="q-1-12" data-correct="false" data-reason="Wrong: this confuses the chapter topic with a different Python concept."><span><strong>C.</strong> Deleting files</span></label></li><li><label><input type="radio" name="q-1-12" data-correct="false" data-reason="Wrong: this skips an important detail emphasized in the chapter."><span><strong>D.</strong> Running a web browser</span></label></li>
+  </ul>
+  <button type="button" data-check-question>Check</button>
+  <span class="feedback" aria-live="polite"></span>
+  <p class="reason" hidden></p>
+</section>
+<section class="question">
+  <h3>14. What should Mac/Linux users commonly type instead of py?</h3>
+  <ul class="options">
+    <li><label><input type="radio" name="q-1-13" data-correct="true" data-reason="Right: the instructor notes python3 for Mac and Linux."><span><strong>A.</strong> python3</span></label></li><li><label><input type="radio" name="q-1-13" data-correct="false" data-reason="Wrong: this is not what the chapter transcript says or demonstrates."><span><strong>B.</strong> python.exe only</span></label></li><li><label><input type="radio" name="q-1-13" data-correct="false" data-reason="Wrong: this confuses the chapter topic with a different Python concept."><span><strong>C.</strong> visualstudio</span></label></li><li><label><input type="radio" name="q-1-13" data-correct="false" data-reason="Wrong: this skips an important detail emphasized in the chapter."><span><strong>D.</strong> pipx run vscode</span></label></li>
+  </ul>
+  <button type="button" data-check-question>Check</button>
+  <span class="feedback" aria-live="polite"></span>
+  <p class="reason" hidden></p>
+</section>
+<section class="question">
+  <h3>15. What is the safest interpretation of Chapter 1's setup advice?</h3>
+  <ul class="options">
+    <li><label><input type="radio" name="q-1-14" data-correct="false" data-reason="Wrong: this is not what the chapter transcript says or demonstrates."><span><strong>A.</strong> All computers use identical commands</span></label></li><li><label><input type="radio" name="q-1-14" data-correct="false" data-reason="Wrong: this confuses the chapter topic with a different Python concept."><span><strong>B.</strong> Windows 7 always uses the newest Python</span></label></li><li><label><input type="radio" name="q-1-14" data-correct="false" data-reason="Wrong: this skips an important detail emphasized in the chapter."><span><strong>C.</strong> No extension is useful</span></label></li><li><label><input type="radio" name="q-1-14" data-correct="true" data-reason="Right: the transcript calls out OS differences and compatibility."><span><strong>D.</strong> Use the right installer and commands for your operating system</span></label></li>
+  </ul>
+  <button type="button" data-check-question>Check</button>
+  <span class="feedback" aria-live="polite"></span>
+  <p class="reason" hidden></p>
+</section>
+<section class="question">
+  <h3>16. What does the instructor recommend after installing VS Code?</h3>
+  <ul class="options">
+    <li><label><input type="radio" name="q-1-15" data-correct="false" data-reason="Wrong: this is not what the chapter transcript says or demonstrates."><span><strong>A.</strong> Uninstall Python</span></label></li><li><label><input type="radio" name="q-1-15" data-correct="false" data-reason="Wrong: this confuses the chapter topic with a different Python concept."><span><strong>B.</strong> Create a JavaScript-only project</span></label></li><li><label><input type="radio" name="q-1-15" data-correct="true" data-reason="Right: the chapter moves from VS Code install to the Python extension."><span><strong>C.</strong> Open VS Code and install the Python extension</span></label></li><li><label><input type="radio" name="q-1-15" data-correct="false" data-reason="Wrong: this skips an important detail emphasized in the chapter."><span><strong>D.</strong> Disable the terminal</span></label></li>
+  </ul>
+  <button type="button" data-check-question>Check</button>
+  <span class="feedback" aria-live="polite"></span>
+  <p class="reason" hidden></p>
+</section>
+<section class="question">
+  <h3>17. What does the chapter say Python's community provides?</h3>
+  <ul class="options">
+    <li><label><input type="radio" name="q-1-16" data-correct="false" data-reason="Wrong: this is not what the chapter transcript says or demonstrates."><span><strong>A.</strong> No documentation</span></label></li><li><label><input type="radio" name="q-1-16" data-correct="true" data-reason="Right: the transcript mentions a large active community with resources and support."><span><strong>B.</strong> Resources and support</span></label></li><li><label><input type="radio" name="q-1-16" data-correct="false" data-reason="Wrong: this confuses the chapter topic with a different Python concept."><span><strong>C.</strong> Only paid answers</span></label></li><li><label><input type="radio" name="q-1-16" data-correct="false" data-reason="Wrong: this skips an important detail emphasized in the chapter."><span><strong>D.</strong> A ban on beginners</span></label></li>
+  </ul>
+  <button type="button" data-check-question>Check</button>
+  <span class="feedback" aria-live="polite"></span>
+  <p class="reason" hidden></p>
+</section>
+<section class="question">
+  <h3>18. Why is Python good for rapid prototyping according to the chapter?</h3>
+  <ul class="options">
+    <li><label><input type="radio" name="q-1-17" data-correct="true" data-reason="Right: the transcript names simplicity and ease of use."><span><strong>A.</strong> Its simplicity and ease of use</span></label></li><li><label><input type="radio" name="q-1-17" data-correct="false" data-reason="Wrong: this is not what the chapter transcript says or demonstrates."><span><strong>B.</strong> It cannot run files</span></label></li><li><label><input type="radio" name="q-1-17" data-correct="false" data-reason="Wrong: this confuses the chapter topic with a different Python concept."><span><strong>C.</strong> It has no syntax</span></label></li><li><label><input type="radio" name="q-1-17" data-correct="false" data-reason="Wrong: this skips an important detail emphasized in the chapter."><span><strong>D.</strong> It only works in browsers</span></label></li>
+  </ul>
+  <button type="button" data-check-question>Check</button>
+  <span class="feedback" aria-live="polite"></span>
+  <p class="reason" hidden></p>
+</section>
+<section class="question">
+  <h3>19. What visual area in VS Code is used to find extensions?</h3>
+  <ul class="options">
+    <li><label><input type="radio" name="q-1-18" data-correct="false" data-reason="Wrong: this is not what the chapter transcript says or demonstrates."><span><strong>A.</strong> The operating system dock only</span></label></li><li><label><input type="radio" name="q-1-18" data-correct="false" data-reason="Wrong: this confuses the chapter topic with a different Python concept."><span><strong>B.</strong> The browser address bar</span></label></li><li><label><input type="radio" name="q-1-18" data-correct="false" data-reason="Wrong: this skips an important detail emphasized in the chapter."><span><strong>C.</strong> The Python website footer</span></label></li><li><label><input type="radio" name="q-1-18" data-correct="true" data-reason="Right: the instructor clicks the extensions icon in the activity bar."><span><strong>D.</strong> The activity bar extension icon</span></label></li>
+  </ul>
+  <button type="button" data-check-question>Check</button>
+  <span class="feedback" aria-live="polite"></span>
+  <p class="reason" hidden></p>
+</section>
+<section class="question">
+  <h3>20. What should the learner do after downloading and installing each tool?</h3>
+  <ul class="options">
+    <li><label><input type="radio" name="q-1-19" data-correct="false" data-reason="Wrong: this is not what the chapter transcript says or demonstrates."><span><strong>A.</strong> Skip all remaining setup</span></label></li><li><label><input type="radio" name="q-1-19" data-correct="false" data-reason="Wrong: this confuses the chapter topic with a different Python concept."><span><strong>B.</strong> Delete the downloaded tool</span></label></li><li><label><input type="radio" name="q-1-19" data-correct="true" data-reason="Right: the transcript repeatedly says to install the tool and come back."><span><strong>C.</strong> Return to the video and continue following along</span></label></li><li><label><input type="radio" name="q-1-19" data-correct="false" data-reason="Wrong: this skips an important detail emphasized in the chapter."><span><strong>D.</strong> Start Chapter 23 immediately</span></label></li>
+  </ul>
+  <button type="button" data-check-question>Check</button>
+  <span class="feedback" aria-live="polite"></span>
+  <p class="reason" hidden></p>
+</section>
+
+<h2>Code Challenges</h2>
+<section class="challenge">
+  <h3>1. Hello File Output</h3>
+  <p>Write code that prints the first greeting from a Python script.</p>
+  <label>
+    <strong>Your code:</strong>
+    <textarea class="code-entry" spellcheck="false" autocapitalize="off" autocomplete="off" placeholder="Write your Python solution here..."></textarea>
+  </label>
+  <p><button type="button" data-reveal-solution>Reveal reference implementation</button></p>
+  <div class="solution" hidden>
+    <p><strong>Reference implementation:</strong></p>
+    <pre><code>print(&quot;Hello, world!&quot;)</code></pre>
+  </div>
+</section>
+<section class="challenge">
+  <h3>2. Platform Command Hint</h3>
+  <p>Return the command to start Python for windows, mac, or linux.</p>
+  <label>
+    <strong>Your code:</strong>
+    <textarea class="code-entry" spellcheck="false" autocapitalize="off" autocomplete="off" placeholder="Write your Python solution here..."></textarea>
+  </label>
+  <p><button type="button" data-reveal-solution>Reveal reference implementation</button></p>
+  <div class="solution" hidden>
+    <p><strong>Reference implementation:</strong></p>
+    <pre><code>def python_command(platform):
+    if platform.lower() == &quot;windows&quot;:
+        return &quot;py&quot;
+    return &quot;python3&quot;</code></pre>
+  </div>
+</section>
+<section class="challenge">
+  <h3>3. Lesson File Name</h3>
+  <p>Return a Python file name for a lesson number, such as lesson_1.py.</p>
+  <label>
+    <strong>Your code:</strong>
+    <textarea class="code-entry" spellcheck="false" autocapitalize="off" autocomplete="off" placeholder="Write your Python solution here..."></textarea>
+  </label>
+  <p><button type="button" data-reveal-solution>Reveal reference implementation</button></p>
+  <div class="solution" hidden>
+    <p><strong>Reference implementation:</strong></p>
+    <pre><code>def lesson_file(number):
+    return f&quot;lesson_{number}.py&quot;</code></pre>
+  </div>
+</section>
+<section class="challenge">
+  <h3>4. Tool Checklist</h3>
+  <p>Return True only if Python, VS Code, and the Python extension are installed.</p>
+  <label>
+    <strong>Your code:</strong>
+    <textarea class="code-entry" spellcheck="false" autocapitalize="off" autocomplete="off" placeholder="Write your Python solution here..."></textarea>
+  </label>
+  <p><button type="button" data-reveal-solution>Reveal reference implementation</button></p>
+  <div class="solution" hidden>
+    <p><strong>Reference implementation:</strong></p>
+    <pre><code>def ready_to_code(has_python, has_vscode, has_extension):
+    return has_python and has_vscode and has_extension</code></pre>
+  </div>
+</section>
+<section class="challenge">
+  <h3>5. Run Command</h3>
+  <p>Build a terminal command from an interpreter command and file name.</p>
+  <label>
+    <strong>Your code:</strong>
+    <textarea class="code-entry" spellcheck="false" autocapitalize="off" autocomplete="off" placeholder="Write your Python solution here..."></textarea>
+  </label>
+  <p><button type="button" data-reveal-solution>Reveal reference implementation</button></p>
+  <div class="solution" hidden>
+    <p><strong>Reference implementation:</strong></p>
+    <pre><code>def run_command(interpreter, filename):
+    return f&quot;{interpreter} {filename}&quot;</code></pre>
+  </div>
+</section>
+</main>
+</body>
+</html>

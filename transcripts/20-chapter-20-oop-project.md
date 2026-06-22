@@ -1,0 +1,289 @@
+# Chapter 20 - OOP Project
+
+Source: Python Tutorial for Beginners (with mini-projects) by freeCodeCamp.org
+URL: https://www.youtube.com/watch?v=qwAFL1597eM
+Time range: 06:27:29-06:57:15
+
+## Transcript
+
+- [06:27:29] i've got vs code open i have a folder for lesson 20 over here on the left and two lessons ago we
+- [06:27:36] covered python classes and objects and in the last lesson we learned about python exception handling
+- [06:27:42] so today we'll take what we learned from both of those lessons and complete a python practice
+- [06:27:48] project try saying that three times fast python practice project using object oriented programming
+- [06:27:55] or oop if you will so let's start by creating a bank accounts file so i'll have a new file
+- [06:28:02] i'll name this bank underscore accounts dot pi now this file is going to hold the classes for
+- [06:28:09] several different types of bank accounts but let's start by just creating our first class which will
+- [06:28:15] be bank account so i'll type class and then bank account and now inside of this bank account class
+- [06:28:21] we'll start with our init function and remember that's two underscores and then init and two more
+- [06:28:28] underscores and it will receive self and then it needs to receive an initial amount that we're
+- [06:28:33] opening our bank account with so i'll type initial amount here and then also let's give this an
+- [06:28:39] account name that it receives and then inside this initializer function we'll say self dot balance
+- [06:28:47] equals the initial amount and then we'll also say self dot name equals the account name that it
+- [06:28:55] receives and then we're going to print some output here just to get some output when we
+- [06:29:02] open our bank account so we'll say print let's make this an f string and inside the string we'll
+- [06:29:07] start with a line break so we start on a new line and i'll say account and then inside of
+- [06:29:13] this we're going to wrap this in single quotes we'll say self dot name and then another single
+- [06:29:20] quote and then we'll say created put a period another new line and now let's say balance equals
+- [06:29:30] and a dollar sign because this will be in us dollars and we'll say self dot balance and i'm
+- [06:29:37] going to press alt z to wrap this down to the next line as it starts to get longer and then we'll
+- [06:29:42] format this so we put a colon and we'll put a dot 2 f so that means we'll have two decimal points
+- [06:29:48] in our self dot balance and that would represent the cents if there were any cents to go along with
+- [06:29:54] our dollars and that's all we need to open an account so let's save this file and now in our
+- [06:30:00] file tree let's create another file and let's call this oop underscore project dot pi and in
+- [06:30:07] this file we're going to import everything from our bank accounts file so we'll do that with from
+- [06:30:14] bank underscore accounts import and then we'll put an asterisk which stands for all and then
+- [06:30:20] i'm going to create an instance of a bank account so i'll say dave equals bank account and we'll
+- [06:30:27] start our bank account with one thousand dollars and we'll name the bank account dave and let's
+- [06:30:33] go ahead and create a second bank account so i'll do shift alt and the down arrow to copy that down
+- [06:30:39] i'll double click dave which selects the first one here on line four and then control d now i've
+- [06:30:45] selected both and i'll just type sarah and it will change sarah with an a at the end and it will just
+- [06:30:52] change the name on both now let's go ahead and change sarah's deposit amount here that she starts
+- [06:30:57] her account with and she'll get two thousand dollars to start her account so now let's save
+- [06:31:03] this file and let's go ahead and from the drop down menu choose run python file and you can see
+- [06:31:09] we've got a message here that says account dave created balance equals one thousand and then
+- [06:31:14] account sarah created balance equals two thousand now i want to change this view so this appears on
+- [06:31:20] the right so we should be able to go to view appearance and as i have done in previous tutorials
+- [06:31:27] choose oh it's panel position and then choose right and now this is over here on the right
+- [06:31:32] our code in the middle and we see our file tree on the left now we're not going to add
+- [06:31:36] any more files so we can go ahead and press control b to hide that file tree and have a
+- [06:31:41] little more room for our code and we can switch between the files at the tabs here at the top
+- [06:31:47] so now let's go back to bank accounts and let's add a method to our class and let's call this
+- [06:31:52] method get balance and it's going to receive self and that's all it needs to have because
+- [06:31:58] it's just going to output the balance of the account so we'll say print make this another
+- [06:32:03] f string and inside of this we'll once again start with a new line and then we'll say
+- [06:32:07] account and we'll say self dot name so it names the account and of course another single quote
+- [06:32:17] oh we need a single quote to start with i said another and we didn't put the first one there
+- [06:32:21] we go so we're just wrapping that in single quotes in the output as we see over here where it says
+- [06:32:26] account dave and account sarah so after account and the name then we'll just say balance equals
+- [06:32:33] we'll have a dollar sign and now we'll essentially have the same thing that we had up here so we can
+- [06:32:38] just copy this where we had self dot balance and we format it to have two decimals so i did copy c
+- [06:32:44] and now our control c and then control v to paste and so that is our method get balance now let's
+- [06:32:52] go ahead and call that over in our oop project file so just underneath where we opened our
+- [06:32:58] accounts i'm going to type dave dot get balance and call that i'll copy that down with shift alt
+- [06:33:04] and the down arrow and we'll also get the balance for sarah's account now let's save the file and
+- [06:33:10] let's once again run this file and now i need this just a little bit wider so it doesn't wrap
+- [06:33:16] down there we go so now we create both accounts and then we get the balance for each account with
+- [06:33:21] our get balance method now let's go back to the bank accounts class once again and let's add a
+- [06:33:26] deposit method so we'll say def deposit it's going to receive self and it's also going to receive an
+- [06:33:33] amount so whatever the amount of the deposit is here we'll say self dot balance and we'll set
+- [06:33:40] that equal to self dot balance plus the amount that we've received and now i'm going to copy
+- [06:33:48] our print statement from above where we get the balance and i'll paste it below once again control
+- [06:33:55] c and then control v but i want to add just a little bit so before we have the account balance
+- [06:34:01] i'm also going to say deposit complete and then go ahead and save now essentially we're getting
+- [06:34:12] the balance once again so if you wanted to just have a print statement that said deposit complete
+- [06:34:17] and then we call get balance we could do that also so how about we do that since it looks like
+- [06:34:23] the same thing from above let's go ahead and delete what we were going to print we can get
+- [06:34:28] this all on one line and it doesn't really even need to be an f string here because we're not
+- [06:34:32] inserting anything and it looks like i need a quote right here at the end of our print statement
+- [06:34:37] but after that we could go ahead and call get balance as well and here we're going to do this
+- [06:34:43] with self dot get balance let's go ahead and save this method and now let's run the file with our op
+- [06:34:52] project but we first of course need to call the method so i'm going to say sarah and now let's
+- [06:34:59] deposit and now we need to pass in a value we're going to deposit so let's deposit an extra $500
+- [06:35:06] into sarah's account we'll save that let's go ahead and run the python file and now we have deposit
+- [06:35:14] complete and it went ahead and called the get balance method once again so we can see sarah
+- [06:35:20] now has $2,500 in her account now we need to go back to the bank accounts file and we need to add
+- [06:35:26] a withdraw method however this gets a little more complex because anytime you withdraw money you
+- [06:35:34] need to do a balance check to see if you have enough money or enough funds to complete the
+- [06:35:40] transaction so for this we're going to need to add a separate method called viable transaction
+- [06:35:46] which will make sure the transaction can be completed before we go ahead and complete it
+- [06:35:51] and because of this we're also going to want to create a custom error that i'm going to name
+- [06:35:57] balance exception so let's scroll to the top of our file and just above our class bank account
+- [06:36:03] let's create another class that i'll call balance exception and it's going to receive an exception
+- [06:36:10] and then inside this class i'm just going to say pass because we won't put anything extra here
+- [06:36:15] but this is a very descriptive exception because we're going to have a problem with the balance
+- [06:36:22] if we don't have enough funds to complete the transaction so now let's scroll back down
+- [06:36:26] underneath the deposit method and let's add our viable transaction method that we're going to
+- [06:36:32] need to use inside of our withdraw method so i'm going to call this viable transaction and then
+- [06:36:39] it's going to receive self and the amount and then because of this we'll say if self.balance
+- [06:36:47] is greater than or equal to the amount then we can go ahead and complete the transaction so we'll
+- [06:36:54] just return but otherwise we'll just have an else we're going to raise the exception so this will be
+- [06:37:02] the balance exception and inside of this i'm going to put an f string let me go ahead and close the
+- [06:37:08] terminal now so we have a little more room to read this f string say f and then inside of this slash
+- [06:37:14] n for a new line and sorry account and now we can put self name but i want that in single quotes
+- [06:37:23] again self.name another single quote after that only has a balance of and now let's put in our
+- [06:37:35] self.balance and our format here of two decimals and it looks like we're pretty much complete we
+- [06:37:43] just need our closing parentheses there no we actually have the closing parentheses down below
+- [06:37:48] sorry i just put that on separate lines so that is our balance exception and the message that goes
+- [06:37:54] along with it which remember we created the class above and now we're just passing in a message with
+- [06:37:59] the exception here as we raise it inside of the viable transaction method and we're going to use
+- [06:38:05] this method in our withdraw method so now let's create the withdraw method so just underneath
+- [06:38:11] this we'll say def and have our withdraw and it's going to receive self and an amount as well i'm
+- [06:38:18] going to scroll for just a little more room here and now inside this method we're going to start
+- [06:38:22] with a try because we also want to catch an error if we actually raise that exception so we'll have
+- [06:38:29] self.viable transaction and we'll pass in the amount now here's where an exception could be
+- [06:38:36] raised and we'll want to catch that below if we have that occur so we will handle that in just
+- [06:38:41] a moment but now let's go ahead and say self.balance is going to equal self.balance minus
+- [06:38:53] the amount so we're beginning the withdrawal here because if we make it past this self.viable
+- [06:39:00] transaction and an error is not raised or an exception is not raised then we will make it
+- [06:39:05] onto this line because then it will be okay to go ahead and complete the withdrawal so now we'll say
+- [06:39:11] print and we'll have a new line here and we'll say withdraw complete now on the next line
+- [06:39:21] we can go ahead and say self.getbalance once again to show the balance after with the withdraw
+- [06:39:29] is complete but now after our try we can have our accept this will be a balance exception
+- [06:39:36] as error now inside this accept block we'll just print and this can be an f string
+- [06:39:44] and here we'll just say withdraw interrupted
+- [06:39:53] there we go spelled that correctly and we can go ahead and pass in
+- [06:39:57] the error message right here as well which of course already starts on a new line so i didn't
+- [06:40:02] put a new line there to go with it so this will print out withdraw interrupted and then of course
+- [06:40:08] fill in this information right here that goes along with the balance exception now let's head
+- [06:40:13] back to our oop project file and underneath the deposit for sarah let's go ahead and say dave
+- [06:40:20] withdraw and let's withdraw an amount we don't have like ten thousand dollars here we'll go ahead
+- [06:40:27] and run this file once again and we can see let's bring this over just a little bit but sorry the
+- [06:40:33] withdraw is interrupted there it says sorry account dave only has a balance of one thousand
+- [06:40:39] dollars maybe i could bring this in a little bit so it reads better it's not wrapping too well
+- [06:40:43] there we go so sorry account dave only has a balance of one thousand dollars so we raised our
+- [06:40:50] error and it did work as expected now let's go ahead and add a withdraw that will work so dave
+- [06:40:57] withdraw and let's just withdraw ten dollars now and let's run this file once again and now it
+- [06:41:04] says withdraw complete and account dave has a balance of nine hundred and ninety dollars because
+- [06:41:09] if you remember up above we opened the account with one thousand dollars now let's finish our
+- [06:41:16] first class here our bank account class let's finish this with a transfer method where we
+- [06:41:22] could transfer money from one account to another and this method is going to also check for a
+- [06:41:28] viable transaction because we'll need to withdraw money from one account and then deposit it into
+- [06:41:33] another so it's also going to call those methods so i'm going to once again scroll up for a little
+- [06:41:38] more room here and we'll start our transfer method so we'll say def transfer it's going to receive
+- [06:41:45] self it's going to receive the amount and it's going to receive the account that we want to
+- [06:41:49] transfer money to once again start with a try block and i'm going to print and i'm going to
+- [06:41:56] start a new line and i'm going to make it rather obvious that we're starting a transfer here so
+- [06:42:01] four five six seven eight nine ten i'll put ten asterisks and then i'll put two new lines and i'm
+- [06:42:09] going to say beginning transfer couple of dots and then i'm on windows you can pull up an emoji
+- [06:42:17] however you want to on your operating system but on windows i can press the windows key
+- [06:42:22] and the period and my emoji selector comes up i'm going to type rocket and i'll just put a rocket
+- [06:42:28] here for our beginning message now after the transfer begins then i'm going to say self.viable
+- [06:42:35] transaction and pass in the amount so we make sure that it is a viable transaction that can proceed
+- [06:42:42] and we'll say self.withdraw and we'll pass in the amount once again and then we're going to say
+- [06:42:49] account this is the account we passed in that we're transferring money to and we'll call the
+- [06:42:54] deposit method on that account and we'll pass in the same amount there that has been withdrawn
+- [06:43:00] from the other account then we're going to print and here we'll say slash in with a new line once
+- [06:43:06] again and then transfer complete and i'll put an exclamation mark once again bringing up my emojis
+- [06:43:15] i want to use a check mark here as well so now we have our full transfer complete message
+- [06:43:20] let's go ahead and put some more asterisks at the end of this too so i'll do a couple of new lines
+- [06:43:25] and then one two three four five six seven eight nine ten once again just to match that beginning
+- [06:43:30] message so there's our full try and then we have our accept as well and this will be accept
+- [06:43:39] balance exception as error and inside the accept block we will print i have an f string here and
+- [06:43:47] then we'll say transfer interrupted and i'll once again pull up my emojis and i want an ex
+- [06:43:58] i'm just going to use a red x there so it's obvious pitches our attention and i'll close
+- [06:44:04] my emoji selector space over and we're going to pass the error into the string as well so we get
+- [06:44:11] the message from the error now let's go back to our oop project and then let's transfer some money
+- [06:44:17] so i'm going to say dave dot transfer and first i'm going to try to transfer ten thousand dollars
+- [06:44:23] once again which should trigger our transfer error now not to withdraw interrupted but we
+- [06:44:28] should see transfer interrupted let's try that out so we'll run the file and clearly i forgot to pass
+- [06:44:35] in what else was needed which is the second account i need to actually transfer this to
+- [06:44:42] sarah so i'm transferring ten thousand dollars to sarah's account so we had an error when we didn't
+- [06:44:47] pass in the other param that was needed here so now let's go ahead and save this file once again
+- [06:44:53] run this and yes we had beginning transfer but then the transfer was interrupted and it says
+- [06:44:59] sorry account dave only has a balance of nine hundred and ninety dollars so no way we could transfer
+- [06:45:05] ten thousand dollars let me do shift alt in the down arrow and change that transfer to one hundred
+- [06:45:12] dollars that we're going to send to sarah so we'll see the beginning transfer and the transfer
+- [06:45:17] interrupted again but then after that we're going to look for a successful transfer let's run the
+- [06:45:22] file again and yes so above the transfer was interrupted but now here is a full transfer so
+- [06:45:30] we have beginning transfer then the withdrawal is complete because we call the withdrawal method
+- [06:45:35] and now it shows dave has a balance of 890 and then it says deposit complete and it shows sarah
+- [06:45:42] has a balance of 2600 and finally it says transfer complete and we have completed our main bank
+- [06:45:49] account class but now let's go back to the bank accounts file and let's start a new class so
+- [06:45:55] underneath this we're going to create another class and this one is going to use inheritance
+- [06:46:00] from the bank account class and this is going to be an interest rewards account and i'll abbreviate
+- [06:46:07] account like that and then we're going to pass in bank account which is the parent that we're going
+- [06:46:13] to inherit from now there will be no new properties so we don't need to create a new initializer at
+- [06:46:20] the top our init function but we are going to overwrite the deposit method because any deposit
+- [06:46:27] in this account gets an added five percent to the amount that's going in as the deposit that's the
+- [06:46:33] rewards so here let's say def deposit once again and we can see visual studio code wanted to fill
+- [06:46:41] everything out for us so it's already returning and calling super as the deposit amount that's
+- [06:46:47] very nice but that's not exactly what we want so i'm going to delete the second line that vscode
+- [06:46:52] added for me automatically instead i'm going to say self dot balance is going to equal self dot
+- [06:47:00] balance and then i'm going to say plus the amount that we're passing in but if we want to add five
+- [06:47:07] percent to the amount we don't want to just add the amount so let's go ahead and put a parentheses
+- [06:47:12] here just to indicate our order of operations and we'll say amount times one point zero five which
+- [06:47:19] would actually add that five percent i'll close the terminal window over here again so this can
+- [06:47:23] stay on one line so we're not just adding the amount to the balance but we're adding an additional
+- [06:47:29] five percent to that amount after we do that we can say print and then we'll just we don't need
+- [06:47:36] an f string we'll just have a line here that says deposit complete and then on the next line we
+- [06:47:46] should be able to go ahead and say self dot get balance once again and this is really all we need
+- [06:47:52] for our new class because it should inherit everything else from the parent class bank account
+- [06:47:58] so we were just overriding the deposit so now it has the interest rewards added let's go back to
+- [06:48:04] the oop project file and let's try this out so first let's start by creating a new interest
+- [06:48:10] rewards account for gem so i need to say interest rewards account now we're going to open this with
+- [06:48:17] a thousand dollars for gem also and we'll name the account gem i'll scroll up for some more room
+- [06:48:23] underneath opening the new account let's go ahead and call gem get balance so we can check that
+- [06:48:28] method out then let's also say gem deposit which remember is also going to use get balance in there
+- [06:48:35] but we'll just pass in an extra hundred dollars to gem so he should have eleven hundred dollars
+- [06:48:40] but also another five percent of one hundred dollars so at this point when we check the result
+- [06:48:46] we should be looking for one thousand one hundred and five dollars in gem's account after that
+- [06:48:52] deposit because he would get a reward then let's go ahead and say gem dot transfer and gem will
+- [06:48:59] transfer one hundred dollars to dave now the transfer method if you remember not only uses
+- [06:49:05] the deposit method but it also uses the withdraw method so that should also indicate that those
+- [06:49:12] methods are working so let's save this and run our file once again okay let's scroll up so we
+- [06:49:18] can see where everything starts here and we have account gem created with one thousand dollars
+- [06:49:24] and now we got the balance which was one thousand dollars and then gem deposits another one hundred
+- [06:49:29] dollars and with his rewards account he gets an extra five dollars which is an extra five percent
+- [06:49:35] of that one hundred so now gem has one thousand one hundred and five dollars then gem transfers
+- [06:49:41] one hundred dollars to dave so we begin the transfer it says the withdraw is complete
+- [06:49:47] and then account gem has one thousand and five dollars instead of one thousand one hundred and
+- [06:49:53] five dollars and now the deposit is complete for dave dave doesn't have a rewards account so he
+- [06:49:58] just gets the one hundred dollars on that transfer deposit and it's back up to nine hundred and
+- [06:50:04] ninety dollars and then the transfer is complete so everything with our interest rewards account
+- [06:50:09] worked as expected and you can see it has all of the methods that it inherited from the bank account
+- [06:50:15] class now let's go back to the bank accounts page one more time and we have our interest rewards
+- [06:50:22] account class here and underneath this we're going to create one last class so let's call this
+- [06:50:27] class and here i'm going to say savings account now savings account is going to inherit
+- [06:50:35] from an interest rewards account i'm going to scroll up for a little more room here now our
+- [06:50:42] savings account is going to add another property to the class called fee and so in order to do this
+- [06:50:48] we are going to need to define that init method for the class again and then we'll use super
+- [06:50:53] to bring in everything from the parent class and the parent class as we mentioned is an interest
+- [06:50:58] rewards account so let's start here just underneath and we'll say def and then we'll put in our init
+- [06:51:05] method which will receive self it will receive an initial amount as our parent class bank account
+- [06:51:12] did which is actually a grandparent going up two levels there and then underneath here we'll go
+- [06:51:19] ahead and call that super function and then we'll have a knit after it and now we put in initial
+- [06:51:26] amount once again and after initial amount we'll also put in account name now no uh no colon after
+- [06:51:35] that i accidentally typed that for a second but no colon there and then we'll add our new property
+- [06:51:40] which is self dot fee and there's going to be a five dollar fee for any withdraw from this account
+- [06:51:48] now this is inheriting from the interest rewards account and it's a savings account so also any
+- [06:51:53] deposit will get that additional five percent just like jim's account did when he had an interest
+- [06:51:59] rewards account however it's a savings account so anything withdrawn from this account is going to
+- [06:52:05] have a five dollar fee on every withdrawal so to do that we need to go ahead and override
+- [06:52:12] the withdraw method by adding a new withdraw method here so this is going to receive self
+- [06:52:18] and amount and now inside the withdraw method we're going to have a try we'll start with checking
+- [06:52:25] to see if we once again have a viable transaction so we're going to have the amount plus self dot
+- [06:52:31] fee because that would be the total amount withdrawn let me go ahead and close our terminal
+- [06:52:36] once again so we're not just checking the amount so this is a little bit different than the initial
+- [06:52:41] withdraw method that we had above in that bank account class after this we're going to set
+- [06:52:47] the self dot balance equal to self dot balance minus the amount plus the fee that is added on
+- [06:53:00] so that total needs to be withdrawn from the balance then we can print and we'll start with
+- [06:53:07] a new line once again and we'll say withdraw complete and then after that we should once again
+- [06:53:15] call the balance with self dot get balance and we'll find out what the new balance is after that
+- [06:53:20] withdraw is complete but if it's not a viable transaction we once again need to catch the error
+- [06:53:26] or the exception that is raised so we'll say accept balance exception as error now we will
+- [06:53:34] print and here we will have an f string we'll have slash n for a new line and then we'll say
+- [06:53:40] withdraw interrupted and then after that oh let's not put a period let's put a colon then we'll
+- [06:53:50] print out the error message as well now we can save this file and check it out i'm going to go
+- [06:53:55] back to the oop project file and underneath gym let's create a new account for blaze and blaze
+- [06:54:03] is going to have a savings account and let's go ahead and pass in one thousand dollars when blaze
+- [06:54:10] opens his account let me make sure i abbreviated savings account right if i look at the class yes
+- [06:54:16] savings account so that needs to match up we did call the right class there so we're creating
+- [06:54:22] an instance of a savings account so it starts with a thousand dollars for blaze and then we'll
+- [06:54:27] say blaze and we'll once again check the get balance method there which is also called when
+- [06:54:32] we make a deposit and let's go ahead and make a deposit for one hundred dollars just like we did
+- [06:54:37] for gym and finally we'll say blaze and transfer and we'll try to transfer ten thousand dollars
+- [06:54:47] to sarah and let's go ahead and save the file and we'll run the file and see what we get for output
+- [06:54:54] so let's drag this over just a little bit more there we go let's scroll up here where we go
+- [06:55:00] ahead and create the account for blaze here it is blaze account blaze created and then the balance
+- [06:55:07] is one thousand dollars then we called the get balance method and you can see has one thousand
+- [06:55:12] dollars and then we deposited one hundred and since he also has a savings account that inherited
+- [06:55:19] from the interest rewards account just like gym he gets that extra five percent so now he has one
+- [06:55:24] thousand one hundred and five dollars and then we begin the transfer but it is interrupted because
+- [06:55:31] blaze had one thousand one hundred and five dollars and he could not transfer ten thousand
+- [06:55:36] dollars to sarah so we get the message that blaze only has a balance of one thousand one hundred and
+- [06:55:42] five dollars so instead of transferring ten thousand let's go ahead and bump that back
+- [06:55:48] to one thousand and now we can save and run this again we'll once again have a transfer interrupted
+- [06:55:54] but then we should have a successful transfer so let's check that out here it was interrupted
+- [06:56:00] but now here's the successful transfer we get the beginning transfer the withdraw is complete
+- [06:56:05] and now blaze only has a balance of one hundred dollars because he had one thousand one hundred
+- [06:56:12] and five dollars but he has a savings account so also that five dollar fee applied and it took away
+- [06:56:20] the five dollars with the fee and then he transferred a thousand dollars leaving blaze with
+- [06:56:26] one hundred dollars then the deposit is complete and sarah now has a nice bank account with three
+- [06:56:32] thousand six hundred dollars and we get the transfer complete message okay i think you're
+- [06:56:37] getting the idea overall now we've created three classes here and we've used inheritance as we've
+- [06:56:42] created them and then we've also added a new property to one class and we have used a couple
+- [06:56:48] of methods more than once essentially overriding one to add some new functionality as these classes
+- [06:56:56] needed the that new functionality now these could be used in a larger banking or part of a personal
+- [06:57:02] finance program for example but this is where we're going to go ahead and stop this oop practice
+- [06:57:07] project but i hope it has helped you review everything we've learned about python objects
+- [06:57:13] and classes as we move forward i've got vs code open and a new folder to the left for lesson 21

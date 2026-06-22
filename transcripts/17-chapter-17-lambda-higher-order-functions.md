@@ -1,0 +1,205 @@
+# Chapter 17 - Lambda & Higher Order Functions
+
+Source: Python Tutorial for Beginners (with mini-projects) by freeCodeCamp.org
+URL: https://www.youtube.com/watch?v=qwAFL1597eM
+Time range: 05:35:59-05:56:45
+
+## Transcript
+
+- [05:36:04] let's create a new file and let's name it lambda.py okay we have two topics today and we're going to
+- [05:36:13] start with lambda functions a lambda function is a single expression that returns a value so let's
+- [05:36:19] look at a simple example and we start with the keyword lambda so lamb and then you see bda and
+- [05:36:26] i'll just press tab and there it is and visual studio code highlights it because it's a keyword
+- [05:36:32] and now we're going to pass a param so i'll say num then i'll put a colon and i'm going to say
+- [05:36:38] num times num so this function would square a number so if we pass two it would be two times
+- [05:36:44] two and this is a single expression that will return that value but notice we're not using
+- [05:36:50] the return keyword but it will return the value now we can't call this function into action by
+- [05:36:56] name because it's anonymous and sometimes lambda functions are referred to as anonymous functions
+- [05:37:02] but we can assign a lambda to a variable so now i'll just take a variable name over here and i'll
+- [05:37:09] say squared equals and now it's going to store that function in the variable name squared so
+- [05:37:16] let's go ahead and use the function as an example and i'm going to need to print the output so i'll
+- [05:37:21] say print and then say squared and i'll pass in two like the example i gave now let's go ahead
+- [05:37:27] and choose drop this drop down here and i'm going to run the python file and we'll see over here on
+- [05:37:32] the right we get the number four as the output now just to understand the concept let's make
+- [05:37:38] another one but i'm going to press ctrl b to hide the file tree so we can see all of our code here
+- [05:37:43] and we can still have our terminal over here on the right we could even type clear to get some
+- [05:37:48] extra space and clear that out so now our second lambda so let's go oh and notice this added the
+- [05:37:54] def keyword here as i type squared there and it added the return key so visual studio code
+- [05:38:00] formatted that lambda for me and i didn't catch that until now but let's go ahead and do the
+- [05:38:06] control z to undo these changes now before i saved it this is what i had so squared equals lambda
+- [05:38:14] with a num and that's the keyword lambda and then we're returning num times num so that is an
+- [05:38:20] expression but then once i saved it into squared it went ahead and changed it so once again when
+- [05:38:26] i save it changes it to this def squared and it made it a one line function essentially so bs
+- [05:38:34] code is going to do some of that auto formatting and that's okay but it's actually the same thing
+- [05:38:38] so now let's go ahead and create another one and i'll call this add two and it's going to be equal
+- [05:38:46] to a lambda once again that has a num and then we'll say num plus or plus i need the plus symbol
+- [05:38:56] instead of the multiplication num plus two and then we will print what it puts out and we'll say
+- [05:39:03] add two and let's pass in something like 12 now when i save it's probably going to reformat this
+- [05:39:10] in visual studio code again so i'll save and yes we can see it was reformatted let's run the code
+- [05:39:16] and we get 14 over here which would be 12 plus two now even though visual studio code is changing
+- [05:39:22] this formatting when i save it's important to know how to write a lambda as i'm writing it
+- [05:39:27] with that keyword lambda so we're going to look at some more examples and in the future you'll see
+- [05:39:31] why that's important when we get to the second topic which is higher order functions but first
+- [05:39:36] let's create one more because i want to show that a lambda can accept more than one parameter so
+- [05:39:42] i might have a function and i won't set it equal to a variable here i'll just write the function
+- [05:39:47] so i'll say lambda and then i'll say a and b so two params here and then this would be a sum
+- [05:39:54] function so we just say a plus b so you can see what this would do this is an expression a function
+- [05:40:01] expression which is a lambda function that accepts params a and b and then it returns the sum of
+- [05:40:08] those two now if we set this equal to sum of course then we'll get that reformatting from visual
+- [05:40:14] studio code again but i'm going to go ahead and use sum here so i'll say print and i'll say sum
+- [05:40:20] and we'll pass in two and two of course when we save it reformats it and you can see it written
+- [05:40:27] in a more traditional function way here let's go ahead and run the code and we get four once again
+- [05:40:33] and with that being the same as our first function that was squared i want to show that's different
+- [05:40:37] so let's go ahead and just pass in two other numbers like 10 and 8 save rerun the code and
+- [05:40:42] now you can see we get 18 because it's 10 plus 8 and before moving on just so i can have this in
+- [05:40:47] the source code for you i want to put the lambda functions in comments even though visual studio
+- [05:40:53] code reformatted when we save so let's put a comment here and how we would write this with a
+- [05:40:58] lambda so i'll say lambda and then we had a num param and then we would say num times num without
+- [05:41:06] that keyword of return there and without the keyword def as well so just our function expression
+- [05:41:12] which is a lambda so that was our squared function now let's move on to the add to function and we'll
+- [05:41:19] write another comment here which was lambda and then we'll say num and then it has num
+- [05:41:26] plus two and then i'll go ahead and just copy this down and paste under sum as well so we can
+- [05:41:33] write a lambda there and that has a and b so we had a and b and then it was a plus b here
+- [05:41:43] just so you know what the lambdas look like and you can refer to that in the course resources
+- [05:41:47] now let's scroll up for some room and i think you have a good idea of what lambdas are about and
+- [05:41:53] how to create them i'm going to add a line of comments here just so we know we're moving on
+- [05:41:57] to our next section so the next logical question after you've learned about lambdas is when would
+- [05:42:03] i use one well they're most often used inside of another function really when you just need
+- [05:42:08] a quick function that you don't want to save for later so let's look at how this works and it also
+- [05:42:14] makes lambdas very powerful when you do this so i'm going to define a standard function here and
+- [05:42:19] i'm going to call it func builder which stands for function builder and it's going to receive one
+- [05:42:24] pram which is x now inside this function i'm going to return a lambda function so i'll say lambda
+- [05:42:32] and then this is going to be num once again and then we'll say num plus x now let's look at how
+- [05:42:40] we can use this function to build other functions so i'll say add 10 equals func builder and i'm
+- [05:42:48] going to pass in 10 and then below that i'll say add 20 spell 20 there we go equals func builder
+- [05:42:59] and i'll pass in 20 now what we have here is the x that we're passing in currently so we're passing
+- [05:43:06] in 10 as x and then this lambda with add 10 is going to add 10 and then the same for add 20
+- [05:43:14] because x would be equal to 20 but notice the rest isn't defined yet and we're returning a function
+- [05:43:19] now you've seen this before when we used closures we returned a function and then we called it later
+- [05:43:26] so we haven't called add 10 or add 20 into action yet so let's go ahead and do that now and we'll
+- [05:43:31] need to do it in a print to see the output so i'll say add 10 and i'll pass in the number seven
+- [05:43:38] now i'll copy this down with shift alt and the down arrow and i'll change that 10 to a 20 and
+- [05:43:45] we can add seven to that as well too so we'll know the difference let's go ahead and save and see if
+- [05:43:50] we get any formatting that's different but no visual studio code left our lambda the way it
+- [05:43:54] was inside of a function so that's good let's go ahead and run the code and now we can see we get
+- [05:44:00] 17 and 27 so we're using a lambda as a function builder essentially here in this first function
+- [05:44:08] so the lambda is being returned and then the lambda is actually called when we call add 10
+- [05:44:13] and add 20 so in our example here the lambda receives seven as the num parameter and it received
+- [05:44:21] 10 the first time as the x param in the func builder function so now we're ready to move on
+- [05:44:28] to a higher order function so i'll put another dividing line in here with our comments and then
+- [05:44:34] let's go ahead and discuss this what is a higher order function well it's a function that takes
+- [05:44:39] one or more functions as arguments or a function that returns a function as its result so yes by
+- [05:44:47] that definition up here we just created a higher order function as well because it returned a
+- [05:44:52] function as its result that's our func builder here and now we're going to look at some higher
+- [05:44:58] order functions that actually accept functions as parameters when we pass those in so i guess
+- [05:45:05] once again when we define the function we define it to accept a function as a param and then when
+- [05:45:12] we actually pass in the function that function is an argument and i should also highlight the fact
+- [05:45:17] that yes when we learned about closures we were returning a function just like func builder
+- [05:45:22] so we also used a higher order function there but this is where i really like to start to talk
+- [05:45:27] about them and that's when we start passing functions into functions and that really brings
+- [05:45:33] up the discussion of higher order functions for me now these are predefined functions that are
+- [05:45:38] built into python so we'll just use this function we won't have to define it and of course then
+- [05:45:44] we'll be passing in a function as an argument so let's start by looking at our squared lambda again
+- [05:45:50] so i'm just going to type this out once again it's lambda and then we have a num and then that num
+- [05:45:56] is going to be multiplied by itself so that lambda squares a number when it receives it so now let's
+- [05:46:04] define a numbers list because we need a collection of data now we've learned about different data
+- [05:46:09] collections it wouldn't just have to be a list we could have tuples and so on but i'm going to use
+- [05:46:14] a list for most examples today i'll pass in some numbers here three seven or three yeah three seven
+- [05:46:21] twelve eighteen twenty twenty one that's good they wouldn't have to be in order you could use
+- [05:46:27] any numbers you really want to and then i'm going to say squared numbers
+- [05:46:34] or squared nums let's just say squared nums equals and then we'll call map now map is
+- [05:46:41] a function that is built into python and it receives a function as the first argument so
+- [05:46:47] what i'm going to do is take this lambda right here use control x and just paste it in here
+- [05:46:54] with control v so that is the first argument now the next argument is your data collection
+- [05:47:02] so now we'll pass in numbers and then it's going to iterate over every item in this list each
+- [05:47:10] number and it's going to apply that function to it and then it will create a new list well
+- [05:47:17] it won't actually be a list at first we're going to need to apply the list constructor to it so
+- [05:47:22] i'm going to say print then i'm going to have list as our list constructor and then i'll say
+- [05:47:28] squared nums right here so let's go ahead and save this and we'll run our code and see what we get
+- [05:47:35] so we have a new list here and notice each number has been squared so three times three
+- [05:47:41] is nine seven times seven is 49 etc all the way through the list so really that's something we
+- [05:47:48] could achieve with a loop but knowing how to use map is so much more efficient and your code is so
+- [05:47:55] much cleaner this is just one line of code that we achieve all of that in by passing in a lambda
+- [05:48:01] function and passing in our data collection to the function map now we're going to look at another
+- [05:48:06] built-in function that works much like map and it is called filter so we're going to use that same
+- [05:48:12] numbers collection up here and then we're going to filter some results with that so let's create
+- [05:48:18] another lambda so i'll type lambda and now this will receive a number as well and we'll take that
+- [05:48:24] number and then we'll use the modulus and if you remember the modulus operator it actually returns
+- [05:48:31] the remainder of division so anytime we divide by two there's going to be a remainder if the number
+- [05:48:38] is odd so what we want to say is we're checking to make sure it's not odd or actually we should
+- [05:48:44] say we're checking to make sure that it is odd that's what i want to do is return the odd numbers
+- [05:48:48] if it was equal to zero it would be even and if it's not equal to zero as i typed here it will be
+- [05:48:55] odd so let's think about this lambda what will it actually return well it's going to return true or
+- [05:49:01] false because we're doing a comparison so it's either equal to zero or it's not so it's either
+- [05:49:06] true or false if true this is an odd number so now let's define our odd underscore nums and we'll
+- [05:49:14] set this equal to filter now we're going to pass in the lambda so once again i'll highlight this
+- [05:49:20] and control x to cut control v to paste and then we had our numbers list that i'll pass in here
+- [05:49:28] as the second param to filter we've got one line of code with filter just like we did map
+- [05:49:34] and i still need to print and then use the list constructor and say odd underscore nums
+- [05:49:39] and save let's go ahead and find out what is odd and what is not we actually had our lambda return
+- [05:49:47] true or false and filter the filter function then only returned the numbers that got the true
+- [05:49:53] result and so we can see we previously had these numbers and 12 18 and 20 were even so we only have
+- [05:50:01] 3 7 and 21 in our new odd nums list so now both of these results could be achieved by creating a
+- [05:50:09] loop and looping through the numbers and doing the appropriate actions through each iteration
+- [05:50:14] of the loop however once again much simpler to have one line of code where you pass in a lambda
+- [05:50:20] function and apply it to each item in your data collection that you also pass in to filter just
+- [05:50:26] like we did with map but map has a different approach than filter filter filtered out anything
+- [05:50:33] that did not get a true result from the function we passed in and map returned the result of this
+- [05:50:39] function applied to each item in our data collection we've got one more higher order function i'd like
+- [05:50:44] to cover today so let's scroll up for some room and then i'll come down here and i'm going to type
+- [05:50:50] an import line but just know that when we save vs code is automatically going to take this import
+- [05:50:55] line to the top of the file so we won't see it down here on line 52 anymore it will be probably
+- [05:51:01] on line one but we're going to say from func tools import reduce the reduce can be a more complex
+- [05:51:09] function but at its most simple it just adds everything together so let's look at an example
+- [05:51:14] that is simple first let's start with our lambda and the function that reduce accepts needs two
+- [05:51:21] parameters the first is an accumulator or you could say a subtotal the second is the current
+- [05:51:28] which represents the current item so here we're just going to say take the accumulated total
+- [05:51:34] and add it to the current number as reduce iterates through our collection of data so now
+- [05:51:41] we need some numbers and let's define those here we'll say numbers equals and we'll go one two
+- [05:51:48] three four five and back to one that should work okay after we have our list of numbers
+- [05:51:55] let's define total and set it equal to reduce and then we're going to pass in our lambda so i'll
+- [05:52:02] highlight it and say control x paste that in as the first param and after the lambda we need to
+- [05:52:10] pass in the numbers data collection now that wrapped down to the next line but that's okay
+- [05:52:16] it's still basically one line of code you can see line 58 just got a little deeper here okay so now
+- [05:52:22] we've done that and we're just going to print total i do not need to use a constructor here
+- [05:52:27] these are all numbers and they will just be added together so we'll save this and you saw the import
+- [05:52:33] is now gone it's probably at the top of the file let's go ahead and hit the play button to run
+- [05:52:38] and we get the total of 16 which is the total of all of these numbers now adding all the numbers
+- [05:52:44] together is a good example to well a simple example to show how reduce works however you don't want
+- [05:52:52] to do that when there is a simpler solution and reduces kind of a complicated solution so if i
+- [05:52:58] remember right i named a function sum up here somewhere let's find it there is our sum let's
+- [05:53:05] call this something else like sum total so i'll just put a total at the end of this we'll say sum
+- [05:53:12] sum underscore total would be more accurate for a python name so we'll call this sum underscore
+- [05:53:19] total just to have it name something different because there's actually a built-in function
+- [05:53:24] named sum so you don't really want to name them after a built-in function so now we could just
+- [05:53:30] say print use the built-in function sum pass in our numbers which this is very much simpler than
+- [05:53:37] using reduce and if we run this code we should get the same number yes 16 twice so while we're
+- [05:53:44] using reduce we don't want to use it if there is a simpler solution but reduce can provide some
+- [05:53:50] more complex solutions one thing you can add here for example is a starting number so a starting
+- [05:53:57] value let's go ahead and put that in and we'll say 10 and we'll save and run this code again
+- [05:54:03] and now we have 26 and 16 so we told reduce to start with another value however we could also
+- [05:54:11] do that with sum if i remember correctly let's try it out and put in 10 here as well so we run this
+- [05:54:17] and now we've got 26 twice so once again we're not doing anything with reduce that we can't do
+- [05:54:22] with sum right now so sum would be the better solution however let's look at a more complex
+- [05:54:29] solution for something else we could do with reduce so i'll scroll for a little bit of room here
+- [05:54:34] and we'll give a second example of reduce so i'll create a lambda and this is going to be similar
+- [05:54:40] to what we had because it still gets the accumulator and the current params now inside of this we'll
+- [05:54:46] take the accumulator and to it we will add the length of the current item because the items are
+- [05:54:52] going to be strings so now let's go ahead and create a list of names and inside this list i'll
+- [05:54:59] put my name and then let's put sarah ito and let's put i don't know if you've heard this song but
+- [05:55:07] there's a long name involved it's john jacob jingle timer shmit so there's a lot of characters
+- [05:55:16] there now and that's essentially what we were going for if you haven't heard that song look
+- [05:55:20] it up okay now we've got character count being defined and so what we're going to do is add up
+- [05:55:27] all of the characters in all of the items together and get a total and we can use reduce for that
+- [05:55:33] so we'll say reduce and here we'll pass in our lambda so i'll control x and put it right in here
+- [05:55:39] as the first argument and now as the second argument i'm going to pass in names and remember
+- [05:55:45] we do have that optional starting value and here it's not optional because we're using strings but
+- [05:55:52] we want to tell reduce hey we're going to be using numbers if not it would view this as a string that
+- [05:55:58] was trying to add a number two and we would get a type error back so we put in the starting value
+- [05:56:04] of zero as well and then we'll have our character count value so let's find out how many characters
+- [05:56:10] in total if we added all of the characters up from all three names that we have so now we can
+- [05:56:16] run our reduce and we get 47 so that is a little more complicated example there to show a good use
+- [05:56:24] of reduce even though it's still kind of a simple example here in learning you'll learn more about
+- [05:56:30] reduce as you continue to learn more about programming but now today we have covered lambda
+- [05:56:35] functions function expressions and higher order functions remember it's a higher order function
+- [05:56:41] if it receives a function as an argument or if it returns a function i've got vs code open and a new

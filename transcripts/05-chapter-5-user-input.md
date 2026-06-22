@@ -1,0 +1,218 @@
+# Chapter 5 - User Input
+
+Source: Python Tutorial for Beginners (with mini-projects) by freeCodeCamp.org
+URL: https://www.youtube.com/watch?v=qwAFL1597eM
+Time range: 01:23:25-01:45:31
+
+## Transcript
+
+- [01:23:25] i've got vs code open to a new folder let's create a new file in this folder and let's
+- [01:23:31] name this file rps dot pi stands for rock paper scissors which is the game we will build today
+- [01:23:38] as we learn about user input and control flow so to accept user input from the command line
+- [01:23:44] we first need to assign that input to a variable that we're going to use so we'll just call this
+- [01:23:50] value and i'll set this equal to input and then we can put a message to the user and that's exactly
+- [01:23:59] what the user will see so instead of typing message to the user let's say something like
+- [01:24:05] please enter a value and then the user it will wait for the user i should say to enter a value
+- [01:24:14] and then after they do the code will proceed to run so after we do this let's go ahead and just
+- [01:24:19] do something simple like print value so it will print back to the console of course what the
+- [01:24:26] user has entered so let's save this much and now with that saved i also want to change something
+- [01:24:32] from the previous tutorial when i open the terminal with control and backtick we can see
+- [01:24:36] it down here at the bottom let's move it over to the right and we can do that by going to the view
+- [01:24:41] menu and going to appearance and then we can go to panel position and then choose right and now it
+- [01:24:49] has moved the terminal here to the right i'm also going to hide the file tree as we don't really
+- [01:24:53] need to see it with just one file and i can do that by pressing the control button and the letter
+- [01:24:58] b as in boy and now we've hidden that so we have some room to code here and we'll still be able
+- [01:25:04] to work with the input over here so we've saved our file rps.py we're going to go ahead and run
+- [01:25:11] that by choosing run python file and then it says please enter a value so i'll just enter my name
+- [01:25:17] dave and then it printed to the console dave so very simple but that's what we get now of course
+- [01:25:24] we could also put a colon here to make it look a little bit better and how about a new line
+- [01:25:28] character as we learned how to escape those characters that are special and the slash in
+- [01:25:34] is a new line character so if we save now let's just run that again now we have please enter a
+- [01:25:40] value with a colon and we're ready to enter that on the next line instead of immediately after it
+- [01:25:45] as we did up here so now i could just say something like a and then of course it printed that same
+- [01:25:51] value right after i entered it on the line above so now let's start making our game and to do that
+- [01:25:56] we'll just start over i'll delete what we have there and i'm going to start with an empty line
+- [01:26:01] which will just help separate a new game from an old one at the command line so we've printed an
+- [01:26:07] empty string essentially therefore a blank line after that let's call this player choice because
+- [01:26:13] the player gets to choose rock paper or scissors we'll set this to an input and then inside of the
+- [01:26:19] input i could say enter let's give three dots and then let's give the new line character
+- [01:26:26] and after we start a new line we could say one for rock and then we could have a comma
+- [01:26:32] and let's put another new line let's say two or paper comma and then another well let's say or
+- [01:26:41] first and then a little space we'll say then another new line and then three or scissors
+- [01:26:49] and then we'll put a colon and let's put two new lines now notice how this just extended and kept
+- [01:26:55] on the same line here so we have to scroll let's go ahead and press alt z to wrap this down to
+- [01:27:01] lines it doesn't mean that i pressed return it just puts it on a second line as you can see
+- [01:27:06] line two now takes up two lines in the editor when i pressed alt z so that's what we're going
+- [01:27:12] to display to the user when we ask them to enter their choice and we want them to enter one two
+- [01:27:18] or three so now we can start applying control flow to our program and control flow is how the
+- [01:27:24] code flows it's how the user kind of goes through our code in a way so it's kind of like a waterfall
+- [01:27:31] if you picture it like that and it's performed step by step in a serial direction just top down
+- [01:27:37] for now and you could also call that procedural so we're doing one procedure at a time now you
+- [01:27:42] have already been introduced to some if statements some logical operators and we can apply those so
+- [01:27:50] we can say if the user enters this then do this and then else if the user enters something else
+- [01:27:56] do something else so if we look at a simple simple example of that we can say if one is greater than
+- [01:28:03] two which doesn't even apply to what the user is entering this is just a very simple example
+- [01:28:08] remember in python the indents means something so when i press return bs code already knows
+- [01:28:14] to apply that indent here and if it's not doing that for you that means it doesn't recognize that
+- [01:28:18] you have a python file and you need to install the python extension that i explain way back in
+- [01:28:24] lesson one in this series but here this just says if one is greater than two and of course it's not
+- [01:28:31] then we would say print do something so this is just an example of an if statement this doesn't
+- [01:28:37] apply to our game but this is a code block so it executes this code block if one is greater than
+- [01:28:45] two and of course that would never be true so let's apply something that makes a little bit
+- [01:28:49] more sense to our game here and so we have our player choice so we could say if player choice
+- [01:28:56] is less than one and then we can put in the pipe symbol which means or and we'll say player choice
+- [01:29:03] is greater than three that means they have given a number but it's not the number that we want not
+- [01:29:10] in the range we want at least one through three so now we have something we could act upon and we
+- [01:29:15] want to tell the user they need to enter one two or three so we could print this statement like print
+- [01:29:21] and say you must enter one two or three but the problem we have with the print statement is the
+- [01:29:29] program is still going to execute and continue after this so really we need to learn how to
+- [01:29:34] exit the program here if you remember from the previous tutorial we imported the math module
+- [01:29:39] and there are things we can import in python that will help us we need to do that at this time
+- [01:29:44] because we need to use the system x so i'm going to import at the top of the file and i'll just
+- [01:29:50] type import sys and then i'm going to give an extra blank line there just for some separation
+- [01:29:56] and now so instead of this print we can exit and still provide a message to the user but i need to
+- [01:30:01] use sys not exit and that will exit the program but will also output this message to the user
+- [01:30:09] okay we have another problem we haven't addressed here yet and this is that all user input
+- [01:30:15] is a string so when the user inputs that it will be a string we really can't use a string here and
+- [01:30:21] that would cause an error so let's go ahead and cast this to an integer so we can use our logical
+- [01:30:27] operators to check if it's less than one or greater than three so we'll call this player
+- [01:30:33] instead of player choice and we'll cast player choice to an integer as we previously learned
+- [01:30:40] about data types so now we just need to replace player choice below i'll highlight one player
+- [01:30:46] choice press control d to highlight the second one and then just control v to go ahead and pass
+- [01:30:53] that in and now we can check player to see if it's less than one or greater than three because
+- [01:30:59] player is an integer and not a string now as we also learned in the last lesson the user could
+- [01:31:05] enter something unexpected like a word like new york or whatever like that and then we could have
+- [01:31:11] an error here too but we'll learn how to handle those in the future for now let's assume the user
+- [01:31:15] has good intentions can read the instructions to say enter one two or three and will at least
+- [01:31:22] enter a number if not one of the correct numbers now after that selection we're going to have
+- [01:31:27] another control flow statement that is larger to choose who wins the game but before we can choose
+- [01:31:33] we need something to compare to so the computer we'll call the computer python needs to go ahead
+- [01:31:39] and make its own choice too and we want that choice to be random fairly unpredictable and
+- [01:31:44] we can do that by importing a random module so let's do that we'll say import random at the top
+- [01:31:51] and after that we will come down below and we will go ahead and assign the computer choice so let's
+- [01:31:57] call this computer choice we'll set this equal to random dot choice i'm going to pass in a string
+- [01:32:07] that has all three selections one two three so computer choice will also be a string but it's
+- [01:32:13] going to randomly choose one of the characters from this string using random dot choice
+- [01:32:20] so after that we'll cast that to an integer as well and say computer equals int and we'll pass
+- [01:32:28] in our computer choice variable now let's just enter a few print statements to at least get what
+- [01:32:34] we have so far before we go any further with the game so let's print another blank line and we can
+- [01:32:39] do that with an empty string and i'm going to scroll just so we don't go off the screen there
+- [01:32:44] and say print the next line and i'll say you chose and then let's put in our plus symbol to
+- [01:32:51] concatenate the player choice remember that is the string above so we can just use player choice
+- [01:32:56] there we don't need this to be an integer we actually need it to be a string when we use it
+- [01:33:02] in string output after that i'm going to use shift alt in the down arrow in vs code to copy
+- [01:33:08] that line down but now i'm going to change you to python and then we'll say python chose and here
+- [01:33:15] we'll put the computer choice and now we've stated what the computer chose as well as what we chose
+- [01:33:22] or the user and then we'll just once again print another blank line just so we get a little room
+- [01:33:28] so let's save all of that and now over here in the terminal let's type clear i'm using the python
+- [01:33:36] terminal here we see so i'll type clear and that should clear that out so now we have some room
+- [01:33:41] again i'll go ahead and click the play button and it says enter one for rock two for paper
+- [01:33:48] or three for scissors let's enter two press enter and it says you chose two and python chose three
+- [01:33:56] so it's working as expected right now but it's not telling us who won so now we need
+- [01:34:01] a larger control flow statement to determine who wins so let's just start by building a simple one
+- [01:34:07] and we can change the logic as we go to make it make more sense and apply to the game but just
+- [01:34:13] to look at how a larger if statement could work we could say if the player and then we'll say
+- [01:34:19] double equal sign here equals one so if the player choice is one then we could print
+- [01:34:26] print you win for the user now of course that doesn't apply to the logic of the game this is
+- [01:34:32] just an example but what if it's not one at this time so then we could say else and here we could
+- [01:34:39] just say print and then we would say python wins but of course this won't work for our entire game
+- [01:34:47] but at least it shows how an if else works we can also add more to this statement so let's go ahead
+- [01:34:54] and do that now and apply the full game logic and so if player chooses one that would be rock
+- [01:35:01] and then we would say also and the computer choice equals three so we chose rock as a player
+- [01:35:12] and the computer chose scissors so rock beats scissors and then actually the user would win
+- [01:35:19] so let's go ahead and copy this down i'll highlight both lines i'm going to press shift
+- [01:35:25] alt and the down arrow now it gives us another line but we can't have two if statements back
+- [01:35:30] to back we need to say else if here and in python we do that with l if so e l i f so now we can say
+- [01:35:39] if player chooses two and then the computer chooses one that means the player chooses paper
+- [01:35:47] and the computer chooses rock once again the player would win so you win is the appropriate output
+- [01:35:54] finally let's highlight this one more time and do shift alt and the down arrow so we can have
+- [01:36:00] multiple else ifs this lf statement we can only have one else we can only have one if in between
+- [01:36:08] we can put as many lf's as we need and here i'm going to say if the player chooses three
+- [01:36:14] and the computer chooses two so now the player would choose scissors and the computer would choose
+- [01:36:19] paper once again the player would win but there's other cases of course there is the choice that
+- [01:36:26] any other choice there would be where python wins but what if they both choose the same thing so we
+- [01:36:33] have one more lf to put and let's go ahead instead of copying that down i'll just type it here lf
+- [01:36:40] and now this would be if the player value is equal to the computer value then we're going to have
+- [01:36:48] print tie game now we've covered each option so we've covered the three options that would let
+- [01:36:55] the player win and we've covered the tie and anything remaining anything else allows python
+- [01:37:02] to win let's go ahead and save our python file one more time and we'll press play to run our code
+- [01:37:09] so it says enter one for rock two for paper three for scissors i'm going to enter two once again
+- [01:37:14] and it says you chose two python chose three python wins so python chose scissors
+- [01:37:20] and i chose paper let's run it again and see if we can win this time i'll choose one for rock
+- [01:37:27] and it says python also chose one we have a tie game you could continue to test this to ensure
+- [01:37:32] your code is working as expected let's do a couple of more things that could make our game
+- [01:37:36] just a little more appealing even though it's a simple game at the command line one is to use
+- [01:37:41] some emojis in here in our print statements now i'm on windows and i can press the windows key
+- [01:37:46] and the period here in vs code and i get an emoji menu and i want to use celebrate i believe is the
+- [01:37:54] name of it so i'm just going to type the word celebrate and as i see it starts to narrow down
+- [01:38:00] here to the emojis and i just want the little celebration emoji so that is the you win and i'm
+- [01:38:05] going to copy that in the space and paste it into each of the you win statements now for a tie game
+- [01:38:12] we would want something different so let's go ahead again i'm going to press windows key plus
+- [01:38:17] the period and here i want like a wow face yes wow tie game so we have a space there and now
+- [01:38:24] python wins we need to give python a snake of course so once again windows key period
+- [01:38:29] going to type snake and narrow it down to python give a space we save the file let's run it one
+- [01:38:36] more time and see what we get now i'll choose one again for rock and we tied and we have the wow
+- [01:38:42] emoji let's do it again and try to see if somebody can win one here three for scissors oh python
+- [01:38:48] chose one rock and rock beats scissors so python wins so do you notice what i'm doing at the end
+- [01:38:54] of the game i'm translating here i said you chose three python chose one so i had to translate
+- [01:39:00] scissors and rock for the numbers what if we could get it to say you chose scissors and python
+- [01:39:06] chose rock so we could improve our game just a little more to improve this i'm going to introduce
+- [01:39:11] you to python enums so i'm scrolling back to the top and we need to import enums but it looks just
+- [01:39:17] a little different because we don't want the entire module we just want enums so we're going to say
+- [01:39:22] from enum which is all lowercase import enum starting with a capital there so notice the
+- [01:39:31] difference and now i'm going to use the class syntax because that's what we would use with
+- [01:39:36] enums but they're different than other python classes and we will cover classes in the future
+- [01:39:41] but i'm going to type class and i'm going to name this rps for rock paper scissors and pass in an
+- [01:39:47] enum here and put the colon after it so that may look a little strange but just know it for now and
+- [01:39:53] then in the future we'll learn more about classes after that i'm going to use all caps here which
+- [01:39:59] is the tradition as we name constant variables constant data that does not change so i'm going
+- [01:40:06] to set rock equal to one on the next line i'm going to set paper equal to two and on the last line
+- [01:40:14] i'm going to set scissors equal to three so the syntax for constant data is all caps as the
+- [01:40:22] tradition and this data is not going to change so we have no plans of reassigning the rock variable
+- [01:40:30] a different value and so now when we use our enum we can pass in these numeric values and i'll show
+- [01:40:35] you what i mean just by putting it here at the top of the program for now so let's say print i need
+- [01:40:42] lowercase now print and then i would want to use my enum so i would say rps and then i could pass
+- [01:40:50] in the value that we have and notice our value down here is player so if i had a value in player
+- [01:40:55] i would pass in player but here let me just pass in the number two save our code for now and i'll
+- [01:41:01] go ahead and press play and we'll see what gets output at the top it says rps paper so by inputting
+- [01:41:08] the number two we got rps dot paper return but it did return the paper value of course it still
+- [01:41:16] wants to play the game we did not exit the game after that so let's go ahead and choose the number
+- [01:41:21] two press enter a and we won that's great but let's look at some more ways we can get data
+- [01:41:27] from our rps enum here so i'm going to go ahead and press shift alt in the down arrow
+- [01:41:32] three times and we can look at this in different ways so we could also be printing rps dot rock
+- [01:41:41] and after that we could also say rps and use bracket notation and then pass in rock as a string
+- [01:41:49] and finally we could say rps dot rock and then dot value in lowercase now after this just so the
+- [01:41:57] game does not play once again i'm going to use our sys exit just to exit for now and notice how bs
+- [01:42:03] code then made all of this a lighter color because it knows the rest of this code will not execute
+- [01:42:09] after i put the exit statement here this is just temporary so we can check the different ways
+- [01:42:14] that we can get values out of our enum so if i save this let's run our python code again and
+- [01:42:20] you can see the first time we had rps paper and that's what we had before when we passed in the
+- [01:42:26] two the second time we got rps rock when we said print rps rock the third time we got rps rock
+- [01:42:34] again when we used bracket notation and the fourth time when we checked the actual value of rock
+- [01:42:39] that's when we got the number back so if we want to get the number or whatever value is over here
+- [01:42:45] it should be from typing rps dot whatever the enum name is and then we should get the number
+- [01:42:54] that is associated with it here by typing value so the different ways you can get that what we're
+- [01:42:59] going to do as i mentioned before is pass in the player value right there and of course the computer
+- [01:43:05] value as well so let's go ahead and delete these and finish completing the game so we want to use
+- [01:43:11] these in our string outputs for the game so let's go ahead and look at the ucho's and player choice
+- [01:43:17] now here we needed to pass in a string before and that's what player choice and computer choice
+- [01:43:22] both are before we casted those into integers but now we're actually going to use our enum
+- [01:43:28] and the integer so let's do that instead of player choice here i'm going to cast to a string
+- [01:43:36] and i'm going to pass in rps and i'm going to pass in the player value and then we could do
+- [01:43:43] the same here with the computer choice remove it and say string and then we could say computer
+- [01:43:49] and then we could oh i left off the rps let's go ahead and say rps and then of course we need
+- [01:43:56] computer and now we should get our rps rock rps paper rps scissors let's go ahead and play the
+- [01:44:03] game once and see what we get we're running the game says enter one two or three let's enter two
+- [01:44:09] and it says ucho's rps dot paper python chose rps dot paper tie game so that looks good except
+- [01:44:17] that rps dot is kind of strange for a user that's not a great user experience i'm going to go ahead
+- [01:44:23] and type clear here once again let's go ahead and remove that rps and we can do that with one of the
+- [01:44:28] methods that we learned about in our last lesson so here i'm going to use dot replace and this is
+- [01:44:35] a string method and we're going to replace the rps dot and then we'll put a comma and the replacement
+- [01:44:42] is just an empty string now let's do the same here so i'm just going to copy this control c
+- [01:44:50] add it to the end of our string there and control s to save now let's run our code one more time
+- [01:44:57] and see what we get and we've got one two or three i'm going to choose three we enter ucho
+- [01:45:02] scissors python chose scissors tie game we can't end on a tie game let's run this code one more
+- [01:45:08] time i'm going to enter one another tie game let's run one more time three python wins well
+- [01:45:15] i didn't win but i didn't want to end on a tie so now you've built your first game you learned
+- [01:45:20] about user input and control flow with if else if and else statements and we also added in one
+- [01:45:28] more data type that you learned about and those were enums hey before we get started on today's

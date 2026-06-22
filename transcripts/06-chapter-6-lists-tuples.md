@@ -1,0 +1,298 @@
+# Chapter 6 - Lists & Tuples
+
+Source: Python Tutorial for Beginners (with mini-projects) by freeCodeCamp.org
+URL: https://www.youtube.com/watch?v=qwAFL1597eM
+Time range: 01:45:31-02:17:00
+
+## Transcript
+
+- [01:45:34] lesson about lists and tuples i want to go back and make one correction in the previous lesson i
+- [01:45:39] did make an annotation there i've already changed the github source code but if you missed that
+- [01:45:44] annotation or haven't looked at the source code i just want to change this for you online 18 where
+- [01:45:49] we check the player with an if statement i wasn't thinking and i used the bitwise or we should have
+- [01:45:55] just used the actual word or right here this will make all the difference as far as how this if
+- [01:46:02] statement works for you we're learning about lists and tuples today and you can see i have an empty
+- [01:46:07] folder named lesson six over here in the top left we're going to create a new file and let's name
+- [01:46:13] this file lists.py and then before we type any code inside of our python file let's go ahead and
+- [01:46:21] move the terminal which i can open with control and the back tick let's move it to the right if
+- [01:46:26] you don't have it over on the right side so i'm going to choose view and then appearance scroll
+- [01:46:32] down to panel position and choose right and now our terminal is over here our python files here
+- [01:46:38] and then i'm going to press ctrl b to go ahead and hide the file tree that was over here now lists
+- [01:46:43] are one of four collection data types in python and what they do is hold multiple values and then
+- [01:46:49] we can reference those values with a common name so for example i could say users then i could set
+- [01:46:55] this equal to a list and inside the list i could put dave and maybe john and how about sarah so
+- [01:47:02] now we have a list of users so three values in one list and we just refer to it as the name users
+- [01:47:09] but of course it's not limited to just string data type or any one data type so i could just
+- [01:47:16] call a list here data set this equal to a list that has say my name number 42 and boolean data
+- [01:47:23] like true and that's also a valid list or it can even be empty so i'll just call this empty list
+- [01:47:30] and i'll set it equal to an empty list and that is also a valid list so now let's say you're working
+- [01:47:35] with one of these lists but you don't know what's inside it and you want to check to see if a value
+- [01:47:40] is inside of it so let's do that i'm going to use a print statement here so we can see the output
+- [01:47:45] and i'll just say dave which is a value that's in two of our lists and i can say in users and let's
+- [01:47:54] see what we get in the console after we control s to save our file then we can go up here by our
+- [01:48:00] play button and choose run python file and let's see what we get it says true over here so yes dave
+- [01:48:07] is in users so let's switch this to data control s to save again and i'll click the play button
+- [01:48:13] and we've got true again so now let's see if dave is in the empty list control s to save
+- [01:48:21] click play and that output is false so now let's say we want to get a specific item from a list
+- [01:48:27] and we know what position it is in and we have to remember that lists start with a zero index
+- [01:48:34] so dave would be at the zero position so here i could say users and then i can use a bracket
+- [01:48:41] and put zero now this should print dave to our output terminal over here so once again click play
+- [01:48:48] and we've got false because we had that above and now we have dave as well and now i'm going to
+- [01:48:53] copy this down by clicking on line nine where you see my print statement and you shift alt and the
+- [01:48:59] down arrow to just copy that line of code and now instead of using the position of the value we want
+- [01:49:05] if we want to know the last value in our list we could also use a negative one so i will save that
+- [01:49:13] and run and let's see what we get yep we've got sarah which is the last value in our list so
+- [01:49:19] likewise we could use a negative two and now let's run this code again and we've got john so it does
+- [01:49:26] accept negative numbers also now if we want to know the position of a specific value we can use
+- [01:49:33] a method so i'm going to say print and i'll say users once again and then dot index and let's find
+- [01:49:39] out the index of sarah inside of the users list so now that i have passed the string sarah to index
+- [01:49:49] we get position two returned here in our output and now what if we want a range of values maybe
+- [01:49:56] we want the first and second value we can also do that so i'll start with print once again so we
+- [01:50:02] can see the output and i'll say users and now with bracket notation let's start at zero and let's go
+- [01:50:09] to the second position but note this will not include the value at the second position so save
+- [01:50:16] and run the code and we get a list returned that has only dave and john from the zero and the first
+- [01:50:23] position in our list and now i'm going to copy this code down again with shift alt and the down arrow
+- [01:50:28] and let's say we wanted everything from the first position to the end of the list no matter how many
+- [01:50:34] entries were inside of our list well then we just wouldn't provide an ending value but we would start
+- [01:50:40] at the first position so now i'll say troll s to save the file again and run this and notice we
+- [01:50:45] get john and sarah so by providing the first position here in the first slot of the range
+- [01:50:51] it does include john however when we provided the second position as the last slot in the range it
+- [01:50:59] did not include sarah and now as you might guess this could also accept negative numbers so let me
+- [01:51:06] provide a full range here like negative three to negative one and let's see what we get so i'll
+- [01:51:13] save this run the code and we got dave and john again so that is the same as saying zero to two
+- [01:51:20] because it did not include sarah because she's at the negative one position but it did start at the
+- [01:51:25] negative three position which is the equivalent in our list to zero i'm going to scroll up for a
+- [01:51:31] little more room and we should note we can use the length function which is len and then use
+- [01:51:37] parentheses and pass in a list like users or we can pass in data that we created above and this
+- [01:51:44] will return the length of our list so i'll control s to save run our code again and you can see we've
+- [01:51:51] got three here because we have three items in the list so note that doesn't start counting at zero
+- [01:51:57] like the index of our list that has zero one and two when we have three items it actually returns
+- [01:52:03] the length which is three because we have three items in the list and now let's say we have an
+- [01:52:08] existing list like users and we want to add more items to our list and we can do that with the
+- [01:52:15] append method so i'm going to say users dot append and i'm going to add elsa to our users list and
+- [01:52:22] then i just need to print users so we can see the end result control s to save run the code
+- [01:52:29] and now our list of users has dave john sarah and elsa in the list and what if we have another list
+- [01:52:36] that has users and we want to add those to our previously existing users list i will show you a
+- [01:52:43] couple of ways to do that one is to take our list users and say plus equals and then add the other
+- [01:52:50] list so i'll create another list here and i'll put in jason inside of this list so a list with just
+- [01:52:56] one item and then we'll once again need to print users to see the output and then we'll run the
+- [01:53:02] file and now our users list has dave john sarah elsa and jason so we added those two lists
+- [01:53:09] together if you will because this is a list although it only has one item and we had a
+- [01:53:14] previous list named users now the other way to do this is with the extend method so we could say
+- [01:53:20] users dot extend and i could pass in another list so i could say i've got a list with robert
+- [01:53:29] and let's put somebody else in here so after robert let's just pick another name say jimmy
+- [01:53:34] and now we're adding this list to our users list so once again i'll need to print users to see the
+- [01:53:42] end result we'll run the code and now we've got a lot of people in our list because we've got dave
+- [01:53:47] john sarah elsa jason robert and jimmy all in our users list and now something to note about this
+- [01:53:54] first method here make sure if you use this that it is indeed a list because if you were to do this
+- [01:54:02] without the brackets let me go ahead and delete these and then we'll run our code let's see what
+- [01:54:08] happens in the output notice it entered every individual letter as a list item from jason's
+- [01:54:14] name so that's not what you want you want to make sure you have brackets here if you're using
+- [01:54:20] the plus equals because if not it considers every letter an item to be added to that list
+- [01:54:27] now here i created new lists to add to our users list when i used extend or when i used the plus
+- [01:54:33] equals above but we could also just passed in a pre-existing list so let me do that now with
+- [01:54:40] users dot extend and i'm just going to pass in our data list now we'll print users once again
+- [01:54:47] and i'll run the code and let's see what we get now our previous list had dave 42 and true and
+- [01:54:54] that's all been added to our users list that may not be what we want but of course it does work
+- [01:55:00] that way so you can just pass in a list name because we're referring to that full list up
+- [01:55:05] here as data and that also works we really don't want this mixed data in here though with 42 and
+- [01:55:12] true it's a valid list there's no problem with it but it doesn't make sense as users so i'm just
+- [01:55:17] going to highlight both of these press control and the slash to comment out both lines at once
+- [01:55:24] something to note about all of the ways we added to our list it added the items at the end of the
+- [01:55:30] list and so we see all the new items here at the very end of each list but we can pick our spot
+- [01:55:36] i'm going to scroll up for a little more room so we can add to our file and i will type something
+- [01:55:42] like users dot insert because we're going to insert into our list and this is the insert method
+- [01:55:49] i want to insert at the very first position so i'll say zero that's the index position and i'm
+- [01:55:56] going to put bob's name in our users list so i will print users once again and we'll see if bob
+- [01:56:03] is added to the beginning of our list when we run the code and yes we see bob now at the beginning
+- [01:56:08] of the list we can also use bracket notation so i'll say users and after that bracket notation
+- [01:56:15] and i want to insert maybe more than one value at the second position slot i don't want to replace
+- [01:56:22] any of the values that are in our list i just want to insert two extra values so i've picked
+- [01:56:27] the second position and notice how i say it's not only going to begin but it's going to end right
+- [01:56:33] there so i'm not replacing any of the other values and now let's have a note list and i'll put in
+- [01:56:38] eddie and alex and we'll print users again so we can see that output save the file run the code
+- [01:56:47] and we should see eddie now in the second position alex in the third position but we didn't lose our
+- [01:56:54] previous values here where we had dave john and sarah inside of here's the first position second
+- [01:57:01] position sarah in the third now dave is still in the first position but now john has been moved
+- [01:57:08] from the second position to the fourth position and sarah is still there as well so this insert
+- [01:57:15] just made room for eddie and alex and we once again picked our spot but now let's look at how
+- [01:57:20] we can replace values so here i'll say users and we'll use bracket notation again and we'll start
+- [01:57:27] at the first position and we'll end at the third position now let's set this equal to another list
+- [01:57:34] and here we'll put in robert and let's put it well we have a jimmy already let's put in jpj
+- [01:57:41] that should work and we'll print users again and let's see what happens to the last version of our
+- [01:57:49] list compared to the one before it so now robert is in the first position and jpj is in the second
+- [01:57:57] position so we replaced dave and eddie what was in the first and second positions it stopped at the
+- [01:58:04] third position but notice it did not replace what was in the third position or who was in the third
+- [01:58:10] position and that was alex so it works much the same way as we returned values how we specified
+- [01:58:16] this range in here and this is also referred to as a slice so we're referring to a slice but here
+- [01:58:23] we were very specific saying start and end at that same position so it did not replace any of
+- [01:58:29] the other values but this actually did replace two values in our previous list now if we can
+- [01:58:35] add data to a list we should be able to remove it as well so let's go over how we do that i'll
+- [01:58:40] scroll for some more room and the first thing we'll do is look at the remove method so i can
+- [01:58:44] say users remove and i can specify the user i want to remove from my list i want to remove bob
+- [01:58:51] so let's check the list afterwards again with a print statement run and we'll check our list
+- [01:58:57] and now robert is the first position here in the index position of zero previously it was bob so
+- [01:59:05] bob is no longer in our list now we can also pop off the last user from the list or the last item
+- [01:59:13] from any list and we do that with the pop method but i also want to point out that the pop method
+- [01:59:19] will return that value even though it removes it from the list so here i'm just going to say print
+- [01:59:24] users dot pop and we'll call that pop method and then let's run the code and we'll see that it
+- [01:59:32] actually returns jimmy jimmy was the last value in our list but now if we look at our list again
+- [01:59:38] and i'm just going to ctrl c to copy and ctrl v to paste this down here look at the list value
+- [01:59:44] afterwards so we have jimmy here but jimmy is no longer in our users list now we can also delete
+- [01:59:51] a specific user or a specific item from a list with the keyword dell which stands for delete
+- [01:59:57] so i'll say users and now i can specify the user that i want to remove from the list let's once
+- [02:00:02] again just go to that first position in the list the zero index and so now this should delete
+- [02:00:08] robert from the first position in our list and of course we won't know until we once again
+- [02:00:14] print the user's list afterwards i'll paste that down there let's run our code and let's check the
+- [02:00:19] list and yes jpj is now first in our list robert is no longer first you can also use this delete
+- [02:00:26] keyword to delete a list completely so let's go back to that data list and i'll say dell for
+- [02:00:32] delete and then data and now let's check this by trying to print the data list and i'm expecting
+- [02:00:40] to get an error let's see what happens we run our code and yes python doesn't like that it says data
+- [02:00:46] is not defined so we deleted it entirely even though it's defined up higher in our file
+- [02:00:52] by the time we get to this print statement it is not defined so i'm going to comment this out
+- [02:00:58] and instead of deleting it and causing an error like that i'm going to use the clear method so
+- [02:01:03] i can say data.clear once we call that clear method it will empty our list but the list will
+- [02:01:09] still exist so now when we run this it returns an empty list here on line 52 now that we've added
+- [02:01:16] removed inserted and modified lists maybe we want to go ahead and sort those lists as well so let's
+- [02:01:24] scroll for a little more room and underneath our last clear statement and print statement let's add
+- [02:01:30] users.sort and after that we'll once again print users and let's look at what happens to our list
+- [02:01:38] of users so now it is alphabetical we've got alex elsa jpj jason john robert and sarah but notice
+- [02:01:47] something else they all start with capitals so what if we put something in here as lowercase so
+- [02:01:54] let's do that i'm going to do it before we sort so i'll just put it right above here and i'll say
+- [02:02:00] at users and let's put it in the whoops not the curly brace we need the bracket let's start at
+- [02:02:06] the first position and end at the second so we're replacing elsa with whatever we insert here and
+- [02:02:12] i'm going to insert dave once again but make dave all lowercase and so now let's check out our code
+- [02:02:20] and oh i forgot to put it in brackets this is what i warned you about notice it inserted
+- [02:02:25] the letters individually and it organized them but they're all at the end and that's the point
+- [02:02:31] that i want to get to about this because when it's lowercase it comes after the upper case so i'll
+- [02:02:38] save this and run it again and now we can see dave is at the very end of the list so what we want
+- [02:02:46] is dave inserted alphabetically here as well and we can do that we just need to change what we're
+- [02:02:52] doing and by the way we replaced alex with the insert because alex was in the first position
+- [02:02:58] john is still in here so alex was replaced by the lowercase dave okay so since we have determined
+- [02:03:05] that lowercase comes after all of the upper case we need to pass something to the sort
+- [02:03:10] that will help dave get inserted in the correct order actually dave is inserted at that first
+- [02:03:16] position and then it is sorted so we're just going to do another sort after the first one here
+- [02:03:22] so i'll copy both of those put it underneath but we need to pass in an option here to the source so
+- [02:03:28] we're going to say key equals str which stands for string dot lower so once we do that and we go
+- [02:03:38] ahead and run our code again we can see that it is now in an alphabetical order and dave comes
+- [02:03:44] first just because it is a d the letter d comes in the alphabet before e so really what we needed
+- [02:03:52] to do was pass in this key equals string dot lower to include the lower case in the correct
+- [02:03:58] alphabetical order note these are all strings also so if we were sorting two different data
+- [02:04:04] types it really wouldn't work as expected it should be all the same data type you couldn't
+- [02:04:08] call this on a data type that wasn't string even so you need to make sure you have the same type
+- [02:04:15] of data when you're sorting it so now speaking of that let's look at some numbers i'm going to create
+- [02:04:20] another list called nums and inside of it i'll put four forty two seventy eight one and five just
+- [02:04:28] some random numbers really and after that we'll say nums dot reverse now this is different than
+- [02:04:36] sorting it actually flips the array and i want to look at this because i don't want you to confuse
+- [02:04:42] the reverse method with reverse when we pass it into our sort function so nums dot reverse
+- [02:04:49] and we will print nums and you'll see that the array or not the array the list this looks just
+- [02:04:56] like what i call an array in javascript but it's a list in python so our list is now in the reverse
+- [02:05:02] order of what it was over here in our code beginning with four and ending with five and now
+- [02:05:07] begins with five and ends with four so we already know how to sort something in the ascending order
+- [02:05:14] with numbers which would be just to use the sort method like we did on users so it would start with
+- [02:05:19] one and work its way up to 78 but now let's sort in reverse with our nums array and to do that i
+- [02:05:26] need to say nums dot sort and i'm going to pass in reverse equals true and after that let's print
+- [02:05:34] nums once again and we'll see that it's different than it was with our reverse method that just
+- [02:05:41] flipped the list around so now when we run the code we actually get it descending instead of
+- [02:05:47] ascending so it's 78 42 5 4 and finally the number one something we need to note about all
+- [02:05:54] the different sort approaches we have used here is that they modify the existing list so notice
+- [02:06:00] when i print users after i have sorted i'm just printing the list so it has definitely changed
+- [02:06:07] it doesn't keep the same order that it previously had and the same with any of these others i'm
+- [02:06:13] just printing nums after as well so what if we want to keep the original list the way it was
+- [02:06:20] but yet sort the list just for an individual purpose well we can do that there's a couple of
+- [02:06:26] ways one is to use the global approach here the global sorted function so i'm needing to print now
+- [02:06:33] because it's not going to give me a second line that i could just print nums for example with
+- [02:06:40] because it's not going to change if i print nums after so i'll do that as well but i'm going to
+- [02:06:45] call the sorted function and i'm going to call it on the nums list and then i can just pass in my
+- [02:06:50] option right here so reverse equals true as well i'm going to comment this out so we didn't modify
+- [02:06:57] it before so when we did use nums we modified it here and we'll see that print i'm going to
+- [02:07:04] actually print the result of the global sorted function here and we pass in nums and then pass
+- [02:07:10] in our reverse option right there so now let's run our code we should see really the same thing we
+- [02:07:17] returned from this except our original array is not modified so if i were to print nums
+- [02:07:25] once again after this statement it should still look like it starts with five and ends with four
+- [02:07:30] so let's try that print nums here and run the code again and yes so here is our sorted array
+- [02:07:39] but here is the i said array again i'm going to occasionally mess that up because i'm talking
+- [02:07:45] about lists but it looks just like an array in javascript here is our list and this is the same
+- [02:07:53] order we had before we sorted it so this does not modify the original it just returns that
+- [02:08:00] sorted list for that one time and that's using the global sorted function now another approach
+- [02:08:06] we could take is to make a copy of the original list and then sort that copy so we would still
+- [02:08:12] have our original list i'm going to scroll just a little and i'll show you three different ways
+- [02:08:16] to make a copy one i'll call this nums copy and we'll set this equal to our list nums dot copy
+- [02:08:25] that will create a copy we could also say my nums and we'll set this equal to the constructor
+- [02:08:33] here for a list and now we'll just pass in nums and this creates a copy of our original list
+- [02:08:40] nums and the third way we could do this and i'm just randomly naming these things here so i have
+- [02:08:46] my copy now we'll set this equal to nums and we'll specify an index range here but really we're not
+- [02:08:54] going to specify the beginning or the end so it's just going to slice the full list and store it in
+- [02:09:01] my copy so it's once again a copy all three of these are actual copies of the original so now
+- [02:09:09] let me go ahead and copy our print nums here and then i'll paste it here and then i'm going
+- [02:09:15] to use shift alt in the down arrow three times so i have four print statements the first one's
+- [02:09:21] going to be the nums copy and the second one is going to be my nums and the third one should be
+- [02:09:30] my copy and after i pay oh that's not right let's paste that in and now let's go ahead and print
+- [02:09:37] all of these lists and let's see what we get so they all kind of look the same here after we
+- [02:09:43] printed those and it should be the last four actually but they're not all the same and that's
+- [02:09:49] because these three are copies so let's go ahead and sort any one of these here so let's just call
+- [02:09:57] sort on the third one and we'll see that our original nums still does not change oh and i
+- [02:10:04] tried to print the sort statement what i should do is sort right before and then i should just
+- [02:10:08] try to print my copy so there we go let's remove this so my copy dot sort and then print my copy
+- [02:10:16] and that's why we had none there instead so let's do this now there we go so here is the sorted
+- [02:10:22] my copy list but here is the original nums list just a couple more things before we're finished
+- [02:10:29] with lists one is to go ahead and say that we can check the type of lists just like we did any other
+- [02:10:36] data type and that is say with type and then we just pass in our list so i'll pass in nums
+- [02:10:43] and now when we run this we will see that it is a class list type here so this is our data type
+- [02:10:49] that we received from the type function after that we can also we should also note that we can
+- [02:10:57] create a list much like we did up here by passing in a list or a list structure to the list
+- [02:11:03] constructor and that's how we created the copy of my nums but if i wanted to create a new list and
+- [02:11:08] let's just call this my list i could use that list constructor and then inside i would just create
+- [02:11:16] this list and so i'll say something like one and we'll put in neil and then let's put in a true
+- [02:11:24] and after that we should be able to print my list as well now notice earlier we didn't really use
+- [02:11:30] that constructor and we were still able to keep the list or create the list but it should be noted
+- [02:11:36] that you can create a list this way as well so let's save that run the code one more time and
+- [02:11:42] here is the list we created with the constructor and that covers lists for today but the next data
+- [02:11:48] collection type we'll look at is tuples so let's start learning about those tuples are very much
+- [02:11:55] like lists except the data inside the tuples will not change and the order the data is in
+- [02:12:03] will not change so let's create a tuple and we can do that with the constructor so we'll type
+- [02:12:09] tuple in parentheses and then we need parentheses again inside of this and i'll just put in some
+- [02:12:16] random values as well much like i had for the data list above i guess and now we have created
+- [02:12:22] a tuple with the constructor we could also create it without the constructor so here i could say
+- [02:12:28] another tuple and just set this equal to one set of parentheses and i'll put in some random numbers
+- [02:12:36] this is also a tuple and we can verify that so let's go ahead and print one of these i'll say
+- [02:12:41] my tuple so we just see what it looks like when it prints out then let's print the type function
+- [02:12:47] again or the result of the type function when we pass in my tuple then i'm going to press shift
+- [02:12:53] alt in the down arrow and then i'll put another tuple in here as well just so we can verify both
+- [02:12:58] of these are tuples and here we'll run the code so we see here is the output of the tuple it has
+- [02:13:05] parentheses instead of brackets and then you can see both of the tuples we created when we check
+- [02:13:11] the type do indeed say tuple now most of what we've already learned about lists also applies to
+- [02:13:17] tuples but we have to keep in mind that tuples cannot be changed however if we need to do
+- [02:13:23] something with a tuple we can get creative and copy it so let's look at how we do that first of all
+- [02:13:29] i'll create a variable here called new list i'm going to set it equal to the list constructor
+- [02:13:35] and then i'm going to pass in my tuple so this will create a new list out of my tuple and then
+- [02:13:42] i'm going to say new list and i'll append a new value and i'll just add the value neil after that
+- [02:13:50] now let's go ahead and create a new tuple and we'll set this equal to the tuple constructor
+- [02:13:56] and we'll pass in the new list so now when i print new tuple we'll have a new tuple with
+- [02:14:03] the value neil added the original tuple my tuple will not have changed but we'll have a new tuple
+- [02:14:09] that did add the value that we needed to add to that so now let's go ahead and run the code
+- [02:14:15] and we see our new tuple here that has neil added to it when we assign values to a tuple
+- [02:14:21] as we do with another tuple up here that is called packing the tuple so likewise we can unpack a
+- [02:14:28] tuple and we can unpack it into new variable names so i don't have any specific name picked out here
+- [02:14:34] i'll just call the first one one the next one two and let's call the last one here hey but i'm going
+- [02:14:40] to start it with an asterisk and you'll see why so i'll set this equal to another tuple but we are
+- [02:14:46] unpacking you can see we're putting values into these variable names so now i'm going to print
+- [02:14:52] each variable name so i'll print one print two and i'll also print hey and let's see what each
+- [02:15:00] one of these holds so when we run our code variable one holds the number one variable two
+- [02:15:07] holds the number four and hey holds the remaining values and notice they're unpacked into a list
+- [02:15:15] but it doesn't have to be the last one either so we could remove the asterisk from hey and instead
+- [02:15:21] put it in front of our variable two and now let's go ahead and save and run this code again and
+- [02:15:28] you'll notice now we get the value one inside of the first variable and the value eight is inside
+- [02:15:36] of hey but everything in between goes to the variable two and it's a list so it has the values
+- [02:15:43] inside of a list a final note about lists and tuples in vs code and that is we can check what
+- [02:15:50] methods are available on a list or a tuple just using dot notation so i'll say print and i'll pull
+- [02:15:56] in the data list that i had earlier and type a dot a period and then we see a list of all the
+- [02:16:03] different methods that we can call on our list that is called data so that is one way to check
+- [02:16:10] what methods are available so let's put in the name of our tuple so we had another tuple and
+- [02:16:16] once again i have to delete the period type it again you can see that a tuple only has two
+- [02:16:22] methods count or index so let's call count and we need to put the parentheses after it to call it
+- [02:16:27] into action and it needs something passed to it one parameter and what or one argument if you will
+- [02:16:33] and what i'm going to pass is our another tuple holds numbers if we look up here we put in the
+- [02:16:39] number one four two and eight i'm going to put in the number two two more times and now let's go
+- [02:16:46] ahead and pass in two to count and see what we get back so when i run the code we get three so
+- [02:16:53] it's actually counting how many occurrences of the number two are inside our another tuple

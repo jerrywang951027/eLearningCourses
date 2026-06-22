@@ -1,0 +1,180 @@
+# Chapter 18 - Classes & Objects
+
+Source: Python Tutorial for Beginners (with mini-projects) by freeCodeCamp.org
+URL: https://www.youtube.com/watch?v=qwAFL1597eM
+Time range: 05:56:45-06:15:44
+
+## Transcript
+
+- [05:56:48] folder for lesson 18 let's create a new file and let's name this file classes.py now classes are
+- [05:56:57] kind of like blueprints when we want to create something and we're going to create objects with
+- [05:57:03] classes so you could say they are blueprints for objects let's look at a simple class i'm going to
+- [05:57:09] create a vehicle class notice we capitalize the class we define so i used a capital v on vehicle
+- [05:57:17] now inside this class we can have properties things we define like a vehicle might have a
+- [05:57:23] certain amount of doors or a make and a model which is what i'm going to use today but then
+- [05:57:27] there's also actions a vehicle can take such as going and stopping or let's call it moving or
+- [05:57:35] moves today so let's define a few things here and i'm just going to start with a basic method which
+- [05:57:42] would be an action we want to take properties and look at those as details about our class or
+- [05:57:48] details about the object we're going to create from the class actually and we'll look at methods
+- [05:57:54] as the actions the object could take and we need to define those methods inside the class so i'm
+- [05:58:00] going to define a method called moves and we pass self in to our methods now all the self is is
+- [05:58:07] it's just referring to itself so we're going to need that and you'll see why inside of these
+- [05:58:14] classes and of course the objects as they're created but we'll just start by knowing we need
+- [05:58:19] to pass that in now that we have self passed in i'm going to print and here i'm just going to say
+- [05:58:27] moves along notice i'm not really using self right now let's just put a couple of dots but
+- [05:58:32] there we go a very simple method and it's inside the vehicle class so now if i want to create an
+- [05:58:39] object from this class let's call this my car so i'll say my underscore car equals and i'll call
+- [05:58:46] the vehicle class so now i've created my car which is different than possibly your car that
+- [05:58:54] we could also create from the vehicle class so i've got my car and now i could call the moves
+- [05:59:00] method on my car so i say my underscore car use dot notation and notice we have moves available
+- [05:59:08] here at the top so i'll press tab and then just add the parentheses after to actually call that
+- [05:59:13] method and we'll save this file let's go ahead and run our python code by choosing run python file
+- [05:59:19] from the drop menu and now inside of our terminal here we see moves along so we called the moves
+- [05:59:27] method on my car so to clarify this once again and i'll hide the file tree with control b but to
+- [05:59:34] clarify this my car is an object that i created from the class vehicle now i also mentioned that
+- [05:59:42] a class could have properties say we wanted to set the make and model for the vehicle
+- [05:59:47] we do that with an initializer function called init at the top so we'll say def we have two
+- [05:59:54] underscores which you've seen before when we use something special like main and we use those
+- [05:59:59] inside of functions where we had two underscores main and then two underscores and that's a common
+- [06:00:04] theme in python so here we have our initializer or our init function and it receives self and then
+- [06:00:10] we're also going to pass in anything else that we need to pass into the class to create our objects
+- [06:00:16] and here i want a make and a model so these are the parameters and now here we'll say self dot
+- [06:00:24] make let's set this equal to make we'll do the same thing here self dot model is equal to model
+- [06:00:33] so we're referring the object to itself once it's created so self just represents the object that
+- [06:00:40] is created and we're saying the make equals make the model equals model and of course this is the
+- [06:00:45] blueprint we actually create the objects when we set our variable here like my car equal to vehicle
+- [06:00:53] and we call vehicle so now i can't just call vehicle like this i need to pass in a make and
+- [06:00:59] a model for my car so let's say i have a tesla and then we'll say model three for example now
+- [06:01:08] it's going to have these values as well so above the call to the moves method i could also print
+- [06:01:15] and say my underscore car and i could say dot make and get that value now i'll do shift alt
+- [06:01:21] in the down arrow to just copy that down and i'll also say for model so i can retrieve those values
+- [06:01:28] from the object that i have created here so let's save this file let's run our code again with the
+- [06:01:34] play button you can see we have tesla which was the my car dot make and then we have model three
+- [06:01:40] and finally we have moves along when the moves method is called now you can put more methods
+- [06:01:45] or properties if you want to on your class so let's put one more method in here that will use
+- [06:01:51] the properties that we have and retrieving those through what is called a getter is sometimes more
+- [06:01:58] often so are used more often so we would use that more often than we would say my car dot make for
+- [06:02:04] example so let's just create a function here that will return these values and i'll say def and
+- [06:02:09] i'll call this get underscore make underscore model as i want it to retrieve both i'll pass
+- [06:02:15] in self once again now here we're going to use self in this method i'm going to print and i'm
+- [06:02:21] going to use an f string now inside the string and let's use double quotes here so i can use a
+- [06:02:26] single quote here inside the string where i say i'm a and i'll say self dot make which refers to
+- [06:02:35] that value that it will receive and self dot model if i spell it correctly and then let's put a period
+- [06:02:44] just to have proper punctuation and so when we call get make model it should return this statement
+- [06:02:50] and fill in self make and self model with the values it receives so now instead of print
+- [06:02:57] my or my car dot make and my car dot model i'll comment those out with control slash
+- [06:03:05] and instead i'm going to call my underscore car dot get make model and you can see that was
+- [06:03:11] available in vs code as well when i use dot notation and just put the dot after it showed
+- [06:03:16] the options so let's save this and run the code once again now you can see we get the statement
+- [06:03:23] i'm a tesla model three and then once again it calls the moves method and it moves along
+- [06:03:28] so as i said you can create more cars from this same class so let's do that now and let's create
+- [06:03:35] your car let's say your underscore car and of course you can set this to whatever you want to
+- [06:03:40] do i'm going to have a vehicle and say it's a Cadillac and then let's say it's an Escalade
+- [06:03:48] and then after that we'll go ahead and say your underscore car dot get make and model
+- [06:03:55] and your underscore car dot moves save our code so now we've created two different car objects
+- [06:04:04] from the same vehicle class we can run this code and first we get i'm a tesla model three and it
+- [06:04:11] moves along then we get i'm a Cadillac Escalade and it moves along so now you can see how we can
+- [06:04:17] create different objects from the same vehicle class i think you now have the idea about the
+- [06:04:24] relationship between creating a class and then creating objects from that class so now let's
+- [06:04:30] move on to inheritance and notice we have a very kind of generic class here we're creating a vehicle
+- [06:04:37] it doesn't say what type of vehicle we might want to start to get more specific as we create classes
+- [06:04:44] that depend on this vehicle class and we can do that with inheritance so let me do that i'll
+- [06:04:51] scroll down here i'll create a couple of new classes the first one i'll call airplane because
+- [06:04:57] an airplane is also a vehicle and it's going to receive the vehicle class now inside of airplane
+- [06:05:05] we might give it another moves method now notice if we put the same method in here this will
+- [06:05:12] overwrite whatever it would inherit from that vehicle class so i'll say def moves once again
+- [06:05:20] and it's going to receive self and now inside of this i'll just say print and let's say flies along
+- [06:05:29] and now let's create another one i'll call this class and this will be a truck also a vehicle but
+- [06:05:36] it's a more specific type of vehicle and now we'll give it the same method also we'll say self
+- [06:05:42] inside of here we're going to print rumbles along and then finally let's create one more
+- [06:05:51] and i want to do this just because of how simple this can be you can't have an empty class so i'm
+- [06:05:57] going to say something like a smaller vehicle here like a golf cart and it will also receive
+- [06:06:04] the vehicle and now inside of this class since it can't be empty we're just going to say pass
+- [06:06:10] and this means it's going to inherit everything as is we're not overriding the moves method as
+- [06:06:17] we did with airplane and truck now because all three of these new classes depend on vehicle
+- [06:06:23] it will inherit what we already set up in the vehicle class so we need to pass in a make and
+- [06:06:30] a model as well so let's go ahead and create these new objects now and we'll pass in those
+- [06:06:35] values as needed so i'm going to say cesna and that will be our plane so i'll say airplane
+- [06:06:42] and now i want to pass in that is a cesna brand or make and then we'll say it's a skyhawk which
+- [06:06:51] is the model we need to move on to our next one so let me just shift alt in the down arrow twice
+- [06:06:56] and we'll start renaming everything here so this is going to be mac as in a mac truck
+- [06:07:01] i'll name this truck once again the brand here or the make will be mac and let's call this a
+- [06:07:10] pinnacle truck pinnacle model finally our golf cart here so we'll just say
+- [06:07:16] golf wagon that should work and then for this we'll say it is a golf cart and now inside of
+- [06:07:25] here we'll make this a Yamaha golf cart and i have no idea what the model number would be
+- [06:07:31] i'll just say gc 100 and now we should have those same methods available to us not only the moves
+- [06:07:37] method but also the get make model method that we had above so let's go ahead and do that for all
+- [06:07:43] of these we'll say cesna dot and once we put dot we can see what is available we have moves and get
+- [06:07:50] make models so we're going to just call both and we'll put moves here as well and now i'm going to
+- [06:07:58] highlight both of these let me scroll for some more room and i'll do shift alt in the down arrow
+- [06:08:03] and it will copy both lines at the same time i'll do it one more time and now i'll select the third
+- [06:08:09] cesna control d to also select the fourth and change those to mac i'll select the fifth cesna
+- [06:08:16] control d to select the next one and i'll change these to golf wagon that's going to make me laugh
+- [06:08:23] every time okay now let's go ahead and run the code and we'll see what we get here so we had our
+- [06:08:28] code from above and that stops after the Cadillac Escalade moves along so here we are i'm a cesna
+- [06:08:34] Skyhawk it flies along i'm a mac pinnacle and it rumbles along and i'm a Yamaha GC 100 which is
+- [06:08:42] the golf cart and it moves along because we didn't set any new moves method on the golf cart we just
+- [06:08:49] put pass so it inherited the original moves method directly from the vehicle class and so now you
+- [06:08:56] have a basic idea of how inheritance works in our airplane class our truck class and our golf cart
+- [06:09:02] class all inherited from the vehicle class but what if for example you wanted to pass in some
+- [06:09:09] more information besides the make and the model let's say the airplane also needs the FAA
+- [06:09:15] identification number but you have to have that identification number for every airplane so let's
+- [06:09:21] go ahead and put in our init function once again i'm going to grab that from the top because if
+- [06:09:28] nothing else it's going to need to match and once you put that in that means it's overriding the
+- [06:09:34] entire init function in the vehicle put it in here and now we have an identical init function but
+- [06:09:41] let's say we want to add one more reference here so let's put in our FAA underscore ID
+- [06:09:49] and we would need to put in our self dot FAA underscore ID equals FAA underscore ID
+- [06:09:57] but there's something easier than just copying self make and model so let's get rid of those
+- [06:10:04] and instead we can use super and then after we use this special function here super
+- [06:10:12] we can say dot two underscores init two underscores and then make and model now this means we're
+- [06:10:21] going to inherit these from the parent so we don't need to set those individually like we would have
+- [06:10:29] in that parent vehicle class so instead of having self dot make and self dot model equals here we
+- [06:10:36] put in our super function and then we just pass the init make and model there now we could write
+- [06:10:43] another method that would use this FAA underscore ID but i think you know how that works so this is
+- [06:10:49] just important if you were going to create an airplane that had more information than its parent
+- [06:10:57] would receive or would have received so when that happens you need to redefine the initializer
+- [06:11:04] and of course to use the make and the model if you don't want to define each line once again you
+- [06:11:08] need to call super so you can also bring those in essentially from that parent class now when we
+- [06:11:14] define airplane here when i define Cessna it looks the same except now we need to pass in and i'll
+- [06:11:21] just put some random number here but our FAA ID like that so that would be the appropriate way
+- [06:11:29] to now go ahead and build an airplane object from the airplane class because it will receive
+- [06:11:35] that one extra argument that is represented as the parameter here inside of the initializer
+- [06:11:42] function that FAA underscore ID now i think you should have a good understanding of how inheritance
+- [06:11:48] works how these classes are three classes here inherited from the vehicle class and then we
+- [06:11:55] created our more specific objects of airplane truck and golf cart here below now there's one
+- [06:12:02] other thing i want to cover today and that's polymorphism so let's go ahead and get an extra
+- [06:12:08] line here in our code i'm just going to print have a simple string and put a couple of new lines so
+- [06:12:13] we can actually tell when we log anything else over here in the terminal it will be a little separate
+- [06:12:19] let's get some more room as well and now i'm going to create a loop so i'm going to say for v
+- [06:12:24] oftentimes you see x or y or whatever but i'm just going to say v for vehicle in and now i'm
+- [06:12:30] going to put in the different objects we've created today so i've got my car also got your car we also
+- [06:12:37] created a cessna we created a mac and we created a golf wagon now inside of this loop we're going
+- [06:12:46] to say v dot get make model we're also going to say v dot moves because all of these objects
+- [06:12:54] have both of these methods and i notice this line is just a little bit long here i'm going to go
+- [06:12:59] ahead and do alt z if it needs to wrap down yeah just wrap down the one character but that's the
+- [06:13:04] colon this is all still on the same line for our for loop here now polymorphism is a big word and
+- [06:13:10] that's what we're talking about polymorphism is the ability to behave differently in response to
+- [06:13:16] the same input messages so what does that mean in our case well it means we're going to get different
+- [06:13:22] responses when we call get make model and moves even though we're giving these objects the same
+- [06:13:30] input messages we're saying go ahead and provide the response to get make model and provide the
+- [06:13:36] response to the moves method and we're saying that to each of these objects so that is polymorphism
+- [06:13:42] essentially they all have the same methods but that doesn't mean they provide the same response
+- [06:13:50] so let's go ahead and save this and we'll run our code and we get those extra line breaks in here
+- [06:13:56] like i wanted and now we see all of this information so we're getting different responses depending
+- [06:14:02] on what type of method they've either inherited or that they have in their own parent class that
+- [06:14:08] they were created from essentially but what polymorphism is once again is we are giving
+- [06:14:16] the same input we can loop through all of these objects and say get make model and moves but they
+- [06:14:23] all behave differently based on how they were built so that's polymorphism so today we've
+- [06:14:29] covered classes which are our blueprints for creating objects and then we covered objects
+- [06:14:35] themselves and what you do with those and how you create them from classes and then we covered
+- [06:14:41] inheritance where we have other classes that can inherit from a parent class such as airplane
+- [06:14:47] inheriting from the vehicle class and then we also covered besides inheriting these we can
+- [06:14:53] overwrite what we inherit as we had new moves methods for these two different classes
+- [06:14:59] and then we can also even pass more information in to one of these other classes if we want to
+- [06:15:06] so that led us to learning more about this super function here that's called in the initializer
+- [06:15:12] of a class that is inheriting so it pulls in from the parent class as well and then finally we
+- [06:15:18] learned about polymorphism which we were actually using before we even looped in here because
+- [06:15:23] we were calling moves on more than one object and we were getting different responses
+- [06:15:28] and that's essentially what polymorphism is next time we're going to work on a small project
+- [06:15:34] with object oriented programming and that's what you've learned the foundations of today
+- [06:15:39] when we create objects we will be using object oriented programming i've got vs code open a

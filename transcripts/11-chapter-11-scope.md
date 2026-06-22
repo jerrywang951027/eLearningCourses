@@ -1,0 +1,193 @@
+# Chapter 11 - Scope
+
+Source: Python Tutorial for Beginners (with mini-projects) by freeCodeCamp.org
+URL: https://www.youtube.com/watch?v=qwAFL1597eM
+Time range: 03:41:11-04:00:30
+
+## Transcript
+
+- [03:41:12] i've got vs code open you can see i have a lesson 11 folder open over here currently no files let's
+- [03:41:18] go ahead and create a new python file and we'll call this scope.py there are different types of
+- [03:41:25] scope and the first one we want to learn about is the global scope so when i define a variable
+- [03:41:30] like name and set it equal to dave this is in the global scope because this will be available to
+- [03:41:37] everything in this file so if i save this and then i go ahead and print name of course it's
+- [03:41:44] available so let's add something else here to compare to the global scope so now i'll define
+- [03:41:49] a function and i'll call this greeting and then greeting will accept a name parameter as well
+- [03:41:57] and now inside of this function i will print name now of course this parameter has the same name
+- [03:42:06] but it's not referring to the same thing this is a parameter for the function so it's going to print
+- [03:42:12] whatever i pass in but let's go ahead and define something else like well instead of name actually
+- [03:42:19] let me think about this differently let's first prove that we can print this name value because
+- [03:42:24] this is in the global scope but being in the global scope it's also available inside of this
+- [03:42:30] function but this function has a local scope so let's go ahead and do this first i'll save this
+- [03:42:38] and then of course we need to call our greeting function for it to run and let's put an extra
+- [03:42:43] space because it likes to scroll up when i save so we'll go ahead and save that and now i'm going to
+- [03:42:49] come over here to the drop down menu and choose run python file and we've got this here at the
+- [03:42:55] bottom and it prints dave so it printed the value of name now we defined name in the global scope
+- [03:43:02] like i said the function has a local scope as well so we'll look at that but right now i want
+- [03:43:07] to move this over to the right so i'm going to go to view and from view i'm going to go to appearance
+- [03:43:14] and then from appearance i'm going to go to panel position and choose right instead of bottom so now
+- [03:43:20] we can see our output here on the right and i've got dave as the output there when we first ran
+- [03:43:25] our code so now let me define another variable but i'll define it inside of the function so i'm
+- [03:43:31] going to say color equals blue but now if i try to print that outside of the function i'm going to
+- [03:43:40] try to print color look vs code gives it a squiggly mark and if i mouse over color it says color is
+- [03:43:48] not defined that's because color is in the local scope of the function and it's only available
+- [03:43:54] here if i want to print color inside of the function vs code is going to have no problem
+- [03:43:59] with that because it knows what color is inside of this local scope but out here outside of the
+- [03:44:06] function in the global scope it does not know what color is so let's go ahead and remove this print
+- [03:44:12] color in the global scope because that would cause an error but if we run the function now
+- [03:44:17] we should see the value of color and the value of name so i'll run the code again and we get blue
+- [03:44:23] and dave and that's because this function inside of its local scope can access the global scope
+- [03:44:30] and get the value of name and it also has access to its own local scope and it gets the value of
+- [03:44:36] color now let me go back to what i was going to do and i'll pass in a parameter here for the
+- [03:44:41] function and i could name it the same thing as name or i could name it something else like
+- [03:44:46] first name and it would be the parameter and so i'll do that just to eliminate some confusion
+- [03:44:52] so we'll print first name now so when we call this we would be calling it with a name like
+- [03:44:58] john and then of course we could still print name inside of here and the local scope of the function
+- [03:45:06] should still be able to access the value of name but it can also get a value from the parameter
+- [03:45:12] name so let's go ahead and do this first and we'll run the code and now we get blue dave john
+- [03:45:17] but what if this had the same name so now i'm getting back to where i first started and now
+- [03:45:23] and now name is a parameter so i can remove one of these prints because we're just doubling that up
+- [03:45:30] and so this does not represent the value that's in the global scope name now represents the
+- [03:45:36] parameter that the function is receiving so now if we run the code we get blue and john because we
+- [03:45:43] passed in john so when dealing with variables i hope this eliminates any confusion where we can
+- [03:45:49] see there is a local scope inside of functions and yet there is a global scope that's available
+- [03:45:54] outside of functions and outside of anything else that the value may be in so if it's defined outside
+- [03:46:00] of anything else it's in the global scope which can be accessed inside of functions but if we
+- [03:46:06] define it inside of a function where the local scope is it cannot be accessed outside of the
+- [03:46:12] functions now this not only applies to variable names but it also applies to functions so let me
+- [03:46:18] create another function and i will call this another and that's just because i couldn't
+- [03:46:24] think of anything else and inside of another we're going to go ahead and call our greeting function
+- [03:46:31] and here i'll pass in dave so now we'll need to call another down here at the bottom so we'll put
+- [03:46:38] the another call at the very bottom of the file and now let's run this code again remember we're
+- [03:46:43] already running it here with john and then we're going to run it here and it doesn't need to receive
+- [03:46:50] a parameter it's just going to run greeting with dave so now let's run the code and you can see
+- [03:46:56] we get blue john blue dave so we can call one function inside of the local scope of another
+- [03:47:03] function and that's because this function greeting was defined in the global scope so it's available
+- [03:47:10] to be called inside of the local scope of another function so as you might guess we can also define
+- [03:47:16] functions inside of other functions so let's go ahead and do that i will control x to remove
+- [03:47:22] greeting here and put it inside of another before we call it and now it doesn't like the definition
+- [03:47:30] of color being blue right here and it doesn't like the call to greeting because this is in the global
+- [03:47:36] scope and now the function is being defined inside of the local scope of another so we could only
+- [03:47:42] call this function inside of this another function but the reason it doesn't like the definition of
+- [03:47:48] blue is because these are not indented properly for the definition of greeting so let's just
+- [03:47:53] tab that over because remember the spaces in python do matter so as we tab this over this
+- [03:48:00] indicates the local scope of greeting so what if we put color inside of the another scope
+- [03:48:10] and now it should still be accessible inside of greeting because this is the parent scope so what
+- [03:48:16] we have here is a nested function and the parent function is another it's defined in the global
+- [03:48:22] scope and then we're defining the color blue inside of the local scope of another and then
+- [03:48:29] we're defining the function greeting which makes the function greeting only available inside of
+- [03:48:35] the local scope of another so it's not available out here and even if we put it after our function
+- [03:48:41] definition here it's still going to have a problem because it's not defined in the global scope so
+- [03:48:47] let's remove that however i'll get rid of some of these spaces here too however inside of another
+- [03:48:54] we can call greetings so there is no problem here so let's go ahead and save this code and we'll
+- [03:49:00] run this code and see what we get and we get blue and dave and that's because we defined the color
+- [03:49:06] here inside of the another local scope then we define the function greeting inside of the
+- [03:49:11] another local scope and then we called greeting and greeting prints the color and prints the name
+- [03:49:18] so understanding scope applies both to variables and to functions and you can have nested function
+- [03:49:24] definitions if you're wondering why you would actually have a nested function well that could
+- [03:49:29] be because you're only going to use the function inside of the other function and therefore it
+- [03:49:35] doesn't need to be defined outside of the function now if we did define greeting outside of the
+- [03:49:41] function as we did earlier you saw that i could call greeting inside of another function still
+- [03:49:46] because it was in the global scope and then the other function another still has access to that
+- [03:49:53] greeting function so it's a decision at design time really where you define your function but
+- [03:49:58] if it's only going to be useful inside of this function you can just define it inside of here
+- [03:50:04] because there's something called polluting the global scope and you really don't want to put
+- [03:50:08] anything in the global scope that you really don't have to because that can make things more
+- [03:50:14] confusing later on especially if you're working on a team with other developers so we try to keep
+- [03:50:20] the global scope as unpolluted or with as few things as possible and we try to put everything
+- [03:50:26] else inside of functions or later we'll learn about classes and objects and so on but that is
+- [03:50:32] important to understand about scope so we have a global scope and the local scope and it applies
+- [03:50:38] both to variables and to functions now one more thing we haven't looked at is what if we want to
+- [03:50:44] modify the assignment of a variable inside of a function but the variable was initially defined
+- [03:50:51] in the global scope so let's put a another variable out here and i'll just call this count
+- [03:50:56] and set it equal to one so this is a global variable and now if i try to define count inside
+- [03:51:03] the function so i'll say count equal to two and then let's go ahead and print count right here
+- [03:51:09] inside of the parent function so we'll print count let's see what we get as far as the output goes
+- [03:51:15] so i'm going to go ahead and run the code and we get two that's because we really created another
+- [03:51:20] variable here we didn't reassign count that's because we can't reassign that that easily so
+- [03:51:28] we need to use the global keyword but notice if we do what happens is we have an error here we can't
+- [03:51:34] just do this all in one line so global count so another way i could of course demonstrate this
+- [03:51:41] instead of saying count equals two is we're trying to take the previous value so let's say count
+- [03:51:47] plus equals one and now let's see what value we get and this should show that i'm not using
+- [03:51:53] the value from count because if i use this global value then it would be equal to two correct let's
+- [03:51:59] see what we get and we do get an error says unbound local error cannot access local variable count
+- [03:52:08] where it's not associated with a value that's because it doesn't currently have a value there
+- [03:52:13] so we can't really do that now of course we said we can go ahead and access the value of count if
+- [03:52:20] we're not trying to modify it there is no problem so if i run the code now we get one that's because
+- [03:52:26] it gets the value from the global variable but trying to modify this inside of the function
+- [03:52:32] when it's already defined here but we didn't give it a definition because this would be a new
+- [03:52:37] variable essentially if we were just trying to assign another number to it like one or previously
+- [03:52:44] i had two this is just creating another variable named count in the local scope and i know that can
+- [03:52:50] sound confusing but that's what it is doing so really what we need to do is use the global
+- [03:52:57] keyword and now we'll say global count equals plus equals one so we're adding one to that but
+- [03:53:04] we can't do that all on the same line so then we need to go ahead and just say global count on one
+- [03:53:12] line and then say count plus equals one now it's going to go ahead and be happy about that so now
+- [03:53:18] we'll run the code again and you can see we get two because it added one to the value of the global
+- [03:53:25] count but we had to use that keyword before we could modify the global value so i know that may
+- [03:53:31] be a little difficult to wrap your head around at first but what you need to understand is that if
+- [03:53:36] you just assign count inside of this another function's local scope you're essentially
+- [03:53:42] creating a new variable named count and you're assigning a value to it now if you try to modify
+- [03:53:49] count because it already exists so if we didn't have this global here and we were just trying to
+- [03:53:54] modify that is when we got the error because yes it knows count exists and you're trying to modify
+- [03:54:01] it before you've used the global keywords so now by using global count and then modifying it
+- [03:54:07] everything was okay now in nested functions this same concept exists and especially if we're trying
+- [03:54:13] to modify a value that was defined in a parent function inside of a nested function like color
+- [03:54:19] equals blue well then there's another keyword we need to use and that is non-local so we'll say
+- [03:54:25] non-local color and that tells our greeting function that it's going to be using the color
+- [03:54:32] from the parent function and from there we can assign color equal to red and it should be okay
+- [03:54:40] but of course this looks just like reassignment so if we didn't have this we would essentially
+- [03:54:45] once again be creating a new color variable vs code helps us see this because we're not printing
+- [03:54:52] color like we are here inside of another so look at how this is now grayed out because it knows
+- [03:54:57] we're not using the value of this variable and this is a different variable at this point
+- [03:55:03] than color is inside of the greeting but once we uncomment our non-local color then vs code
+- [03:55:11] knows we're using this color variable and then we're just reassigning it here so once again save
+- [03:55:18] and run the code just so we can see everything and we have two red and dave okay let's close our
+- [03:55:24] output window for now and in the file tree let's go ahead and create a new file i'm going to call
+- [03:55:29] this rps4.py now i'm just going to pull in the rock paper scissors code from the previous lesson
+- [03:55:37] where we had a file named rps3 so if you have that you may want to open that up i'm just going to
+- [03:55:42] paste this in so we have that same code to work with so now at the very top of the file let's go
+- [03:55:49] ahead and create one global variable and i'll call this game underscore count and set it equal to zero
+- [03:55:56] now in a future modification we will remove the global variable once again because i said it's
+- [03:56:02] important to not use global variables where they're not needed and we will be able to remove this
+- [03:56:08] in a future iteration of this game but for now we're going to put a global variable here
+- [03:56:13] called game underscore count and set it equal to zero now let's scroll down to once we get past the
+- [03:56:19] decision tree here but before the play again in our code get a little bit of space and then we'll
+- [03:56:26] tab in to line it up and let's go ahead and say global game underscore count so now we're telling
+- [03:56:33] the function we're going to work with and modify that game count variable that's in the global
+- [03:56:39] scope inside of the local scope of the function and we'll set game count and then we'll say plus
+- [03:56:47] equals one so we're counting how many games we've played and then before we ask play again we can
+- [03:56:53] print and we'll start with a slash n for a new line and then we'll say game count give a colon
+- [03:57:02] and then of course we have our quote here and then we'll just say plus and we'll make sure
+- [03:57:06] this is a string now as we print this out or we would get an error so we will use our string here
+- [03:57:13] to convert this to a string str and then we'll put the game count so this should output how
+- [03:57:19] many times we've played the game and even though we run the function again and again it won't lose
+- [03:57:25] the count because that count's not stored in the function it's stored in the global scope outside
+- [03:57:31] of the function now one other thing we could apply that we have learned today is a nested function
+- [03:57:37] so let's do that with this game winner decision here so i'm going to tab in and then say def and
+- [03:57:43] i'll call this decide underscore winner as a function it's going to receive the player as a
+- [03:57:50] param and the computer as a param now inside of the function i'll need to tab all of this over
+- [03:57:57] so i'll highlight all of this and press tab then we're going to change this a little bit because
+- [03:58:02] instead of the print here i'm going to select print the first parentheses and then i'm going
+- [03:58:09] to go ahead and press control d to select the next the next the next and the next and i'm going to
+- [03:58:15] change this to the keyword return because it's a function so then likewise i'm going to select
+- [03:58:22] the last quotation and the closing parentheses control d again as i select all of those then
+- [03:58:28] just a right arrow to make sure i'm at the end and then backspace once and we've changed all of
+- [03:58:34] those at once and now we have a decide winner function that is going to return the appropriate
+- [03:58:40] response based on the decision but now we need to add a couple of more lines because we haven't
+- [03:58:45] called this function now decide winner is our nested function that's inside of our function
+- [03:58:52] up here called play rps so underneath decide winner now we're going to go ahead and say
+- [03:58:58] game result which is a new function is going to equal decide winner and we're going to pass in
+- [03:59:05] the values we have for player and computer so it's important to know with the parameters even
+- [03:59:11] though i named those parameters the same so i wouldn't have to rename all of these they could
+- [03:59:17] be named differently because here these hold values player and computer from above however here
+- [03:59:25] player and computer are params inside of the function they represent whatever value we pass
+- [03:59:31] into that function so we're calling decide winner and we're storing whatever is returned inside of
+- [03:59:37] game result so then we need to go ahead and print game underscore result to see that output okay
+- [03:59:45] with these changes in place let's go ahead and run our code by choosing run python file and now it's
+- [03:59:51] asking us to play the game i'm going to choose rock and it says python wins our game count is one do
+- [03:59:57] we want to play again sure so why let's go ahead and choose paper and i won so game count is to
+- [04:00:06] play again and you can see how the game count is working we'll choose three and hey we won again
+- [04:00:11] so game count is three so that's working as expected everything else is working just like
+- [04:00:16] it was before but we created a nested function inside of our game as well so i hope today's
+- [04:00:22] lesson has helped you understand a bit more about global scope and then local scope as we see inside
+- [04:00:29] a function i've got vs code open and you can see i have a new empty folder named lesson 12 and that's

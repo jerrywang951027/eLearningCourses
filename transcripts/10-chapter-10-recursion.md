@@ -1,0 +1,167 @@
+# Chapter 10 - Recursion
+
+Source: Python Tutorial for Beginners (with mini-projects) by freeCodeCamp.org
+URL: https://www.youtube.com/watch?v=qwAFL1597eM
+Time range: 03:23:48-03:41:11
+
+## Transcript
+
+- [03:23:50] folder over here in the file tree for lesson 10 we're going to not only learn about recursion
+- [03:23:55] today but also review a few concepts we've covered in previous lessons and once again refactor our
+- [03:24:01] rock paper scissors game so recursion happens in python when a function calls itself so that would
+- [03:24:08] be a recursive function so let's get started today by creating a file in the file tree and we'll
+- [03:24:14] name this file recursion dot pi okay now i'm going to add a function here that will be a recursive
+- [03:24:22] function so i'll start with the def keyword i'm going to call this function add underscore one
+- [03:24:28] it's going to have one parameter and that will be a number so i'll just represent that with num so
+- [03:24:35] when we call it with the argument we pass in it will be a number and then inside the function
+- [03:24:41] i'm going to say if num is greater than or equal to the number nine then we're going to return so
+- [03:24:51] this will end the function when the return keyword starts here so it will not go any further in the
+- [03:24:56] function then we'll say num plus one but after that i want to create a new variable called total
+- [03:25:04] and have it be equal to num plus one so this will only be created if the number is less than nine
+- [03:25:12] and now i'm going to print the total and then after all of this again this only happens if
+- [03:25:19] the number is less than nine i'm going to once again return and i'm going to call the add one
+- [03:25:25] function and pass in the total value so this is the recursive call to the function it calls itself
+- [03:25:32] here on line nine but notice we're returning that and we're passing in the new total so it will
+- [03:25:39] continue to call itself until it is greater than or equal to nine essentially and that's when
+- [03:25:48] it will just return the number plus one here so now of course this is just the definition
+- [03:25:54] the file is not calling the function yet so we need to call the function to see how it works
+- [03:25:59] so let's do that with add underscore one and let's pass in the number zero so i'll save the
+- [03:26:05] file with control s and i noticed it scrolled up on me so i'm going to add a couple of lines so
+- [03:26:10] now when i save it will not scroll up there we go and now drop here and choose run python file
+- [03:26:17] and notice we get the numbers one through nine and you may be thinking why didn't we get the
+- [03:26:23] number 10 because we passed in nine to the function and that is when it went here but notice there is
+- [03:26:30] no print statement here inside the if so we're not printing the number 10 the only way we might be
+- [03:26:36] able to do that would be to return a value from our function here so we could say my new total
+- [03:26:45] is equal to add one and pass in zero and then when the complete recursive calls are all finished
+- [03:26:54] then we will print my new total and now here on line 15 is where the number 10 would be printed
+- [03:27:03] so let's run our code again we can see we now get the number 10 but just one through nine are
+- [03:27:08] printed here with line nine and the number 10 is printed here at line 15 and this makes it
+- [03:27:14] important to note this return keyword because if we forget and leave that out with our recursive
+- [03:27:21] call everything will go ahead and continue but we will not get a value returned to my new total
+- [03:27:29] so let's go ahead and save this and i'll show what happens we run the code again and now instead of
+- [03:27:34] the number 10 we get none because we were not returning this recursive call so we want to make
+- [03:27:41] sure we do that and by the way none is a special value in python it's not true or false it's just
+- [03:27:47] none but let's go ahead and put the return keyword back in here so we can get a value out of our
+- [03:27:53] recursive function so now when i save and run the code we once again have the number 10 now it's
+- [03:27:59] worth noting that you could use a loop to achieve this same result and that would be a good practice
+- [03:28:04] exercise for you go ahead and try to create a loop instead of a recursive call and you could do
+- [03:28:11] that inside of a function that would have the same output that we have here however recursion
+- [03:28:17] is a mathematical concept and sometimes it's just necessary and overall i think it's important that
+- [03:28:22] you can recognize recursion as a beginner so if you are reading someone else's code and you see
+- [03:28:28] that the function calls itself you'll know that that is recursion now before we move on to refactor
+- [03:28:35] our rock paper scissors game one more time i want to create another file in the file tree and let's
+- [03:28:40] just call this file example.py because i want to review a couple of things we have covered in the
+- [03:28:46] past to add a little more clarity here so we're going to talk about while loops and how they
+- [03:28:51] evaluate the true or false condition just a little so i'm going to set value here equal to true and
+- [03:28:59] then after that i'm going to say while value and we can use double equal signs to say true but most
+- [03:29:06] of the time you will just see while value and it implies that while value is true or while value
+- [03:29:14] exists which is something we're going to talk about so now i'm going to print the value and
+- [03:29:20] then after this i'm going to set the value equal to false so this is what we would expect from this
+- [03:29:28] loop it would print true one time and then the value is changed to false and then when it comes
+- [03:29:33] up here for the second iteration when it wants to go back through the loop it will see that value
+- [03:29:39] is now false and the loop will exit so let's save this and see if that's what we get for our output
+- [03:29:46] yes we get true one time here in the output now it's also worth noting that we could set value
+- [03:29:52] equal to zero and it would evaluate as false zero is considered false so we run the code again
+- [03:29:58] and we get true one time and it also exits but note what i said before about value so i said
+- [03:30:05] it doesn't really just have to evaluate to true it can be saying while value exists and that is
+- [03:30:11] because we could set value equal to a string like y say our user says they want to play rock paper
+- [03:30:18] scissors again and so that input is y for yes and then it still exists so this will evaluate the same
+- [03:30:27] as true so now if i run the code we're going to get y one time instead of true because this
+- [03:30:36] evaluated as true if we set this to zero or false here we wouldn't even get the one print line that
+- [03:30:42] we are right now i'm going to make this into a slightly larger example now so i'll say count
+- [03:30:48] equals zero and we'll still have our while value here and then let me start out with count
+- [03:30:55] plus equals one so instantly we'll increment the count variable by one so now it is equal to one
+- [03:31:02] the first time through the loop after that instead of print value let's print the count and then
+- [03:31:08] after that let's have an if statement i'll say if the count is equal to five then we're going to
+- [03:31:16] break out of the loop but then we can also have an else and inside the else i'm going to set the
+- [03:31:23] value equal to zero and then i'm going to use continue and i want to highlight this because
+- [03:31:28] i had a question about this and the question was when using the keyword continue is the loop still
+- [03:31:34] evaluated here at the top does it check the while value part and that answer is yes it's going to
+- [03:31:40] check the value every time to evaluate whether the loop should execute again or not so let's
+- [03:31:47] think about what this loop does before we run the code and we're going to increment count by one
+- [03:31:52] and print the count so we'll have one as our output so far says if count equals five well
+- [03:31:58] it doesn't it equals one so we'll go down to the else and then here we're setting a value
+- [03:32:05] equal to zero now that's what we're evaluating here on line four does value exist or is it true
+- [03:32:13] and when it has zero it does exist but it's not true zero is equal to false so that should end
+- [03:32:20] the loop so the continue will just bring it back up here for the evaluation it will be evaluated
+- [03:32:27] and it will see no we're not going through the loop again so all we should get is a print count
+- [03:32:32] of one let's go ahead and run our code and see if that's what we get that is what we get just the
+- [03:32:38] one so what we're learning here is that yes using the continue keyword does cause an evaluation
+- [03:32:46] before the loop executes again now i've got the rock paper scissors code pulled up from our
+- [03:32:51] previous lessons and we've refactored it a couple of times i've created a new file named rps3.py
+- [03:32:59] as this would be the third time so if you've got that from a previous lesson bring it up if not
+- [03:33:04] you can get this code from the course resources i'll leave that in there however i'm going to
+- [03:33:09] refactor it now so the starter code for this the last time we've refactored i believe was lesson
+- [03:33:14] eight which is also in the course resources the code in this lesson lesson 10 will be the
+- [03:33:20] refactored code so you'll find the finish code in lesson 10 okay now moving on we have learned
+- [03:33:28] several things that could improve our game at this point so one of those things is functions
+- [03:33:33] so let's make our game a function and we're going to include everything after the imports here at
+- [03:33:39] the top so we'll use the def keyword and let's call this play underscore rps and then we have a colon
+- [03:33:49] so everything else needs to be indented to be part of the function so i'm going to start selecting
+- [03:33:54] here on line seven now scroll all the way down to the bottom except for this system exit here
+- [03:34:00] so i'll press the shift key and click and it highlights everything and then i'm going to
+- [03:34:06] tab in so now it should make all of that code part of the function so now everything is in the
+- [03:34:13] function except that system exit that we have right here and we'll probably end up moving it
+- [03:34:18] in the function too but we don't have to for now now let's go ahead and add the function call here
+- [03:34:25] at the bottom that we're going to need so it was play underscore rps and we would need to call that
+- [03:34:30] of course to execute the function to see our gameplay at all so we'll save that much and we
+- [03:34:36] now have a function for our rock paper scissors game now the next thing we can do is actually
+- [03:34:42] remove the while loop and we can use recursion in our function instead so let's do that by deleting
+- [03:34:48] the play again equals true and the while play again that starts the while loop but after we
+- [03:34:54] delete these now everything is indented too far underneath here it thinks it's part of the class
+- [03:35:00] rps that we created up here so we need to select everything on line 14 once again scroll down to
+- [03:35:07] the bottom here and i'll click shift or press shift and click and then we're going to press shift
+- [03:35:15] and the tab key to tab reverse and go back out just a little bit so now everything is once again
+- [03:35:23] part of the function and it doesn't consider it part of our rps class here that we start the
+- [03:35:29] function with either so just verify that your indentation is correct and python will read that
+- [03:35:34] correctly now we need to make some changes as you might have noticed i have a red squiggly line here
+- [03:35:39] where the continue keyword is that was applying to a loop but let's start at the top and work
+- [03:35:45] our way down one thing we still haven't fixed in our game is the player choice value if the input
+- [03:35:52] from a user was something that would cause an error as we cast to an integer here on line 16
+- [03:35:58] we're not handling that at this point but we can do that so let's put an if statement underneath
+- [03:36:04] the input here where we get our player choice value and let's say if player choice and then we'll
+- [03:36:12] say not in and let's create a simple list because we know we're only expecting a one two or three
+- [03:36:20] and all user input is string so here we have not in one two or three in our list so we're making
+- [03:36:28] sure the player choice is one of those but if it's not let's execute some code in the if block here
+- [03:36:35] so we'll say print and now we're just going to take this message that we have in the system exit
+- [03:36:41] below because we will be removing this let's put this in you must enter a one two or three
+- [03:36:48] and after that this is a good time to use a recursive function call so we will return and
+- [03:36:53] we'll say play underscore rps and that's all we need so we're calling the function here again
+- [03:37:00] and it will go back to the top and it will once again ask for the input of a one two or three
+- [03:37:07] and with that completed we can delete the other if statement we had here previously now note i've
+- [03:37:13] already pressed alt z so visual studio code will wrap my code down i expected both of these lines
+- [03:37:19] to look like this first one however it's doing something a little weird here i've noticed when
+- [03:37:25] i delete this spacing and bring it back to look like the other one and then i save and auto formats
+- [03:37:31] it back this way so just note that if you see this in your code it is just happening automatically by
+- [03:37:37] visual studio code and i'm not entirely sure why but it's essentially all one line just like this
+- [03:37:44] line above is now let's scroll down and fix the area where we have the continue problem here but
+- [03:37:50] we're going to start here on line 41 where we have play again because remember we're no longer
+- [03:37:55] evaluating play again for the loop at the top i'm going to start though with a print statement and
+- [03:38:01] i'm going to print and here is where i'm going to ask the play again statement so i'll just copy that
+- [03:38:09] paste it in there and finish that print statement and then of course we can remove that same phrase
+- [03:38:15] from the print statement here but i want to have this input in a while loop and again this is
+- [03:38:20] correcting the input right now if we get a y for yes then it will play again and any other input
+- [03:38:27] not just a q but any other input will quit the game but we want to limit the accurate choices to
+- [03:38:34] just y and q so here i'm just going to say while true so we're just looking for a true value to
+- [03:38:42] begin the loop once again and then we'll have our play again i guess i don't need that extra line
+- [03:38:48] i could just tab this in so then we'll have play again ask for the input i'll get rid of one of
+- [03:38:55] these extra new line characters at the end though and now let's evaluate play again so we'll say if
+- [03:39:02] play again dot lower then not in and let's create another list and we'll just have y
+- [03:39:10] and q as the two items in our list and then inside the block for the if statement i'll just
+- [03:39:18] use the continue keyword so if it's not y or q it's just going to start the loop again and ask
+- [03:39:25] for y or q so we're just asking our users to please specifically enter y or q and then our else
+- [03:39:33] will just issue the break statement so if they do enter a y or q the loop stops now here the if
+- [03:39:40] statement below was checking for a y and we still want that so the loop is stopped they've entered a
+- [03:39:46] y and now this is a good place to put our recursive call to the function once again so play rps
+- [03:39:52] because they want to play again if not we're going to still print the thank you for playing
+- [03:39:58] but we no longer have to evaluate play again for a loop so let's just take our system exit line
+- [03:40:04] right here control x to cut it and control v to paste it over that line on 55 that was setting
+- [03:40:12] the play again value and now rock paper scissors should be ready to play and it is a recursive
+- [03:40:18] function so let's give it a shot and see if everything works as we expect it to so i'll
+- [03:40:24] enter one for rock and hey we won that's great do i want to play again yes let's play again
+- [03:40:29] let me enter something else like an a now that would have caused possibly an error before but
+- [03:40:36] now it just goes back and says we need to enter a one two or three how about a five nope one two or
+- [03:40:42] three so i'll enter two and now python wins so y for yes to quit or i mean to continue playing or
+- [03:40:50] q to quit and let's enter a four instead no it just asks us the same question again so we're in
+- [03:40:56] that loop until we get a y or a q we did y once already let's enter a q and we quit so our game
+- [03:41:04] is working as expected you've now applied a recursive function to the rock paper scissors game

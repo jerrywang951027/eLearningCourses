@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Chapter-Specific Python Materials</title>
+  <style>
+:root {
+  --ink: #18202a;
+  --muted: #586575;
+  --line: #d9e0e8;
+  --panel: #ffffff;
+  --soft: #f5f7fa;
+  --accent: #176f7a;
+  --wrong: #a24118;
+  --right: #0d6b3f;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  line-height: 1.55;
+  color: var(--ink);
+  background: #eef2f5;
+}
+header {
+  padding: 32px clamp(18px, 4vw, 56px);
+  background: #17212b;
+  color: #fff;
+}
+header a { color: #aee4ef; }
+main {
+  width: min(1120px, calc(100% - 32px));
+  margin: 28px auto 56px;
+}
+h1, h2, h3 { line-height: 1.2; }
+h1 { margin: 0 0 10px; font-size: clamp(2rem, 5vw, 3.25rem); }
+h2 { margin-top: 36px; padding-bottom: 8px; border-bottom: 1px solid var(--line); }
+nav { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 18px; }
+nav a {
+  color: #fff;
+  text-decoration: none;
+  border: 1px solid rgba(255,255,255,.28);
+  border-radius: 6px;
+  padding: 7px 10px;
+}
+.meta { color: #d9e7ed; max-width: 850px; }
+.grid, .note-pages {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 16px;
+}
+.card, .page, .question, .challenge {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 18px;
+}
+.card a { color: var(--accent); font-weight: 800; text-decoration: none; }
+.pill {
+  display: inline-flex;
+  align-items: center;
+  min-height: 28px;
+  padding: 3px 9px;
+  border-radius: 999px;
+  background: #e8f3f5;
+  color: #125965;
+  font-size: 0.88rem;
+  font-weight: 800;
+}
+.options { list-style: none; padding: 0; margin: 12px 0; }
+.options li { padding: 7px 0; border-top: 1px solid #edf0f3; }
+.options label { display: flex; gap: 9px; align-items: flex-start; cursor: pointer; }
+.options input { margin-top: 5px; }
+button {
+  appearance: none;
+  border: 0;
+  border-radius: 6px;
+  padding: 9px 13px;
+  background: var(--accent);
+  color: #fff;
+  font-weight: 800;
+  cursor: pointer;
+}
+button:hover { background: #125965; }
+.feedback { min-height: 24px; font-weight: 800; }
+.feedback.correct { color: var(--right); }
+.feedback.wrong { color: var(--wrong); }
+.reason {
+  background: var(--soft);
+  border-left: 4px solid var(--accent);
+  padding: 10px 14px;
+  margin-top: 10px;
+}
+.reason[hidden], .solution[hidden] { display: none; }
+.code-entry {
+  width: 100%;
+  min-height: 170px;
+  margin-top: 10px;
+  padding: 12px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  resize: vertical;
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: var(--ink);
+  background: #fbfcfd;
+}
+pre {
+  overflow-x: auto;
+  padding: 14px;
+  border-radius: 8px;
+  background: #101820;
+  color: #eaf4f7;
+}
+code { font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace; }
+</style>
+  <script>
+document.addEventListener("click", (event) => {
+  const checkButton = event.target.closest("[data-check-question]");
+  if (checkButton) {
+    const question = checkButton.closest(".question");
+    const selected = question.querySelector("input[type='radio']:checked");
+    const feedback = question.querySelector(".feedback");
+    const reason = question.querySelector(".reason");
+    if (!selected) {
+      feedback.textContent = "Choose an answer first.";
+      feedback.className = "feedback wrong";
+      reason.hidden = true;
+      reason.textContent = "";
+      return;
+    }
+    const correct = selected.dataset.correct === "true";
+    feedback.textContent = correct ? "Right" : "Wrong";
+    feedback.className = correct ? "feedback correct" : "feedback wrong";
+    reason.textContent = selected.dataset.reason;
+    reason.hidden = false;
+  }
+
+  const revealButton = event.target.closest("[data-reveal-solution]");
+  if (revealButton) {
+    const challenge = revealButton.closest(".challenge");
+    const solution = challenge.querySelector(".solution");
+    const hidden = solution.hidden;
+    solution.hidden = !hidden;
+    revealButton.textContent = hidden ? "Hide reference implementation" : "Reveal reference implementation";
+  }
+});
+</script>
+</head>
+<body>
+  <header>
+    <h1>Chapter-Specific Python Materials</h1>
+    <p class="meta">Chapter-specific materials generated from the transcript for <a href="https://www.youtube.com/watch?v=qwAFL1597eM">Python Tutorial for Beginners (with mini-projects)</a>.</p>
+    <nav>
+      <a href="../index.html">Main Python Materials</a>
+      <a href="./index.html">Chapter Materials</a>
+      <a href="../../index.html">Course Catalog</a>
+    </nav>
+  </header>
+  <main><section class="page"><p>These pages regenerate notes, quizzes, and code challenges for the first three video chapters directly against the split transcript files.</p></section><section class="grid"><article class="card"><h2>Intro - Course Orientation</h2><p>Intro</p><p><a href="./00-intro-course-orientation.html">Open chapter materials</a></p><p><a href="../../transcripts/00-intro.md">Open transcript</a></p></article><article class="card"><h2>Chapter 1 - Getting Started</h2><p>Chapter 1 - Getting Started</p><p><a href="./01-chapter-1-getting-started.html">Open chapter materials</a></p><p><a href="../../transcripts/01-chapter-1-getting-started.md">Open transcript</a></p></article><article class="card"><h2>Chapter 2 - Python Basics</h2><p>Chapter 2 - Python Basics</p><p><a href="./02-chapter-2-python-basics.html">Open chapter materials</a></p><p><a href="../../transcripts/02-chapter-2-python-basics.md">Open transcript</a></p></article></section></main>
+</body>
+</html>

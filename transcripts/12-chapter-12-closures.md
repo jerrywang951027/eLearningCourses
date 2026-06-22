@@ -1,0 +1,190 @@
+# Chapter 12 - Closures
+
+Source: Python Tutorial for Beginners (with mini-projects) by freeCodeCamp.org
+URL: https://www.youtube.com/watch?v=qwAFL1597eM
+Time range: 04:00:30-04:19:32
+
+## Transcript
+
+- [04:00:36] where you will find this lesson in the course resources let's create a new file named closure
+- [04:00:42] dot pi c l c l o s u r e dot pi p y so now we've got our new file and let's talk about closures
+- [04:00:51] for just a moment because closures are often a difficult concept for beginners to understand
+- [04:00:56] but i think i can provide a simple example in this lesson that will help you always remember
+- [04:01:01] what a closure is and it's important to understand scope first and that was covered in the previous
+- [04:01:06] lesson in this series so if you've found this video but you haven't learned about scope yet
+- [04:01:11] i suggest going to the previous video in this playlist and learning about scope first let's
+- [04:01:17] define what closure is i'll just paste this definition in and it looks like i need to put
+- [04:01:21] another comment before the second line and i'll even press alt z to wrap this down and it looks
+- [04:01:27] like i should just fit this on the second line as well so control x to cut control v to paste
+- [04:01:32] and there we go so let me scroll this back up there we go closure is a function of having access
+- [04:01:38] to the scope of its parent's function after the parent function has returned that sounds
+- [04:01:45] complicated at first but if we break this down we're talking about a parent function so that means
+- [04:01:50] you should know we're going to have a nested function defined and we learned about those in
+- [04:01:55] the previous lesson with scope and then the nested function is going to have access to the scope of
+- [04:02:01] its parent function and of course let's go ahead and create an example so i'm going to come down
+- [04:02:06] one line and use the def keyword and then let's just call this parent underscore function and
+- [04:02:12] this will be our function it's going to receive one param to start out with and that will be a
+- [04:02:17] person and now we can define the body of the function so let's say we have coins and this
+- [04:02:23] coins is equal to three then just the number three now let's define a nested function and here i'm
+- [04:02:30] going to use the def keyword again and call this play underscore game and now inside of our nested
+- [04:02:37] function we're going to use that coins variable from the parent function so we'll use non-local
+- [04:02:44] as we learned about in the scope lesson and say coins so we're going to use that and we'll set
+- [04:02:50] the coins equal to minus one it's essentially equal to itself minus one we learned about how
+- [04:02:57] to do that so we don't have to say coins equals coins minus one we can just put a negative and
+- [04:03:03] then the equal sign and it will accomplish the same thing so we're subtracting one from coins
+- [04:03:09] at this point essentially we had to put a coin in the game to play the game and now let's put
+- [04:03:15] saying some logic here with an if statement so i'll say if coins is greater than one now we can
+- [04:03:22] go ahead and print something for our output so let's print and we'll start with a new line so
+- [04:03:28] that's a slash in let's give it a well not we don't need a space yet but we will so let's give
+- [04:03:33] it a plus here put the person's name so we're just starting out on a new line with the person's name
+- [04:03:38] that's passed in and now we'll have a space the word has and then another space and after that
+- [04:03:46] we'll put another plus and now remember to use coins it's not a string so we need to wrap it here
+- [04:03:52] in our constructor for string and then we'll just pass in coins whatever that value is and it should
+- [04:03:59] be greater than one at this point and then we'll put plus and now another space and we'll say coins
+- [04:04:06] space left so we're just making a statement here if we passed in my name and then it would call
+- [04:04:12] play game which it's not calling yet we're just defining play game at this point but if we got to
+- [04:04:17] this point here in our if statement it would say dave has two coins left because i started with
+- [04:04:24] three so now let's put an else if here and our lf is essentially what an else if is in python we'll
+- [04:04:32] say coins equals one and the reason we're doing this for one is because then we don't want to say
+- [04:04:39] coins left we just want to say coin left so let's copy this with control c paste it here as well
+- [04:04:46] and now let's just change this to coin left so now this would be dave has one coin left because
+- [04:04:53] this will only happen if coins is equal to one and finally let's put an else here so this would
+- [04:05:00] be anything else and essentially if it was greater than one the first happened if it's equal to one
+- [04:05:05] the second happened so here our else would be zero or anything less than one essentially
+- [04:05:12] and now i'll just paste this again but i'm going to change the message so instead of has whatever
+- [04:05:18] coins left now i'm going to say is out of coins because at that point we shouldn't really be able
+- [04:05:26] to play the game anymore we would be out of coins now as just an example function we're not really
+- [04:05:31] tying a game to this we're just going to get this output printed to the console but after we're
+- [04:05:37] finished here defining our play game function then we need to come back to the parent function
+- [04:05:42] essentially and instead of returning any value we're going to return the play underscore
+- [04:05:50] game function notice we're not calling it into action by putting the parentheses after it
+- [04:05:55] we're just returning this nested function play game when we call the parent function
+- [04:06:01] so now that we've completed our parent function let's go ahead and use it and i'm going to say
+- [04:06:07] tommy here for our first variable and as a parent function let's say his father
+- [04:06:12] gives him three coins to go to the arcade so here we'll just pass in tommy's name because
+- [04:06:18] that's what the function needs to receive we're already defining the coins value inside the
+- [04:06:24] function here and then we're going to be able to call tommy because tommy is a function because
+- [04:06:30] we're returning the play game function here when we call the parent function and it has the value
+- [04:06:37] of tommy for the person's name now notice we're not changing the value of person and that's why
+- [04:06:45] we don't have to use the non-local uh coins here like we did with coins essentially the non-local
+- [04:06:51] keyword with coins but we are changing the value of coins and that's why we must use the non-local
+- [04:06:57] keyword with coins but we don't have to use it with person because tommy's value stays the same
+- [04:07:03] or whoever's name we pass in as a matter of fact let's say tommy has a sister so we'll just copy
+- [04:07:09] this down i'm going to highlight tommy change this to jenny which would be his sister's name and
+- [04:07:14] let's say their dad gives both of them three tokens to go to the arcade and play games with
+- [04:07:22] so every time we call one of them into action is when they're going to play a game so let's copy
+- [04:07:28] tommy down he's going to play the game a couple of times and then we'll have jenny play the game so
+- [04:07:34] let's save all of this now and notice we're calling our function tommy twice and jenny
+- [04:07:40] wants let's check the output i'm also going to press control b to hide the file tree for now
+- [04:07:45] just so we can have some extra room here when we see the output we'll go to our drop menu run the
+- [04:07:51] python file and it says tommy has two coins left then tommy has one coin left because he played
+- [04:07:58] twice then jenny still has two coins left so i'm going to move this over to the right also we'll
+- [04:08:04] go to view appearance and now we should be able to go to panel position and then i'll choose right
+- [04:08:11] so it's not at the bottom so we can see our code just a little better but when we did this we
+- [04:08:16] called tommy twice and he used one coin so he had two left then he used another coin he had one left
+- [04:08:22] but jenny was able to go ahead and play once and she still has two coins left so you can see how
+- [04:08:28] we're keeping different values in coins inside of the scope of the parent function that our play
+- [04:08:35] game function can go ahead and access the value of even when we change that value that's what a
+- [04:08:42] closure is and the closure is created when the parent function returns so when we return this
+- [04:08:49] then the closure is created and play game the nested function will always have access to the
+- [04:08:56] variable value that is in the parent function and it's not always three it can change that value
+- [04:09:03] as we're accessing it and changing it right here so let's go back to our definition and see if it
+- [04:09:08] makes a little more sense so a closure is a function having access to the scope of its parent
+- [04:09:15] so play game has access to the scope of the parent function even after that parent function
+- [04:09:22] has returned and that's what's necessary here so the parent function returns the play game function
+- [04:09:29] and then the play game function has access to the scope of that parent function every time
+- [04:09:35] we call play game and it's not always the same as we noted here tommy and his sister
+- [04:09:41] have different values for how many coins they have left and if we called tommy again he's going to
+- [04:09:47] run out of coins so let's save and run this code once again and now tommy's out of coins
+- [04:09:53] jenny still has two coins left so now just to change our example a little bit let's go ahead
+- [04:09:58] and comment out coins here and let's have our parent function receive a specific number of
+- [04:10:05] coins as well so as a second param we're going to pass in the coins so that way the parent can
+- [04:10:11] award the children different amounts of coins so now that we have changed that the coins is still
+- [04:10:18] inside of the scope of the parent function it's a param of the parent function at this
+- [04:10:22] point so i just wanted to show essentially how we could move coins up here as a param
+- [04:10:27] and the same concept still applies so now when we call these functions tommy well he did okay but
+- [04:10:33] he didn't do all of his chores so he just gets three coins but let's say jenny did all of her
+- [04:10:39] chores and she gets five coins for the arcade so let's save this let's go ahead and rerun our code
+- [04:10:46] and now tommy has two coins one coin jenny has four coins left after she uses one and tommy is
+- [04:10:53] out of coins so the same applies to a param as if we had defined the variable inside of the parent
+- [04:11:00] function here so if you remember in our scope lesson i had said that it's really a good idea
+- [04:11:05] to avoid global variables when possible and notice we didn't have to create a global variable here
+- [04:11:11] so really creating a nested function and using closure accessing a value from the parent function
+- [04:11:18] is one good way to avoid creating global variables but when you need to access a variable
+- [04:11:24] from a parent still so this just creates another level so now let's look at an example with our
+- [04:11:30] rock paper scissors game that we have been adding to throughout these lessons so it was changed in
+- [04:11:37] the last lesson so i'm going to start with the code from the previous lesson of where we left
+- [04:11:42] off our rock paper scissors game so i'll open up the file tree and this will be the fifth version
+- [04:11:47] so i'm going to call this rps5.py and i'm going to paste in the code from the last lesson where
+- [04:11:55] we had modified this but if you remember we created a global variable here called game count
+- [04:12:02] and we were counting the number of games we played but now we should be able to change this to where
+- [04:12:07] we're not going to use a global variable and the first step is going to be to wrap our play rps
+- [04:12:14] function inside of a parent function and we'll do that with the game count here too so above this
+- [04:12:20] i'll just call this rps instead of play rps and now we have essentially wrapped this but we need
+- [04:12:27] to change our indentation because that's important in python so i'm going to indent the game count
+- [04:12:34] here and this will be inside of the scope of the rps function and then let's select everything else
+- [04:12:40] so on my line 9 all the way down to the bottom here i'm going to press shift and click and then
+- [04:12:46] i'm just going to tab over but really i didn't need to tab this play rps we can go ahead and
+- [04:12:52] change that because it's not going to be play rps anymore notice when i backspaced it got this
+- [04:12:58] squiggly line from vs code because now play rps is not in the global scope where we can call it
+- [04:13:05] it's a nested function so we're going to be calling a function called rps when we actually
+- [04:13:10] do call everything into action let's scroll back to the top because we need to make a few more
+- [04:13:15] changes besides the game count now let's count how many games the player wins and how many games
+- [04:13:21] python wins so i'll also create a variable here called player wins set that equal to zero
+- [04:13:27] and one called python underscore wins and set that equal to zero now let's remove this extra line
+- [04:13:33] but what we're going to need to do is pull these variable values into the play rps function
+- [04:13:41] because we will be modifying these by adding to this number we have of course starting with zero
+- [04:13:47] so we will increment as python wins or as the player wins and of course for each game with game
+- [04:13:52] count so what we need to do here is go ahead and use our non-local and then say player underscore
+- [04:14:00] wins and we could say non-local and say python underscore wins now we could do this with game
+- [04:14:08] count here as well but if you remember we had this lower in our code so let's find that i'm going to
+- [04:14:14] use control f and then just type game underscore count to see where else it shows up in the code
+- [04:14:20] and we can see it's on line 52 so now that i'm here i can't use this global keyword anymore
+- [04:14:26] because game count is not a global variable it's inside the scope of the parent function rps so
+- [04:14:32] we're also going to use the non-local keyword here for game count as well now let's scroll back up
+- [04:14:39] and remember we already had a nested function and that's okay so now we have a nested function
+- [04:14:45] inside of a nested function it just creates another layer but when we do that and we need
+- [04:14:51] to access our player wins or our python wins variable inside of our decide winner function
+- [04:14:57] that is nested inside of our play rps function you might guess that we're also going to have to use
+- [04:15:03] the non-local keyword here to pass it down one more level so we can modify these values inside
+- [04:15:11] of decide winner and then still access those values outside of decide winner when we need to
+- [04:15:17] so i'm going to say non-local player wins and non-local python underscore wins here as well so again
+- [04:15:25] a nested function inside of a nested function now if we win it says you win or the player wins
+- [04:15:32] we'll say player underscore wins and then we'll say plus equals one so we're incrementing by one
+- [04:15:38] now i'm just going to copy this because clearly the same output is here as well and it's also
+- [04:15:46] here now we don't really need to count the tie games so we won't put anything else there
+- [04:15:51] but in our else where python wins we can go ahead and paste one more time but we'll just change this
+- [04:15:57] now to python underscore wins and now we're adding one if python wins to this variable so now that
+- [04:16:05] we've changed those we just need to output the result also so let's scroll down just a little
+- [04:16:10] bit and here we find our output for game count and then of course we're using the string constructor
+- [04:16:17] around game count because it's a number so we can output it this way i'm just going to shift alt
+- [04:16:22] in the down arrow to copy that down and now we'll count the player wins right here so i'll say
+- [04:16:30] player wins and let's change this to our player wins value so player underscore wins and now
+- [04:16:38] shift alt in the down arrow one more time we'll change player to python there and we'll change
+- [04:16:44] player to python here also and now you would think we are finished but there's one important
+- [04:16:51] thing that we have not done yet and that's create the return for our rps which needs to return
+- [04:16:58] our play rps so remember our parent function here rps needs to return the play rps function
+- [04:17:06] so now i'll scroll almost all the way to the bottom and at the very end of our function here
+- [04:17:12] this is where we'll need to go ahead and return the play rps and there we go so return play
+- [04:17:20] underscore rps remember without the parentheses we're not calling the function into action right
+- [04:17:25] there we're just returning the function so now let's define a new variable here called play
+- [04:17:31] and we'll set this equal to our rps function and now play is going to hold the play rps function
+- [04:17:38] so now we'll call that into action and now our game will start so let's go ahead and play our
+- [04:17:45] game i'll go to the drop menu and choose run python file it's ready for rock paper or scissors
+- [04:17:50] i'll choose rock and it says a tie game so why to play again i'll choose rock again another tie
+- [04:17:58] so why to play again and another one and let's three ties in a row i cannot win right now
+- [04:18:04] literally let's see and hey we finally won on the fourth game notice we have player wins won but the
+- [04:18:11] game counts four i also notice we have a slash here with python wins so i may have something
+- [04:18:16] in the code that i didn't want let's go back and check that out and yes we didn't get our
+- [04:18:22] in in there or i accidentally deleted it that stands for new line so let's put that back in
+- [04:18:28] now let's run the code again and we're ready to quit or play again so i'll say play again with
+- [04:18:36] the y and now we're ready for rock paper scissors i think i ran the code again when i actually
+- [04:18:41] didn't quit before and that's what happens so let's quit because it's running the old version
+- [04:18:45] of the code notice the slash is still there so we quit now let's go ahead and run that code again
+- [04:18:52] by pressing play up here and i'm going to choose rock and python wins game count one
+- [04:18:59] player wins zero python wins one let's play one more time see if we can even it up and we want so
+- [04:19:06] game counts two player wins python wins you can see everything is counting as it should and we've
+- [04:19:12] implemented closure to keep track of these game counts and the wins without actually creating a
+- [04:19:20] global variable at all and you also learned how to use closure at two different levels there because
+- [04:19:25] we not only had one nested function then we had a nested function inside of the other nested
+- [04:19:31] function i've got vs code open you can see in the file tree i have a lesson 13 folder let's create

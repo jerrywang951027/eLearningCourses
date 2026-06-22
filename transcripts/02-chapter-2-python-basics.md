@@ -1,0 +1,230 @@
+# Chapter 2 - Python Basics
+
+Source: Python Tutorial for Beginners (with mini-projects) by freeCodeCamp.org
+URL: https://www.youtube.com/watch?v=qwAFL1597eM
+Time range: 00:14:50-00:29:58
+
+## Transcript
+
+- [00:14:52] In the previous tutorial, we set up our Python programming environment in Visual Studio Code,
+- [00:14:56] and today we're going to learn the basics of the Python programming language.
+- [00:15:01] Let's start by opening a terminal in Visual Studio Code, and you can do that in a couple
+- [00:15:05] of ways.
+- [00:15:06] You can go to the menus at the top, and if your terminal menu is not showing, click the
+- [00:15:10] three dots, and then choose terminal, and then new terminal.
+- [00:15:14] Otherwise you can just use a shortcut which is control and backtick in Windows, in Mac
+- [00:15:19] it's probably command and backtick.
+- [00:15:21] But either way we now have a terminal window open, and if you remember from the last lesson,
+- [00:15:26] we can start the Python REPL by typing py, just for pi, and this is in Windows.
+- [00:15:32] If you're in Mac and Linux, you need to type Python 3, and then that will start the Python
+- [00:15:38] REPL.
+- [00:15:39] So I'm just going to type pi and press enter, and now I am at the Python REPL.
+- [00:15:44] So let's start today by discussing variables, and you saw a variable in the previous lesson
+- [00:15:48] when I took name, and that is a variable, and then I assigned a value to name, and I
+- [00:15:54] just assigned my name.
+- [00:15:56] So when I press enter, nothing happens, but now the variable name holds the value Dave,
+- [00:16:02] which is a string.
+- [00:16:03] So if I type name and press enter, it returns the value, which is the string Dave.
+- [00:16:09] Now variable names can be made up of letters, just like name is, or it could be made up
+- [00:16:14] of numbers, or a mixture of the two, or even use the underscore character.
+- [00:16:19] So I could say name 0001, and set that equal to Dave, and press enter, and we have no problem.
+- [00:16:27] I could also use underscore name, and set that equal to Dave, and we still have no problem.
+- [00:16:34] However, there are some things we cannot use in variable names.
+- [00:16:37] Other characters, for example, so if I said name exclamation mark, set that equal to Dave,
+- [00:16:43] and press enter, Python tells us that's a syntax error.
+- [00:16:47] So we cannot use that, and it highlights the problem characters we see right here.
+- [00:16:53] So we could say name dash first, maybe I wanted to use that for a variable name.
+- [00:16:59] But the hyphen is a problem, and we see that issue as well, and now of course it tells
+- [00:17:04] us the whole thing is a problem really.
+- [00:17:06] So that won't work either, it says maybe we meant to use double equals, which is something
+- [00:17:10] we'll get to later when we cover operators, but we can't use the hyphen in a variable
+- [00:17:15] name either.
+- [00:17:16] So maybe we decide to put the numbers first, and then name, and we really can't start a
+- [00:17:22] variable name with numbers either.
+- [00:17:24] So once again, we have a syntax error.
+- [00:17:26] This mentions leading zeros, but it doesn't just have to be leading zeros.
+- [00:17:30] I could just say one name, and try to set that equal to Dave, and we still have a syntax
+- [00:17:36] error.
+- [00:17:37] So again, we can use letters and numbers, and even underscores.
+- [00:17:41] Now we cannot start a variable name with numbers though, and we can't use any other characters
+- [00:17:46] either.
+- [00:17:47] So we do have some limitations.
+- [00:17:49] Now one other thing to consider is there are some reserved keywords that Python uses for
+- [00:17:54] other things, and we cannot use those.
+- [00:17:57] But no worries, you don't have to memorize them, Python will let you know, just like
+- [00:18:00] it did here with the syntax error, if we're trying to use a reserved keyword.
+- [00:18:04] So if I took the word if, and tried to assign that to Dave, we're going to have a problem
+- [00:18:09] as well, because here it doesn't point at if, it points at the assignment operator here,
+- [00:18:15] the equal sign, we cannot use the keyword if, and the same for some other keywords,
+- [00:18:21] like for, that is also a reserved word.
+- [00:18:24] So I'll type for equals, let's set for equal to Dave, and once again, Python has an issue
+- [00:18:30] with that, because for is a reserved keyword as well.
+- [00:18:33] Okay, let's look at expressions versus statements.
+- [00:18:37] Now you've seen me type an expression before, like two plus two, that's an expression.
+- [00:18:42] When I press enter, it returns the output of four.
+- [00:18:46] Likewise, I could type in a string, and let me just use the word expression, and surround
+- [00:18:52] that in quotes, press enter, and it returns the value of the string, which is also expression.
+- [00:18:58] These are expressions, in contrast to statements that perform operations on values.
+- [00:19:05] So now, let's use a statement, and I'll just say, my name equals Dave.
+- [00:19:12] Here we're assigning the value of Dave, and it's a string value, we're assigning that
+- [00:19:17] to the variable, my name.
+- [00:19:19] So that's a statement, and I'll press enter, and now I can just type my name, and it's
+- [00:19:23] going to return the value of Dave.
+- [00:19:25] So we want to create a Python file, and put statements inside of that file, so it executes
+- [00:19:32] as a program.
+- [00:19:33] So let's close out of the terminal, well first we need to exit our REPL.
+- [00:19:37] So let's type quit, and put the parentheses, press enter.
+- [00:19:41] Now we have quit the REPL, and we can just click X to close out of the terminal window.
+- [00:19:46] I have created a Python file, called welcome.py, now remember you can do that by clicking the
+- [00:19:53] new file icon over here on the top left, or you could press control in to create a new
+- [00:19:59] file, and then save that file as welcome.py, welcome.py.
+- [00:20:05] So now inside this file, we're going to use some statements.
+- [00:20:09] So my first statement is going to be assigning a value to a variable, and I'm going to call
+- [00:20:14] this variable line01, I'll set it equal to a line that has 20 asterisks, so 1, 2, 3,
+- [00:20:23] I believe that's 20.
+- [00:20:24] From there we're going to take a shortcut in Visual Studio Code, so I'm going to press
+- [00:20:28] shift alt in the down arrow, and copy this down.
+- [00:20:33] Now we don't have a problem right now, however we're reassigning this variable.
+- [00:20:37] What I want to do is change this to a 2, and I want to change this to a 3, and actually
+- [00:20:43] I don't need these last 2, I was thinking I'm going to use 5 lines, but I only need
+- [00:20:47] the first 3 lines.
+- [00:20:49] Now here in the middle, I am going to remove all of the middle asterisks, and then space
+- [00:20:55] this back over, so it matches up with the edges.
+- [00:20:59] Now in the middle of this one, I'm going to remove them, but then I'm going to space
+- [00:21:03] over 5 times, 1, 2, 3, 4, 5, and I'm going to type welcome, if I get my fingers on the
+- [00:21:10] correct keys, and then 1, 2, 3, 4, 5, and there I'm finished with the 3 assignments.
+- [00:21:17] Now let's go ahead and create some more statements that print these values, but my first print
+- [00:21:23] is going to be an empty string, so I want a blank line first, so this is the print function
+- [00:21:29] here, and it's going to just print this empty string, but on the next line, I can say print
+- [00:21:34] line, oops, line 0, 1.
+- [00:21:37] You can see Visual Studio Code even wants to help me, it knows what values we have already.
+- [00:21:42] Once again, I'm going to press control, alt, and the down arrow, and this time I actually
+- [00:21:46] do want 5, and so now I'm going to have line 1, and then I'm going to switch this to line
+- [00:21:52] 2, and I'm going to switch this to line 3, and here's something about programming.
+- [00:21:57] We want to be efficient, there's no reason to create the line 4 or 5 if they're going
+- [00:22:02] to be the same as line 2 and line 1.
+- [00:22:05] So now I just want line 2 printed again, and then line 1.
+- [00:22:09] So what I'm going to do is create a welcome message, but it's actually going to have this
+- [00:22:13] header and footer, because it starts with this, and it ends with this.
+- [00:22:18] So control s to save our file with those changes, or you could go to the file menu and choose
+- [00:22:23] save, but it's faster to learn the shortcuts like control s.
+- [00:22:27] From there, we can run this file.
+- [00:22:29] Do you remember how to do that from the first lesson?
+- [00:22:32] There were three different ways.
+- [00:22:33] What I'm going to do is go up to the play button here, choose the little drop down,
+- [00:22:38] and choose run python file, and let's see what happens.
+- [00:22:42] And it outputs our print statements, and we get our welcome message here in the terminal.
+- [00:22:47] So that worked out nicely.
+- [00:22:48] Let me drag this down a little bit, because now we also want to discuss comments.
+- [00:22:53] And comments would be notes we would leave for ourselves or for other programmers inside
+- [00:22:58] of our file.
+- [00:22:59] So here I'm going to just put a comment afterwards, and it starts with the hash mark, or you might
+- [00:23:04] call it a hashtag, as made popular nowadays.
+- [00:23:08] So we've got our hashtag here, and then I'm going to just say header slash footer, because
+- [00:23:13] that's what I'm using that line for.
+- [00:23:15] And here I'll put another comment, and I'll just say reuse.
+- [00:23:19] So anything that comes after this hashtag is grayed out, and the hashtag itself is too.
+- [00:23:25] And it doesn't impact the code at all, they're just notes for us.
+- [00:23:28] Now here I could put a note before everything starts.
+- [00:23:31] I could say starts with a blank line.
+- [00:23:36] So I'm just leaving some comments inside of our code file here, and these are reminders
+- [00:23:42] to me.
+- [00:23:43] So when I look at the code, maybe I know what it's going to do, or another programmer that
+- [00:23:46] might look at the code in the future, and this would help them understand what the code
+- [00:23:50] does.
+- [00:23:51] I'm going to close the terminal window again, just so we have a little more room as we look
+- [00:23:54] at our code, and we need to talk about indentations in Python.
+- [00:23:59] They have special meaning, and if you're used to another programming language like JavaScript
+- [00:24:04] and others, they ignore white space, but Python does not.
+- [00:24:09] So I'm going to indent here several spaces, and then type line 04, set that equal to a
+- [00:24:16] line that has some more asterisks, for example.
+- [00:24:19] And this is just an example, not anything that I really need.
+- [00:24:23] But here we have a red squiggly in VS code.
+- [00:24:27] It's already telling us that this is not going to work, and if we mouse over it, we'll probably
+- [00:24:32] get a message.
+- [00:24:33] Yes, it says unexpected indentation.
+- [00:24:35] You can also see our file name is red over here in the file tree.
+- [00:24:39] That means there's a problem, and even in the scroll bar to the right, we have some
+- [00:24:43] red marks telling us that there are some problems in the file.
+- [00:24:47] But no worries.
+- [00:24:49] When I press Control S to save, we get some auto formatting, and Visual Studio Code fixes
+- [00:24:55] that indentation for us.
+- [00:24:58] So that's very nice.
+- [00:24:59] So let's make sure that you have that set up.
+- [00:25:01] It might be set up automatically after you already installed the Python Visual Studio
+- [00:25:06] Code extension like we did in the previous lesson.
+- [00:25:09] You want to make sure you have that extension installed.
+- [00:25:12] Click Extensions over here.
+- [00:25:13] This is the icon.
+- [00:25:15] And then search for Python, and then you can check Python from Microsoft.
+- [00:25:20] Click that.
+- [00:25:21] And if you have it installed, you should have the same messages I do that say uninstall
+- [00:25:25] and disable instead of being able to install the extension.
+- [00:25:30] So this means you already have it.
+- [00:25:31] It says this extension is enabled globally.
+- [00:25:34] So we've confirmed that I have that extension.
+- [00:25:36] So now let's go into the settings of Visual Studio Code and confirm that you have the
+- [00:25:41] auto format on save set as well.
+- [00:25:44] So I'm going to press Control and Comma, and this will open up the settings.
+- [00:25:49] Again, Command, Comma on Mac, I believe.
+- [00:25:52] So once you do that, we need to search for these settings.
+- [00:25:56] The first one is going to be format on, on.
+- [00:26:00] Here we go, save.
+- [00:26:01] And when we bring that up, we have editor, format on save.
+- [00:26:05] You want this checked.
+- [00:26:06] And besides that, the mode that I have here is when I save the file.
+- [00:26:11] So make sure this says file as well.
+- [00:26:14] Now after that setting, once you confirm that, now we're going to search for format on type.
+- [00:26:21] And you can see the setting that came up here, and it says modified elsewhere.
+- [00:26:25] You may or may not have that as I have separate settings for different languages.
+- [00:26:31] And I have Python, then the greater symbol, then user.
+- [00:26:35] So if you do have that, you can click that.
+- [00:26:37] If not, and you don't have the modified elsewhere here, you could probably just check this box.
+- [00:26:43] I'll show what happens when I click this Python greater than user here.
+- [00:26:48] When I do that, it brings up this setting and it gives a user setting and then a workspace
+- [00:26:54] setting.
+- [00:26:55] If you change the workspace setting, if you start changing those, you will see a.vs code
+- [00:26:59] folder over here that will have separate settings.
+- [00:27:02] And if you don't want it, you can just delete it if you ever see it over here.
+- [00:27:06] But under the user settings, this is where I have the checkbox for format on type.
+- [00:27:11] And it says controls whether the editor should automatically format the line after typing.
+- [00:27:16] So after I type a line and go to the next line, it should put me at the correct indentation
+- [00:27:21] level automatically.
+- [00:27:23] So that's a good setting to have as well.
+- [00:27:25] And then finally, let's go back to the welcome.py file and I'm going to make sure my unnecessary
+- [00:27:31] line four is once again indented over here where we don't want it and we get the red
+- [00:27:36] squiggly lines.
+- [00:27:37] Now we can right click and I believe this would be a command click on a Mac, but I'm
+- [00:27:43] on Windows.
+- [00:27:44] So I have a right click now from this context menu.
+- [00:27:47] There is format document, which is shift alt and the letter F for the shortcut or format
+- [00:27:52] document with I'll choose that one for now.
+- [00:27:56] And now you can see it gives me my choice, which is my default Python.
+- [00:28:00] But if you have other format styles installed like auto PEP eight or black, which are two
+- [00:28:06] other ones that VS code might offer to you and feel free to change between them.
+- [00:28:11] But if you don't like the way one formats, you may want to switch back.
+- [00:28:14] I'm just going to use the default Python for matter right now.
+- [00:28:18] So we can click configure default for matter and then it has you choose which one.
+- [00:28:23] And you can see I only have the one choice, which is Python.
+- [00:28:27] But now that I've done that, I can right click and I can format the document or choose format
+- [00:28:32] document with to choose any of the formatters that I have installed.
+- [00:28:35] So I'll just choose format document and it gets rid of those spaces once again.
+- [00:28:40] So I'll control S to save, which since we set that format on save, let me go ahead and
+- [00:28:46] add those spaces that we don't need again.
+- [00:28:49] And now I will control S to save.
+- [00:28:52] And once again, it auto formats.
+- [00:28:53] That's the exact behavior we want.
+- [00:28:56] Now quickly, just to show another way to do these settings or to confirm that you definitely
+- [00:29:00] have the settings that I do, I'll press control comma once again to open up the settings.
+- [00:29:06] If you see this icon here at the very top right in VS code, it's the one with the arrow
+- [00:29:11] and the document.
+- [00:29:13] This is your settings, JSON file that you will open.
+- [00:29:16] It could look complicated to you, especially if you're not familiar with JSON, it's got
+- [00:29:20] all of these different user settings in here, but specifically here are my Python settings.
+- [00:29:27] So I specifically have Python here inside of brackets, then there's curly braces, and
+- [00:29:32] then it says editor dot default formatter.
+- [00:29:36] And I have MS dash Python dot Python, and then editor dot format on type is set to true.
+- [00:29:43] And remember, we also set format on save.
+- [00:29:46] And that wasn't specific to Python, that was just overall for VS code.
+- [00:29:50] So it has that setting right here also set to true.
+- [00:29:54] And now your user settings for Python should be exactly like mine going forward.

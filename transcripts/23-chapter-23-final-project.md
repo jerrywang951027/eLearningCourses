@@ -1,0 +1,490 @@
+# Chapter 23 - Final Project
+
+Source: Python Tutorial for Beginners (with mini-projects) by freeCodeCamp.org
+URL: https://www.youtube.com/watch?v=qwAFL1597eM
+Time range: 07:49:32-08:41:53
+
+## Transcript
+
+- [07:49:33] i've got vs code open you can see i have a new folder for lesson 23 the final lesson of
+- [07:49:39] this python series and course so it's the final project and there's so much you can do with python
+- [07:49:46] and there's always something new to learn but i feel like this course has provided you with all
+- [07:49:50] of the fundamentals you'll need to keep moving forward in your programming journey so with
+- [07:49:55] today's project we're going to build this python web app with a popular python web framework called
+- [07:50:01] flask a couple of lessons back we learned about virtual environments and in that lesson we
+- [07:50:06] retrieved current weather conditions for cities but we needed to use the terminal window today
+- [07:50:12] our web app will do the same it will retrieve weather conditions for cities but we'll deploy
+- [07:50:18] it to the web so you can share your project with everyone let's go back to vs code and get started
+- [07:50:24] vs code let's open a terminal window with control in the back tick and we want to create our virtual
+- [07:50:29] environment as we've learned about before we want to do this right away so i'll type pie if you're
+- [07:50:35] in a mac or a linux environment you might have to type python 3 i believe but then we'll have dash
+- [07:50:41] m for module then venv and then dot venv and i'll press enter it should create a folder over here
+- [07:50:50] in your folder for lesson 23 or whatever you call it and now we have a virtual environment so let's
+- [07:50:57] go ahead and activate that environment as well so i'm going to type source then dot v venv and then
+- [07:51:05] scripts with the capital s now that's because i'm on windows and i'd mentioned this during the lesson
+- [07:51:11] on creating a virtual environment but i don't think i mentioned that if you're on linux and
+- [07:51:16] possibly mac i think instead of scripts this might need to say bin as in bin so here we'll say
+- [07:51:23] activate and press enter this should activate the virtual environment now i can press enter one more
+- [07:51:30] time and i should see yes it says dot venv in parentheses underneath after i pressed enter
+- [07:51:36] so i do know it is active and we've also learned about pip and we need to install a few packages
+- [07:51:41] we're going to use today so i'm going to type pip install and then after that i'm going to type
+- [07:51:47] requests and then python dash dot env because i'm going to need that as well and then also
+- [07:51:55] flask with a capital f okay that quickly updated it's also giving us a message about pip so if we
+- [07:52:02] want to run that we can so i'll type pi dash m then pip install dash capital u is the same as two
+- [07:52:11] dashes and upgrade and then pip once again press enter and it should go ahead and update that
+- [07:52:17] installation as well and now we're going to deploy our project today so in order to do that we also
+- [07:52:23] need to create a requirements dot text file so to do that i'm going to type pip freeze and then the
+- [07:52:30] greater than sign then requirements dot txt and it should quickly create a requirements file that
+- [07:52:38] we see over here in the tree and this should list the packages so when we deploy this of course
+- [07:52:42] remember we won't send our virtual environment folder to github but we will send our other code
+- [07:52:49] including this requirement so when this is deployed and it gets to our host then the host
+- [07:52:54] will see what needs to be installed as we deploy our python project and so now i mentioned we will
+- [07:53:01] not send dot venv to github so i'm going to create a git ignore file which starts with a dot as well
+- [07:53:08] then git ignore and then inside of this file i'm going to list the dot venv so that is not added
+- [07:53:18] to a repository when we create one and if you're not familiar with git and github i do have a
+- [07:53:23] tutorial on my channel for that as well that you can check out now one other file we're going to
+- [07:53:28] create is a dot env file and that's where we hold environment variables and you never want to share
+- [07:53:34] those those are your secrets that are linked to your account and we're going to have an account
+- [07:53:39] at the open weather map api so i want to type dot env in here as well and this will be a file we
+- [07:53:47] create that will hold our open weather map api key now we never want to share that with anyone
+- [07:53:53] so here i'm just going to create this file and say dot env now it's listed over here now i don't
+- [07:54:01] know if you have git installed or not git was not a prerequisite to take this course so if you're not
+- [07:54:06] familiar with git and github you may not want to deploy this project today you may want to go back
+- [07:54:11] and learn about git and github and then come back and deploy this later now i already have git
+- [07:54:17] installed so i'm going to go ahead and initialize a git repository and then you'll see these files
+- [07:54:23] that we've included in the git ignore turn gray because they will not be sent to github
+- [07:54:28] in the future like our other files will so i'm going to once again open the terminal
+- [07:54:33] and then just type git init and that will initialize my git repository here inside of
+- [07:54:40] this folder for our project and you can see these are green meaning that they are new files in our
+- [07:54:46] repository now this tutorial is not about git specifically so i don't want to get any deeper
+- [07:54:52] into that right now we want to go ahead and create this project but right now we need to
+- [07:54:56] go ahead and get an open weather map api key if you don't already have one from the previous
+- [07:55:02] tutorials i'm in chrome at open weather map.org now if you completed this just a couple of
+- [07:55:08] tutorials back when we got our api key you can skip this part but if you haven't you're going
+- [07:55:12] to need an api key notice i'm already signed in up here and i've got my name dave now you can
+- [07:55:18] get a free account and then sign in here if you don't have one but there's a drop menu now it says
+- [07:55:23] my api keys i'm going to delete any api key that i show you because you never want to share those
+- [07:55:29] but i'm going to click my api keys and you see i have one here called my new weather key and here's
+- [07:55:36] the key so once you generate one of your own if you don't already have one in your account go
+- [07:55:42] ahead and copy it right here i'm just double clicking and then doing ctrl c to copy we're
+- [07:55:47] going to put this in our.env file back in visual studio code back in vs code i'm in my.env file
+- [07:55:55] i'm going to type api underscore key with all caps and then equals and then ctrl v to just paste in
+- [07:56:02] that api key notice no quotes around this but it will be considered a string now we'll refer to
+- [07:56:08] this later and i can go ahead and close all of these files out now we need to create a couple
+- [07:56:13] of specially named folders over here in our file tree so let's click the new folder icon and let's
+- [07:56:19] name this first folder static oh and i need lowercase now so there we go static the next folder we
+- [07:56:25] need to create should be called templates and so i've got templates i'll press enter and we have
+- [07:56:32] the two folders now first static this holds any static file that means non-changing so it can be
+- [07:56:38] css javascript images any type of file like that so to organize those files inside of static i
+- [07:56:45] usually create more folders so i'll create one inside of this called css because i'm going to
+- [07:56:50] create a css file inside of the static folder so i've got static css and then we'll eventually
+- [07:56:56] create a file in there as well but now templates is where we're going to store our html files
+- [07:57:02] and with that we're going to insert some values from python into those html files and use those
+- [07:57:09] as templates for our web page so let's start by creating our css file so i'll click on the css
+- [07:57:15] folder now i want a new file i'm going to name this style.css now this is not a css course i do
+- [07:57:22] have a css course on my channel and it's also been published on free code camp so you can check that
+- [07:57:28] out i'm going to just paste in some very simple css styles you can see i have a very simple css
+- [07:57:35] reset here if you're familiar with css if you're not of course you can copy this css code from my
+- [07:57:42] repository for this lesson if you want to i've got several styles applied to the body of the html
+- [07:57:48] page and then i've got a few styles applied specifically to the input and the button as well
+- [07:57:54] now if you see a white dot that means you need to save the file so i'm going to control s just to
+- [07:58:00] save that file now let's click on the templates folder i'm going to create a new file inside
+- [07:58:05] named index.html so this will be the home page that everyone sees when they load our web app
+- [07:58:12] now if you're using vs code to create an html page you can use a shortcut here that's called
+- [07:58:18] emit and emit has several commands i'm just going to type a exclamation mark which is an emit abbreviation
+- [07:58:25] and with this abbreviation or shortcut if you will i can press tab and i quickly get the outline or
+- [07:58:31] the skeleton if you want to say that for a web page so here's alt z to just wrap that down so
+- [07:58:39] we can see the full line without going going off of the screen now i'm just going to fill in some
+- [07:58:44] information here so for the title i'm going to say get weather conditions and now besides that
+- [07:58:53] we're going to put a link to our style sheet and this is a little different even if you have written
+- [07:58:59] some html and css before so this is specific to how we're going to work with flask today and how
+- [07:59:07] it inserts some values so here i'm going to say link now i'm going to have my href and now inside
+- [07:59:13] of these quotes i'm going to use two curly braces and i'm going to say url underscore four not form
+- [07:59:21] but four and then parentheses then single quotes the word static and after that i'm going to have
+- [07:59:29] file name equals and then i'm going to have another set of single quotes styles slash
+- [07:59:37] style dot css so it is pulling in our css but this is just a little bit different than you may
+- [07:59:44] have written before now after these two curly braces here we need another space and we're going
+- [07:59:49] to type rel which is an attribute of the link element and then we'll put equals and here we
+- [07:59:58] just have another set of double quotes and well we didn't finish the other double quote i guess
+- [08:00:05] i needed to end that double quote here sorry about that so let's delete that extra one it added so
+- [08:00:10] we've got a quote here with href and the href ends after the two curly braces so you want to quote
+- [08:00:16] there now we'll have our second set of double quotes and inside of this rel we're going to say
+- [08:00:22] style sheet because that's what we're linking to and finally at the end we can have a slash
+- [08:00:27] and close out our link tag here so that is the full link now this is a little unusual compared
+- [08:00:35] to just linking to our style slash style dot css but this is what flask is going to use to insert
+- [08:00:42] a value here because this is a template we will be inserting values into this file when it is
+- [08:00:49] called okay now inside of the body of our html we want to have an h1 and i'm going to say the same
+- [08:00:55] thing get weather conditions so you can just copy this from the title control c click here control v
+- [08:01:01] to paste it in underneath that we're going to have a simple form so we'll have our form and then it's
+- [08:01:08] going to have an action attribute right away so inside of this we're going to go to the slash
+- [08:01:13] weather page when we post our data from our form so inside of the form now we need an input
+- [08:01:20] and this input is going to be typed text that's correct we can also give it a name equal to
+- [08:01:28] city and then after that let's give it an id equal to city and i need that to go inside the quotes
+- [08:01:36] there we go then let's give it a placeholder like we saw in the example that says enter a city and
+- [08:01:44] then of course we need to close out our input tag with the slash there after that we need a button
+- [08:01:51] so we'll have our button and it is the submit type so vs code wants to help and now we have
+- [08:01:56] button type submit and let's just put the word submit on the button as well control s to save
+- [08:02:02] and we're finished with our index.html template for our app now we will come back and create one
+- [08:02:08] more html template very soon but right now we need to create a python weather module that will
+- [08:02:15] retrieve the weather for any city using that open weather map api and this part's going to be very
+- [08:02:21] similar to what we did when we retrieved that weather and we just looked at it in the terminal
+- [08:02:26] window so now over in our file tree let's create a new file and let's call it weather.py let's
+- [08:02:33] import everything we're going to use at the top so i'm going to say from.env and then i'm going
+- [08:02:38] to import load underscore.env also going to use pretty print so from p print going to import oops
+- [08:02:49] import p print and then i need to import the requests dependency that we added and i also
+- [08:02:56] need to import os so the very first thing we want to do is load that api key value from our.env file
+- [08:03:04] and that's what load.env does so i'll just say load underscore.env put the parentheses on there
+- [08:03:10] to call that function now let's go ahead and define our get current weather function so we
+- [08:03:15] start with the def keyword and i'll say get underscore current underscore weather and now
+- [08:03:21] it's going to receive a parameter and i'm going to say city but i want to give this a default value
+- [08:03:27] too say it's just pressed enter and the form is empty so by default i'm going to give it my area
+- [08:03:33] which is the kansas city area you could provide your city or your nearest large city is what i
+- [08:03:39] would recommend if you want to put a default value here that's different than mine just to avoid a
+- [08:03:45] typo as i've been having lately i'm going to paste in this url but let's go over the url so you can
+- [08:03:51] get it accurately as well so here we've got request underscore url notice it's an f string
+- [08:03:57] then it goes to http colon slash slash api dot open weather map dot org slash data slash 2.5
+- [08:04:09] slash weather and then we have a question mark and this is where the params in the url begin
+- [08:04:15] need to put app id equals then we use the os module that we imported and we'll say os dot
+- [08:04:22] get env and then parentheses api key so we're getting that environment variable right here
+- [08:04:32] using os dot get env and then we have an ampersand and then a q which is short for query and then
+- [08:04:41] that equals the city value that was passed in or kansas city in my case if a value is not passed in
+- [08:04:47] one more ampersand and i set the units to imperial now you can look at the docs for the open weather
+- [08:04:54] map api because if you don't want imperial if you want something else instead of degrees essentially
+- [08:05:01] for the weather you can change this to metric i believe okay now let's go ahead and get that
+- [08:05:07] weather data so we'll say weather underscore data equals requests dot get and we pass in our request
+- [08:05:14] underscore url and at the very end we need to add dot json and put parentheses to call
+- [08:05:21] that because we want json data and then we're going to return the weather underscore data
+- [08:05:27] so this gets the data from the open weather map api and now i said we're making a module
+- [08:05:33] so to do that let's complete this by saying if two underscores name two underscores
+- [08:05:40] and then two equal signs equals main with also the two underscores which we've covered in this
+- [08:05:47] course so if this file is called directly weather dot pi instead of calling the file that might
+- [08:05:53] call the entire application for the web then we're going to go ahead and run this file as if it's at
+- [08:05:59] the terminal once again so i'm going to print and then inside of the print statement i'm going to
+- [08:06:05] start with a new line and then i'll just say let's do three asterisks here and get all right
+- [08:06:13] weather conditions three more asterisks one more new line so that's just kind of a welcome to the
+- [08:06:20] app at the terminal window then we'll say city equals input and here we'll have a new line and
+- [08:06:28] please enter a city name and a colon and after that let's go ahead and come down and get our
+- [08:06:38] weather data so weather data is going to equal get current weather data and we're going to pass in
+- [08:06:45] whatever city was provided and again if they don't pass in a city it should go back to our
+- [08:06:51] default value here of kansas city after that at the very end i just want to print say one new line
+- [08:06:59] and then we'll go ahead and pretty print oops don't want to do that having a hard time typing today
+- [08:07:06] at the end let's go ahead and pretty print our weather underscore data so this is if this file
+- [08:07:12] is called directly which is kind of the right thing to do for a module this would go ahead
+- [08:07:17] and provide the weather data at the terminal just like we learned how to do a couple of lessons
+- [08:07:23] back but today we're going to use this get current weather function in our web app so we can get that
+- [08:07:29] weather data and present it on the web with the template and now that we have our weather function
+- [08:07:34] we're finally ready to start working with flask directly and so let's go ahead and create another
+- [08:07:39] new file over here which will be the main file for the application sometimes people name that
+- [08:07:45] main.py i'm going to name this server.py because it will be a flask instance that is running our
+- [08:07:53] server essentially so that is also common you could name it either one you want but just remember
+- [08:07:57] what you do name it so i'm going to refer to it as server.py like i used now inside of this we're
+- [08:08:04] going to create a route with hello world just to test it out first so i'm going to start with
+- [08:08:09] from flask import flask with the capital F then i'm also going to import render underscore template
+- [08:08:19] and request now that is different than requests that we've imported in the other file i also need
+- [08:08:25] from weather import get current weather and we'll use that in just a moment now let's go ahead and
+- [08:08:33] define our app so we say app equals flask and then inside of the parentheses we do two underscores
+- [08:08:40] name two underscores and that makes our app a flask app now we define routes in flask and those
+- [08:08:48] are routes that we would access on the web so i'm going to say at app dot route and now i just want
+- [08:08:56] slash this would be the home page but then also commonly you should be able to access the home page
+- [08:09:03] if you go to slash index or slash index dot html for example so i also want to add app dot route
+- [08:09:11] and then inside of this i want slash index so both of these will apply now following these routes
+- [08:09:19] we define a function that will return something for the route so i'll say def index parentheses
+- [08:09:27] and now we'll go ahead and return something at this route so i'm going to return here i'm just
+- [08:09:34] going to say hello world to start out with just a simple example but of course we're not ready to
+- [08:09:42] run our file yet until we add our if name equals main two more underscores and now in this if name
+- [08:09:55] equals main i'm going to start with app dot run here i'm going to say the host is equal to now
+- [08:10:03] inside of quotes i'm just going to put zero dot zero dot zero dot zero four zeros with dots in
+- [08:10:10] between that's going to make it run on our local host now i'm going to say port is i'll give it
+- [08:10:16] eight thousand so we're going to go to local host port eight thousand to see the app after we start
+- [08:10:22] it so we have a basic route here for our index or our home page if you will and we'll return hello
+- [08:10:28] world and it's going to go ahead and start the server with this simple command so let's run this
+- [08:10:33] file now and here we see running on all addresses so it should be running as expected and notice
+- [08:10:40] we get a warning here as well this is a development server don't use it in a production deployment so
+- [08:10:46] we'll want to fix that in the future as well let's go ahead and look at our web app right now that
+- [08:10:51] should say hello world and we'll need to do that in the browser i'm in chrome and i have a new tab
+- [08:10:56] open i'm going to type local host and then i'm going to want eight thousand after it so local
+- [08:11:03] host colon eight thousand i'll press enter and right now we have our hello world as expected
+- [08:11:09] back in vs code i'm going to press ctrl c to quit the server for now and then i'll close out the
+- [08:11:16] terminal window and let's go ahead and adjust that remember that warning we saw that said hey
+- [08:11:21] this is a development server we don't want that we need to go ahead and replace that because we
+- [08:11:26] are going to deploy this app essentially put it in production so to fix this let's open the terminal
+- [08:11:32] once again and here i'm going to type pip install waitress and now waitress is a package that is
+- [08:11:40] going to help serve our web app in production so now that i've installed that i've got a new
+- [08:11:45] dependency and that means i need to recreate the requirements file so once again pip freeze greater
+- [08:11:53] than symbol requirements dot txt press enter it should now have added waitress to our requirements
+- [08:12:01] file let's check and yes there it is on line 14 and now that we have waitress added let's go
+- [08:12:07] ahead and add it to our flask app as well so i'll say from waitress and i'm going to import serve
+- [08:12:15] and serve is what we need to serve our application so let's replace this app dot run here with serve
+- [08:12:22] not server just serve and inside of this we need to start with app comma and then we can still say
+- [08:12:30] host with the four zeros we can still say port 8000 all of that is fine we're now ready to add
+- [08:12:36] that second html page i talked about so click on index dot html click somewhere in the file
+- [08:12:43] press control a which should select everything control c to copy everything then you can click
+- [08:12:50] away if you want to now let's create a new file here with this new file type weather dot html
+- [08:12:59] and inside of our weather dot html we'll get a jump start just by pressing control v and pasting
+- [08:13:05] in everything we had inside of the index at first and then i'm going to press alt z to wrap any of
+- [08:13:11] those lines down as well much of this will stay the same but we're going to make a few changes
+- [08:13:17] so we need the same css link that's no problem we do want to change the title of the page so let's
+- [08:13:24] go ahead and select that and then i'm going to press control d and i'm selecting the second
+- [08:13:31] instance here of get weather conditions because we're going to change both of these to say the
+- [08:13:35] same thing i'll press backspace it deletes both of those and i'll press two curly braces then the
+- [08:13:42] word title two more curly braces and then the word weather so whatever city is entered into
+- [08:13:49] that previous form when we fill this page out it could say kansas city weather or paris weather
+- [08:13:55] or wherever but it's going to fill that in as we use this template now we still want the same form
+- [08:14:02] underneath because we want users to go ahead and be able to request more data or more cities weather
+- [08:14:08] if they choose to after they request the first one but let's create some space here between the h1
+- [08:14:13] and the form so we can put in some more information now i want a paragraph and in this paragraph i'm
+- [08:14:19] going to use two curly braces once again type the word status two more curly braces then and
+- [08:14:26] two more curly braces type the word temp two more curly braces now i'm using degrees again so i'm
+- [08:14:33] going to use the abbreviation in html entity for degrees if you wanted this change to different
+- [08:14:39] system a different symbol you can look that up on your own but i'm going to use ampersand
+- [08:14:44] deg semicolon which will give the degree symbol now i'm going to just click on this line
+- [08:14:51] press shift alt and the down arrow and it copies all of that down so now i'm going to say
+- [08:14:58] feels like and after that i can delete status and but i'll leave temp i'm going to replace the word
+- [08:15:06] temp with feels underscore like so these are the values that we are filling in when we get that
+- [08:15:15] weather information but currently we're not handling the weather route and when we make a request for
+- [08:15:21] weather be it on the index.html page we look for the weather route or even on the weather page
+- [08:15:27] itself we submit this form to the weather route and then that data comes in and fills it out
+- [08:15:32] so let's go to our server.py and handle a route for weather so we need to go ahead and create
+- [08:15:39] that function and route underneath where we have the route for index so i'm going to say at app
+- [08:15:46] dot route and here i'm going to pass in quote slash weather now beyond that let's go ahead and
+- [08:15:55] define our function i'm going to call this get weather remember our other function was get current
+- [08:16:02] weather so i'll just call this get weather underneath this we're going to get the city
+- [08:16:07] value first now that city value is going to come in from that form data so here we can say request
+- [08:16:14] dot args dot get and then we want to get the city value so now we should have retrieved that
+- [08:16:24] and we'll have weather underscore data going to equal get current weather and we'll pass in
+- [08:16:31] the city value so now that we have the weather we want to send that data to that template so here
+- [08:16:38] we're going to say return and then we'll say render underscore template and now inside of
+- [08:16:44] these parentheses the first value we want is the template itself which is weather dot html
+- [08:16:51] now we need to pass all of the other values that we're going to use let me scroll up just a little
+- [08:16:56] so we have some room and i'll say title equals weather underscore data then we want to use
+- [08:17:03] brackets and say name after that this would be the city name of course as well after that we want
+- [08:17:12] status equals once again we're going to have weather underscore data brackets and now we need
+- [08:17:19] to get some specific information that's in that json and if you remember back to the lesson a
+- [08:17:25] couple of times before we had a fairly large json object to navigate to get this data so here
+- [08:17:30] we start looking at weather and then we get the first element in weather and so we use a zero to
+- [08:17:38] get that and then after that we still need to get the description and then after the description
+- [08:17:45] i want to capitalize so i'm going to pass capitalize here and call that as well so that's
+- [08:17:52] going to be the status such as cloudy or whatever the status is i believe cloudy or few clouds was
+- [08:17:59] what we just had for kansas city now let's go to temp we'll set that equal to and now this is an
+- [08:18:05] f string so we start with f and quotes now curly braces and we'll say weather underscore data once
+- [08:18:13] again brackets now we already have double quotes on the outside so we need to use single quotes
+- [08:18:20] and we'll have main and then we have temp once again you need to refer to the json object to
+- [08:18:26] know how to get this data out of the object and i'm not breaking all of that down here for you
+- [08:18:31] because i did it two lessons ago we've got main temp and i want to format this to that dot one
+- [08:18:38] afterwards whatever it was dot point seven point eight so i had like 97.3 degrees for example so
+- [08:18:45] i just want the one digit so here i had colon then a period then one and f so that's how i'm
+- [08:18:54] formatting that f string instead of a two which you've seen that format here before when we used
+- [08:18:59] the bank accounts i believe okay after that another comma and then finally we need the
+- [08:19:05] feels like value so feels underscore like set this equal to another f string so we have our
+- [08:19:12] double quotes our curly brace inside of here weather data and then we'll once again have the
+- [08:19:19] single quotes around main and then we'll have another bracket single quotes around feels underscore
+- [08:19:25] like and finally we're going to format this the same so colon dot one f there's all of our
+- [08:19:33] information passed in so you get how we're getting that out of that json object that is returned from
+- [08:19:39] our get current weather function and after we do that we're passing all of these in that we're
+- [08:19:45] using in the template so the words we're defining here to the left are what's used inside of our
+- [08:19:52] weather template so when we go back and look at weather we just have to say title status temp
+- [08:19:59] and feels like and we can use those inside of our template okay back in the server.py one thing we
+- [08:20:05] didn't do is ever change our hello world and we want to do this but this will be fairly simple
+- [08:20:11] all we need to do here is say render underscore template as well and just pass in the index dot
+- [08:20:17] html because it's not receiving any of these like the weather pages now if any of this went too fast
+- [08:20:25] feel free to go back to the previous lessons also of course my code is available at the link in the
+- [08:20:30] description and let's go ahead and run this code and make sure everything's working now as we expect
+- [08:20:36] it to and i'm going to choose run python file and now we're going to have to go back to the browser
+- [08:20:42] and look at the app i'm back in the browser i need to refresh our local host at port 8000
+- [08:20:48] and now we have our git weather conditions but what i notice is the css is not being applied
+- [08:20:55] i may have a typo let's go ahead and check out the functionality first though so here i'm going
+- [08:20:59] to type in new york and press enter and yes we've got the new york weather haze and 88.1 degrees it
+- [08:21:07] feels like 93.2 degrees this is all good what's not good is we're missing the css being applied
+- [08:21:14] to the pages okay back in vs code i've made a very simple mistake easy to make i am looking in the
+- [08:21:21] file names or in the folder name styles slash style.css inside of both the html files but when
+- [08:21:30] i look at the file tree i actually named my sub folder here inside of static css because i had css
+- [08:21:37] on my mind and not the word styles so let's go ahead and change the name of this folder should
+- [08:21:44] be able to right click and choose rename which also it looks like f2 would have done that and
+- [08:21:50] i'm going to switch this folder to styles so i'm looking at static styles and then the file style
+- [08:21:56] dot css that will match what we put inside of both of our html files so we save that we should come
+- [08:22:05] back and go ahead i stopped my server if you haven't stopped it you might not need to i'm
+- [08:22:10] going to go ahead and restart this and let's go ahead and reload the home page so now the css
+- [08:22:16] applies like we expect it to let's go ahead and type in a city name i'll put in Omaha and press
+- [08:22:23] enter and yes the weather app is working like we expect it to as well however this is the core
+- [08:22:30] usage what if we entered something that would be unexpected say we just pressed the submit
+- [08:22:36] button without entering a city or maybe we entered some spaces into the input and we submit i think
+- [08:22:44] we'll probably get an error well that's a surprise several spaces brought back a name from the API
+- [08:22:51] that i did not expect let's go ahead and hit submit without entering any spaces and see what we get
+- [08:22:58] now we have the internal server error that i expected so let's go make a few changes to
+- [08:23:03] handle these edge cases in our code we're back in vs code and we need to go to the weather module
+- [08:23:09] to start out and let's work with the module when it is called at the terminal line first because
+- [08:23:16] this will be easier to debug and check as we go what we need to do is get the input from the user
+- [08:23:23] and make sure that it is not an empty string meaning a string that actually has no characters
+- [08:23:29] but still the two quotes or a string that is full of spaces only so it would still be empty because
+- [08:23:37] then we could strip away those spaces and we would once again have an empty string so to do that we
+- [08:23:43] can put in a line of code here and i'm going to put a note and just say check for empty strings
+- [08:23:50] or string with only spaces so we know exactly what this line of code is doing so i'll say if
+- [08:23:58] not and then i'll use bool and if you remember boolean that's true or false well we're going
+- [08:24:04] to say we want content here so it won't be empty so we're looking at city but before we look at
+- [08:24:10] the city let's also strip away spaces so i'm using the strip method here so this strips away all
+- [08:24:18] those empty spaces because it would normally take away white space at the beginning and the end of
+- [08:24:23] a string but what if there wasn't anything in between so it's just going to strip away all of
+- [08:24:28] those spaces and then we're going to make sure we have something left so we can say if not bool
+- [08:24:34] but first we're stripping away the spaces and then we'll go ahead and put our colon for the
+- [08:24:39] if statement then we'll just say city equals and let's give it a default value like kansas city
+- [08:24:46] and if you remember we put in a default value for our function and i put in kansas city however
+- [08:24:52] that doesn't mean an empty string couldn't be passed to our function and in that case the
+- [08:24:57] default value wouldn't kick in so this line of code is going to check for that so now let's just
+- [08:25:03] run this module and see if it works when we do not enter anything or when i enter several spaces
+- [08:25:10] so now we'll run the code this is the error that we got in the web app this is not the code that
+- [08:25:15] we're running so i need to press ctrl c a couple of times and now it's running at the terminal so
+- [08:25:20] it says get current weather conditions please enter a name i'm going to drag this up just a
+- [08:25:26] little bit i'm not going to enter a name at all i'm just going to press enter and now it returned
+- [08:25:32] the weather for kansas city because that's the default value i gave in the code if we stripped
+- [08:25:38] away everything and the city name didn't exist so as we look back here city equals kansas city
+- [08:25:44] let's do this one more time and now let's do it with several spaces so i will go ahead and run
+- [08:25:51] this code once again i just press the up arrow to pull that line up and then press enter and
+- [08:25:56] that's what ran the code here now please enter a city name i'm going to enter in several spaces
+- [08:26:03] let's see what we get back do we get something from the api that is not kansas city no we get
+- [08:26:09] kansas city so once again we stripped away all of those spaces and then there was nothing left and
+- [08:26:14] so then it defaulted to kansas city feel free to put in your own city name here but now that
+- [08:26:21] we have debugged this or worked around some edge cases inside of our weather module we also need
+- [08:26:27] to apply something like this to our get weather function inside of our flask server so let's go
+- [08:26:34] to the server.py file here's our get weather function and we're getting the value city from
+- [08:26:40] the arguments essentially the parameters sent in the url and so after we get city this is where
+- [08:26:48] we would need to check and i really want to put in the exact same code here that we used in the
+- [08:26:53] weather module to check for that so i'm just going to copy this and i put in on lines 23 through 25
+- [08:27:00] with control c go back to the server.py and i'm going to put this code right here so that is
+- [08:27:07] once again going to check for an empty string after that we're going to get the weather data
+- [08:27:14] from the api but what if the api does not find the city that we pass in what if we pass in some
+- [08:27:22] strange name that could also be a problem let's go back once again to our weather module
+- [08:27:30] and let's run this one more time and i'll just put in a random string that i know is not a city name
+- [08:27:37] so when it says inner city name i'm just going to put in something strange like that let's see what
+- [08:27:42] we get back notice we get a different object instead of that json weather object now we get
+- [08:27:49] an object that has a code of 404 which means not found and a message that says city not found
+- [08:27:57] likewise if we would run our app here one more time just this weather module and i type in a name
+- [08:28:03] or i'll just press enter so we get kansas city information we notice inside of our larger weather
+- [08:28:10] json object here that there is still a code right here the code is 200 that means successful so we
+- [08:28:18] could look for a successful code of 200 to know that our request has succeeded now there's nothing
+- [08:28:25] to fix in our weather module it presented the object that was returned just fine but inside
+- [08:28:31] of our server.py file we actually need to handle that in case we don't get the object that we expect
+- [08:28:37] because then we would get an error here as we attempted to get the name and the different weather
+- [08:28:42] values from the weather object if we did not have a weather object so to handle this case i'll put
+- [08:28:49] one more note underneath here and i'll say city is not found by api and in that case we'll say if
+- [08:28:59] not weather data and then we'll look at that code value and notice it doesn't have an e at the end
+- [08:29:08] but it's abbreviating for code then it looks like cod actually which is kind of funny but nope it is
+- [08:29:14] for code if it's equal or this is if it's not equal to 200 notice 200 is not a string because
+- [08:29:21] that object didn't provide a string it provided the number so if our weather data code is not 200
+- [08:29:28] then our request has not been successful and we will not have the weather data we expect so in
+- [08:29:34] this case i want to return a message simply saying city not found and we could do this just like we
+- [08:29:41] did with hello world and say city not found and i'll save this for now but instead let's create
+- [08:29:48] one more template to handle that so in our templates folder i'll just click on index.html
+- [08:29:54] and then the new file icon and i'll call this city dash not dash found dot html and now i'm
+- [08:30:03] going to go to the index dot html file and press control a to select all and control c to copy
+- [08:30:12] from there i'll go back to the city not found file and press control v to paste everything in
+- [08:30:18] also alt z so it wraps down now there's not much to change here but i'm going to change the title
+- [08:30:25] and once again after selecting get weather conditions press control d so it selects the
+- [08:30:30] second version of that which is down below in the body of the page and here i'm going to type
+- [08:30:36] city not found after that i'm going to put an h2 underneath city not found in the body
+- [08:30:44] and just put try again with a question mark and then we'll once again leave this same form
+- [08:30:50] so the user isn't stranded on this page they could once again enter in a city name maybe
+- [08:30:55] they just had a typo so this will be our city not found page so after creating this template
+- [08:31:01] let's go back to the server.py and now we can render that template here instead of the city
+- [08:31:07] not found string so i'll have render underscore template once again and now we're just going to
+- [08:31:14] pass in the city dash not dash found dot html file now with this new code in place we should
+- [08:31:22] be able to handle those possibilities those edge cases as we would call them inside of our web app
+- [08:31:28] as well so if our files are saved let's open the terminal once again and we want to run
+- [08:31:34] the server.py file so i'm just going to press play here and run this file and we can see it's
+- [08:31:40] running here let's go back to the browser and check it out so we had an internal server error
+- [08:31:46] before so i'm going to remove everything that came after the localhost 8000 now press enter
+- [08:31:52] and it should once again reload the app i'm ready to put in a town or a city name so i'll put in
+- [08:31:59] austin press enter and yes it's working like expected so now if i just press submit without
+- [08:32:06] entering anything we get the kansas city weather because that's what i put in for default and if
+- [08:32:11] i put in some random characters that don't make any sense and press enter we get our city not found
+- [08:32:18] template and it says try again so i could try again i'll enter in many spaces which actually
+- [08:32:25] has no content whatsoever press enter and once again we get the kansas city weather so that's
+- [08:32:32] really what we wanted to do it handles those and notice up here the city equals value when i put
+- [08:32:37] in all the spaces is represented as plus symbols inside of the url which is a little interesting
+- [08:32:43] let's go ahead and enter something else it's just blank and then notice it's just city equals and
+- [08:32:49] nothing comes after it but we still get the kansas city weather and now with our code feeling like
+- [08:32:53] it's complete it's ready to deploy to the web i'm back in vs code and now we're going to work with
+- [08:33:00] git and github and if you're not familiar with git and github you may want to stop the tutorial now
+- [08:33:06] learn about those before you try to proceed and deploy your web app because i'm not going to go
+- [08:33:12] into all of the details of how they work i'm just going to show you what i do because this is not a
+- [08:33:17] git or github tutorial although i do have those on my channel okay so here we've already initialized
+- [08:33:24] our git repository earlier in this tutorial now with it initialized i see some files over here
+- [08:33:30] meaning they're new they're green in my file tree and i'm getting ready to add those but i'm also
+- [08:33:36] looking at my file tree going hey this pycache folder has been created that happens when we use
+- [08:33:42] modules we import modules then it just caches some things to work more efficiently but we really
+- [08:33:48] don't want to send that to github either so let's once again go to the git ignore file
+- [08:33:52] and inside of there i'm just going to list the two underscores pycache and two more underscores
+- [08:33:59] and save and now that is also not going to be sent to github with our git repository
+- [08:34:06] so once again it's already initialized so now i just need to add the files to the repository
+- [08:34:12] so i'll say git add and type a period that means all so i'm going to add all of those files
+- [08:34:19] now i'm going to commit the files to the repository so i say git commit dash m for message and i'm
+- [08:34:26] going to say first commit press enter now all of those green files turn white in my file tree and
+- [08:34:34] they have been committed to my repository now they haven't been sent to github yet so we need
+- [08:34:39] to go to github and create a repository to send them to okay i'm on github and i have an account
+- [08:34:46] here already if you don't you'll need to create one and then i want to click new for a new
+- [08:34:52] repository now i have a paid account because of my job i need to be able to do several things
+- [08:34:58] that only a paid account can do however if you have a free account you can only have public
+- [08:35:02] repositories i believe however i'm going to set mine to private because i'm just going to use it
+- [08:35:08] for this tutorial so here i'm putting in the repository name i'm going to put in python dash
+- [08:35:14] weather and so you could name yours whatever you want to after that i'm just going to scroll down
+- [08:35:20] and create the repository after it does that it's going to give us this page of instructions and
+- [08:35:26] i'm really only interested in this part that says or push an existing repository from the command
+- [08:35:31] line and that's what we have back in vs code we have an existing git repository so i'm going to
+- [08:35:37] copy just by clicking this icon here all three of these commands and then we'll go run those commands
+- [08:35:43] inside of our terminal in vs code okay i'm back in vs code i'm going to type clear first here in
+- [08:35:49] the terminal just to clear everything else out now when i right click it's going to run the first
+- [08:35:55] two of those three commands and it's going to wait for me to press enter on the last one so i right
+- [08:36:00] click runs the first one it runs the second one and now it's waiting for me to push this is a
+- [08:36:06] git push the repository here on my computer in vs code to github so when i press enter
+- [08:36:13] that's exactly what's going to happen and it quickly sent those files to that github repository
+- [08:36:19] now i'm back in the browser at the repository i'll click the repository title here near the top left
+- [08:36:24] and we can see these files are now in the repository at github so now we want to go to
+- [08:36:31] render.com where we're going to deploy this web app and it will pull these files from our github
+- [08:36:37] repository into render on its own we can set that up so let's go do it and now i'm at render.com
+- [08:36:44] if you don't have an account here you can sign up for one for free i'm already logged in so it is
+- [08:36:50] just showing me the dashboard button i'm going to click that dashboard button and now i am logged in
+- [08:36:56] and i can go ahead and create a new web service which is what we want so by creating the new web
+- [08:37:04] service it's going to give us a list of our connected repositories now i have connected
+- [08:37:09] my github to my account and you can do the same if you don't see it like it's offering to connect
+- [08:37:15] gitlab which is another service like github to my account as well so you might see it over on the
+- [08:37:21] right if you're not connected so i'm connected and now i immediately see my python dash weather
+- [08:37:27] repository because i just created it two minutes ago i'll click the connect button and it will
+- [08:37:33] start to pull the code in from github and now i can set up my web service or my web app here
+- [08:37:39] inside of render.com i'm going to name this the same thing python dash weather i don't need to
+- [08:37:46] change the region i'm on the main branch in my repository so that's fine this root directory is
+- [08:37:53] optional i don't need to change that we will be using python 3 and we have been using python 3
+- [08:37:59] so that's fine where we have the build command pip install dash r requirements dot text that's
+- [08:38:06] good because we do have a requirements file but we might also want to update pip as we have had some
+- [08:38:12] notifications about pip before needing updated so let's go ahead and put in pip install and we only
+- [08:38:20] need two l's there then i need dash u capital u for that upgrade and then pip and then two ampersands
+- [08:38:28] and then it can do the next command which would be our requirements dot text so i just want both of
+- [08:38:32] those in there now as we come down to the start command here our start command is going to be
+- [08:38:37] python 3 then we're going to run our server.py file but we're not quite finished yet let's
+- [08:38:44] scroll down just a little bit further we're using this free instance which is fine but as we scroll
+- [08:38:50] down we need the advanced because we're going to add our environment variable remember we have an
+- [08:38:56] api underscore key in our.env file in development we need to take the value of that and put it right
+- [08:39:04] here back in vs code i'll close the terminal and click on my.env file here's my current api key
+- [08:39:10] value ctrl c to copy that let's go back to that dashboard and we can put it in right here but we
+- [08:39:18] also need one other environment variable and no we did not have it in development but render needs
+- [08:39:23] it render needs to know what version of python we have been using so we'll say python version
+- [08:39:30] and now if you remember how to check your python version you could do that and put it in here if
+- [08:39:36] not let's quickly do that for you so back in vs code let's ctrl in the back tick to open this up
+- [08:39:43] i'm going to just type pi lowercase once again if you're on mac or linux type python 3 i believe
+- [08:39:51] but after that you need dash dash version and then when i press enter you can see i've got python
+- [08:39:57] 3.11.2 you want to enter in whatever version you have been using so here i'm going to put in
+- [08:40:05] 3.11.2 and remember i am going to change my api key value so don't try to use mine make
+- [08:40:13] sure you go to open weathermaps.org and get your own okay now that we've entered everything
+- [08:40:19] i believe we're ready to scroll down here and create web service so let's click that it will
+- [08:40:25] start to deploy and it will give us quite a few messages here in this window i'll come back when
+- [08:40:31] it's finished i'm back and render says your service is live so that's what we wanted to
+- [08:40:37] hear let's scroll up and we can see our url for our python web app right here it's at python dash
+- [08:40:45] weather dot on render dot com so whatever you named your repository or your project here in render
+- [08:40:51] is probably what's here before dot on render dot com let's go ahead and click the url
+- [08:40:57] and now we see our web app is actually on the web and you can share it with your friends
+- [08:41:02] let's go ahead and enter in another city name here i'm going to enter in santa fe press enter
+- [08:41:10] and there's the weather tonight it's getting a little chilly in santa fe maybe a warmer
+- [08:41:16] destination like houston and press enter and yes the houston weather is much warmer it feels like
+- [08:41:23] 95 right now so everything is once again working we can even check out not entering a city and i
+- [08:41:31] get kansas city depends what city you put in for yours i'll enter in something that doesn't make
+- [08:41:36] any sense and of course that shouldn't be found and we get our city not found template so i'm
+- [08:41:42] happy with the results here i hope you are too and moreover congratulations on completing the
+- [08:41:49] python for beginners course and on completing this project

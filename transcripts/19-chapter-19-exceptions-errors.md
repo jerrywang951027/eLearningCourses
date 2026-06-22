@@ -1,0 +1,119 @@
+# Chapter 19 - Exceptions & Errors
+
+Source: Python Tutorial for Beginners (with mini-projects) by freeCodeCamp.org
+URL: https://www.youtube.com/watch?v=qwAFL1597eM
+Time range: 06:15:44-06:27:29
+
+## Transcript
+
+- [06:15:47] folder for lesson 19 over here on the left we haven't created a file yet and i want to start
+- [06:15:51] with a quick apology because at the end of the last lesson i said we were going to move on to
+- [06:15:56] an object oriented practice project that would be oop for object oriented programming and i said
+- [06:16:02] that was next but during the week i realized that we should probably cover exception handling first
+- [06:16:08] so we're going to do this quickly today next time i hope to move on to that op practice project
+- [06:16:15] okay so you've probably seen a python exception before let's go ahead and create one
+- [06:16:20] and we can do that by creating a file over here in our file tree and i'm going to just call this
+- [06:16:24] exceptions.py now inside of this file i'm just going to say print x notice we haven't defined x
+- [06:16:31] visual studio code notes that and puts a little warning squiggly under here that says hey this
+- [06:16:36] isn't going to work but we're going to go ahead and put this into action so we can see the exception
+- [06:16:42] i'm going to choose run python file here and we see over here and i'll drag this over a little
+- [06:16:47] bit more and then i'm also going to do control b to hide the file tree now that we've created our
+- [06:16:52] file we can see it says this is a name error so this is a specific type of exception that's
+- [06:16:58] telling us name x is not defined so that's what an exception is and now we're over here in the
+- [06:17:05] browser and i'm at w3 schools and they have a list of built-in exceptions that are built into python
+- [06:17:12] and i like the way they present this it's just a simple table here so the exception name is on the
+- [06:17:17] left and the description is on the right notice they each say raised that's because in python we
+- [06:17:23] raise exceptions if you're familiar with javascript we can throw errors there but here in python we
+- [06:17:29] raise exceptions so on the left we've got all of the exception names and on the right it says when
+- [06:17:36] they're raised and all of these are built in but we're also going to learn how to create our own
+- [06:17:40] custom exceptions today okay we're back in vs code and we still have our name error over here on the
+- [06:17:46] right then our code we are going to throw an error if we run this so let's go ahead and handle this
+- [06:17:52] and we do this in python with a try block first so i'm going to say try and put a colon
+- [06:17:59] then i'll tab over our print x which will still throw an error right now and then we can have an
+- [06:18:05] accept block and this will catch the error notice now we don't have the squiggly as we had earlier
+- [06:18:11] this still says it's going to throw an error because vs code is helping us out but we can
+- [06:18:16] just say accept right here and this will catch all errors now this is a bit generic you want to
+- [06:18:21] be more specific and i'll show you how to do that but at first i just wanted to show how you can
+- [06:18:25] catch pretty much anything right here so we can catch this error and then we can print something
+- [06:18:31] when we catch it or do whatever we want like say print there is an error now we won't get that
+- [06:18:38] specific information like we did here instead we will get this there is an error statement let's
+- [06:18:44] go ahead save that run the code just so you can see how it works and now we have there is an error
+- [06:18:49] right here in our terminal now what i would rather do than catch all errors because this would catch
+- [06:18:55] everything and really we wouldn't get any useful information it would just say there is an error
+- [06:18:59] i would rather catch the specific error that might occur like name error so now this will only catch
+- [06:19:07] the name error then i could say something here specific like let's see i'll say name error
+- [06:19:16] means something is probably undefined i'm going to save that but i'm also going to press alt z to
+- [06:19:25] wrap the code down just in case i type a long line and we don't see it all underneath our terminal so
+- [06:19:31] now that we have that and i run this code again it's going to specifically catch that name error
+- [06:19:36] and now we can see we have that statement name error means something is probably undefined
+- [06:19:41] but another error it wouldn't catch so let's try something else here let's say
+- [06:19:46] up above our try accept i can say x is equal to two and now i'm going to divide x by zero
+- [06:19:56] and that's usually a problem also with mathematics when you try to divide by zero so let's see what
+- [06:20:02] error we get when we run this code and yes we have a zero division error so that's another error
+- [06:20:08] and it was not caught here in our accept block it only catches the name error so now we can provide
+- [06:20:15] another accept block to catch that specific error too so zero division error and we could
+- [06:20:21] print something here like please do not divide by zero and that would catch that specific error
+- [06:20:30] so if we run that we now see that message and so we've cut two specific errors and that's still
+- [06:20:36] leaving everything else to be caught possibly by an accept at the end of this but there's other
+- [06:20:43] things we can do as well and it's not always bad to throw an error that i said throw there
+- [06:20:48] i'm thinking in javascript to raise an error or let python raise the error like we when we had one
+- [06:20:54] when we didn't catch our zero division here in our own accept when it just was raised by python
+- [06:21:02] that's not bad either because you really don't want to just put a blanket over everything and
+- [06:21:07] then not know what that error might be however after the accepts we can also have an else so
+- [06:21:14] let's say there is no error now we would get here so inside of this else i could say print
+- [06:21:22] no errors now if we throw i say throw again there i'm going to say that probably too too many times
+- [06:21:28] anyway if we raise an error like the zero division error it's never going to reach this else
+- [06:21:35] so let's go ahead and run this code again that should raise the zero division error here we go
+- [06:21:41] and yes we've got that please do not divide by zero it never reaches the else but if we go ahead
+- [06:21:47] and divide by one instead so we should not have an error and then we run our code then we get our
+- [06:21:54] response here which 2.0 and then we have no errors so we made it to the else block now one additional
+- [06:22:01] thing we can add here is a finally now in the finally block this is going to happen no matter
+- [06:22:08] what if we have an error this will still reach the finally block and if we don't have an error
+- [06:22:13] it will also reach the finally box so i'm going to say print and inside of our print i'm just going
+- [06:22:18] to say i'm going to print with or without an error so either way we run our code now and we get i'm
+- [06:22:29] going to print with or without an error if we switch this back to zero save the file run once
+- [06:22:35] again we get our please do not divide by zero message from our zero division error and we still
+- [06:22:41] get the print statement from our finally block as well now i mentioned to catch all could be bad if
+- [06:22:48] we didn't get the information about the error but there is a way to handle this so let's go ahead
+- [06:22:52] and add that after we're catching the specific errors here we can say accept and then we're
+- [06:22:58] going to say exception with a capital e as error now inside of this block we will print the error
+- [06:23:08] so let's test that out now by coming back up to our try block here and i'm just going to comment
+- [06:23:13] out the division by zero but i'll leave it there for you in case you want to get the source code
+- [06:23:18] from the link to the course resources and now i'm going to say if not type and let's see x and then
+- [06:23:27] we'll go is string because it's currently an integer so it's not going to be type string
+- [06:23:34] this should make it to this if statement then or what's inside the block and we'll say raise
+- [06:23:41] and now we can raise a type error this is a built-in error so you can
+- [06:23:45] can raise one of the built-in python errors on your own and with this type error we're going to say
+- [06:23:52] only strings
+- [06:23:56] are allowed and we'll save this and now let's see how we catch this it should catch down
+- [06:24:03] in our accept exception as error and print the error let's see what happens
+- [06:24:09] yes we get our only strings are allowed message from the type error and now notice we didn't have
+- [06:24:17] to pass this in i'll just temporarily say ctrl x here to cut that out i want to paste it back in
+- [06:24:24] after i give you this example let's run this code one more time without that message in there
+- [06:24:29] and now we don't get anything at all so really what we want to do is put a message in there
+- [06:24:36] so we can know and we could even say type error only strings are allowed if we wanted to state
+- [06:24:41] that but it's just going to be good to give some type of information when you raise an error on
+- [06:24:47] your own so now i'm going to comment out these two lines and let's look briefly at creating a custom
+- [06:24:53] exception and we can get more specific but i want to give a generic way first and this is to just say
+- [06:25:00] raise exception and then we can pass in a message and i'm just going to say i'm a custom
+- [06:25:09] exception and we'll save that now this should automatically raise this exception so when we
+- [06:25:15] run the code that's what we get i'm a custom exception right here inside of the terminal
+- [06:25:21] but you don't often see a generic exception like this often the exceptions are named to specify
+- [06:25:28] what we expect that exception to be so if you're creating a custom one you can still give it a custom
+- [06:25:35] name and it should be descriptive so we could say something like not a string error or something
+- [06:25:41] like that i'm going to say and by the way they start out with class i'm going to say just not
+- [06:25:48] cool error and now of course this doesn't really describe much but it's just an example so all
+- [06:25:54] hey just not cool error which is a class and then you must pass in exception right here as well
+- [06:26:00] after this i'm just going to say pass we won't have any specific code to this error but now or
+- [06:26:06] this exception but now i can raise this so i'm going to copy this and instead of raise exception
+- [06:26:13] which i will comment out here so that is commented out now let's raise our just not cool error
+- [06:26:20] and now we can pass in a message and say this just isn't cool man and now we're ready to run
+- [06:26:29] the code once again and we'll see what we get over here and we get this just isn't cool man so we've
+- [06:26:35] created our own custom exception with our just not cool error and with that that's really all
+- [06:26:40] you need to know to catch exceptions or to create your own when you need them and i wanted to show
+- [06:26:46] you this before the oop practice project because we will be creating one of our own now that said
+- [06:26:53] remember to wrap at least a tri-block around what you're trying to do and then at a minimum you'll
+- [06:27:00] need one except even if you're just catching each exception as error but if you expect specific ones
+- [06:27:08] that are possibilities it is good to of course create those as well remember else is only going
+- [06:27:15] to happen if there are no exceptions and finally is going to happen whether there are exceptions
+- [06:27:21] or not these aren't required but you can add else and finally to your try except blocks

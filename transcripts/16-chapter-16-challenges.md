@@ -1,0 +1,166 @@
+# Chapter 16 - Challenges
+
+Source: Python Tutorial for Beginners (with mini-projects) by freeCodeCamp.org
+URL: https://www.youtube.com/watch?v=qwAFL1597eM
+Time range: 05:20:39-05:35:59
+
+## Transcript
+
+- [05:20:41] i've got vs code open and you can see i have a folder for lesson 16 and i already have all three files in it for
+- [05:20:48] lesson 16 and that's because today is a student challenge today's lesson is different we're
+- [05:20:53] focusing on applying what we've learned instead of learning something new and we will attempt to
+- [05:20:57] complete a two-part student challenge so i've got the terminal hiding my code so you don't see the
+- [05:21:03] code that's in these three files for now part one will be creating a new game called guess my number
+- [05:21:09] and this will require you to take what you've learned from building the rock paper scissors
+- [05:21:13] game in previous lessons and apply it to a new problem so let's look at how this game works
+- [05:21:19] first so i'm going to launch guess number the file that you see over here on the left side
+- [05:21:24] from the terminal and i'm in windows so i type pi if you're in mac or linux you should be typing
+- [05:21:30] probably python 3 and then i'm going to type the file name guess underscore number dot pi now it's
+- [05:21:37] going to accept a name as we learn to pass in a command line argument and receive that with the
+- [05:21:43] arg parse module so i have dash in for name and i'll just pass in my name dave when i press enter
+- [05:21:49] it should launch the game and it says dave guess which number i'm thinking of one two or three i'm
+- [05:21:54] going to guess one and we can see the results as dave you chose one i was thinking about the number
+- [05:22:00] one so dave you win game count one dave's wins one and my winning percentage is 100 then it asks
+- [05:22:08] if i want to play again or not so i'll say yes i'll choose two and it looks like i didn't get the
+- [05:22:13] number right once again the game was thinking about the number one but i chose two so it says
+- [05:22:18] sorry dave better luck next time now it updates the game count my win number is still the same
+- [05:22:24] because i didn't win and it updated my winning percentage now it's only 50 compared to 100
+- [05:22:29] before now of course we can quit this game as well so let's go ahead and play one more time
+- [05:22:35] though just to see what happens if i choose a number that's not one two or three it just says
+- [05:22:40] dave please enter one two or three so then it starts over and that's what we would expect to
+- [05:22:46] do so let's go ahead and pick another number and i didn't win again so now my winning percentage
+- [05:22:51] is 33.33 i'll go ahead and choose q to quit and then we get the thank you for playing and goodbye
+- [05:22:57] dave so a lot like our rock paper scissors game but not quite so you can take what you learn from
+- [05:23:03] that and now create this new game guess my number now after completing the first part of the
+- [05:23:09] challenge which is creating the guess my number game then we're going to move to the second part
+- [05:23:13] of the challenge which is to build an arcade that will allow you to choose between rock paper
+- [05:23:18] scissors and guess my number and this is going to require you to take what you've learned about
+- [05:23:22] modules in previous lessons and apply it to a new problem so let's look at how the arcade works so
+- [05:23:28] we launch it much the same way i'll say pi and then arcade.pi and from there i'm going to pass
+- [05:23:34] in a name at the command line as well and once we launch the arcade it says dave welcome to the
+- [05:23:40] arcade please choose a game and i can choose one for rock paper scissors or two for guess my number
+- [05:23:45] or press x to exit the arcade so i'm going to choose one for rock paper scissors and you can
+- [05:23:52] see the game launches now so i'll choose one for rock and python one but i'll go ahead and quit
+- [05:23:58] and when i quit the game it says dave welcome back to the arcade menu please choose a game
+- [05:24:03] so we're not going to exit the game entirely or the arcade from our rock paper scissors game
+- [05:24:08] or from the guess my number game we're going to exit it when we're back at the arcade menu so
+- [05:24:13] now i'll choose guess my number and we'll see if it works the same way so i'll guess a number
+- [05:24:19] and i did not win but i'll go ahead and quit now it says dave welcome back to the arcade menu now
+- [05:24:24] if i don't choose one two or x here i'll press five again it's going to just start over and say
+- [05:24:29] dave please enter one two or three and i guess i need to change that to one two or x actually so
+- [05:24:35] i need to update my code just a little bit go ahead and do that in yours as well because the options
+- [05:24:40] here are one two or the letter x so now i'll just press x to leave the arcade and it says see you
+- [05:24:46] next time by dave so you've got the idea here for the arcade and how it should work you should be
+- [05:24:52] able to launch either game from it or exit the arcade and when you launch those other games
+- [05:24:58] when you quit those games you should go back to the arcade so that's a different challenge and
+- [05:25:03] you're of course applying modules and other things you've learned along the way to conquer this
+- [05:25:08] challenge as well so now you should be ready to pause the video and attempt to build the guess
+- [05:25:13] my number game part one of the challenge so when you finish building the guess my number game
+- [05:25:18] come back to this video and i'll show you my code for the game so i'll see you then okay we're back
+- [05:25:24] and ready to review the code for the guess my number game so i'm in the guess underscore number
+- [05:25:29] dot pi file that i created i'm importing a couple of modules just like we did in the rock paper
+- [05:25:35] scissors game i've imported sys and random notice i don't need an enum now like we did in rock paper
+- [05:25:41] scissors now i create this parent function because we're still going to need a closure
+- [05:25:47] to keep track of the game count and player wins so i have this parent function called guess number
+- [05:25:53] and then inside after i set the game count and player wins to zero i initialize those values
+- [05:25:59] essentially then we have our next function which is play guess number here of course we need those
+- [05:26:05] values we're going to get the name from a param by the way which also has a default of player one if
+- [05:26:11] nothing else and we're pulling in the non-local name and then non-local local player wins right
+- [05:26:18] now not game count yet but we will later and then much like rock paper scissors we have an input
+- [05:26:23] with the player choice and much like rock paper scissors if they don't choose the correct thing
+- [05:26:29] we go ahead and use recursion to launch this play guess number once again so we call it and it
+- [05:26:34] starts over from the top then we have the computer choice decision here and it's just a random choice
+- [05:26:40] between one and three we did that in rock paper scissors as well now we go ahead and print saying
+- [05:26:47] personalizing the message as well and the saying you chose and give the player choice now the
+- [05:26:52] player choice up here was a string and that's fine to put in here we didn't need a number at this
+- [05:26:57] point and then of course we say i was thinking about and put the computer choice here it is also
+- [05:27:02] a string and if it wasn't we're still using these f strings so it would make the conversion without
+- [05:27:08] us using those class initializers as we previously did when we were concatenating strings but down
+- [05:27:14] below we go ahead and do make those numbers they were both previously strings and player choice
+- [05:27:19] and computer choice now they're numbers in player and computer and we're going to use those as well
+- [05:27:26] so here we're looking at decide winner this function and we have player and computer we
+- [05:27:32] need to once again bring in the name and player wins and now we're going to compare player and
+- [05:27:39] computer and if they are equal because that means we've guessed the number correctly we go ahead and
+- [05:27:46] increase we increment player ones with our plus player wins with our plus equals and then we return
+- [05:27:54] the phrase here saying you win if not we say sorry better luck next time so that's returned
+- [05:28:00] and then we hold the value that's returned from this function in game result as we pass in player
+- [05:28:06] and computer the two params that it receives now these are argument values being passed in
+- [05:28:12] and we print the game result now here is where we need the game count and this is just like we did
+- [05:28:18] in rock paper scissors as well so we increment the game count then we're going to output the
+- [05:28:23] game count we're going to output the number of player wins now this is new we have an f string
+- [05:28:29] here saying you're winning percentage now inside of the f string we can calculate that winning
+- [05:28:35] percentage by dividing player wins by the game count and now we're formatting the output of that
+- [05:28:42] calculation as well and we went over some of that formatting when we learned about f strings so we
+- [05:28:47] have a colon here then a dot two which means we want two decimals and the percent sign so we're
+- [05:28:53] going to display that as a percent and then we ask if they want to play again just like rock paper
+- [05:28:59] scissors and we handle that the same way whether they want to play again or maybe they don't want
+- [05:29:04] to play again and of course they have to enter in the correct number or it just loops back through
+- [05:29:09] then if play again we're going to use recursion once again and launch the play guess number
+- [05:29:15] function once again but if not then we're going to go ahead and print the thank you for playing
+- [05:29:20] and here's something that's just a little different because we want the guess number
+- [05:29:24] file to be able to run on its own and if that's the case then that means name will equal main
+- [05:29:32] so if that's the case we're going to use the system exit and exit out of the game when they
+- [05:29:36] choose to quit but if not say it's launched from that arcade file then we just want an empty return
+- [05:29:43] here which will go ahead and exit out of this function and that would take it back to the parent
+- [05:29:49] function that it will be in the arcade file so we do need to have a conditional here based on
+- [05:29:55] whether the file is launched by itself where name equals main or if this file is actually a child
+- [05:30:03] which would be running from the arcade so then we just have an empty return and then of course at
+- [05:30:09] the end of this function we're returning play guess number so we can create the closure that
+- [05:30:13] we learned about so that is what is happening there now we're here saying if name is equal to
+- [05:30:20] main we're going to go ahead and parse those arguments passed at the command line which should
+- [05:30:24] be a name and then when we get down here we go ahead and finish creating that closure because
+- [05:30:30] we set guess my number equal to the guess number function that receives the name from the arguments
+- [05:30:36] and then we call the guess my number function and that once again goes back to our lesson
+- [05:30:40] on closures so a little simpler than rock paper scissors much of it is the same and we were able
+- [05:30:47] to remove a few things as well i hope you did good on this challenge now with the guess my number
+- [05:30:53] game complete you are ready to take on part two of the student challenge where you build an arcade
+- [05:30:58] menu that allows you to choose between rock paper scissors or guess my number so pause the video and
+- [05:31:04] come back when you're ready to see my solution we are back and ready to review the code for the
+- [05:31:10] arcade menu so at the top of this file we're once again going to import the sys module then from the
+- [05:31:16] rps file which we have rock paper scissors in we're going to go ahead and import rps and from
+- [05:31:22] the guess number file we're going to go ahead and import the guess number function now quickly i
+- [05:31:28] want to just go to the rps file because the same thing that we did in the guess number file the
+- [05:31:33] only thing i changed in rock paper scissors from previous lessons is when we exit the file so once
+- [05:31:39] again if name equals main then we use the sys dot exit and that's because we called the rock paper
+- [05:31:46] scissors function directly from this file if not if it's called from the arcade file for example
+- [05:31:54] we're going to say else here and just return and have an empty return so we go back to working with
+- [05:32:00] the code in the arcade file so just highlighting that in the rps file the same as guess number
+- [05:32:06] and that's the only change to rock paper scissors from any previous lesson okay in the arcade file
+- [05:32:11] now after the imports it's structured much the same as we have defined other functions essentially
+- [05:32:18] so we're starting here with play game and then we have name equals player one as well just as a
+- [05:32:24] default just in case now the first thing i do we don't have a closure here but we are defining this
+- [05:32:31] welcome back variable as false it's a boolean value and that's because i want to give a welcome
+- [05:32:38] back to the arcade menu when we come back from either one of the games say we played rock paper
+- [05:32:43] scissors we quit and we come back so here we only do that if welcome back is equal to true
+- [05:32:49] now notice we started a while loop right here so i say while true so it will be a loop that just
+- [05:32:55] continues if it is always equal to true if we don't exit the loop in some other way so if we
+- [05:33:02] come back to the arcade we're still going to be in this loop and we'll get that welcome back message
+- [05:33:08] if welcome back equals true now notice i'm not setting welcome back equal to true until after
+- [05:33:14] we check the player choice because if they make the wrong choice say the number five instead of one
+- [05:33:21] two or x as we have for choices here then it's going to relaunch this function now we wouldn't
+- [05:33:28] want to give a welcome back to the arcade menu message every time that they chose a wrong number
+- [05:33:33] so i wait to set that welcome back equal to true here now this is much like we had in both games
+- [05:33:39] where we have the input and we check that input and we give a message if the input is not what
+- [05:33:45] we directed the user to input after that we have a conditional if else if and then an else here
+- [05:33:53] so if player choice is one they have chosen rock paper scissors now we have the name value being
+- [05:33:59] passed in here as a parameter so down here we use that and we create that closure remember we
+- [05:34:05] imported rps so now we set rock paper scissors equal to rps with the name being passed in and
+- [05:34:12] then we call rock paper scissors and that is that closure that we created there so it could keep
+- [05:34:17] track of the game count and the wins for python and the user but if player choice is two then we
+- [05:34:24] do the same thing for guess my number it also uses a closure so we set guess my number equal to guess
+- [05:34:30] number where we're passing in the name value and then we call the guess my number function and
+- [05:34:35] now the else so essentially here we're checking to make sure it's one two or x but down here we
+- [05:34:41] don't need to at this point so we know if it's not one two it's going to be x so now we just say
+- [05:34:47] see you next time and we use the system to exit the arcade that's the full arcade function it's
+- [05:34:52] not that big now we do have the if name equals main so if we launch the arcade from the arcade
+- [05:35:00] file this is where we use the arg parse to get the name and then down here we have our welcome to
+- [05:35:06] the arcade message that's only going to happen the one time right after it's launched and then
+- [05:35:12] we just launch play game and pass in the args.name which launches our play game function from up
+- [05:35:18] here so i hope you did well on both of these challenges if not hey it's no big deal we're
+- [05:35:24] learning so you might have picked up a thing or two that you hadn't encountered before although
+- [05:35:29] we did go over this information sometimes it takes some time to learn how to apply it all
+- [05:35:36] and i think learning how to apply what you have learned is very important and you're only going
+- [05:35:41] to do that by trying to create some of your own things as well so now that you have this
+- [05:35:46] code for an arcade and you can call any game you want think of a couple other games you would like
+- [05:35:52] to create what are some other simple games you might create that you could add to this arcade
+- [05:35:56] so keep learning and i'll see you next time i've got vs code open a new folder for lesson 17 and

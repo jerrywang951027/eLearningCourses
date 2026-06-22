@@ -1,0 +1,144 @@
+# Chapter 9 - Functions
+
+Source: Python Tutorial for Beginners (with mini-projects) by freeCodeCamp.org
+URL: https://www.youtube.com/watch?v=qwAFL1597eM
+Time range: 03:09:03-03:23:48
+
+## Transcript
+
+- [03:09:08] over here in the file tree let's create a new file and let's call this file functions.py functions
+- [03:09:16] are reusable blocks of code and when we call a function it runs the block of code inside the
+- [03:09:21] function so let's create a simple function i'll start with the def keyword which means we're
+- [03:09:26] defining the function then we'll use hello to name our function and we'll use parentheses so
+- [03:09:32] our function is named hello and after the colon we'll press enter and notice vs code brings us
+- [03:09:38] down to the next line and already in dense so this is where our block of code inside the function
+- [03:09:43] starts so now we can print and we'll say hello world with an exclamation mark now that is our
+- [03:09:51] function but it is defined here it is not being called yet so if we're to run our code right now
+- [03:09:57] we won't see any output we won't see this print statement happen so i can run it and we don't get
+- [03:10:02] any output over here so what we need to do is call the function so we do that then in our code
+- [03:10:09] wherever we need to use the function by just calling the name of the function with the
+- [03:10:13] parentheses after it so now when i save this and it's scrolled back up but there we go there's our
+- [03:10:18] definition of the function and here is the call to the function now we'll just run the code and we
+- [03:10:24] get hello world here as output in our terminal i'm going to go ahead and leave this open but i'll
+- [03:10:29] press ctrl b to hide the file tree as we don't really need to see the file tree right now
+- [03:10:34] now let's talk about naming functions they need to be all lower case and if they have more than
+- [03:10:39] one word we can separate the words with an underscore so let's do that and rename this
+- [03:10:44] function hello world and now you can see visual studio code is telling us that there is not a
+- [03:10:50] hello function so we need to go ahead and add the underscore world here and now we'll call the
+- [03:10:56] function by name once again using hello world so we get the same output but that's how we want to
+- [03:11:02] name these no capital letters no hyphens or dashes we need to use underscores if we want to separate
+- [03:11:09] a word and we need to use all lower case now sometimes functions need to receive data and we
+- [03:11:15] can use placeholders for that data and those placeholders are called parameters so let's go
+- [03:11:20] ahead and create a simple function that receives a couple of parameters so i'll say def once again
+- [03:11:26] the keyword def and then i'll call this sum it's going to receive num1 and num2 we'll put the colon
+- [03:11:34] here and now we start the block of code inside the function and we're going to print num1 plus
+- [03:11:42] num2 so once again a very simple function now remember that this function is not being called
+- [03:11:49] yet so if we were to run our code right now we would not see the output of this we need to call
+- [03:11:54] the function now these placeholders are parameters when we call the function and we pass in the
+- [03:12:00] actual data we're passing in arguments so if i say sum and i pass in two and then three now we're
+- [03:12:08] going to pass in the arguments two and three and they will use the definition of this function so
+- [03:12:14] they're represented here by num1 and num2 a distinction between parameters in the definition
+- [03:12:21] and arguments that you would pass in is the parameters never change however arguments can
+- [03:12:27] change with every function call so let's switch this to one and let's say seven or this could even
+- [03:12:35] be 100 and then we could leave that as three so all of these function calls are reusing this code
+- [03:12:43] that we defined for our function sum notice the parameters never change they're just placeholders
+- [03:12:49] so that is the difference between a parameter and an argument the argument is the actual data when
+- [03:12:55] the function is called so now let's go ahead and save this code and we'll run our code and we'll
+- [03:13:02] get the output here so we have the sum of all of those numbers underneath of our hello world and
+- [03:13:06] note this was also a good demonstration of how our function is reusable so we have a reusable
+- [03:13:13] function that we can use anywhere we need it now and we used it three times here with different
+- [03:13:19] arguments now our function isn't really too useful if it just prints this value to the console we
+- [03:13:25] might want to return that value and use it in our program so let's look at how we can do that and
+- [03:13:32] i'm just going to change this function so we'll remove these but of course you know how to call
+- [03:13:37] the function now and instead of a print here we'll remove the print and the parentheses i'm going to
+- [03:13:43] use the keyword return so our function actually returns the value the total of the two parameters
+- [03:13:52] that are here so whichever arguments we pass in if we pass in two and three it should return five
+- [03:13:59] so let's do that now by saying a new variable total equals the sum of two and three and then
+- [03:14:07] we can print the total just to verify that yes total now holds that value so now let's run our
+- [03:14:15] code again and that's what we get is five right here now right now our sum function is a very
+- [03:14:21] basic function and we are just assuming that two numbers will be passed in but we can't always
+- [03:14:27] make those assumptions when we are writing programs so let's verify that we're actually
+- [03:14:33] receiving numbers because if we passed in strings right now they could be concatenated together
+- [03:14:39] because it would just push the two strings together and that would also work and that's
+- [03:14:44] not what we want our sum function to do for example so let's go ahead and check some of our
+- [03:14:49] input here our parameters that are being passed in well the arguments are the values but the
+- [03:14:55] parameters is what we'll check in the definition so here we'll say if and then let's check the type
+- [03:15:03] num1 and we'll say is not int and then we could also say or type of num2 is not int so here's our
+- [03:15:17] if statement we put a colon at the end and now we want to have a return keyword here but notice
+- [03:15:25] we're not returning anything this is just called an early return so we're exiting the function
+- [03:15:30] it will never execute line 11 here in our code we'll never return the sum of num1 and num2
+- [03:15:38] because they are not integers now i can press alt z to wrap this code down or i can close this
+- [03:15:43] so we can see the full line here so now let's see what happens if i change one of our arguments to
+- [03:15:49] something that is not an integer i'll just pass in a string with the letter a so i'll save the
+- [03:15:55] code and once again run the python file and now our function returned none that is a special value
+- [03:16:03] in python it's not true or false it's just none so that's also something to be aware of if you
+- [03:16:10] ever see that however that's what is returned from the function so currently our total value
+- [03:16:16] is none so now we're ensuring to get a result from our sum function that two integers do need
+- [03:16:22] to be passed in but what happens if nothing is passed in we'll probably get an error so let's
+- [03:16:29] confirm this when i remove the arguments from the function call and once again run the function
+- [03:16:35] and yes we received an error it says sum is missing two required positional arguments num1
+- [03:16:41] and num2 so our check here our if statement doesn't really help if somebody forgets to
+- [03:16:49] pass in those arguments but there's something else we can do we can give default values for
+- [03:16:55] these parameters in case they are not passed in so now let's just provide one default parameter
+- [03:17:02] value and i'll just make num2 equal to three so now i can just pass in one number say the number
+- [03:17:10] one and i can call the function and num2 will automatically have the value of three so if i do
+- [03:17:17] this and run the python code we get four for the output of course this doesn't help if somebody
+- [03:17:24] forgets to pass in the first value so one thing we could do is say num1 has a default value of zero
+- [03:17:31] and num2 has a default value of zero so now if no numbers are passed in we should receive a total
+- [03:17:41] of zero and we do and if we pass in just one value say the number one we should get one in return
+- [03:17:49] however our function does accept two values so we can pass in a second argument and now it should
+- [03:17:55] add those two numbers together and we get three so once again press alt z to just wrap this code
+- [03:18:00] down to the next line so it doesn't extend off the screen here but what we have accomplished now with
+- [03:18:05] our function is we have default parameter values of zero for num1 and num2 and we're also checking
+- [03:18:13] to make sure that the values passed into the function are integers and if they're not we just
+- [03:18:19] have an early return but possibly instead of that none value if we always want to have a number
+- [03:18:25] returned we could just return zero as well so now if we save our function and once again call it
+- [03:18:32] without any of the arguments being passed in and we run the function instead of none we get zero
+- [03:18:39] that might be more useful if we're just using this in mathematical equations because zero
+- [03:18:44] is something we could continue to use in the program and it wouldn't be some expected out
+- [03:18:50] uh unexpected output like the word none now just as a reminder of how to call this function i'm
+- [03:18:56] going to put a couple of numbers in here like seven and two so this will be in the course resources
+- [03:19:02] and you'll see once again how to call the function with two arguments and we get the output of nine
+- [03:19:08] okay now some functions may receive multiple arguments but when you're defining the function
+- [03:19:14] you won't know how many arguments are going to be passed into it so let's go ahead and look at
+- [03:19:20] a function that would be handling that type of parameter input so i'll use the def keyword once
+- [03:19:27] again and then we'll say multiple if i can spell multiple and underscore items that's what i'm
+- [03:19:35] calling this function and now it's going to receive an amount of parameters essentially
+- [03:19:41] arguments that we don't know these are often abbreviated as args even though in the definition
+- [03:19:49] they should be referred to as parameters what we want to do when we don't know how many we're going
+- [03:19:54] to receive is start with an asterisk and then i'll use the word args here to represent the arguments
+- [03:20:00] that will be passed in now inside of the function i'm going to print args so we can see what we get
+- [03:20:08] i'm also going to print the type of the args so we can also see what type those args are and how
+- [03:20:16] they're represented in the code block of the function because that would be important to
+- [03:20:20] know for you so now when i call the function i will say multiple items and i'll pass in dave
+- [03:20:29] and john and let's pass in sarah okay so now let's go ahead and run the code we're calling
+- [03:20:36] the function here on line 23 and we should get two lines of output we're printing the args and
+- [03:20:42] then what type they are here so let's run the code notice we get the args right here and it looks
+- [03:20:51] like a tuple and sure enough that's what type it is so if we have an unknown amount of arguments
+- [03:20:58] that will be passed into our function we can define the parameters here we could use any word
+- [03:21:04] we want i'm just representing them as args which is fairly common but we want to start with one
+- [03:21:10] asterisk here and that will make the data inside the function a tuple and then of course we can
+- [03:21:16] work with it as we learned about tuples but notice these arguments that are passed in here
+- [03:21:21] we just have values and represented in the parameter area here inside the definition
+- [03:21:26] they don't have names like before we had num1 and num2 and we could refer to them by name inside
+- [03:21:33] of the function's code block so what if we have a function that has again multiple unknown items
+- [03:21:40] that will be passed in when we're defining it but we want to use actually keyword arguments
+- [03:21:46] so i'll define another function here and i'll just abbreviate this as malt and then i'll say
+- [03:21:52] named items and here we'll start with two asterisks and now you'll often see this word
+- [03:22:00] it's a weird word it's quargs which stands for keyword arguments once again you could use any
+- [03:22:07] word here but this is what you would typically see so that's why i'm using this and it stands
+- [03:22:12] for keyword arguments once again in the function definition it's representing the arguments and we
+- [03:22:18] actually refer to that in the definition as parameters so now inside this definition i'm
+- [03:22:24] going to print the quargs and then i'm also going to print the type of the quargs so now let's go
+- [03:22:33] ahead and call this and i'm going to use this same line of code here i'll just switch the function
+- [03:22:39] name so we have a different function call so instead of multiple items this will be our malt
+- [03:22:46] named items so underscore named underscore items there we go so now we're calling this function
+- [03:22:53] and we'll run the code and i got an error and that's because i forgot to actually name the
+- [03:22:58] items here so let's do this differently instead of dave john and sarah which won't make as much
+- [03:23:04] sense let's go first equals dave and then last equals gray so now we have actually two named
+- [03:23:15] arguments and that's what i forgot to do when i called this i was in too much of a hurry so these
+- [03:23:20] will be represented in the function as first and last so let's go ahead and run our python code
+- [03:23:26] and so now of course here we have our tuple output above that i left in but now we have a dictionary
+- [03:23:33] and that's what we got when we printed the quargs here so we have a dictionary with first and last
+- [03:23:39] and you can see it is type dictionary and then we could work with this data as a dictionary and we
+- [03:23:44] learned about dictionaries in a previous lesson as well i've got visual studio code open and a

@@ -1,0 +1,210 @@
+# Chapter 3 - Operators
+
+Source: Python Tutorial for Beginners (with mini-projects) by freeCodeCamp.org
+URL: https://www.youtube.com/watch?v=qwAFL1597eM
+Time range: 00:29:58-00:46:18
+
+## Transcript
+
+- [00:29:58] In the last lesson, we defined a statement as an operation on a value.
+- [00:30:03] Now we can define Python operators as symbols used to perform operations on values and the
+- [00:30:09] variables that hold those values.
+- [00:30:11] So let's look at some examples, and we'll do that by opening a terminal window first.
+- [00:30:16] So you can go to the terminal menu, and from terminal menu, you can choose new terminal,
+- [00:30:21] or you can just press control in the back tick, which will also open a terminal window.
+- [00:30:26] From there, we need to start our Python REPL.
+- [00:30:29] And I do that in Windows by typing pi, and you might remember in Mac and Linux, I believe
+- [00:30:34] you type Python three, just like that, or I'm just going to type pi and press enter.
+- [00:30:41] And now my Python REPL has started.
+- [00:30:43] So the first operator that we have used already, and that I'll introduce today, is the assignment
+- [00:30:50] operator.
+- [00:30:51] So you have seen me type this example before, I'll just type name equals, and I'll set the
+- [00:30:57] variable name equal to the string Dave.
+- [00:31:01] After I do that, it's now assigned.
+- [00:31:03] That's the assignment operator, and I can type name, and I get the value back.
+- [00:31:07] Likewise, we can assign other values, so I'll take meaning as a variable name, and assign
+- [00:31:12] the number 42.
+- [00:31:14] And if I type meaning, I get the value 42 back.
+- [00:31:17] So I think it's easy to see how assignment works, and how the assignment operator, which
+- [00:31:21] is just the equal sign, works in Python.
+- [00:31:25] From there, we'll move on to arithmetic operators.
+- [00:31:27] Now you have your standard addition, say two, and then plus two, press enter, we get four.
+- [00:31:33] So we can use Python just like a calculator, we can have four minus two, and we get two
+- [00:31:40] back.
+- [00:31:41] We can also do multiplication, so two times two, we get four, and we can do division.
+- [00:31:46] So let's do something here that's a little different, let's say 24 divided by five.
+- [00:31:52] Now what would you expect to get back from this?
+- [00:31:55] Possibly four if it's rounded down, or five if it's rounded up, but maybe we'll get a
+- [00:32:01] decimal back.
+- [00:32:02] Let's see, and yes, we get 4.8.
+- [00:32:05] But there's also floor division, so we could say 24, and then use two slashes, and that's
+- [00:32:11] floor division, which means it's going to round the answer down, and now we get four.
+- [00:32:17] Or we could also use the round function, and then we could say 24 divided by five, and
+- [00:32:24] now it's five, because it rounds up.
+- [00:32:26] But what if we just want the remainder?
+- [00:32:28] Well then we use a different operator, and that's the percent sign.
+- [00:32:32] And then I have 24 percent five, and let's see what we get back.
+- [00:32:36] We just get the remainder, which is four.
+- [00:32:39] Also there's exponents, so if we said two to the power of, which is two asterisks, three,
+- [00:32:46] that would be two times two times two, and yes, we get eight.
+- [00:32:50] So what if we said two to the power of five?
+- [00:32:53] That's 32, and so you see how that works as well.
+- [00:32:56] And now when we're working with variables, we can combine the assignment operator and
+- [00:33:02] arithmetic operator.
+- [00:33:03] So let's take meaning and set it equal to 42.
+- [00:33:06] And now I can say meaning, and then I can say plus equals one, and now what do you think
+- [00:33:12] the value of meaning is?
+- [00:33:14] If I type in meaning and we get the value, it's now 43, so it added one to that.
+- [00:33:19] So that was a lot like saying 42 plus one, but the variable meaning holds the value of
+- [00:33:25] 42.
+- [00:33:26] Likewise, we can take meaning, if I type meaning correctly, and say minus equals one, and now
+- [00:33:32] meaning should be back to 42.
+- [00:33:35] We can do the same with the other operators also.
+- [00:33:37] So I can say meaning, and then times equals 10, and then if we check the value of meaning,
+- [00:33:46] we get 420.
+- [00:33:49] So now let's look at meaning, and let's say divides by and equals.
+- [00:33:54] Now what do you think will happen if we go ahead and divide this by 10?
+- [00:33:59] What will be the result?
+- [00:34:01] Let's go ahead and look after we do that, we need to check the value, and it's 42.0.
+- [00:34:08] So that might be unexpected.
+- [00:34:10] We have a decimal now when we divide, but we could have used the floor division and
+- [00:34:15] not received that response.
+- [00:34:17] Now this won't change meaning.
+- [00:34:19] Notice we're not using an assignment operator here, we're just rounding meaning, and we'll
+- [00:34:24] see what the response is.
+- [00:34:26] Well it's 42, but now if we check meaning, it still has the decimal point.
+- [00:34:31] So we could say meaning equals round meaning, and now that would remove the decimal point,
+- [00:34:39] so if we check it here, it's now just 42.
+- [00:34:43] One other thing you can use the plus operator for, and that is to concatenate two different
+- [00:34:49] strings.
+- [00:34:50] So if I took my first name in a string, Dave, and I'll put a space after it, and put another
+- [00:34:56] double quote, then I can use the plus symbol, and I could put my last name, oops, I accidentally
+- [00:35:02] hit return or enter too soon, so let me try that again, Dave double quotes plus, now double
+- [00:35:11] quote, great, make sure I hit the double quote again and not the enter key.
+- [00:35:15] Now we get one string returned that has concatenated the two previous strings of my first name
+- [00:35:22] and my last name.
+- [00:35:23] And now I want to look at comparison operators, but before I do that, let's get rid of our
+- [00:35:27] previous history here, and we can do this in the terminal by going to the three dots
+- [00:35:33] and choosing clear terminal, and then it just clears out the full terminal for us as well.
+- [00:35:38] So now let's look at comparison operators, and so if we want to check to see if one number
+- [00:35:44] is equal to another, let's say the number 42, is it equal to 41?
+- [00:35:50] Let's find out when we press enter, and we get a false response.
+- [00:35:55] So let's see if 42 is equal to 42.
+- [00:35:59] Notice we're using the double equals, so it's not the assignment operator.
+- [00:36:03] Here we're checking to say is this equal, and when I press enter, then we get true.
+- [00:36:08] Notice we're getting false and true on these responses.
+- [00:36:11] That is called Boolean data, and notice how the false and true are both capitalized at
+- [00:36:16] the very first letter of the word.
+- [00:36:18] So now if we check to say 42 is not equal to 42, well that's false, so if we said something
+- [00:36:26] like 43 is not equal to 42, we would get true back.
+- [00:36:33] Likewise we have greater than and less than operators, so 10 is greater than 5, that is
+- [00:36:39] true.
+- [00:36:40] 10 is less than 5, that is false.
+- [00:36:43] We also have greater than and equal to operators, so 10 is greater than or equal to 10, that
+- [00:36:51] is true.
+- [00:36:52] 10 is less than or equal to 10, that's also true because it's still equal to 10.
+- [00:36:59] And so now working with these comparison operators, we've introduced Boolean data, the true and
+- [00:37:04] the false.
+- [00:37:05] So let me create some variables here, I'll just set a variable named x equal to true.
+- [00:37:12] Then I'll set a variable y equal to false, and I'll set a variable z equal to true.
+- [00:37:20] Now we can use some Boolean operators with these variables.
+- [00:37:25] So the first Boolean operator we'll look at is the word not, it is a key word, and so
+- [00:37:31] x is true, but if we say not x and we press enter, we get the opposite, false.
+- [00:37:37] So if we said not y, we get true, again the opposite.
+- [00:37:42] Another Boolean operator is and, and this would look at two conditions, for example
+- [00:37:47] x and y.
+- [00:37:49] Now let's look at what happens, it's going to evaluate the first value, and it only looks
+- [00:37:54] at the second value if the first value is true.
+- [00:37:58] So what do you think we'll get as a response?
+- [00:38:01] We get false because the first one is true, so it looked at the second one.
+- [00:38:06] Likewise, if we said y and x, now the first value is false, and it stops evaluating right
+- [00:38:13] there.
+- [00:38:14] So and needs both values to essentially be true, that's what we're checking for.
+- [00:38:19] So if either one is false, that's where it stops.
+- [00:38:23] Now just the opposite is the Boolean operator or, so let's say x or y, and now it's only
+- [00:38:31] going to look at the second if the first is false, but x is true.
+- [00:38:36] So the response we get is true, but if we say y or x, y is false, so the response we
+- [00:38:43] get is true again because it looks at the second value because the first was false.
+- [00:38:50] So you can kind of remember it that way, and and or are the opposites, they would kind
+- [00:38:55] of give opposite results, but or is just checking to see if one or the other is essentially
+- [00:39:00] true and and if we use that in a conditional statement, which you'll see an example of
+- [00:39:05] here in just a minute, and would actually be us looking for both values to be true is
+- [00:39:11] what we would be hoping for if x is true and y is true, then do something else.
+- [00:39:17] So for example, we could say x and z, now they're both true, and we get true back because
+- [00:39:23] the first was true, so it returned the value of z actually, because then the second was
+- [00:39:28] true, and then we could also have z and y, and what would happen here?
+- [00:39:34] It's going to be false again because z was true, so it went ahead and looked at the second
+- [00:39:40] value.
+- [00:39:41] Now let's check again with the ors, y or z, what are we going to get here?
+- [00:39:46] We get true because y was false, now if we said z or y, we get true again, but it stopped
+- [00:39:54] when z was true, it never evaluated y.
+- [00:39:57] Now I understand that can be a little bit confusing, so it's good to play around with
+- [00:40:01] these and check those Boolean operator comparisons yourself until you get the hang of how they
+- [00:40:07] work.
+- [00:40:08] So for now, let's quit the REPL, we'll type quit with parentheses, and after that let's
+- [00:40:14] close the terminal window, and we're going to create a new file here in Visual Studio
+- [00:40:19] Code, so I'm going to press control and in, and that brings up a new file, remember you
+- [00:40:24] could also use the new file icon over here, and now I'm just going to start typing and
+- [00:40:29] then we'll save the file afterwards.
+- [00:40:31] So I'm going to take the variable meaning and assign it the value of 42.
+- [00:40:38] Now I can do control s to save the file, or I could go to the file menu and choose save
+- [00:40:43] as which would allow me to name the file as well, I'll just do control s, now I'm going
+- [00:40:48] to name this meaning.py for py or for python, and I want to make sure that I have the python
+- [00:40:57] file type here as the save as type as well, so when I choose save, now it is a python
+- [00:41:03] file.
+- [00:41:04] Now in our small meaning program here, I also want it to start with an empty line, so I'm
+- [00:41:09] going to print an empty string to start out with.
+- [00:41:12] Now we were using comparison operators, and you often see those in logical if statements,
+- [00:41:19] so let's create our first if statement, I'll say if meaning is greater than 10, now I have
+- [00:41:27] a colon, so now I indent, and notice when I pressed enter, Visual Studio Code already
+- [00:41:33] knew I needed to be indented, and the indentations do mean something in python, and so now I'm
+- [00:41:39] going to print, I'll just say right on, so if meaning is greater than 10, this would
+- [00:41:46] be the output.
+- [00:41:48] After this line, now I do not want an indentation, and Visual Studio Code doesn't really know
+- [00:41:54] if I want to do something else here or not after meaning would be greater than 10, so
+- [00:42:00] here I need to backspace just to go back to where I do not want to be indented.
+- [00:42:06] Now I'll type the word else, so this is essentially if meaning is not greater than 10, we're going
+- [00:42:13] to do something else, and I'm going to print here and I'll say not today, so we have our
+- [00:42:19] first if else statement, and it's going to check the value of meaning, we're using a
+- [00:42:24] comparison operator here, so once we save that, now if you remember how to run the code,
+- [00:42:32] we can just click the play button here, in the past I've used the drop down and chose
+- [00:42:37] run python file which also works, but we can do it a little simpler than that just by clicking
+- [00:42:43] this button, so let's do that and it runs the code, oh it did not find an alias, maybe
+- [00:42:48] we need to choose python, run python file first, and after we do that one time I think
+- [00:42:55] this play button is going to work, yes it works the next time, so if you need to do
+- [00:43:00] that, if you get that error that you saw I had, go ahead and choose run python file the
+- [00:43:05] first time, after that the play button works just fine, and we get right on every time
+- [00:43:11] and that's because, I don't need this bash window here either, we're just using the python
+- [00:43:15] one, but this is because meaning is 42 which is greater than 10, so let's change the value
+- [00:43:21] of meaning to 8 and I'll save the file again, and now I'll click the play button, run and
+- [00:43:28] it says not today, I'll drag this back up so we can see just a little bit more, run
+- [00:43:32] it again, and you can see the command that is issued when I click the play button, now
+- [00:43:38] if you remember this is a quick review, how we can run this ourselves from the terminal
+- [00:43:42] window, we can just type py to run our python code and then type the name of the file.py,
+- [00:43:50] because we're in, I'm in this lesson 03 directory and that's the name of this up here, what
+- [00:43:58] ever folder you have would be the name there, and then we can see the file, so just py and
+- [00:44:03] then meaning.py and we'll get the same result, but you see the long version here when you
+- [00:44:09] click the play button here and so we get not today because meaning is only equal to the
+- [00:44:15] number 8.
+- [00:44:16] I'm going to close the terminal window for just a little bit more room and we need to
+- [00:44:20] look at one more operator today and that's the ternary operator, if else statements are
+- [00:44:25] nice, but look this took four lines, we could do all of this on one line if we wanted to,
+- [00:44:31] so let's talk about something else we can do, we learned about comments in the last
+- [00:44:35] lesson, I'm going to highlight all of this code in visual studio code and I do that by
+- [00:44:39] clicking and dragging, once I do that I'm going to press control and slash and it just
+- [00:44:47] commented out all those lines of code that I have highlighted, so they're still there
+- [00:44:52] and I want to leave these in here to give you the example of the if else statement,
+- [00:44:56] but now let's use the ternary operator to accomplish the same thing in one line of code
+- [00:45:02] and so I'll put another comment here and I'll spell this out, this is a ternary operator.
+- [00:45:08] In Python we accomplish this a little bit different than if you're used to JavaScript
+- [00:45:12] or some other language, so the first thing I'm going to type is what I want to be the
+- [00:45:17] output if the statement is true, so I'm going to type print right on and then after that
+- [00:45:27] I'm going to actually put the conditional statement what we're checking for, so I'll
+- [00:45:31] say if meaning is greater than 10 and then after that I need the word else still and
+- [00:45:39] then I can put what the output will be if it is false and I'll print not today, that
+- [00:45:46] is our ternary statement and it uses the ternary operator, it looks a little different especially
+- [00:45:53] than I often work in JavaScript for example, it looks a little different than the way I
+- [00:45:57] would do this in JavaScript, let's go ahead and run the code again just by clicking the
+- [00:46:02] play button and we get not today, it works just fine, let's put the number back to 42
+- [00:46:09] and let's run it again and now we get right on, our ternary statement is working as expected,
+- [00:46:15] so we've covered the most common Python operators today but some other Python operators will

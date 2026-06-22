@@ -1,0 +1,233 @@
+# Chapter 1 - Getting Started
+
+Source: Python Tutorial for Beginners (with mini-projects) by freeCodeCamp.org
+URL: https://www.youtube.com/watch?v=qwAFL1597eM
+Time range: 00:01:23-00:14:50
+
+## Transcript
+
+- [00:01:23] Let's get started learning Python with Chapter 1.
+- [00:01:26] Python is a great first programming language to learn, but if you already know another
+- [00:01:30] programming language like JavaScript, Python is still a great addition to your resume.
+- [00:01:35] Congratulations on your decision to learn Python.
+- [00:01:38] It's a great first or additional programming language to learn, but don't take my word
+- [00:01:43] for it.
+- [00:01:44] I asked chatgpt why anyone should learn Python, and here's what it had to say.
+- [00:01:49] Python is easy to learn and use.
+- [00:01:51] It has a simple and straightforward syntax, and it's an excellent language for beginners.
+- [00:01:56] Versatility.
+- [00:01:57] Python is a versatile language, and it's used in a wide range of applications, from web
+- [00:02:01] development to scientific computing and data analysis.
+- [00:02:05] A large and active community.
+- [00:02:08] Python has a large and active community of users and developers, and there's a lot of
+- [00:02:12] resources and support available for you.
+- [00:02:15] Good for rapid prototyping.
+- [00:02:17] Python's simplicity and ease of use make it an excellent choice for rapid prototyping
+- [00:02:21] and job opportunities.
+- [00:02:23] As one of the most popular programming languages, Python's in high demand in the job market.
+- [00:02:28] Top five reasons, essentially, that Python is a good programming language to learn and
+- [00:02:33] add to your resume.
+- [00:02:35] And we need to start with the right tools.
+- [00:02:36] So go to python.org, which you should see here in my URL bar, and from there we can
+- [00:02:42] download Python.
+- [00:02:44] So there is a downloads tab, and when you mouse over, it should show you the current
+- [00:02:48] download for your operating system.
+- [00:02:50] As you see, I'm on Windows here, and it says we are currently at Python 3.11.2.
+- [00:02:57] Of course, if you're watching this in the future, there may be a newer version.
+- [00:03:00] Now if you're not on Windows, you can also choose Mac OS or other platforms over here.
+- [00:03:05] And note here, it says Windows.
+- [00:03:08] Note that Python 3.9 plus cannot be used on Windows 7 or earlier.
+- [00:03:13] So if you're using Windows 7 or earlier, maybe you need to go to this Windows link and find
+- [00:03:18] an older version of Python to run, which should still allow you to complete this Python tutorial.
+- [00:03:24] So for now, click on the download for your operating system, download and install Python,
+- [00:03:31] and then come back to the video.
+- [00:03:32] Now that you've got Python downloaded and installed, we're going to install a code editor.
+- [00:03:38] And there are many different ones to choose from.
+- [00:03:40] My choice is Visual Studio Code, and I'm going to use it throughout the following Python
+- [00:03:45] lessons as I build the course.
+- [00:03:47] So to follow along with me, I recommend that you download and install Visual Studio Code
+- [00:03:52] for your operating system.
+- [00:03:54] Again, the website should identify which platform you're on, Windows, Mac, Linux, etc.
+- [00:04:00] And I'm at code.visualstudio.com.
+- [00:04:05] And then download the version for your operating system and install that.
+- [00:04:09] After you install, go ahead and open Visual Studio Code and then come back to the video.
+- [00:04:14] And now with Visual Studio Code open on your machine, you should see some type of welcome
+- [00:04:18] screen like I have here.
+- [00:04:20] You can go ahead and click the X to close that.
+- [00:04:23] We won't need that.
+- [00:04:24] But afterwards, we need to install the Python extension for Visual Studio Code.
+- [00:04:29] Now on the left hand, we see the activity bar, and we need to click the extensions icon
+- [00:04:34] right over here on the left.
+- [00:04:36] So I'm going to click that, and then I'm going to search for Python.
+- [00:04:40] And we should see Python from Microsoft.
+- [00:04:43] If you click on that, you can see Python, IntelliSense, Linting, Debugging, and other
+- [00:04:49] things that are available.
+- [00:04:50] Now I've already installed this extension, so I have uninstall and disable.
+- [00:04:55] You will need to go ahead and click install.
+- [00:04:57] That should show up here where I have uninstall and install this extension for Visual Studio
+- [00:05:01] Code.
+- [00:05:02] It should not take long at all.
+- [00:05:04] After you do that, you can go ahead and close out of this.
+- [00:05:07] You can click the file explorer icon over here just to show the file tree again for
+- [00:05:12] whatever folder that you currently have Visual Studio Code open in.
+- [00:05:16] I should mention that I created a folder.
+- [00:05:18] You can see I have lesson one as the name of my folder.
+- [00:05:21] And there are currently no files in it whatsoever.
+- [00:05:24] So my Visual Studio Code is empty.
+- [00:05:27] My folder is empty over here.
+- [00:05:29] Now in Visual Studio Code, we're going to open the command palette.
+- [00:05:32] And to do that, I'm going to press control shift in the letter P. If you're using a Mac,
+- [00:05:37] when I say control, you probably need to press command.
+- [00:05:41] So either command shift in the letter P or control shift in the letter P. That will open
+- [00:05:46] a command palette.
+- [00:05:48] And you can see my top choice says Python select interpreter.
+- [00:05:51] That may not be your top choice, so you can just start by typing the word Python and seeing
+- [00:05:57] all of the different commands that come up.
+- [00:05:59] And you could type all of this out, or you could scroll through and find the select interpreter.
+- [00:06:04] Once you do that, it's going to show the version of Python that you currently have installed.
+- [00:06:09] You can see I have Python 3.11.2, 64-bit, and I'm just going to select that.
+- [00:06:16] Once I've made that selection, I can then open a terminal window.
+- [00:06:20] And there is a terminal menu here at the top.
+- [00:06:22] When I click that, you can go to new terminal, or you can also just use the shortcut, which
+- [00:06:27] is what I usually do.
+- [00:06:28] A new terminal is control shift in the backtick, or just control backtick to open a terminal
+- [00:06:35] that may not be new.
+- [00:06:36] Say if you already had it open, say I could type something here like my name, which won't
+- [00:06:40] really amount to anything.
+- [00:06:42] If I were to try to run my name, for example, that wouldn't work.
+- [00:06:45] But if I close it and then press control and backtick, it opens up the same terminal, not
+- [00:06:50] a new terminal.
+- [00:06:51] So that is the difference.
+- [00:06:52] Control and backtick opens an existing terminal if one exists, and control shift backtick
+- [00:06:58] opens a new terminal.
+- [00:06:59] And you can have more than one terminal.
+- [00:07:01] If you click this plus button here, you can see now I've got two terminals open.
+- [00:07:05] Mine says bash because that is my default terminal.
+- [00:07:09] However, you might have other choices.
+- [00:07:11] On Windows, there's PowerShell, there's a command prompt.
+- [00:07:14] I'm using git bash.
+- [00:07:16] If you don't have that installed, that's okay.
+- [00:07:17] You can use a command prompt.
+- [00:07:19] And now I have a command prompt terminal window open.
+- [00:07:22] And you can see the difference over here.
+- [00:07:23] One's named command and one's named bash.
+- [00:07:26] So either would work, and on Mac or Linux, it could be different for you as well.
+- [00:07:31] But now we need to verify our Python installation.
+- [00:07:34] So on Windows, I'm going to type py, just py dash three, and then dash dash version.
+- [00:07:43] Now that's for Windows.
+- [00:07:44] If I'm on Mac or Linux, I need to type Python three, then dash dash version.
+- [00:07:51] And that would work on Mac or Linux.
+- [00:07:53] And then you press enter.
+- [00:07:54] So I'm going to go back to what I need to type for Windows.
+- [00:07:57] Just keep that in mind.
+- [00:07:58] Any time you see me type py on the command line like I am now, if you're on Mac or Linux,
+- [00:08:04] you need to type Python three.
+- [00:08:06] So it could be just a little different.
+- [00:08:08] Now I'm going to type dash dash version and press enter.
+- [00:08:12] And it gives us the version of Python that we currently have installed.
+- [00:08:16] I have Python 3.11.2.
+- [00:08:18] Now we can drag this window for a little more room also.
+- [00:08:21] I'll drag this up to make this command prompt or terminal, because I'm not really using
+- [00:08:26] a command prompt.
+- [00:08:27] I'm in git bash.
+- [00:08:28] But whichever terminal window you have open, you can make bigger by dragging it like I
+- [00:08:32] just did.
+- [00:08:33] Now I'm just going to type py once again on Mac and Linux type Python three instead.
+- [00:08:40] But now I'll just press enter with nothing after that.
+- [00:08:43] And now you can see we have something different here.
+- [00:08:46] We can actually run Python commands right here at this prompt.
+- [00:08:50] You see the three arrows.
+- [00:08:52] This is the Python REPL.
+- [00:08:54] And that stands for read, evaluate, print, loop.
+- [00:08:58] And we can just put in a command.
+- [00:08:59] Python, for example, can be a calculator.
+- [00:09:01] So I can press two plus two, press enter, and it outputs four.
+- [00:09:06] I can also do something with a string like my name, which I had typed earlier, but let's
+- [00:09:11] do this.
+- [00:09:12] I'll say name equals Dave.
+- [00:09:16] And now I'll press enter.
+- [00:09:18] Because there's nothing output currently, but if I type name, it's going to output my
+- [00:09:23] name.
+- [00:09:24] We assigned the string Dave to a variable called name.
+- [00:09:28] And so then when we typed name, it output the string Dave.
+- [00:09:32] Now it's good to know that we can run commands at the prompt like this.
+- [00:09:36] But this is not how we're usually going to provide commands to the interpreter.
+- [00:09:41] We are going to do that with files.
+- [00:09:43] And essentially creating a file is a bunch of commands put into one file that we tell
+- [00:09:48] Python to execute.
+- [00:09:50] Now Python is not a low-level language, and a low-level language is more machine-oriented.
+- [00:09:54] Instead, Python's a high-level language, and it uses an interpreter.
+- [00:09:59] And this allows us to write code which is easier for people to read.
+- [00:10:02] So in other words, Python is more user-friendly to read and to write.
+- [00:10:07] So for example, when I want to get out of this, I'm just going to type quit, and I need
+- [00:10:11] to put parentheses after, and press enter.
+- [00:10:14] And now we have quit our REPL environment, and we're just back to our normal prompt here.
+- [00:10:19] Now there are several ways to close this terminal window.
+- [00:10:22] Previously, you saw me click the X.
+- [00:10:24] That works.
+- [00:10:25] And then if I wanted to reopen it and still have this here, I could do that with control
+- [00:10:29] and backtick.
+- [00:10:30] However, I could click the trash can, and then that will get rid of this window.
+- [00:10:35] And if I were to open it, this stuff wouldn't be here any longer.
+- [00:10:39] So I'm just going to click X in case I want to bring that back up.
+- [00:10:42] So I mentioned creating a file, and we can do that a couple of ways in Visual Studio
+- [00:10:46] Code.
+- [00:10:47] One would be to go over here to this file tree that we see on the left, and click the
+- [00:10:51] plus button by the file icon.
+- [00:10:54] That would create a new file, and then we could name it.
+- [00:10:56] I can also just press control in for a shortcut, and that starts a new file, which is what
+- [00:11:02] I'm going to do now.
+- [00:11:03] And then I'm going to say something like greeting equals, and I'll put hello world, because
+- [00:11:11] that's something just traditional that you have to have any time you're learning a new
+- [00:11:15] programming language.
+- [00:11:16] And after that, then I'm going to say print, and then I'm going to pass in that greeting
+- [00:11:22] variable that we created above on the previous line.
+- [00:11:26] Now notice, this file is untitled, and it has a dot here, meaning we haven't saved
+- [00:11:30] this yet.
+- [00:11:31] So I'm going to press control s, I could go to the file menu, and from there I could also
+- [00:11:36] choose save, or save as, I'm just going to do control s, and it's still going to ask
+- [00:11:42] me what to name the file, and I'm going to save it in my lesson one folder.
+- [00:11:46] So I'm going to name this hello, and then I want it to end with the dot py extension.
+- [00:11:52] Right now it says save as type plain text.
+- [00:11:55] That is not what I want.
+- [00:11:56] I want to find the Python extensions here inside of the file types, and make sure I'm
+- [00:12:02] saving as type Python, which you can see it can have different types.
+- [00:12:06] I'm using the dot py.
+- [00:12:08] So I'll click save.
+- [00:12:10] Now I've saved my Python file type, hello dot py, and you can see Visual Studio Code
+- [00:12:15] now acknowledges this is a Python file type, and it is color coded part of the code.
+- [00:12:21] So the string has a different color, and the command here for print has a different color.
+- [00:12:27] The parentheses are also in a different color.
+- [00:12:29] So it makes it a little easier to read the code.
+- [00:12:32] And now that we've created this file, we can run this command, or commands, whatever we
+- [00:12:37] would have in the file, we can tell Python to execute in three different ways.
+- [00:12:42] One is to go to this play button that we see over here in the top right of Visual Studio
+- [00:12:46] Code.
+- [00:12:47] Now there's a little caret here that I'm going to click, and it gives us a drop down.
+- [00:12:50] I'm going to choose run Python file, and when I do that, it opens up this terminal window.
+- [00:12:56] Notice it's named Python over here now.
+- [00:12:58] It's not the one we had previously named Bash, so I just clicked the trash can to get rid
+- [00:13:02] of that.
+- [00:13:03] But here is what it ran when we told it to run the file.
+- [00:13:07] It put this command, and this said exactly where the Python executable is.
+- [00:13:12] And then after that, we have this other long string here that says exactly where the hello
+- [00:13:18] .py file is, and then we get the output from that file that says hello world.
+- [00:13:24] Now when we were to, if we were to run this file ourselves, we would not have to type
+- [00:13:29] all of this.
+- [00:13:30] Although we could copy and paste this in, we can use a shortcut or two for this.
+- [00:13:35] One, we already know that we can just call Python in Windows with py, again Mac and Linux
+- [00:13:41] type Python 3.
+- [00:13:44] Remember that, a space, and since we're already in this lesson one directory that I have,
+- [00:13:50] or folder you could call, I said directory, but it's the same thing, if you've created
+- [00:13:54] a folder with a different name, you would be in that folder.
+- [00:13:57] So if you're already in that folder and you see your file over here, I can just type in
+- [00:14:02] hello.py, and now we're telling Python to run that hello file that will accomplish the
+- [00:14:09] same thing that we saw executed above when we used the play button up above.
+- [00:14:15] So now I'm going to press enter, and we get the same output, hello world.
+- [00:14:20] Also we could go to the file tree and right click, I believe in Mac that would be a command
+- [00:14:25] click, and then we scroll down here and we find run Python file in terminal.
+- [00:14:32] So I'll select that, and it runs it again just like when we did the play button, so
+- [00:14:36] you see these extra commands.
+- [00:14:38] So three different ways to run our Python file.
+- [00:14:41] So congratulations again on getting started with Python, you've created your first file,
+- [00:14:47] you've got it all set up on your computer, and we've got much more to learn ahead.

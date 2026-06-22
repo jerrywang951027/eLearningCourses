@@ -1,0 +1,428 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Intro - Course Orientation</title>
+  <style>
+:root {
+  --ink: #18202a;
+  --muted: #586575;
+  --line: #d9e0e8;
+  --panel: #ffffff;
+  --soft: #f5f7fa;
+  --accent: #176f7a;
+  --wrong: #a24118;
+  --right: #0d6b3f;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  line-height: 1.55;
+  color: var(--ink);
+  background: #eef2f5;
+}
+header {
+  padding: 32px clamp(18px, 4vw, 56px);
+  background: #17212b;
+  color: #fff;
+}
+header a { color: #aee4ef; }
+main {
+  width: min(1120px, calc(100% - 32px));
+  margin: 28px auto 56px;
+}
+h1, h2, h3 { line-height: 1.2; }
+h1 { margin: 0 0 10px; font-size: clamp(2rem, 5vw, 3.25rem); }
+h2 { margin-top: 36px; padding-bottom: 8px; border-bottom: 1px solid var(--line); }
+nav { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 18px; }
+nav a {
+  color: #fff;
+  text-decoration: none;
+  border: 1px solid rgba(255,255,255,.28);
+  border-radius: 6px;
+  padding: 7px 10px;
+}
+.meta { color: #d9e7ed; max-width: 850px; }
+.grid, .note-pages {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 16px;
+}
+.card, .page, .question, .challenge {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 18px;
+}
+.card a { color: var(--accent); font-weight: 800; text-decoration: none; }
+.pill {
+  display: inline-flex;
+  align-items: center;
+  min-height: 28px;
+  padding: 3px 9px;
+  border-radius: 999px;
+  background: #e8f3f5;
+  color: #125965;
+  font-size: 0.88rem;
+  font-weight: 800;
+}
+.options { list-style: none; padding: 0; margin: 12px 0; }
+.options li { padding: 7px 0; border-top: 1px solid #edf0f3; }
+.options label { display: flex; gap: 9px; align-items: flex-start; cursor: pointer; }
+.options input { margin-top: 5px; }
+button {
+  appearance: none;
+  border: 0;
+  border-radius: 6px;
+  padding: 9px 13px;
+  background: var(--accent);
+  color: #fff;
+  font-weight: 800;
+  cursor: pointer;
+}
+button:hover { background: #125965; }
+.feedback { min-height: 24px; font-weight: 800; }
+.feedback.correct { color: var(--right); }
+.feedback.wrong { color: var(--wrong); }
+.reason {
+  background: var(--soft);
+  border-left: 4px solid var(--accent);
+  padding: 10px 14px;
+  margin-top: 10px;
+}
+.reason[hidden], .solution[hidden] { display: none; }
+.code-entry {
+  width: 100%;
+  min-height: 170px;
+  margin-top: 10px;
+  padding: 12px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  resize: vertical;
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: var(--ink);
+  background: #fbfcfd;
+}
+pre {
+  overflow-x: auto;
+  padding: 14px;
+  border-radius: 8px;
+  background: #101820;
+  color: #eaf4f7;
+}
+code { font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace; }
+</style>
+  <script>
+document.addEventListener("click", (event) => {
+  const checkButton = event.target.closest("[data-check-question]");
+  if (checkButton) {
+    const question = checkButton.closest(".question");
+    const selected = question.querySelector("input[type='radio']:checked");
+    const feedback = question.querySelector(".feedback");
+    const reason = question.querySelector(".reason");
+    if (!selected) {
+      feedback.textContent = "Choose an answer first.";
+      feedback.className = "feedback wrong";
+      reason.hidden = true;
+      reason.textContent = "";
+      return;
+    }
+    const correct = selected.dataset.correct === "true";
+    feedback.textContent = correct ? "Right" : "Wrong";
+    feedback.className = correct ? "feedback correct" : "feedback wrong";
+    reason.textContent = selected.dataset.reason;
+    reason.hidden = false;
+  }
+
+  const revealButton = event.target.closest("[data-reveal-solution]");
+  if (revealButton) {
+    const challenge = revealButton.closest(".challenge");
+    const solution = challenge.querySelector(".solution");
+    const hidden = solution.hidden;
+    solution.hidden = !hidden;
+    revealButton.textContent = hidden ? "Hide reference implementation" : "Reveal reference implementation";
+  }
+});
+</script>
+</head>
+<body>
+  <header>
+    <h1>Intro - Course Orientation</h1>
+    <p class="meta">Chapter-specific materials generated from the transcript for <a href="https://www.youtube.com/watch?v=qwAFL1597eM">Python Tutorial for Beginners (with mini-projects)</a>.</p>
+    <nav>
+      <a href="../index.html">Main Python Materials</a>
+      <a href="./index.html">Chapter Materials</a>
+      <a href="../../index.html">Course Catalog</a>
+    </nav>
+  </header>
+  <main>
+<p><span class="pill">00:00:00-00:01:23</span></p>
+<p>Transcript file: <a href="../../transcripts/00-intro.md">00-intro.md</a></p>
+
+<h2>Notes</h2>
+<section class="note-pages">
+  <article class="page"><h3>Page 1</h3><p>The intro frames the course as a nearly nine-hour beginner Python path taught by Dave Gray and shared through freeCodeCamp. It is designed for learners who are starting Python from scratch as well as learners who may already know another language and want to add Python.</p><p>The transcript emphasizes that the course is organized like a video textbook. Instead of being one continuous unsorted lesson, it is split into clearly defined chapters that build on one another. That structure matters because a learner can review one chapter at a time and connect each new topic to earlier chapters.</p><p>A key promise of the course is practice through mini-projects. The intro says those small projects help learners grasp Python features instead of only hearing explanations. This matters for study planning: notes should capture concepts, but practice should turn them into habits.</p></article>
+  <article class="page"><h3>Page 2</h3><p>The intro also points learners to a GitHub resource containing links mentioned throughout the lessons. That detail matters because professional learning often includes official downloads, editor extensions, documentation, and external references rather than only video watching.</p><p>The course is positioned as beginner-friendly, but not passive. The learner should expect to install tools, follow along, build projects, and revisit chapters. The intro is not a syntax lesson; it is a map for how to use the rest of the course.</p><p>For this chapter, the most important takeaway is how to study the course: work chapter by chapter, keep the linked resources nearby, and treat the projects as required practice rather than optional extras.</p></article>
+</section>
+
+<h2>Quiz</h2>
+<section class="question">
+  <h3>1. Who is introduced as the instructor for the Python tutorials?</h3>
+  <ul class="options">
+    <li><label><input type="radio" name="q-0-0" data-correct="true" data-reason="Right: the intro names Dave Gray as the creator/instructor."><span><strong>A.</strong> Dave Gray</span></label></li><li><label><input type="radio" name="q-0-0" data-correct="false" data-reason="Wrong: this is not what the chapter transcript says or demonstrates."><span><strong>B.</strong> Beau Carnes</span></label></li><li><label><input type="radio" name="q-0-0" data-correct="false" data-reason="Wrong: this confuses the chapter topic with a different Python concept."><span><strong>C.</strong> Guido van Rossum</span></label></li><li><label><input type="radio" name="q-0-0" data-correct="false" data-reason="Wrong: this skips an important detail emphasized in the chapter."><span><strong>D.</strong> A Microsoft extension author</span></label></li>
+  </ul>
+  <button type="button" data-check-question>Check</button>
+  <span class="feedback" aria-live="polite"></span>
+  <p class="reason" hidden></p>
+</section>
+<section class="question">
+  <h3>2. How is the course structure described?</h3>
+  <ul class="options">
+    <li><label><input type="radio" name="q-0-1" data-correct="false" data-reason="Wrong: this is not what the chapter transcript says or demonstrates."><span><strong>A.</strong> As one short coding demo</span></label></li><li><label><input type="radio" name="q-0-1" data-correct="false" data-reason="Wrong: this confuses the chapter topic with a different Python concept."><span><strong>B.</strong> As an advanced-only reference</span></label></li><li><label><input type="radio" name="q-0-1" data-correct="false" data-reason="Wrong: this skips an important detail emphasized in the chapter."><span><strong>C.</strong> As a collection of unrelated livestreams</span></label></li><li><label><input type="radio" name="q-0-1" data-correct="true" data-reason="Right: the transcript says the tutorials build on each other like book chapters."><span><strong>D.</strong> Like chapters of a book or video textbook</span></label></li>
+  </ul>
+  <button type="button" data-check-question>Check</button>
+  <span class="feedback" aria-live="polite"></span>
+  <p class="reason" hidden></p>
+</section>
+<section class="question">
+  <h3>3. What makes the course stand out according to the intro?</h3>
+  <ul class="options">
+    <li><label><input type="radio" name="q-0-2" data-correct="false" data-reason="Wrong: this is not what the chapter transcript says or demonstrates."><span><strong>A.</strong> It avoids all practice</span></label></li><li><label><input type="radio" name="q-0-2" data-correct="false" data-reason="Wrong: this confuses the chapter topic with a different Python concept."><span><strong>B.</strong> It only teaches theory</span></label></li><li><label><input type="radio" name="q-0-2" data-correct="true" data-reason="Right: mini-projects are named as a key strength."><span><strong>C.</strong> It includes small projects along the way</span></label></li><li><label><input type="radio" name="q-0-2" data-correct="false" data-reason="Wrong: this skips an important detail emphasized in the chapter."><span><strong>D.</strong> It requires paid software</span></label></li>
+  </ul>
+  <button type="button" data-check-question>Check</button>
+  <span class="feedback" aria-live="polite"></span>
+  <p class="reason" hidden></p>
+</section>
+<section class="question">
+  <h3>4. What resource does the instructor mention for lesson links?</h3>
+  <ul class="options">
+    <li><label><input type="radio" name="q-0-3" data-correct="false" data-reason="Wrong: this is not what the chapter transcript says or demonstrates."><span><strong>A.</strong> A printed textbook only</span></label></li><li><label><input type="radio" name="q-0-3" data-correct="true" data-reason="Right: the intro says links are compiled into one GitHub resource."><span><strong>B.</strong> A GitHub resource in the description</span></label></li><li><label><input type="radio" name="q-0-3" data-correct="false" data-reason="Wrong: this confuses the chapter topic with a different Python concept."><span><strong>C.</strong> A private chat room</span></label></li><li><label><input type="radio" name="q-0-3" data-correct="false" data-reason="Wrong: this skips an important detail emphasized in the chapter."><span><strong>D.</strong> A browser bookmark folder</span></label></li>
+  </ul>
+  <button type="button" data-check-question>Check</button>
+  <span class="feedback" aria-live="polite"></span>
+  <p class="reason" hidden></p>
+</section>
+<section class="question">
+  <h3>5. What kind of learner is the course aimed at?</h3>
+  <ul class="options">
+    <li><label><input type="radio" name="q-0-4" data-correct="true" data-reason="Right: the intro repeatedly calls it a beginner Python course."><span><strong>A.</strong> Beginners who want to learn Python</span></label></li><li><label><input type="radio" name="q-0-4" data-correct="false" data-reason="Wrong: this is not what the chapter transcript says or demonstrates."><span><strong>B.</strong> Only senior Python maintainers</span></label></li><li><label><input type="radio" name="q-0-4" data-correct="false" data-reason="Wrong: this confuses the chapter topic with a different Python concept."><span><strong>C.</strong> Only database administrators</span></label></li><li><label><input type="radio" name="q-0-4" data-correct="false" data-reason="Wrong: this skips an important detail emphasized in the chapter."><span><strong>D.</strong> Only graphic designers</span></label></li>
+  </ul>
+  <button type="button" data-check-question>Check</button>
+  <span class="feedback" aria-live="polite"></span>
+  <p class="reason" hidden></p>
+</section>
+<section class="question">
+  <h3>6. What should a learner expect to do throughout the course?</h3>
+  <ul class="options">
+    <li><label><input type="radio" name="q-0-5" data-correct="false" data-reason="Wrong: this is not what the chapter transcript says or demonstrates."><span><strong>A.</strong> Only watch without coding</span></label></li><li><label><input type="radio" name="q-0-5" data-correct="false" data-reason="Wrong: this confuses the chapter topic with a different Python concept."><span><strong>B.</strong> Skip the chapters</span></label></li><li><label><input type="radio" name="q-0-5" data-correct="false" data-reason="Wrong: this skips an important detail emphasized in the chapter."><span><strong>C.</strong> Memorize every keyword before starting</span></label></li><li><label><input type="radio" name="q-0-5" data-correct="true" data-reason="Right: the intro highlights building projects along the way."><span><strong>D.</strong> Build small projects while learning concepts</span></label></li>
+  </ul>
+  <button type="button" data-check-question>Check</button>
+  <span class="feedback" aria-live="polite"></span>
+  <p class="reason" hidden></p>
+</section>
+<section class="question">
+  <h3>7. Which organization shares the video?</h3>
+  <ul class="options">
+    <li><label><input type="radio" name="q-0-6" data-correct="false" data-reason="Wrong: this is not what the chapter transcript says or demonstrates."><span><strong>A.</strong> The Python Software Foundation only</span></label></li><li><label><input type="radio" name="q-0-6" data-correct="false" data-reason="Wrong: this confuses the chapter topic with a different Python concept."><span><strong>B.</strong> GitHub Education only</span></label></li><li><label><input type="radio" name="q-0-6" data-correct="true" data-reason="Right: the intro thanks freeCodeCamp for sharing the video."><span><strong>C.</strong> freeCodeCamp</span></label></li><li><label><input type="radio" name="q-0-6" data-correct="false" data-reason="Wrong: this skips an important detail emphasized in the chapter."><span><strong>D.</strong> Stack Overflow only</span></label></li>
+  </ul>
+  <button type="button" data-check-question>Check</button>
+  <span class="feedback" aria-live="polite"></span>
+  <p class="reason" hidden></p>
+</section>
+<section class="question">
+  <h3>8. What is the intro's role in the course?</h3>
+  <ul class="options">
+    <li><label><input type="radio" name="q-0-7" data-correct="false" data-reason="Wrong: this is not what the chapter transcript says or demonstrates."><span><strong>A.</strong> It teaches recursion in depth</span></label></li><li><label><input type="radio" name="q-0-7" data-correct="true" data-reason="Right: the intro sets expectations and points to resources."><span><strong>B.</strong> It orients the learner to the course plan</span></label></li><li><label><input type="radio" name="q-0-7" data-correct="false" data-reason="Wrong: this confuses the chapter topic with a different Python concept."><span><strong>C.</strong> It installs every package</span></label></li><li><label><input type="radio" name="q-0-7" data-correct="false" data-reason="Wrong: this skips an important detail emphasized in the chapter."><span><strong>D.</strong> It replaces all later chapters</span></label></li>
+  </ul>
+  <button type="button" data-check-question>Check</button>
+  <span class="feedback" aria-live="polite"></span>
+  <p class="reason" hidden></p>
+</section>
+<section class="question">
+  <h3>9. Why are clear chapters useful?</h3>
+  <ul class="options">
+    <li><label><input type="radio" name="q-0-8" data-correct="true" data-reason="Right: chapter structure helps learners navigate and review."><span><strong>A.</strong> They make review and progression easier</span></label></li><li><label><input type="radio" name="q-0-8" data-correct="false" data-reason="Wrong: this is not what the chapter transcript says or demonstrates."><span><strong>B.</strong> They remove the need to practice</span></label></li><li><label><input type="radio" name="q-0-8" data-correct="false" data-reason="Wrong: this confuses the chapter topic with a different Python concept."><span><strong>C.</strong> They make Python run faster</span></label></li><li><label><input type="radio" name="q-0-8" data-correct="false" data-reason="Wrong: this skips an important detail emphasized in the chapter."><span><strong>D.</strong> They hide the learning path</span></label></li>
+  </ul>
+  <button type="button" data-check-question>Check</button>
+  <span class="feedback" aria-live="polite"></span>
+  <p class="reason" hidden></p>
+</section>
+<section class="question">
+  <h3>10. What is the best study action after the intro?</h3>
+  <ul class="options">
+    <li><label><input type="radio" name="q-0-9" data-correct="false" data-reason="Wrong: this is not what the chapter transcript says or demonstrates."><span><strong>A.</strong> Close the editor forever</span></label></li><li><label><input type="radio" name="q-0-9" data-correct="false" data-reason="Wrong: this confuses the chapter topic with a different Python concept."><span><strong>B.</strong> Skip directly to the final project</span></label></li><li><label><input type="radio" name="q-0-9" data-correct="false" data-reason="Wrong: this skips an important detail emphasized in the chapter."><span><strong>C.</strong> Ignore the GitHub resources</span></label></li><li><label><input type="radio" name="q-0-9" data-correct="true" data-reason="Right: the intro leads directly into Chapter 1 and active learning."><span><strong>D.</strong> Start Chapter 1 and follow along actively</span></label></li>
+  </ul>
+  <button type="button" data-check-question>Check</button>
+  <span class="feedback" aria-live="polite"></span>
+  <p class="reason" hidden></p>
+</section>
+<section class="question">
+  <h3>11. How long does the instructor describe the course as being?</h3>
+  <ul class="options">
+    <li><label><input type="radio" name="q-0-10" data-correct="false" data-reason="Wrong: this is not what the chapter transcript says or demonstrates."><span><strong>A.</strong> About ten minutes</span></label></li><li><label><input type="radio" name="q-0-10" data-correct="false" data-reason="Wrong: this confuses the chapter topic with a different Python concept."><span><strong>B.</strong> Exactly one hour</span></label></li><li><label><input type="radio" name="q-0-10" data-correct="true" data-reason="Right: the intro describes nearly nine hours of Python instruction."><span><strong>C.</strong> Nearly nine hours</span></label></li><li><label><input type="radio" name="q-0-10" data-correct="false" data-reason="Wrong: this skips an important detail emphasized in the chapter."><span><strong>D.</strong> Several days of live meetings</span></label></li>
+  </ul>
+  <button type="button" data-check-question>Check</button>
+  <span class="feedback" aria-live="polite"></span>
+  <p class="reason" hidden></p>
+</section>
+<section class="question">
+  <h3>12. What does the intro say the tutorials do?</h3>
+  <ul class="options">
+    <li><label><input type="radio" name="q-0-11" data-correct="false" data-reason="Wrong: this is not what the chapter transcript says or demonstrates."><span><strong>A.</strong> Repeat the same example only</span></label></li><li><label><input type="radio" name="q-0-11" data-correct="true" data-reason="Right: the transcript says the tutorials build upon each other."><span><strong>B.</strong> Build upon each other</span></label></li><li><label><input type="radio" name="q-0-11" data-correct="false" data-reason="Wrong: this confuses the chapter topic with a different Python concept."><span><strong>C.</strong> Avoid sequence or structure</span></label></li><li><label><input type="radio" name="q-0-11" data-correct="false" data-reason="Wrong: this skips an important detail emphasized in the chapter."><span><strong>D.</strong> Focus only on installation</span></label></li>
+  </ul>
+  <button type="button" data-check-question>Check</button>
+  <span class="feedback" aria-live="polite"></span>
+  <p class="reason" hidden></p>
+</section>
+<section class="question">
+  <h3>13. What does the intro imply about the mini-projects?</h3>
+  <ul class="options">
+    <li><label><input type="radio" name="q-0-12" data-correct="true" data-reason="Right: the intro says projects help learners grasp Python features."><span><strong>A.</strong> They help learners grasp key features</span></label></li><li><label><input type="radio" name="q-0-12" data-correct="false" data-reason="Wrong: this is not what the chapter transcript says or demonstrates."><span><strong>B.</strong> They are unrelated decorations</span></label></li><li><label><input type="radio" name="q-0-12" data-correct="false" data-reason="Wrong: this confuses the chapter topic with a different Python concept."><span><strong>C.</strong> They replace all explanation</span></label></li><li><label><input type="radio" name="q-0-12" data-correct="false" data-reason="Wrong: this skips an important detail emphasized in the chapter."><span><strong>D.</strong> They are only for experts</span></label></li>
+  </ul>
+  <button type="button" data-check-question>Check</button>
+  <span class="feedback" aria-live="polite"></span>
+  <p class="reason" hidden></p>
+</section>
+<section class="question">
+  <h3>14. Why is freeCodeCamp thanked in the intro?</h3>
+  <ul class="options">
+    <li><label><input type="radio" name="q-0-13" data-correct="false" data-reason="Wrong: this is not what the chapter transcript says or demonstrates."><span><strong>A.</strong> For creating Python itself</span></label></li><li><label><input type="radio" name="q-0-13" data-correct="false" data-reason="Wrong: this confuses the chapter topic with a different Python concept."><span><strong>B.</strong> For selling the required editor</span></label></li><li><label><input type="radio" name="q-0-13" data-correct="false" data-reason="Wrong: this skips an important detail emphasized in the chapter."><span><strong>C.</strong> For hosting a paid exam</span></label></li><li><label><input type="radio" name="q-0-13" data-correct="true" data-reason="Right: the transcript thanks freeCodeCamp as a free learning resource."><span><strong>D.</strong> For sharing the video and helping people learn to code for free</span></label></li>
+  </ul>
+  <button type="button" data-check-question>Check</button>
+  <span class="feedback" aria-live="polite"></span>
+  <p class="reason" hidden></p>
+</section>
+<section class="question">
+  <h3>15. What does the instructor say about links mentioned in lessons?</h3>
+  <ul class="options">
+    <li><label><input type="radio" name="q-0-14" data-correct="false" data-reason="Wrong: this is not what the chapter transcript says or demonstrates."><span><strong>A.</strong> They are intentionally hidden</span></label></li><li><label><input type="radio" name="q-0-14" data-correct="false" data-reason="Wrong: this confuses the chapter topic with a different Python concept."><span><strong>B.</strong> They are only available in a printed book</span></label></li><li><label><input type="radio" name="q-0-14" data-correct="true" data-reason="Right: the intro explicitly says lesson links are compiled into a GitHub resource."><span><strong>C.</strong> They are compiled into one GitHub resource</span></label></li><li><label><input type="radio" name="q-0-14" data-correct="false" data-reason="Wrong: this skips an important detail emphasized in the chapter."><span><strong>D.</strong> They are unrelated to the course</span></label></li>
+  </ul>
+  <button type="button" data-check-question>Check</button>
+  <span class="feedback" aria-live="polite"></span>
+  <p class="reason" hidden></p>
+</section>
+<section class="question">
+  <h3>16. What learning pattern best matches the intro?</h3>
+  <ul class="options">
+    <li><label><input type="radio" name="q-0-15" data-correct="false" data-reason="Wrong: this is not what the chapter transcript says or demonstrates."><span><strong>A.</strong> Watch once with no practice</span></label></li><li><label><input type="radio" name="q-0-15" data-correct="true" data-reason="Right: the intro presents a structured, project-supported learning path."><span><strong>B.</strong> Watch, follow along, build, and review by chapter</span></label></li><li><label><input type="radio" name="q-0-15" data-correct="false" data-reason="Wrong: this confuses the chapter topic with a different Python concept."><span><strong>C.</strong> Skip setup and start at the end</span></label></li><li><label><input type="radio" name="q-0-15" data-correct="false" data-reason="Wrong: this skips an important detail emphasized in the chapter."><span><strong>D.</strong> Only memorize the instructor's name</span></label></li>
+  </ul>
+  <button type="button" data-check-question>Check</button>
+  <span class="feedback" aria-live="polite"></span>
+  <p class="reason" hidden></p>
+</section>
+<section class="question">
+  <h3>17. What does the phrase video textbook suggest?</h3>
+  <ul class="options">
+    <li><label><input type="radio" name="q-0-16" data-correct="true" data-reason="Right: video textbook implies organized chapters."><span><strong>A.</strong> Structured chapters that can be studied in order</span></label></li><li><label><input type="radio" name="q-0-16" data-correct="false" data-reason="Wrong: this is not what the chapter transcript says or demonstrates."><span><strong>B.</strong> A random playlist with no sequence</span></label></li><li><label><input type="radio" name="q-0-16" data-correct="false" data-reason="Wrong: this confuses the chapter topic with a different Python concept."><span><strong>C.</strong> A silent code recording</span></label></li><li><label><input type="radio" name="q-0-16" data-correct="false" data-reason="Wrong: this skips an important detail emphasized in the chapter."><span><strong>D.</strong> A written-only PDF</span></label></li>
+  </ul>
+  <button type="button" data-check-question>Check</button>
+  <span class="feedback" aria-live="polite"></span>
+  <p class="reason" hidden></p>
+</section>
+<section class="question">
+  <h3>18. What is one reason the course is positioned as beginner-friendly?</h3>
+  <ul class="options">
+    <li><label><input type="radio" name="q-0-17" data-correct="false" data-reason="Wrong: this is not what the chapter transcript says or demonstrates."><span><strong>A.</strong> It assumes professional Python experience</span></label></li><li><label><input type="radio" name="q-0-17" data-correct="false" data-reason="Wrong: this confuses the chapter topic with a different Python concept."><span><strong>B.</strong> It avoids explaining setup</span></label></li><li><label><input type="radio" name="q-0-17" data-correct="false" data-reason="Wrong: this skips an important detail emphasized in the chapter."><span><strong>C.</strong> It requires prior AI expertise</span></label></li><li><label><input type="radio" name="q-0-17" data-correct="true" data-reason="Right: the intro emphasizes clear instruction and chapter structure."><span><strong>D.</strong> It has clear teaching and clearly defined chapters</span></label></li>
+  </ul>
+  <button type="button" data-check-question>Check</button>
+  <span class="feedback" aria-live="polite"></span>
+  <p class="reason" hidden></p>
+</section>
+<section class="question">
+  <h3>19. What should learners keep nearby while studying?</h3>
+  <ul class="options">
+    <li><label><input type="radio" name="q-0-18" data-correct="false" data-reason="Wrong: this is not what the chapter transcript says or demonstrates."><span><strong>A.</strong> Only a calculator</span></label></li><li><label><input type="radio" name="q-0-18" data-correct="false" data-reason="Wrong: this confuses the chapter topic with a different Python concept."><span><strong>B.</strong> A CSS framework</span></label></li><li><label><input type="radio" name="q-0-18" data-correct="true" data-reason="Right: links mentioned in the lessons are gathered in GitHub."><span><strong>C.</strong> The GitHub resource links</span></label></li><li><label><input type="radio" name="q-0-18" data-correct="false" data-reason="Wrong: this skips an important detail emphasized in the chapter."><span><strong>D.</strong> A database password</span></label></li>
+  </ul>
+  <button type="button" data-check-question>Check</button>
+  <span class="feedback" aria-live="polite"></span>
+  <p class="reason" hidden></p>
+</section>
+<section class="question">
+  <h3>20. Which statement best matches the intro transcript?</h3>
+  <ul class="options">
+    <li><label><input type="radio" name="q-0-19" data-correct="false" data-reason="Wrong: this is not what the chapter transcript says or demonstrates."><span><strong>A.</strong> The course is only a quiz</span></label></li><li><label><input type="radio" name="q-0-19" data-correct="true" data-reason="Right: all three elements are emphasized in the intro."><span><strong>B.</strong> The course combines instruction, chapters, and projects</span></label></li><li><label><input type="radio" name="q-0-19" data-correct="false" data-reason="Wrong: this confuses the chapter topic with a different Python concept."><span><strong>C.</strong> The course has no practice</span></label></li><li><label><input type="radio" name="q-0-19" data-correct="false" data-reason="Wrong: this skips an important detail emphasized in the chapter."><span><strong>D.</strong> The course is not about Python</span></label></li>
+  </ul>
+  <button type="button" data-check-question>Check</button>
+  <span class="feedback" aria-live="polite"></span>
+  <p class="reason" hidden></p>
+</section>
+
+<h2>Code Challenges</h2>
+<section class="challenge">
+  <h3>1. Course Welcome</h3>
+  <p>Write a function that returns a welcome message for a Python beginner course.</p>
+  <label>
+    <strong>Your code:</strong>
+    <textarea class="code-entry" spellcheck="false" autocapitalize="off" autocomplete="off" placeholder="Write your Python solution here..."></textarea>
+  </label>
+  <p><button type="button" data-reveal-solution>Reveal reference implementation</button></p>
+  <div class="solution" hidden>
+    <p><strong>Reference implementation:</strong></p>
+    <pre><code>def welcome_message():
+    return &quot;Welcome to the Python beginner course!&quot;</code></pre>
+  </div>
+</section>
+<section class="challenge">
+  <h3>2. Chapter Label</h3>
+  <p>Write a function that formats a chapter number and title.</p>
+  <label>
+    <strong>Your code:</strong>
+    <textarea class="code-entry" spellcheck="false" autocapitalize="off" autocomplete="off" placeholder="Write your Python solution here..."></textarea>
+  </label>
+  <p><button type="button" data-reveal-solution>Reveal reference implementation</button></p>
+  <div class="solution" hidden>
+    <p><strong>Reference implementation:</strong></p>
+    <pre><code>def chapter_label(number, title):
+    return f&quot;Chapter {number}: {title}&quot;</code></pre>
+  </div>
+</section>
+<section class="challenge">
+  <h3>3. Resource Reminder</h3>
+  <p>Write a function that returns a reminder to check course resources.</p>
+  <label>
+    <strong>Your code:</strong>
+    <textarea class="code-entry" spellcheck="false" autocapitalize="off" autocomplete="off" placeholder="Write your Python solution here..."></textarea>
+  </label>
+  <p><button type="button" data-reveal-solution>Reveal reference implementation</button></p>
+  <div class="solution" hidden>
+    <p><strong>Reference implementation:</strong></p>
+    <pre><code>def resource_reminder():
+    return &quot;Check the GitHub resource links while studying.&quot;</code></pre>
+  </div>
+</section>
+<section class="challenge">
+  <h3>4. Study Plan Item</h3>
+  <p>Represent a study task as a dictionary with title and completed fields.</p>
+  <label>
+    <strong>Your code:</strong>
+    <textarea class="code-entry" spellcheck="false" autocapitalize="off" autocomplete="off" placeholder="Write your Python solution here..."></textarea>
+  </label>
+  <p><button type="button" data-reveal-solution>Reveal reference implementation</button></p>
+  <div class="solution" hidden>
+    <p><strong>Reference implementation:</strong></p>
+    <pre><code>def make_study_task(title):
+    return {&quot;title&quot;: title, &quot;completed&quot;: False}</code></pre>
+  </div>
+</section>
+<section class="challenge">
+  <h3>5. Mark Complete</h3>
+  <p>Mark a study task dictionary as completed.</p>
+  <label>
+    <strong>Your code:</strong>
+    <textarea class="code-entry" spellcheck="false" autocapitalize="off" autocomplete="off" placeholder="Write your Python solution here..."></textarea>
+  </label>
+  <p><button type="button" data-reveal-solution>Reveal reference implementation</button></p>
+  <div class="solution" hidden>
+    <p><strong>Reference implementation:</strong></p>
+    <pre><code>def mark_complete(task):
+    task[&quot;completed&quot;] = True
+    return task</code></pre>
+  </div>
+</section>
+</main>
+</body>
+</html>

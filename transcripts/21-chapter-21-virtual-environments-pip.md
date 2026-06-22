@@ -1,0 +1,290 @@
+# Chapter 21 - Virtual Environments & PIP
+
+Source: Python Tutorial for Beginners (with mini-projects) by freeCodeCamp.org
+URL: https://www.youtube.com/watch?v=qwAFL1597eM
+Time range: 06:57:15-07:27:23
+
+## Transcript
+
+- [06:57:21] we're learning about two related things today python virtual environments and also pip pip
+- [06:57:27] is an acronym for preferred installer program or some have said pip installs packages so let's
+- [06:57:34] start with pip so pip lets us install packages in our programs that are not already included in
+- [06:57:40] python like the math module and other modules that we've used in previous lessons so let's look at
+- [06:57:45] how to do that now pip is already included with python so you should have it after we've installed
+- [06:57:50] now i have a terminal window open i pressed control in the back tick to open that up
+- [06:57:56] and from here we could type normally i guess you would type pip install and then the package name
+- [06:58:04] one package that's popular that we can work with today is called requests so you could do that but
+- [06:58:10] if you get an error and i would get an error if i entered this right now or at least my antivirus
+- [06:58:15] doesn't like it i need to go ahead and type my python command which for me on windows is pi it
+- [06:58:21] might be python 3 for you on mac or linux for example and then dash m which just means module
+- [06:58:28] and i'm launching the module pip to install requests now i've already got this installed
+- [06:58:33] so you may see a different message than i do when i press enter but let's go ahead and press enter
+- [06:58:38] it should install this onto our computer now you might get a longer message if you didn't have that
+- [06:58:45] installed because mine says requirement already satisfied so just remember if the pip let me find
+- [06:58:51] it here again pip install requests i'll just type it out if that doesn't work for you remember to
+- [06:58:58] just go ahead and use the python command first with the dash m flag for module like i did there
+- [06:59:04] so you've got pi dash m pip install requests okay now that we have that installed where did it
+- [06:59:10] install well it's a global install so it's available to all of our python projects and you'll
+- [06:59:15] want to remember that for the future because we're going to come back to it when we discuss
+- [06:59:20] virtual environments now you can list all of the packages you've installed with pip with pip list
+- [06:59:27] so once again i need to start with pi dash m and then i'll say pip list and this will list everything
+- [06:59:34] that i've got installed here which is quite a few on my computer that are installed globally but
+- [06:59:39] we'll once again come back to that with a virtual environment but remember the command pip list when
+- [06:59:45] you want to see everything that you've installed with pip now you can also install a specific
+- [06:59:50] version notice all of the different packages have versions over here so if i scroll up and find
+- [06:59:56] requests here it is let's see requests it's at version 2.31.0 well maybe i want 2.30 i could go
+- [07:00:07] ahead and install that with pip install requests and then i'll set that equal to 2.30.0 press enter
+- [07:00:18] and yep my computer doesn't like it without the pi dash m let me go ahead and try that again
+- [07:00:24] and i'll press the arrow up to just bring that back up and at the beginning i'm going to add
+- [07:00:28] pi dash m and then pip install requests 2.30.0 go ahead and do this and it says the requirement
+- [07:00:38] is already filled for most of it but then here at the end it went ahead and uninstalled 2.31
+- [07:00:44] and now it says it successfully installed 2.30 so let's once again look at pip list and we'll see
+- [07:00:53] what version we have now listed here in our list of all of our packages and you can see requests is
+- [07:00:58] now at 2.30 so now i have an old version of the package and maybe i need to update it or i decide
+- [07:01:06] i want to update it so i'm going to once again say pip install and then i'm going to use the dash
+- [07:01:12] capital u flag put request back and it's going to update my request package to whatever the
+- [07:01:19] current release is so when i enter this it should now go back to 2.31 and now as you might expect
+- [07:01:27] you can also uninstall so let me go ahead and issue an uninstall command here with pip
+- [07:01:33] uninstall and i'll say request now i don't really want to uninstall this but i'm just going to show
+- [07:01:38] you how it works so i'll press enter and it says do i want to proceed yes or no so at least it
+- [07:01:45] gives you a confirmation before it goes ahead and uninstalls i'm just going to press in for no and
+- [07:01:50] press enter now you could do the y to see what it's like and then reinstall if you want to as well
+- [07:01:55] okay now you've got a good idea of what pip is all about it helps us install packages that are
+- [07:02:01] not already installed by default with python and now that you know this let's talk about why virtual
+- [07:02:08] environments exist so it's not unusual to have more than one python application already running
+- [07:02:13] on your computer and it's also not unusual to have a situation where one python app needs a
+- [07:02:19] specific version of a module and then another python app needs a different version of that same
+- [07:02:24] module so how can you provide two versions of the same module well remember we said pip installs
+- [07:02:30] updates globally so that can impact every python program so how do we get around that what we do
+- [07:02:37] with virtual environments they're a solution to this issue and you use them in development but
+- [07:02:42] you don't include them in your git repositories or send them to github so just note that you won't
+- [07:02:47] see any virtual environment files from this tutorial in the code repository for this lesson
+- [07:02:54] because i'm not going to send those to github so we use virtual environments with a project let's
+- [07:02:59] go ahead and create a small project that will allow us to demonstrate everything we're learning today
+- [07:03:04] i've already got the lesson 21 folder so now let's bring the terminal back up with control
+- [07:03:09] and backtick and we can go ahead and create a virtual environment i'll start with my python
+- [07:03:14] command then dash m and then venv which is the virtual environment program that's going to help
+- [07:03:21] us create our virtual environment we're going to name it dot venv now you'll see this will create
+- [07:03:28] a folder inside of our project i'll just go ahead and press enter and notice we now have a folder
+- [07:03:34] over here on the left that's dot venv that's our virtual environment but we still need to activate
+- [07:03:40] our virtual environment so to do that we'll type source and then i need to type dot venv for the
+- [07:03:48] folder and then inside of this folder let me go ahead and expand it's got a scripts folder
+- [07:03:54] and inside of there it's got activate dot bat and another activate file and so on but we're
+- [07:03:59] just going to call activate and what we need to do then is specify scripts and then activate
+- [07:04:07] if i spell activate correctly now this will go ahead and start our virtual environment notice
+- [07:04:13] now after i press enter we see in parentheses down here dot venv we're inside of an active
+- [07:04:19] virtual environment now i'll press enter again and you'll notice it once again ends with that dot
+- [07:04:25] venv inside of parentheses that's how you know it is activated now it's important to remember how
+- [07:04:31] to activate it because you're going to need to do that every time you come back to work on your
+- [07:04:35] project let's say you've closed this folder out and opened another project then you come back
+- [07:04:40] you're going to want to activate your virtual environment every time you're working on the
+- [07:04:44] project so you're not in the global environment now it's important to know you can also deactivate
+- [07:04:49] it and all you have to do for that is type deactivate so i'll do that and press enter
+- [07:04:56] and notice you don't have the parentheses and the dot venv anymore and if i press enter
+- [07:05:01] it still won't be there so now we're back in the global environment so i can use my arrow keys and
+- [07:05:07] just arrow back up to the previous commands if i want to activate or deactivate right now but right
+- [07:05:12] now remember i have that big long list of packages that are in my global environment with pip we can
+- [07:05:18] look at that again with pi dash m and pip list so here is a long list of the global packages i have
+- [07:05:26] now let's go ahead and activate our virtual environment it's now activated and now i'm not
+- [07:05:34] going to get an error on my computer if i just use pip instead of typing pi dash m now so now in the
+- [07:05:39] virtual environment you'll see me just do pip list and i don't have much because we just started our
+- [07:05:45] environment so we just have the basics right now inside of our virtual environment and notice it
+- [07:05:50] also says a new release of pip is available 22.3.1 should go up to 23.1.2 and it tells us how we
+- [07:06:00] could execute this as well so let's go ahead and do that now i can just use my pi command here
+- [07:06:05] instead of python.exe then i'll say dash m and then i'm going to say pip install we could use
+- [07:06:14] the two dashes and the word upgrade or you could use the one dash in the capital u like i showed
+- [07:06:19] you which means the same thing and then we'll just say pip it should go ahead and update that for us
+- [07:06:26] and now it says we're at 23.1.2 and we should be able to say pip list now let's go ahead and
+- [07:06:33] install some packages that we can use with our small project that we're going to create so let's
+- [07:06:39] install requests once again and we're going to need this in our virtual environment we already
+- [07:06:43] have it in the global but that's not going to be for this project now we're going to just use a
+- [07:06:47] virtual environment for this project so let's install that with i'll say pi dash m and then pip
+- [07:06:54] install requests and now it should install that and we can check that to see if it's on our virtual
+- [07:07:01] environment with pip list and now notice it installed several other things it didn't just
+- [07:07:08] install requests so this package request has some of its own dependencies and we can see the details
+- [07:07:15] about any package if we use the show command so i'll say pip show requests and now we get some
+- [07:07:25] details here so it says this also requires and it lists these other packages that it requires and
+- [07:07:31] notice those were installed and we should also be able to see those listed up here in the lib and
+- [07:07:37] then site packages folder and we see several things that were installed here as well now
+- [07:07:42] there's one more package i want to use today so i'm going to say pi dash m and then pip install
+- [07:07:49] and it's going to be python dash dot env go ahead and install this package as well and you could
+- [07:07:56] check to make sure it's installed with pip list if you want to i'm confident that it's already
+- [07:08:00] there it says it is successfully installed i've temporarily opened up a web browser here and
+- [07:08:06] we're at pi pi which is pypi.org and this is the website that has the python package index
+- [07:08:15] and this is where you can search for these packages to use inside of your application so
+- [07:08:20] if you're wondering where i could find requests or learn about python dash dot env that we just
+- [07:08:26] installed or many other packages go ahead and search for projects here on the python package
+- [07:08:33] index back in vs code now that we've installed these other packages we need let's once again
+- [07:08:38] look at our pip list so i'll say pip list and we'll see everything that's installed here in
+- [07:08:44] our virtual environment now these are the dependencies for our project and while i said we
+- [07:08:50] will not want to include our virtual environment files inside of any github repository we can go
+- [07:08:57] ahead and include a list of requirements and we should create that so let's type i'll start once
+- [07:09:03] again with pi dash m and then pip now freeze that's a new command so pip freeze then do a greater than
+- [07:09:11] sign and then put requirements dot txt so we're going to create a text file with the requirements
+- [07:09:21] in it let's go ahead and press enter and we should see this show up over here in our file tree and
+- [07:09:26] if i close the terminal we can see it lists all of the dependencies here for our project or if you
+- [07:09:32] want to use another word instead of dependencies it lists all the requirements for our project
+- [07:09:37] now as i've said i don't want dot venv the folder or anything inside of it inside of our github
+- [07:09:43] repository or my github repository for the course files as well so i'm going to create another file
+- [07:09:50] here called dot with a period first git ignore now this works with git and github and i'm going to
+- [07:09:58] list the dot venv folder inside of it and save this file so that way when i create a repository
+- [07:10:06] or when you would initialize a repository for your project using git if you know git if not
+- [07:10:12] i do have tutorials about that on my youtube channel as well but this way it will make sure
+- [07:10:18] this folder or dot venv is not included in that git repository with the rest of the source code
+- [07:10:25] but we've left a requirements dot txt that will tell everybody what should be installed to run
+- [07:10:31] the project and speaking of our project we haven't even created a python file yet so let's go ahead
+- [07:10:36] and do that and we'll name it weather dot py now we're going to create a simple program that goes
+- [07:10:43] on the internet and requests the weather from a service and of course returns the current weather
+- [07:10:49] to us and we're going to be able to request the weather from any city that we want to so let's
+- [07:10:54] learn how to do that in the browser i'm at open weather map dot org and here you need to go ahead
+- [07:11:01] and just sign up for a free account i've already done so so i have my name up here in the top right
+- [07:11:07] once you have signed up for that free account and i believe you'll have to confirm your email probably
+- [07:11:13] and there may be a slight waiting period as well so no rush but once you have all of that complete
+- [07:11:19] come back to the video and now i'm going to assume that is complete and you're back to the video and
+- [07:11:24] you've signed up for your own open weather map dot org free account from here you want to click
+- [07:11:30] your name in the top right and choose my api keys now don't worry about seeing my api keys because
+- [07:11:38] i'm going to delete them after this tutorial and i can create new ones notice the generate button
+- [07:11:44] over here so i'm just going to use one that i have you're going to probably want to generate one
+- [07:11:49] or if you have a default one you can copy either way just double click one of the api keys that
+- [07:11:55] you either generate or that you already have and control c to copy that now back in vs code let's
+- [07:12:02] create one more new file and it's going to be named dot env which dot means once again that it
+- [07:12:09] starts with a period now inside of this file i'm going to use all caps and say api underscore key
+- [07:12:16] equals i'm going to say control v or use control v to paste in that api key notice there's no quotes
+- [07:12:24] and they're not needed inside of this file this is our environment variable file and we use this
+- [07:12:30] in development this is another file that we never want to send to github because it contains our
+- [07:12:36] secrets and we don't want to share those in a code repository on github if you ever deploy an
+- [07:12:41] application on the web your host will allow you to insert the environment variables in spaces they
+- [07:12:49] have provided on the host for the website for example so you would take this value and take it
+- [07:12:55] to your host so you never include that in github but you do use it during development in a dot env
+- [07:13:01] file and that's what we're doing today so let's go to our git ignore file and besides the dot venv
+- [07:13:07] that's listed we also want to list dot env lowercase make sure it matches and save so you will not
+- [07:13:16] see the dot env file inside of my code repository for this lesson either back in the browser at open
+- [07:13:22] weather map org let's go ahead and click on api in the very top nav bar and once you're at api we
+- [07:13:30] need to scroll down and we're going to go to the current weather data api docs so click on api doc
+- [07:13:37] by current weather data now that we're here we see a url that they're providing us where we can
+- [07:13:44] request weather data from and we're going to modify this just a little because we can provide
+- [07:13:49] a city name instead of the latitude and longitude one other thing we're going to do is use a unit of
+- [07:13:56] measure so let's go ahead and highlight this much and we'll just modify it so ctrl c to copy this
+- [07:14:02] specific url now i said we're going to use a unit of measure so over on the right hand side click
+- [07:14:08] units of measure now you probably want to apply whatever unit of measure you're used to for the
+- [07:14:14] weather i'm used to the imperial because i'm used to seeing my temperature in fahrenheit for
+- [07:14:20] temperature in celsius it says use metric and they use kelvin by default so i'm going to set the
+- [07:14:28] units equal to imperial you possibly want units equal to metric depending on where you live and
+- [07:14:34] now we're back in vs code i'm going to type a variable quickly named request underscore url
+- [07:14:40] set this equal to a simple string right now and paste in that url that we got from the open
+- [07:14:47] weather map.org website i'm also going to press alt z so it wraps down and we can see everything
+- [07:14:53] and now of course we're going to modify this but i'm just going to start from the top i just
+- [07:14:58] wanted to get that pasted in first oh and let's go ahead and add that last thing the unit as well
+- [07:15:04] so we'll say and which is an ampersand symbol there and now we'll say units and then we'll put
+- [07:15:12] it equal to imperial of course i'm having some trouble typing make sure you do not have a typo
+- [07:15:19] or it may not work so i added this final parameter on the url and mine is going to be units equals
+- [07:15:27] imperial we will come back and fix the rest of the url but let's start at the top with our imports
+- [07:15:32] so we're going to import requests and after requests let's say from dot env import load
+- [07:15:43] underscore dot env that's going to help us get our environment variable value we're also going
+- [07:15:50] to need to import os which is of course built right into python and now we need to call load
+- [07:15:57] dot env and that's going to load in those environment variables so we can retrieve them
+- [07:16:02] and we only have the one which is the api key but it's still important to call this first and that
+- [07:16:07] way it will be available for us and now i'm going to create a function so we'll say def and then
+- [07:16:13] we'll call this git underscore current underscore weather and then inside the function we'll go
+- [07:16:19] ahead and start with a line that is just a print and we'll do a new line let's do three asterisks
+- [07:16:26] for example and then say git current weather conditions and three more asterisks and another
+- [07:16:35] new line that is just our welcome message when the function is called after that we're going to
+- [07:16:40] need a city value so we can get the weather for whatever city we want and we'll create an input
+- [07:16:46] there we'll once again have a new line and then we'll just say please enter a city name and after
+- [07:16:56] that we could put another line break yeah let's go ahead and do that so one more line break there
+- [07:17:02] we can just space things out nicely and after we get that city name is where we're going to need
+- [07:17:08] this request url of course we're going to have to insert the city name into it so now let's go ahead
+- [07:17:14] and fix our request url everything we see before the line break is fine so everything we have here
+- [07:17:21] to weather is good and then you start the params with the question mark in a url and we are not
+- [07:17:27] going to provide latitude or longitude however we are going to provide some city information so
+- [07:17:34] let me delete this ampersand as well because the api key could be the first thing we apply here
+- [07:17:40] and we have to pass it as the app id but this won't work just saying api key in there and likewise
+- [07:17:48] this also needs to be an f string so let's go ahead and put the f here which will allow us to
+- [07:17:53] insert those values so now i'm going to say os.get underscore env oh and i'm sorry there is no
+- [07:18:01] underscore it's get env without the underscore and now we can specify that variable name which was
+- [07:18:08] api key that we have inside of our.env over here so there is the variable name and we have now
+- [07:18:14] specified it and we use os.get env to get that and we loaded those values from that file with
+- [07:18:21] the load underscore.env but notice we haven't entered our city yet so before units let's go
+- [07:18:27] ahead and add another ampersand here and here we just put a queue which is an abbreviation in their
+- [07:18:34] api system for query i believe and what we want to pass in here is the city and we'll just wrap that
+- [07:18:41] in curly brackets and then we have the final ampersand and for mine units equal imperial so
+- [07:18:47] that's the full request url and let's go ahead and print the request underscore url and we'll
+- [07:18:55] just make sure that it's putting out what we expect it to so this will make sure you're not
+- [07:19:00] missing any values if we go ahead and test it that way so underneath this we can call our function
+- [07:19:05] with get current weather and that should go ahead and launch when we run the file so now let's go
+- [07:19:12] ahead and choose run python file and we have get current weather conditions please enter a city
+- [07:19:20] name so i'm going to say kansas city press enter and here is what was output so here's the full url
+- [07:19:29] and then we go ahead and get the app id param and it's equal to that api key then we have another
+- [07:19:36] ampersand which means there's going to be another param and this is the query which is q equals
+- [07:19:42] kansas city and then finally we have another ampersand units equals imperial so this looks
+- [07:19:50] like what i want although i'm a little concerned the kansas space city this space might create an
+- [07:19:56] issue we'll see if it goes ahead and works or not when we enter a city name with a space like new
+- [07:20:02] york or kansas city or new arelands or los angeles and so on okay i'm going to close the terminal
+- [07:20:08] and let's finish out this program we no longer need to print that request url so i'll comment
+- [07:20:13] that out so just leave it in there for you in the source code for this lesson if you want it
+- [07:20:18] now let's set our weather underscore data equal to requests now we're using that request package
+- [07:20:26] that we installed.get we're passing in the request underscore url and then we want a json
+- [07:20:33] format of data so json is a string that is sent in an object kind of format if you're not familiar
+- [07:20:41] with json i don't want to explain it all right now but it's the way data is sent back and forth
+- [07:20:46] on the web for many many applications and that's how we want to receive this so we'll see what
+- [07:20:52] that looks like when we go ahead and print the weather underscore data now when we call that
+- [07:20:59] function so let's save the file once again with control s and now i'll run the file and let's
+- [07:21:06] try this out and let's enter another city name that has a space just to see if it's going to
+- [07:21:11] work with that so yes it did work and this is what json looks like and it doesn't read too easily
+- [07:21:19] in the terminal like this so maybe we want to add something else that will help us read it as well
+- [07:21:25] so now let's close this i'm going to scroll back to the top we're going to have one more import
+- [07:21:30] and that's going to be oops from pp print so what it stands for pretty print but it's just not
+- [07:21:37] saying the word pretty so we have p print actually and then import p print and now we'll come down
+- [07:21:45] here and we'll use that on the weather data so instead of just print it's going to be p print
+- [07:21:52] for pretty print let's save and let's run that once again happy to see the space inside of the
+- [07:21:59] name new york did not create a problem so let's run this for kansas city again and press enter
+- [07:22:05] and now yes this is much easier to read than it was before the pretty print definitely helped
+- [07:22:12] out so we can see here is all of the information and the json starts right here as an object
+- [07:22:18] and here's all of the data so we've got our feels like and there is my temperature in
+- [07:22:23] fahrenheit for kansas city there's the current temperature which is almost the same has a lot
+- [07:22:29] of other details as well here in weather description is clear sky so we can get all of this
+- [07:22:36] from this object from the json if we know how to access these values now let's once again close
+- [07:22:44] the terminal and let's go ahead and make this a legitimate module if we say if underscore name
+- [07:22:51] underscore twice once again equals two underscores main two underscores then we will call the function
+- [07:23:00] if not we could possibly import this as a module into another file if we wanted to as well i'm
+- [07:23:07] going to go ahead and comment this out but once again leave it in here with the pretty print just
+- [07:23:12] so you know how you can easily read that json data if you want to and i will of course leave
+- [07:23:18] this import here at the top even though we're not using it with it being commented out
+- [07:23:23] let's go ahead and print out some more readable information for anyone that would use this module
+- [07:23:28] so i'll say print and now let's say let's just give a string for each value here so they need
+- [07:23:35] to be f strings and this is going to be weather or i should say current weather right current
+- [07:23:41] weather for and this is where we would insert our value so it's always going to reference the
+- [07:23:50] weather data variable that we get and now we just need to reference what's inside that json
+- [07:23:56] well one of the properties was and let me get it right here we need a bracket first and then
+- [07:24:01] the name of the property one of the properties was name so this would say current weather for
+- [07:24:07] kansas city for example now i need to go ahead and put in line breaks once again so i'm going
+- [07:24:13] to do a slash in to start out with so that's not right up against anything and now we could put
+- [07:24:19] one here at the end as well or we could just wait to the next line let's wait to the next line
+- [07:24:24] so now let me copy this down with shift alt in the down arrow and instead of current weather
+- [07:24:30] we'll just say the temp is and temp stands for temperature now we need to reference
+- [07:24:40] the main object that was in there and if you go back and look and you can do that if you
+- [07:24:45] open the terminal back up we're going to reference main and then the temp right here inside of main
+- [07:24:51] so main has its own object that of course main is a property in the larger object and then we're
+- [07:24:57] referencing temp inside of the next object so after we say main here we need another bracket
+- [07:25:04] quotes and list our temp now i'll copy this down and now we want the feels like so the temp is
+- [07:25:13] and we'll say what the temp is but then we'll say feels like and now we're going to list
+- [07:25:20] feels underscore like value and let's go ahead and extend this sentence right here so i'll say
+- [07:25:26] and and now let's enter in another value so it's once again going to be weather data
+- [07:25:31] and now we'll have brackets and this is inside of an array so we can look back at this but first
+- [07:25:37] it's actually weather and then weather is an array so we'll look back and determine this value so i
+- [07:25:44] want the very first element in the array so i'll save that much let's open the terminal once again
+- [07:25:49] and look back so it's weather now this isn't an object like main was this is an array and we want
+- [07:25:56] the first and only element in this array and it is an object and then we're going to reference
+- [07:26:02] the description here so we're saying weather first element in the weather array then we want to
+- [07:26:09] reference the description property of the object and finally we want to capitalize that string
+- [07:26:19] so i'm going to call capitalize on that at the very end but you know maybe i don't need
+- [07:26:24] capitalize because it's not starting the sentence it's at the end originally i'd thought about
+- [07:26:28] putting that at the beginning of the sentence so this is just our statement let's put a period at
+- [07:26:33] the end to make it a sentence let's go ahead and run this and see if we get some output that is
+- [07:26:38] more readable for most humans now we'll go ahead and run this and we've got get current weather
+- [07:26:44] conditions i'm going to enter in san diego press enter and yes current weather for san diego the
+- [07:26:52] temp is 76.32 feels like 76.98 and few clouds and maybe i should capitalize that and put the few
+- [07:27:02] clouds at the beginning because it doesn't feel like it reads quite right but it's close it's not
+- [07:27:06] too bad and maybe we want a line break at the end so just a couple of tweaks but overall this is
+- [07:27:12] our program i'll add those changes and it will be in the code repository you can add those as well
+- [07:27:17] and i hope you know much more about virtual environments and pip for python i've got vs

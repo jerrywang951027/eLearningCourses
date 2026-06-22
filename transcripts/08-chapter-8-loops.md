@@ -1,0 +1,222 @@
+# Chapter 8 - Loops
+
+Source: Python Tutorial for Beginners (with mini-projects) by freeCodeCamp.org
+URL: https://www.youtube.com/watch?v=qwAFL1597eM
+Time range: 02:46:23-03:09:03
+
+## Transcript
+
+- [02:46:26] have a new folder for lesson eight over here in the file tree let's create a new file and let's
+- [02:46:32] call this loops dot pi from there let's go ahead and press control in the back tick to open a
+- [02:46:39] terminal window and then let's go to view and from there we'll go to appearance come down to panel
+- [02:46:45] position and choose right so our terminal windows here at the right and then i'm going to press
+- [02:46:50] control b to hide the file tree so we can see our code here on the left in visual studio code
+- [02:46:55] and we can see the output and everything we run at the terminal here in the right so when we talk
+- [02:47:00] about loops in python we can talk about two different types of loops there's a while loop
+- [02:47:04] and a for loop let's look at while loops first and a while loop will execute a block of code
+- [02:47:10] while a condition is true so let's create a basic while loop let me first set a value equal to one
+- [02:47:17] and from here i can say while value is less than 10 and then we put a colon and now we have a block
+- [02:47:25] of code inside of our while loop notice we're indented so i'm going to print the value and now
+- [02:47:31] we must increment the value to go ahead and make it greater than 10 at some point or if not or at
+- [02:47:40] least equal to 10 the way we have this current loop set because if not we will have an endless
+- [02:47:46] loop or an infinite loop that could crash our computer it would use up all the memory and it
+- [02:47:51] would just go on forever and we don't want that to happen so let's go ahead and save value plus equal
+- [02:47:57] one so now this is going to increment every time it goes through the loop and it will eventually
+- [02:48:03] be equal to 10 or greater and the loop will stop so let's save our code and from here we'll use
+- [02:48:09] the drop and we'll choose run python file and you can see over here now we get one two three four
+- [02:48:15] five six seven eight nine it doesn't get to 10 because this says while less than 10 so if we wanted
+- [02:48:20] to print the number 10 we would say while value less than or equal to 10 now we can run this code
+- [02:48:26] again by clicking the play button and we get one through 10 so we have iterated through this loop
+- [02:48:32] 10 times so it goes through the loop 10 times printing each number now we can stop a loop in
+- [02:48:38] another way besides making this condition true and that is using a break statement so after
+- [02:48:46] this print value let me go ahead and say if value equals five so i'm putting an if statement in our
+- [02:48:54] loop then i'm just typing the word break and that break statement there will stop the loop
+- [02:48:59] when value is equal to five so let's run the code again and you can see we go one two three four
+- [02:49:05] five because we print first so we print the value of five before we get to the if statement
+- [02:49:10] and then the loop stops now i want to keep this example in here for you so i'm just going to
+- [02:49:14] highlight all of this control c to copy and then control and the slash to comment that loop out
+- [02:49:21] and below it i'm going to paste with control v and now i'm going to show an example of the continue
+- [02:49:26] keyword so instead of break i'm going to say continue this will stop this current loop where
+- [02:49:32] it's at and go to the next loop but we have to be careful here once again we have to think about
+- [02:49:37] where we're incrementing the value if we continue here and skip to the next then we're not
+- [02:49:43] incrementing that loop again and that's important that we continue to increment that loop at this
+- [02:49:48] point it would be equal to five and it would just continue to be equal to five so that's not what we
+- [02:49:54] want we better increment our value before this if statement and let's go ahead and print the value
+- [02:50:00] after the if statement and so i'm just using control x to cut those and then control v to paste those
+- [02:50:07] so cut instead of copy with control x and then control v to paste those values but you can see
+- [02:50:13] i've rearranged what happens in the loop but now this will skip to the next iteration when it equals
+- [02:50:20] five so let's see what happens when we run our code you can see it starts at two because we don't
+- [02:50:27] print until we're down here so we've got two through eleven and that's because we're adding one
+- [02:50:35] immediately once we get inside of the loop but notice we didn't print the number five and that's
+- [02:50:40] because we used continue here so it never gets to the print statement it just goes to the next
+- [02:50:45] iteration of the loop now we can also add an else to our while loop so i'm going to come down a line
+- [02:50:51] bring the else over to the left where it's not indented and then have a print here as well so
+- [02:50:58] when do you think this else will occur it should occur when the loop has completed but not note
+- [02:51:04] this not if we use the break keyword if we break the loop the else will not execute so only if the
+- [02:51:10] loop actually completes as it should and this condition is no longer true then the else will
+- [02:51:17] occur so here i'm going to say value oh i need quotes value is now equal to now let's concat here
+- [02:51:27] with the plus symbol and then just put in our value so i'll save this code and run it and let's
+- [02:51:33] see what we get oh i tried to print an integer i should have known better we need to use the string
+- [02:51:41] constructor here and make this value a string because it's currently an integer and now we
+- [02:51:47] can run the code again and it will work so we have value is now equal to 11 okay i'm going to
+- [02:51:53] highlight and press control slash to comment out that loop as well and let's move on to for loops
+- [02:52:00] so let's make a basic for loop a for loop iterates over a sequence and the sequence
+- [02:52:04] can be contents of a collection data type that we've gone over like lists tuples dictionaries
+- [02:52:09] or sets or it can even be the individual characters of a string so i'm going to make a list first
+- [02:52:15] called names and inside this list i'll have dave and sarah and let's put in john as well so we've
+- [02:52:24] got three names in our list and now we can use a for loop to iterate over this list so i'm going
+- [02:52:29] to say for x in names and then inside the loop we'll just print x now note i'm using x here but
+- [02:52:37] i could say for name in names i could use any word or letter just some type of character is
+- [02:52:44] essentially what i'm doing to represent each value in the list as it iterates through the for loop
+- [02:52:51] so we'll save and run our code you can see we get dave sarah and john all printed here in our
+- [02:52:57] output in the terminal so now i'm going to scroll up just a little bit and let's create another
+- [02:53:01] for loop as i said you can go through each character in a string so what if i said for x
+- [02:53:06] in mississippi that is a long word that most of us here at least in the united states learn how
+- [02:53:14] to spell in school and we memorize m-i-s-s-i-s-s-i-p-p-i because it's a long one and after this we'll run
+- [02:53:22] the code and we should see each individual letter on its own line because we printed one letter
+- [02:53:28] of the word mississippi each time the loop iterated okay i'm going to comment these two
+- [02:53:33] out but i'm going to leave our names list above and then let's go back to this names list and
+- [02:53:39] let's iterate through once again so i'll say for x in names and then inside the loop i'm going to
+- [02:53:46] say if x equals sarah then yeah i need my colon there then i'm going to use the keyword break
+- [02:53:54] once again but i'm going to print x so what do you think the output of this loop will be
+- [02:54:00] let's find out i'll run the code and it's just dave so when x equals sarah the loop stops with
+- [02:54:08] the break keyword and notice the print statement was after the break so it only printed dave before
+- [02:54:15] it actually stopped the loop and stopped printing so now i'm going to copy this once again highlight
+- [02:54:20] control c to copy and come down control v to paste and i will highlight this and control slash to
+- [02:54:27] comment it all out but i'm going to switch the break keyword to continue here now let's think
+- [02:54:34] about what the output will be what do you think will happen at this point remember continue stops
+- [02:54:40] the current iteration and just goes to the next one in the loop so let's run our code and you can
+- [02:54:47] see we get dave and john and that's because when x equals sarah it continues and it skips this print
+- [02:54:53] statement and it just goes to the next iteration of the loop which prints john okay scrolling for
+- [02:54:58] some more room again i will comment this loop out and from here we're going to look at ranges
+- [02:55:04] because we can have a for loop that iterates through a range so i'm going to say for x
+- [02:55:10] in range and then i need to provide a number i almost forgot to do that let's just put the
+- [02:55:14] number four here and after that we'll say print x so now we're going to go through a range of
+- [02:55:21] numbers but notice what the starting number is when i run our code it's zero just like the index
+- [02:55:28] in a list so zero one two three even though we said we want a range of four numbers it starts at
+- [02:55:35] zero however i'm going to copy this down by highlighting both and then shift alt and the
+- [02:55:40] down arrow would also work to copy down and from there i'm going to say start at two and then have
+- [02:55:48] a range of four or stop at four essentially so it won't necessarily be four numbers we're still
+- [02:55:54] saying when to stop now we're also saying when to start and just to avoid any confusion i will
+- [02:55:59] comment this out let's save and run the code and see what we get we get the numbers two and three
+- [02:56:05] because we started at two and we said stop at four and just like above when we said four
+- [02:56:12] it didn't use the number four it actually stopped there so we started at zero and we got four numbers
+- [02:56:19] but what if we had put in say five for example let me change this and now we say a range of five
+- [02:56:25] numbers we run it should be zero to four so you see how that works let me switch this back to two
+- [02:56:31] and four so it's going to include the number that you start on but it's not going to include the
+- [02:56:36] number that you stop on now there's one more thing we can do with ranges so i'll once again shift alt
+- [02:56:42] in the down arrow to copy this down and i'll comment out the loop above it but the thing we
+- [02:56:47] can do with a range that we haven't accomplished yet is actually telling it how to increment
+- [02:56:53] instead of ones which is the default here you saw that it went through by zero one two three four
+- [02:56:59] and etc we can actually tell it to say okay start at zero go through the number 100 or up to the
+- [02:57:06] number 100 but increment by fives instead of by ones so now when we run our loop we count from
+- [02:57:15] zero all the way up to 95 remember it will not include the number we stop at so if we actually
+- [02:57:22] wanted the number five to be the beginning number we could start at the number five and we would
+- [02:57:28] want to make sure our number was higher than 100 if we wanted to include the number 100 so now when
+- [02:57:35] we run our code it starts at five and it ends at the number 100 because it increments by fives
+- [02:57:42] now just like we discovered with a while loop we can also have an else statement with a for loop
+- [02:57:48] so i'm going to add an else here at the end and at the very end i'll just print and i'll say
+- [02:57:55] glad that's over now i need an apostrophe s so i need to escape the apostrophe
+- [02:58:00] and that's with that slash and then i'll say that's over save and so now our loop should run
+- [02:58:07] and at the very end we get glad that's over okay just to visualize our names list once again i'm
+- [02:58:13] going to copy it and just bring it back down here to where we can see it and after that i'm going
+- [02:58:20] to create another list and i'm going to call this list actions and inside the list i'm going to have
+- [02:58:26] codes and i'm going to have eats and i'm going to have sleeps and the reason i want two lists here
+- [02:58:33] is because we're going to look at using a nested loop so we're going to loop through two different
+- [02:58:38] lists and i'll just bring those to the top now let's look at how we could do this so the first
+- [02:58:43] thing we want to have is for and i'll use name in names so for each name we're going to do something
+- [02:58:51] now the next loop is going to be inside this first for loop so for dave then we're going to loop
+- [02:58:59] through all of the actions so i'll say for action in actions and now i want to print and i'll say
+- [02:59:07] name plus and then i'll give a space here another plus and then action and then one more plus to
+- [02:59:15] concat a period at the very end of the statement so what do you think the output of this nested loop
+- [02:59:22] situation will be what i should get is dave codes dave eats dave sleeps and then we'll get the same
+- [02:59:29] for sarah and the same for john let's see if we get what we expect that is what we get so we get
+- [02:59:36] three statements about dave then three statements about sarah and then three statements about john
+- [02:59:42] and that's because name is in the outer loop so it goes through the name and then it loops
+- [02:59:48] for every action for that specific name before it moves on to the next name so let's go ahead and
+- [02:59:55] copy this down i'll highlight it all shift alt in the down arrow and then i'll put a space between
+- [03:00:01] and let me comment out this loop and let's go ahead and switch this around so here i want for
+- [03:00:08] i press ctrl d to highlight both names and i can type action and here i'm going to highlight action
+- [03:00:14] and press ctrl d and i'll put in name so now i've got the action on the outside and the name on the
+- [03:00:22] inside so let's think about what we expect to get now we should get dave codes and sarah codes then
+- [03:00:31] john codes because the actions are on the outside so it's going to apply code to each of the names
+- [03:00:38] before it moves on to the next action so let's go ahead and run this and confirm our expectations
+- [03:00:45] and that is what we get dave codes sarah codes john codes then we get dave eats sarah eats john eats
+- [03:00:52] so whatever is on the outside is what happens and it loops through for whatever is on the inside
+- [03:00:59] so play around with this if it's hard to understand because nested loops can be a little hard to wrap
+- [03:01:05] your head around at first but after you get the hang of it i think they will make sense and of
+- [03:01:10] course a natural question would be can you even have more nested loops inside yes you could and
+- [03:01:16] of course you need to understand how two loops work together before you start adding more loops
+- [03:01:21] in there but go ahead and experiment and it will help you understand how nested loops work okay now
+- [03:01:27] i'd like to take a little time today to apply just a little bit of what we've learned about loops to
+- [03:01:32] improve our rock paper scissors game from lesson five so let's go ahead and open the file tree
+- [03:01:39] again now in your file tree oh press ctrl b to do that in your file tree maybe you've got all
+- [03:01:45] of your different lessons in one folder where you've still got the rps.py file if you have
+- [03:01:50] that great if not you might want to open it up and use it for the rest of this lesson i'm going
+- [03:01:55] to create a new file over here once again named rps but i'll put the number two after it so this
+- [03:02:01] is the second version of our rock paper scissors game also over here in the terminal i'm going to
+- [03:02:06] type clear just to clear all of that out for now now i'll hide the file tree again because we want
+- [03:02:12] all of this room and i'm pasting in our original code from lesson five and this is our rock paper
+- [03:02:18] scissors game but we want to add a loop to our game so we can play again and again without having
+- [03:02:25] to restart the code so to do this underneath our enum here i'm going to add an extra line or two
+- [03:02:33] and then i'm going to define a variable saying play again and i'm going to set this just equal
+- [03:02:40] to true so a while loop doesn't have to have an equal sign we can just say while play again and
+- [03:02:49] this means while play again is true if play again is ever false then the while loop will stop but
+- [03:02:56] note indentation is important in python so after i start a while loop here i need to select
+- [03:03:03] everything else and i mean everything so i'm starting to highlight here and then i scroll down
+- [03:03:09] hold down the shift key and click so it highlights everything and press the tab key so we need that
+- [03:03:15] indentation to say yes all of this code is inside the loop and i can see i still have a typo here
+- [03:03:21] i have play gain instead of play again and i want play again for my variable so let's go ahead and
+- [03:03:27] make sure that the type is the same here so play again is the variable and while it is true we're
+- [03:03:33] going to loop through our code i don't need those extra spaces here but we do have to consider how
+- [03:03:39] to stop our loop because right now play again will always be true so we would have an endless loop
+- [03:03:46] let's scroll down to the bottom of our code where after we have determined who the winner is
+- [03:03:51] and we can add just a little more and remember to indent so it's part of the loop here i'm going to
+- [03:03:55] say play again is going to equal input so we're going to get some more input from the user and
+- [03:04:02] here i'm going to say slash in because i want a new line instead of printing a blank line oh i
+- [03:04:08] need quotes first and then slash in and then i'm going to say play again with a question mark go
+- [03:04:15] ahead and put a space and another slash in so the next part appears on another line and i'll say y
+- [03:04:22] or yes or then another slash in for a new line then i'll say q to quit not quite but quit and
+- [03:04:31] then two lines so slash in slash in i'm also going to press alt z so this wraps down and we can see
+- [03:04:39] all of the code at once and now we just need a logical if statement to handle this so after we
+- [03:04:44] get our play again input we'll say if play again dot lower which will take the y if the user does
+- [03:04:54] not enter a capital y it would make it lowercase or if they do enter a capital y i should say it'll
+- [03:05:00] make it lowercase so either way we only need to check a lowercase after we use our lower method
+- [03:05:05] here so if play again dot lower equals y then we know we want to play again so we can just continue
+- [03:05:15] our loop and go to the next iteration but else let's go ahead and print a kind of thank you
+- [03:05:21] message for playing so let's print and inside of this i'm going to press my windows key and a
+- [03:05:27] period you may be on a mac or linux that has a different way of getting emojis but that's how
+- [03:05:32] i do it here then i'm going to start to type celebrate so i can bring up a little celebration
+- [03:05:38] emoji and i'm going to put it in here several times there we go i can remove the hands that
+- [03:05:43] was a mistake or if you want the hands that's fine too i also want to put another slash in
+- [03:05:49] in front of this so i have another line break before it starts after that i'm going to print
+- [03:05:54] one more line and in this line i'll say thank you for playing an exclamation mark and then another
+- [03:06:02] new line character and after that we could end our loop in a couple of different ways one we could
+- [03:06:08] say play again equals false that should end the loop but also we could use a break either one
+- [03:06:17] would work so just so you know if you were thinking break nothing wrong with that i can
+- [03:06:21] leave break here commented but i don't think i will because play again equals false would work
+- [03:06:27] so let's just do that and mental note break would work if that's how you wanted to end the loop as
+- [03:06:32] well after that let's go ahead and put a message at the very end of the program so we'll use that
+- [03:06:38] sys exit again as we did above in the program and i'll just say bye i'm going to use one more emoji
+- [03:06:44] here and i want my wave emoji a little hand so a goodbye message there so now we've pretty much
+- [03:06:52] put our whole game in a loop and we can continue playing it over and over again one thing you
+- [03:06:57] might notice i used these slash ends instead of some of these empty lines here so we could
+- [03:07:03] consider refactoring our code to remove any of these let's see how many we have we can highlight
+- [03:07:09] what we have here and then i can control f and it looks like we have three of them in our code so
+- [03:07:15] let's remove this first one and when we remove that then we want to make sure to put in a slash
+- [03:07:22] in when our string begins okay let's go to the next one it's right here before the player choice
+- [03:07:29] statement so we'll put a slash in there and then we can remove that one and then we have one after
+- [03:07:36] as well so if it's always after this the place to put it would be at the end of the statement above
+- [03:07:43] and then we can remove it as well and now we've also refactored our code to be just a little more
+- [03:07:49] efficient and we'll close that out control s to save and let's play our game and see if it all
+- [03:07:55] works as expected so now we can choose i'll say one for rock and we won and it asks us play again
+- [03:08:03] y for yes or q for quit but we really know they don't have to put q for quit anything that's not
+- [03:08:08] a y will actually quit the game so for example i could put in an a and check yes thank you for
+- [03:08:16] playing bye so let's run the code again this time i'll choose rock once again and we add a tie game
+- [03:08:23] i'm going to choose y so i can continue playing and i'll just put in a lowercase y and we continue
+- [03:08:28] playing rock and python one now put in an uppercase y and enter yes we're still playing so now i'm
+- [03:08:36] going to say two for paper tie game so lowercase y and let's choose one for rock python one again
+- [03:08:43] so now i'm ready to quit so let's just press q and yep that works too thank you for playing goodbye
+- [03:08:50] once again our game's not perfect yet but we have improved it so this shows you how to apply some of
+- [03:08:56] the things we've learned as we continue and we'll apply much more with some small projects and keep
+- [03:09:01] improving this game too as we go i've got visual studio code open and a new lesson 9 folder open

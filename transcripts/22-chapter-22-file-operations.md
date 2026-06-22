@@ -1,0 +1,209 @@
+# Chapter 22 - File Operations
+
+Source: Python Tutorial for Beginners (with mini-projects) by freeCodeCamp.org
+URL: https://www.youtube.com/watch?v=qwAFL1597eM
+Time range: 07:27:23-07:49:32
+
+## Transcript
+
+- [07:27:24] code open and i have a new folder for lesson 22 over here on the left notice three files i've got
+- [07:27:31] names more names and context and inside of these files i've really just got the same thing four
+- [07:27:39] names one on each line and you'll see why we are using those we just need some text files to work
+- [07:27:45] with as we learn about working with files in python so let's create a new file in our file tree
+- [07:27:52] and we'll call this files.py i'd like to introduce an acronym and it's called rocks r-a-w-x and this
+- [07:28:01] stands for read append write and create you may have heard of the acronym crud before and this
+- [07:28:09] is very similar which crud is create read update delete but here we have read append which means
+- [07:28:17] the same thing as update write and create we will also learn how to delete files as we go but first
+- [07:28:25] we'll cover these four operations so the first one r is read and we'll start with that now if
+- [07:28:32] a file doesn't exist and we attempt to open it we will get an error so i'll put error if it doesn't
+- [07:28:41] exist just as a note here inside of our code for you now let's go ahead and open one of these
+- [07:28:46] files we have in our file tree and we'll just abbreviate the file with the letter f you see
+- [07:28:51] this fairly common you could write the word file if you want to either way it's going to hold the
+- [07:28:57] file and we can work with it so we'll say open and then inside of parentheses i'll just say names
+- [07:29:04] and s if i spell it correctly dot text and this will open the file but this has some defaults
+- [07:29:11] that we are not seeing and these are essentially what these are what we want to do with the file so
+- [07:29:17] if i put a comma here and then put an r for read that's the same thing it's still going to read
+- [07:29:24] the text file and if you really get into working with files you can even specify if it is for
+- [07:29:29] example a text file with a t or a binary file with a b we'll just be working with text files
+- [07:29:36] and that's probably what you'll do the most often so that's what i'll focus on today and we don't
+- [07:29:41] really have to specify that it's going to just have a default value for the files as t for text
+- [07:29:47] it also defaults to read if we don't specify that so really we don't have to put the comma and the
+- [07:29:55] r there and then it knows we just want to open this file in order to read it so now that we've
+- [07:30:00] opened the file let's go ahead and print the contents so i'm going to say print and i'll just
+- [07:30:04] say f dot read and call that method on the file and now let's go ahead and run our code
+- [07:30:12] so i will choose run python file and we get the contents of the file it just says dave jane
+- [07:30:19] eddie and jimmy and of course all the files have that same content i'd like to move this over to
+- [07:30:24] the right as we have in the past so let's go to view and then appearance then we come down to
+- [07:30:31] panel position and choose the right side and now we'll see our code run over here i'll still keep
+- [07:30:37] this open when i can or maybe toggle it with control b you can close it and reopen that file
+- [07:30:43] tree if we want to see what files we have over here now we should note we don't have to read the
+- [07:30:48] entire file so i'm going to copy this down so you can see both examples and now let's say i just
+- [07:30:54] want to read the first four characters of the file so i'm going to pass in the number four
+- [07:31:00] to the read method i'll run this once again and we should see just the first four characters but
+- [07:31:06] we see everything and that's because we already read the file so now we're at the end of the file
+- [07:31:11] so you understand kind of how that works so let me comment this out now let's once again
+- [07:31:17] do the f which is file dot read and just get the first four characters which should just be my name
+- [07:31:24] dave i'll run the file once again and now we only have dave as the output okay i'm going to comment
+- [07:31:30] out that line as well and let's look at another example where we maybe want to read the entire
+- [07:31:36] line we don't know that there's only four letters on the first line or six letters on the third line
+- [07:31:42] and we just want to read the first line of the file so i'm going to once again use print so
+- [07:31:47] you can see what it does instead of read i'm going to use read line and this is going to read
+- [07:31:53] the first line of the file so save and run the code and we once again get dave but if i stack
+- [07:32:00] this now with shift alt and the down arrow i recreated that line do you think we'll get dave
+- [07:32:06] twice will it read the first line twice or maybe it will go to the second line let's save the file
+- [07:32:12] with control s run the code and find out it went to the second line and notice there's a space
+- [07:32:18] between now which is different than when we were reading the entire file so that is also worth
+- [07:32:24] noting that you can read one line then move to the next so notice when you're reading a file
+- [07:32:31] just like i showed before where i had to comment this out up here when you're reading a file it
+- [07:32:36] moves through the file you'll eventually get to the end of the file so now i'll comment both of
+- [07:32:41] these out as well so i can highlight these and do control and the slash and that will comment them
+- [07:32:46] both out now what i want to do is loop through each line of the file and print those lines
+- [07:32:52] so that looks a little different let's say for x and this would just be four we could say four
+- [07:32:59] lines so let's just say that four line in f which is our file then we're going to go ahead and print
+- [07:33:07] the line now this should loop through and print each line let's find out when we control s to save
+- [07:33:14] and run our code once again and yes it did it was just like doing f dot read line and of course we
+- [07:33:20] printed each one here so very similar but this is a little more concise and fairly easy to use
+- [07:33:27] now after we opened a file like this where we have f as an open file we should always close
+- [07:33:33] it when we're finished and to do that we just say f dot close and now we won't see a difference here
+- [07:33:40] but it is important to close those files because it could be that you change something in the file
+- [07:33:46] but that change is not going to show up really until you close the file and then you wanted to
+- [07:33:51] reopen it then you could see that change so let's go ahead and run this code again and you'll see
+- [07:33:56] the same output but now we've closed the file and that's important every time we've opened a file
+- [07:34:02] and we do something with it then we should close that file now notice the file names we have over
+- [07:34:07] here on the left we have names more names and context so i'm going to try to open a file that
+- [07:34:13] we do not have so i'll press ctrl b now so we can have just a little more room here but i want to
+- [07:34:19] show what you should do to avoid an error and we've already learned this we should use a try block
+- [07:34:25] and then inside this block we could say f equals and open now this could be the name of any file
+- [07:34:32] that doesn't exist so i'll just say name list dot txt and then after that i'm going to say print
+- [07:34:40] f dot read so i want to print the contents but i am making a mistake because this file doesn't exist
+- [07:34:48] so it might cause an error or it will cause an error actually because it doesn't exist so let's
+- [07:34:52] also print and say a file you want to read doesn't exist nice little bit of long message but a nice
+- [07:35:03] message to explain what's going on and then we can use our finally block and this comes in handy
+- [07:35:09] because this allows us to go ahead and close the file because remember we opened it before or we
+- [07:35:15] tried to open it before we had an error so if we don't open it at all we'll of course have the error
+- [07:35:21] but say the file did exist this would allow us to open it do something with it and in the finally
+- [07:35:27] block we could call close so it's a nice structure for that operation let's go ahead and save now
+- [07:35:32] let's run the code and we get the file you want to read doesn't exist so what if it did exist
+- [07:35:39] if we had our names dot text now let's save and run this again and now we printed the contents of
+- [07:35:47] those of that file rather than getting our error message the file you want to read doesn't exist
+- [07:35:53] we are now ready to move on to appending to files that means adding two files so i'll just
+- [07:36:00] paste this in it says append it creates the file if it doesn't exist so that's important to know
+- [07:36:06] also say we try to open a file that doesn't exist but we're opening it to append to it well it's
+- [07:36:12] going to create the file anyway so here i'm just going to say f equals now open and i'm going to
+- [07:36:19] open my names dot text file once again now i'm going to say this is to append so we need to pass
+- [07:36:26] in what we're doing with this file by default remember it's read so we didn't need to put in
+- [07:36:31] the comma and then the r in quotes but here we need the a for append i'm going to say f dot
+- [07:36:38] write and i'm going to write something new to the file i'll add a fifth name and that name is neil
+- [07:36:44] and f dot close so now i've added to the file but we are not really seeing what's in that file yet
+- [07:36:52] so let's go ahead and now read the file as well so i'm going to copy all of this down i'll highlight
+- [07:36:58] everything do shift alt in the down arrow i'll create one line here in between now i'm going
+- [07:37:05] to open this to read so i can get rid of the a and now instead of the f dot write i want f dot
+- [07:37:13] read and i'm not going to try to pass anything into the read i'm going to want to print what
+- [07:37:20] we're reading so i see the new contents then we're going to close the file so we're appending to the
+- [07:37:27] file here by adding a fifth name then we're going to go ahead and open the file and read it and then
+- [07:37:33] once again close it so now let's run the code i'll scroll so we're way down here at the bottom to
+- [07:37:38] our prompt run the code and so we had our four names then we appended to the file when we opened
+- [07:37:46] it back up and read it again we had our five names and now we can even go to our names file
+- [07:37:52] and we can see neil has been added on the fifth line of our file okay now you've already seen the
+- [07:37:58] write method here as i used it to write the name neil to the end of the file on that fifth line
+- [07:38:04] however you haven't seen how we open a file for writing so let's do that now with write and really
+- [07:38:11] i'm going to put in parentheses here overwrite because we will overwrite whatever is in the
+- [07:38:18] file that we open so i'm going to say f equals open now i'm going to open my context.txt file
+- [07:38:27] and i'm going to pass in the w that stands for write now when we do this we'll go ahead and
+- [07:38:32] write something else to the file but just to confirm let's look at that context.txt file
+- [07:38:38] you can see that it has the four names in here that we started each file with so this is in our
+- [07:38:43] context.txt now let me go back to files now let's write something else to that file as well so after
+- [07:38:52] this i'm going to say f.write which is not the same as opening a file for writing because remember we
+- [07:38:59] were able to open a file to append to it and we still used the write method so now we're going
+- [07:39:05] to use the write method as we opened a file to write to it and this will overwrite everything
+- [07:39:11] in the file i'm going to write i deleted all of the context and yeah that let's just leave it at
+- [07:39:20] that that's a fairly simple statement so that's what will now be in the file instead of those
+- [07:39:25] four names so now i'll say f.close and we've closed the file now once again we're going to
+- [07:39:32] want to read this file to confirm that what we actually put in it is there so i'll copy what we
+- [07:39:37] had above and now i'll paste this in and we're going to change this to read the context.txt file
+- [07:39:46] and then print what it finds inside the file so now let's run our code again and we have i delete
+- [07:39:54] i said i delete i should have said deleted i deleted all of the context so that's what was
+- [07:40:00] in the file let me change that to deleted or that's going to bother me let's look at the
+- [07:40:05] context file itself and yes it says i delete all of the context so i'll have to run that again
+- [07:40:11] notice what also happened when we ran the code again we added neil one more time to our names.txt
+- [07:40:20] file so now it has dave jane eddie jimmy neil neil so every time we run this code right now
+- [07:40:27] we're going to add another neil to our names.txt and it might also be important to note that it
+- [07:40:33] didn't put that on another new line because we didn't put in a line break so if we wanted neil
+- [07:40:38] to go to a new line we would also want to put in a new line character with our slash in
+- [07:40:44] as we added that name to the end of the file and now let's look at a couple of ways we can create
+- [07:40:50] a new file so i'll put a comment here and say two ways to create a new file and each way has
+- [07:40:58] its own plus or minus depending how you look at it it kind of just depends what you need so here
+- [07:41:04] i'm going to say this opens a file for writing so you know we're going to use the w that permission
+- [07:41:11] and then we're going to say this also creates the file if it does not exist and i'm going to press
+- [07:41:19] alt z so that wraps down to the next line just so we can see that and now i'll say f equals
+- [07:41:26] open and i'm going to name a file that doesn't exist i'm going to say name underscore list
+- [07:41:31] dot txt and we're going to pass in the write permission so this is going to open a file for
+- [07:41:37] writing but if we specify a file that doesn't exist it's going to go ahead and create the file
+- [07:41:44] so after we do that i'll just put f dot close we're not really going to add anything to the file
+- [07:41:50] but let's see what happens when we run the code we updated our statement here but let's check the
+- [07:41:56] file tree to see if we have this new file and if we look over here we now have a name underscore
+- [07:42:01] list dot txt file we didn't write anything to the file but we opened it for writing and we specified
+- [07:42:08] the file even when it didn't exist so it was created now the second way to create a new
+- [07:42:12] file could also cause an error so i'm going to hide the file tree so we have a little more room
+- [07:42:17] and let me put a note with this i'll say creates the specified file but returns an error
+- [07:42:30] if the file exists so if we're trying to create a file that already exists this will return an
+- [07:42:38] error so we kind of need to check before we try to create the file so to do that we need to import
+- [07:42:44] os and we're going to use that when we delete a file as well so let's import os here at the top
+- [07:42:50] of our file now let's scroll back down where we were and on line 54 i'm going to say if not OS
+- [07:42:58] dot path dot exists now i can check to see if a file exists or not so i'm going to say if a file
+- [07:43:06] named dave dot txt does not exist and that's what it means when we say if not and then we're checking
+- [07:43:14] this so if the file dave dot txt does not exist then i'm going to say f equals open and we'll pass
+- [07:43:23] in dave dot txt and then we'll open it with x which remember means create then i'm just going
+- [07:43:32] to say f close now this should create a file named dave txt so let's look at the file tree
+- [07:43:39] as well so we'll be able to see it show up over here and we've saved the code let's go ahead and
+- [07:43:44] run that code and now we have a file named dave txt we didn't put anything in the file but we did
+- [07:43:51] create it now we could change this out as well so if you wanted to put in a file name like context
+- [07:43:57] dot text then it would say if it doesn't exist create it you shouldn't get an error because it
+- [07:44:02] already exists so it shouldn't try to create it now i'm going to hide the file tree and let's use
+- [07:44:07] some similar logic here as we delete this file or we delete a couple of files that we don't need so
+- [07:44:13] i'm going to put delete a file here now here i'm going to say we can avoid an error if it doesn't
+- [07:44:24] exist and to do so this looks very similar we'll just say if os dot path dot exists so notice now
+- [07:44:32] we're not saying if not we're saying if it does exist now what did we already create over here
+- [07:44:38] we've got a file with my name dave dot text and we've also got a names our name underscore list
+- [07:44:47] dot text if i remember right yes that didn't have anything in it either so we could delete one or
+- [07:44:52] both of those if we want to here for example so i'm going to say if dave dot text exists then we're
+- [07:45:01] going to do something so now we'll just go ahead and say os dot remove and then we'll pass in the
+- [07:45:08] name of the file dave dot text and we'll remove that file but we should put an else so we can put
+- [07:45:15] else and then we can say print and then here we'll say the file you wish to delete does not
+- [07:45:25] exist so that would say okay if the dave dot text file does not exist then we're going to get this
+- [07:45:33] message so let's go ahead and run this code and we'll see what happens and we've got i deleted all
+- [07:45:39] of the content here at the end so it must have deleted the dave dot text file we can verify that
+- [07:45:44] by looking at our file tree and that file is indeed gone now you could do the same thing
+- [07:45:49] and put in the name underscore list dot text and delete that as well if you want to because
+- [07:45:55] we're not really using that file either okay we have covered the operations i wanted to show you
+- [07:46:00] but there is one more thing let's scroll back up to the top quickly and just recap here we've
+- [07:46:04] looked at reading files appending files writing to files creating files and of course we also
+- [07:46:12] applied some checks like our try accept finally but i want to show you a way that people work
+- [07:46:18] with files and they don't use the try accept finally instead they have some implicit exception
+- [07:46:26] handling and it makes this a little more concise yet so let's look at the with keyword and i'll do
+- [07:46:32] this here at the bottom so i'm just going to say with open and now let's open our more underscore
+- [07:46:40] names dot txt file and we'll say as f so once again f represents the file but this is just
+- [07:46:49] phrased differently it says with open as f now that we've done that we can just say the content here
+- [07:46:56] equals f dot read and that's not new before we were just printing f dot read and now we're just
+- [07:47:03] storing it inside of our content variable now after that let's go ahead and say with open
+- [07:47:14] and we can have another file let's look at what's inside of our files first so names has all of
+- [07:47:21] these names notice we've written neil a couple of times now on new lines because we had the new line
+- [07:47:26] character before we put in that new line character we had three neils on one line but when this
+- [07:47:31] started out it looked like our more names file with just these four names so maybe we want to
+- [07:47:36] put our names file back to that we can read the content out of more names and then write it to
+- [07:47:43] names so we get it to look just like more names essentially copying the file so to do that let's
+- [07:47:50] go ahead and now say with i'll hide the file tree again so we have some room here i'll say with open
+- [07:47:56] names dot txt and this is also going to be as f and now inside of this with we'll say f dot write
+- [07:48:08] and we're going to write that content that we stored so let's go ahead and do this and then
+- [07:48:14] we'll look at those files again so i'll run the code and i got an error because i wasn't thinking
+- [07:48:21] i was too quick and what happened was this defaults to open because it's a read we didn't specify
+- [07:48:27] here we need to go ahead and say we're going to open this for writing so we're going to overwrite
+- [07:48:33] what's in the file so we needed to pass in that w out of our rocks acronym so that w stands for
+- [07:48:41] opening the file as writing so now we should be able to avoid this error i'll save and run this
+- [07:48:47] again and yes i think we've succeeded but we're first going to have to check because we did all
+- [07:48:53] these other things to the file first but now let's see if the file has all of this in it or if it
+- [07:48:58] just looks like our more names file so if we come back more names just has these four then we read
+- [07:49:05] this took that content and we wrote two names which now only has the four names once again
+- [07:49:13] instead of all the extra neils that we had previously added to this file so i hope today's
+- [07:49:18] lesson has really helped you learn many different ways to work with files that will be useful for
+- [07:49:24] you in the future and remember the rocks acronym r-a-w-x for read append write and create

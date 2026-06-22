@@ -1,0 +1,355 @@
+# Chapter 4 - Data Types
+
+Source: Python Tutorial for Beginners (with mini-projects) by freeCodeCamp.org
+URL: https://www.youtube.com/watch?v=qwAFL1597eM
+Time range: 00:46:18-01:23:25
+
+## Transcript
+
+- [00:46:20] also be introduced in the future and those include the identity operator, the membership
+- [00:46:25] operator and even bitwise operators.
+- [00:46:29] We are ready for lesson four and I have Visual Studio Code open, you can see I have a folder
+- [00:46:33] to the left that is named lesson four and that's what you'll find in the course resources,
+- [00:46:38] now let's create a new file in this folder, I'll click the little plus icon up here for
+- [00:46:43] a new file and this is a good time to talk about naming conventions for files with Python,
+- [00:46:49] we use all lower case so I'm going to type data and then if we need a space, we do not
+- [00:46:54] use dashes or hyphens if you will, we use underscores and then we continue to type
+- [00:47:00] in lower case so I'm naming the file data underscore types dot pi and then press enter
+- [00:47:07] and there is the file that we'll work with, now that we have the file, you'll see the
+- [00:47:11] play button up here that we'll use to run our code and the associated menu that can
+- [00:47:15] show with that, so let's begin by typing inside the file and I'm going to just put a comment
+- [00:47:21] here that says string data type, it's the first data type that we're going to cover
+- [00:47:25] and I'm going to talk about the literal assignment of values, so I'll type literal assignment
+- [00:47:31] here and another comment and I'm going to type a variable named first and I'm going
+- [00:47:36] to assign the string Dave, this is literal assignment so I literally assigned this value
+- [00:47:42] Dave that is a string value to the variable first, now I'm also going to create a variable
+- [00:47:47] name last and I'll put my last name in there, these are both string values, now we can check
+- [00:47:54] this in Python if we use a print statement and then we'll use the type function and I'll
+- [00:48:00] pass in first, so that is the variable first that holds the string value Dave and we'll
+- [00:48:07] see that when we check it, so I'm going to press control s to save the file, you could
+- [00:48:12] also do that from the file menu and then find save here, you can see it's control s, after
+- [00:48:18] that I'll come up here to the little menu by our play button and choose run Python file,
+- [00:48:24] now it went ahead and opened the terminal window for me when I did that and you can
+- [00:48:28] see the output says class string, this str stands for string, ok after that I can close
+- [00:48:35] the terminal and it will reopen it when we run the file again, there's another way that
+- [00:48:40] we can check for this value, so I'll once again type print and I'm going to say type
+- [00:48:45] pass in first, let's see if it is equal to and that is to equal and then str for string
+- [00:48:54] and besides that let's do one other one that we can also check, now I'm going to do shift
+- [00:48:58] alt and the down arrow that will just copy this down and then I'm going to change what's
+- [00:49:02] inside of the print, there is an is instance function that we can use and with this I'll
+- [00:49:08] pass in the variable first and then we're going to say it is an instance of what and
+- [00:49:13] in this case we're checking for string, so now we'll see the output of all three of these
+- [00:49:18] print statements, once again control s to save and then I'll just click the play button
+- [00:49:23] to run the code and I'll need to pull this up maybe to see all of the output and I'll
+- [00:49:29] scroll just a little bit, there we go, so we see string that we previously had here and
+- [00:49:35] then true true, so the output of the following two statements is type first equal to string
+- [00:49:42] and the output is true and then is the first variable an instance of string with this is
+- [00:49:50] instance function and that is also true, okay now that we have looked at literal assignment
+- [00:49:55] let's look at another way we can assign a value and that's with a constructor function,
+- [00:50:00] so I'll make a comment for that, now I'm going to define pizza and this variable is going
+- [00:50:06] to hold a string that says pepperoni but I'm going to use the string constructor function,
+- [00:50:11] so it's str and then parentheses and inside of this I'm going to pass in the string pepperoni,
+- [00:50:17] now after this I'll copy all three of these and I will paste below, so I copied with control
+- [00:50:25] C after I highlighted this and I paste with control V, the letter V as in Victoria, okay
+- [00:50:33] then I need to change this word first to pizza, so I highlight the first one and then control
+- [00:50:38] D to select the second and the third instance of first, now I can just start typing pizza
+- [00:50:45] and it will change all three, so now we're going to check the output for pizza as well
+- [00:50:50] and I can highlight these also and press control and the slash and it will comment these out,
+- [00:50:57] so we only see the output for our pizza now after I save once again with control S, now
+- [00:51:04] clicking the play button and we should get some output that we once again see in the
+- [00:51:09] terminal and I'm going to just leave that terminal as a little bit larger so we can
+- [00:51:13] always see that, there we go, so it is class string and true and true once again, so now
+- [00:51:19] we checked pizza here and it said class string and then this said true where we checked the
+- [00:51:25] type if it was equal to string and then this said true where we checked if pizza was an
+- [00:51:30] instance of string, so now we know two different ways to assign string data to variables and
+- [00:51:36] we can do this with other data as well, so we have literal assignment and constructor
+- [00:51:41] functions that can assign data, now I'm going to comment this out as well again highlighting
+- [00:51:46] this and pressing control and the slash will comment these out, now when you find these
+- [00:51:51] in the course resources you can do the same thing to uncomment, so you could highlight
+- [00:51:55] the lines you want to uncomment and press control and the slash and they'll once again
+- [00:52:00] be uncommented, so you can toggle between the two by doing that, now let's discuss concatenation
+- [00:52:07] and that means adding two strings together to form a larger string and that's what we
+- [00:52:12] will do, so we will type concatenation here and after this let me define full name as
+- [00:52:18] a variable and I'll use my values from above, so I'm going to set full name equal to first
+- [00:52:24] and then I can use the plus operator and then I'm going to put an empty string here with
+- [00:52:29] one empty space and then plus again and type last and this concatenated my first name with
+- [00:52:37] the space in between to my last name, so now we could print full name, there we go and
+- [00:52:44] save, once again press the play button and you can see my full name here inside of the
+- [00:52:50] terminal, now we can also add something to the end of full name if we want to, so I will
+- [00:52:55] say full name and now I can use plus equals and this is going to take the value of full
+- [00:53:00] name and add to it and I'll just put an exclamation mark here at the end and once again print
+- [00:53:08] full name and if I run the code with the play button we should see my name now with an exclamation
+- [00:53:14] mark here in the terminal, you can also take a number and change it to a string and this
+- [00:53:19] is called casting, so here I'll say casting a number to a string and let me assign a variable
+- [00:53:27] name decade with the value and I'll use the string constructor here and I'm going to pass
+- [00:53:34] in 1980, so I had a number 1980 the value and I am now casting it to a string with the
+- [00:53:43] string constructor, after this we'll go ahead and check this value so I'll say print and
+- [00:53:49] type and decade and then after that let's go ahead and just print this out to see what
+- [00:53:56] it looks like after it has been casted as well and now let's check those values and
+- [00:54:01] you can see that yes that type is a string and there's the value but it's a string here
+- [00:54:06] it is not a number and that is 1980 and now this is important if I wanted to concatenate
+- [00:54:12] that value inside of a sentence I would need to cast that number to a string as we previously
+- [00:54:19] have here so now let me create a statement so this is a variable name statement and I'll
+- [00:54:24] just say I like rock music from the now I'm going to concatenate that value so the plus
+- [00:54:34] operator and then I'll just pass in that variable decade another plus operator and then the
+- [00:54:40] letter s and a period at the end so now let's print our statement and save with ctrl s and
+- [00:54:49] run our code and we can see we have the statement I like rock music from the 1980s but what
+- [00:54:55] if we wanted a statement with multiple lines we can do that as well so I'll scroll up for
+- [00:55:00] some more room and underneath this I will just leave another comment that says multiple
+- [00:55:06] lines and now we'll take a multi-line I'll just call this multi-line for the variable
+- [00:55:13] and we want to start with three quotation marks either double or single will work so
+- [00:55:19] I'll put three quotation marks and notice vs code wants to help me so it already automatically
+- [00:55:25] added the closing three after this I'm going to press return and leave a few lines between
+- [00:55:31] the opening and closing quotation marks again three at the beginning and three at the end
+- [00:55:36] I'll say hey how are you with a question mark now let's add some spaces with the space bar
+- [00:55:44] press return again and again and then another statement I was just checking in and then
+- [00:55:52] another space or two or three and then return once again and now I'll tab over five or six
+- [00:55:57] times and say all good question mark and then notice we have a blank line after as well let's
+- [00:56:04] save that with ctrl s and now after we do that let's look at our statement in the output
+- [00:56:10] when we print multi-line save once again and run now we have this big statement that is
+- [00:56:17] on multiple lines and of course it has white space before and after some of the things
+- [00:56:22] as well we'll come back to that white space in just a little bit now let's talk about escaping
+- [00:56:27] special characters also because sometimes we have special characters inside of our code
+- [00:56:33] we just started this multi-line statement with single quotes and what if we were to
+- [00:56:38] use single quotes around a sentence we created so here I'll leave a comment escaping special
+- [00:56:45] characters and now I'm going to create a sentence variable and I'm going to set this equal to
+- [00:56:52] a value that is inside of single quotes there we go single quotation marks and the word I'm so this
+- [00:56:59] would have a single quote in the word notice vs code doesn't like this we need to escape this
+- [00:57:06] single quote if we want it to be in our statement because right now vs code just thinks the value
+- [00:57:11] ends right here with the letter I it would not include the letter M so let's put a slash here
+- [00:57:18] and it's a backward slash and that escapes that single quote so now it knows that it should be
+- [00:57:23] part of this phrase so now we can use I'm in our sentence and I'll say back at work exclamation
+- [00:57:30] mark and then I want a tab after back at work instead of a space we can indicate that with
+- [00:57:37] another backward slash in a lowercase t notice how vs code leaves this as red so that's a special
+- [00:57:43] character so now we have a tab in our sentence and I'll just put the word hey with an exclamation
+- [00:57:49] mark again and now another backward slash in a lowercase n that indicates a new line that is the
+- [00:57:57] new line character so that will make everything else that follows it be on another line let's
+- [00:58:02] put two of those just so we can see what really happens there then I'm going to use the word
+- [00:58:08] where's so it once again has a single quote that I need to escape then the letter s then this then
+- [00:58:17] I want at slash located and I want to put a slash between at and located but as we know already we're
+- [00:58:28] using slashes here for special characters so we also need to be able to escape that slash and so
+- [00:58:34] we do that by adding a second slash but only one will appear in our sentence and then I'll put a
+- [00:58:40] question mark at the end and let's go ahead and print the sentence out and see what we get
+- [00:58:47] control s to save and we run our code and here we have our full sentence I'm back at work hey
+- [00:58:55] where's this at located once again it put in the tab it put in the line breaks and we were able to
+- [00:59:01] use the single quotes even though we had wrapped our full sentence inside of single quotes I'm
+- [00:59:07] going to scroll up for some more room and then I'm going to leave another comment because we're
+- [00:59:11] going to begin working with string methods now methods are functions that are called on the
+- [00:59:17] string class and that's not too important right now but we do want to see what these methods will
+- [00:59:23] do for us so let's start out just by looking at the value that we once again have in the variable
+- [00:59:30] first but after that I'm going to put another print line and say first dot lower and we'll
+- [00:59:37] see what it does to the value that is in the first variable and we'll also note that it won't
+- [00:59:42] actually change the value in the first variable it will just return another value and then instead
+- [00:59:50] of typing that all again I'm going to use shift alt in the down arrow and do that twice and I'm
+- [00:59:56] going to change lower in this second one to upper see what happens there and then I'm just going to
+- [01:00:02] remove lower from this last one so we can once again see the value of first and note that it did
+- [01:00:08] not change ctrl s to save and click the play button and now here's our value of first which
+- [01:00:15] is my first name Dave then after we called the lower method that we see here on line 49 we then
+- [01:00:23] had the lower case value of my name and then first dot upper and we had the all upper case value of
+- [01:00:31] my name then we once again just check the value that was in the first variable and it is still
+- [01:00:36] left untouched as it was let's look at some more string methods and instead of using my first name
+- [01:00:42] here in the first variable let's use that multi-line variable that we created so now say print and then
+- [01:00:48] inside of this print I'm going to use multi-line and I'm going to use the title method at the end
+- [01:00:55] of this now this method will turn everything to proper case and capitalizing the first letter of
+- [01:01:01] every word in that multi-line phrase but I'm also going to print another version of multi-line so we
+- [01:01:08] should see it twice and in this version I'm going to use the replace method I'm going to replace the
+- [01:01:14] word good with the word okay and we should see the difference there and then finally I'm just
+- [01:01:22] going to print multi-line so we can see that the original value did not change so I will save that
+- [01:01:28] click play and of course we can't see all of that at once I'm going to make this terminal window take
+- [01:01:34] up the full screen for a moment we'll see three versions of this so here was the version that has
+- [01:01:39] the proper case where we called the title method so it says hey how are you I was just checking in
+- [01:01:46] all good the second version used the replace method and we changed good to okay and then finally we
+- [01:01:53] printed the original version that you can see did not use proper case with the title method and
+- [01:01:59] still contains the word good I'll go ahead and close out this terminal window for a moment and
+- [01:02:04] we talked about all of that white space that is in our multi-line variable so let's work with that
+- [01:02:10] now I'm going to call print once again and I'm going to call the length function which is just
+- [01:02:15] L E N and I'm going to pass multi-line into this so we can see what the original length of our
+- [01:02:23] multi-line string is so it will count every character after that we're going to change the
+- [01:02:30] multi-line variable and I'm going to use the plus equals to add to the end of it let's just add a
+- [01:02:36] lot of extra white space after that let's go ahead and once again change the multi-line variable and
+- [01:02:44] I'm going to add some space to the beginning of it and we'll do that in a different way instead of
+- [01:02:50] the plus equals I'll use the equal symbol I'll add some space and then at the end I'll concatenate
+- [01:02:57] the value that we have in multi-line currently and then after that let's once again check the
+- [01:03:05] length so we'll check the length function with L E N and then we'll pass in multi-line so we're
+- [01:03:12] checking the original length we're adding to the end and the beginning and then we're checking that
+- [01:03:17] length again and if you want to you could even check in between where you'd get a value that
+- [01:03:22] only has it added to the end and not at the beginning so now let's run this and see the values
+- [01:03:28] that we get so we start out with 126 and after we add all of that extra white space at the beginning
+- [01:03:36] and at the end of the variable it's 184 characters now of course this white space is undesirable but
+- [01:03:43] I'm adding it as an example so now let's look at some string methods that will remove that white
+- [01:03:49] space if you had some values that you needed to remove white space from so I'll say print once
+- [01:03:54] again and now we'll say multi-line dot strip and that should remove the white space if we wanted
+- [01:04:04] to remove it but this will of course print out the output it's not checking the length if we
+- [01:04:10] don't add length and we won't really be able to see that because you can't see white space so
+- [01:04:14] let's go ahead and just check the length here LEN and we need to wrap that in parentheses and now
+- [01:04:21] I'm going to do something else I'll do shift alt in the down arrow twice there are two other methods
+- [01:04:27] we can check so let's check if we only remove the white space from the left side and that is with
+- [01:04:33] L strip let's also check if we only remove the white space from the right side and that is R
+- [01:04:39] strip so if we check all three of those then we'll see different values so let's run this code with
+- [01:04:46] the play button and we can see the last three here if we removed well all of the white space
+- [01:04:53] it took it down to 123 and remember our original it had 126 up here before we added the white space
+- [01:05:01] so this actually removed some extra unneeded characters as well and then when we only removed
+- [01:05:07] the white space from the left side we still had 165 characters when we only removed it from the
+- [01:05:15] right side then we had 142 and I think I'm saying that in the correct order yes we removed the right
+- [01:05:21] side last and there are many more string methods and I'm going to leave a link in the course
+- [01:05:26] resources where you could go to the documentation and find all of the available string methods
+- [01:05:32] that you can experiment with right now let's just use a few more string methods to build something
+- [01:05:39] just so we can apply this in a small way for now let's build a menu I'm going to set a title
+- [01:05:45] variable equal to menu notice it's all lower case value and we can call string methods directly on
+- [01:05:53] the value itself it doesn't have to be called on a variable name as I have been showing you so here
+- [01:05:59] I'm going to say menu dot upper and call a string method directly there and that will be stored in
+- [01:06:06] the title variable after that I'm going to print the title and I'm going to call the center method
+- [01:06:14] I'll pass in 20 characters and I'm going to pass in a value that is an equal sign let's see what
+- [01:06:22] this does if we just return this much and I'm also going to leave a empty line here so we do
+- [01:06:28] not actually see everything that we've had above pressed right up against our menu so control s to
+- [01:06:35] save and now I'll run the code with the play button and you can see what we've got so we called a
+- [01:06:40] center method and it centered our word menu that was set to all upper case and it used that character
+- [01:06:47] I passed into the center method to fill out the rest of the space so that's a very interesting
+- [01:06:53] method to call now let's call another one that is equally interesting so after this I'll say print
+- [01:06:59] and I'm going to use the string coffee and after this I'm going to use l just which means
+- [01:07:06] left justify I'm going to give this 16 characters I'm going to have it fill out the remaining space
+- [01:07:13] after coffee with periods and then I'm going to concatenate inside of our print statement
+- [01:07:21] and I'm going to say one dollar but I want it to be a string so the dollar sign and the number one
+- [01:07:28] and I'm going to call the right justify method on it I'm going to say four characters there is
+- [01:07:35] nothing that I want to fill out the rest of the space with so I'm just going to pass in one
+- [01:07:40] argument here or one value I should say to this right justify method so after I do that and save
+- [01:07:48] let's see what we get in our terminal once again when we click run and now our menu has coffee
+- [01:07:54] and you can see it filled out the space that we gave it for 16 characters and then we have our
+- [01:08:00] dollar that is right justified over here let's go ahead and complete our menu I'm going to scroll
+- [01:08:05] up and once again as I've explained I'm going to use shift alt in the down arrow to copy this
+- [01:08:10] down twice and now let's just change our values so I'll double click coffee and change it to
+- [01:08:15] muffin and in the last line I'll change it to cheesecake and then here let's just change our
+- [01:08:22] values to two dollars and let's go with four dollars ctrl s to save and we run our code and
+- [01:08:30] we have a nice little coffee house menu let's close the terminal and let's look at just a few
+- [01:08:35] more things with strings and one thing to discuss is string index values so I'm going to say string
+- [01:08:43] index values here in a comment and just to keep our menu separate I'll once again print empty
+- [01:08:48] string here okay after the string index values comment let's look at string index values I'll
+- [01:08:54] come back to that first variable that we have and if we just want the value that is at index one
+- [01:09:01] do you think that will be the d in my name it would seem to be if we say we want the number one
+- [01:09:09] value right the very first value well that might not be what that indicates let's go ahead and
+- [01:09:15] press play and you can see it actually returns the second letter and that's because indexes
+- [01:09:21] start at zero so if we wanted the first letter we would pass in a zero right here let's copy this
+- [01:09:27] down with shift alt in the down arrow and let's see what minus one gives us so if we save now
+- [01:09:35] and run our code we have the e which is the last letter in my first name so anytime we want the
+- [01:09:43] last value in the string we can reference the minus one index and that could be very useful
+- [01:09:49] if you didn't know how many letters were in the string you were working with but you needed to
+- [01:09:54] get that last value you can also use a range of values so here instead of just one or minus one
+- [01:10:03] you can start with the index say at the first position well it's actually the second position
+- [01:10:10] but at the one position and then we can say we want to end at the last position but this might
+- [01:10:18] not deliver what you think either when you provide a range let's go ahead and run this you see we just
+- [01:10:24] get the av so the value you give at the end of the range will not be part of the output so you need
+- [01:10:31] to consider that when you create the range and if you want to go all the way to the end you just
+- [01:10:36] provide a range without providing the last value at all like this and now we should get the a through
+- [01:10:44] the end of my first name run this yes we get a ve when we don't provide that final value and now
+- [01:10:52] when we've previously checked what data type we had some of those checks were returning true
+- [01:10:58] and that is boolean data let's look at a couple of methods that also return boolean data and i'll
+- [01:11:04] just say some methods return boolean data and if you're wondering what boolean means it just means
+- [01:11:10] we're working with true or false data so if we print here and say first starts with now i could
+- [01:11:18] say does the value in the first variable does it start with the string d well that should be true
+- [01:11:27] because my name starts with a capital d let's copy this down so we can check two things at once now
+- [01:11:33] we can say does first ends with and now we'll check the letter z so let's see what result we
+- [01:11:42] get oh it does not have two s's and notice visual studio code will help you with that
+- [01:11:48] how this in my theme at least it turned purple here and if you're not using the same theme it
+- [01:11:53] may turn a different color but overall if i mistype something then it doesn't look right
+- [01:11:58] it doesn't have that color that starts with does but if i remove the s there you can see
+- [01:12:03] it identifies the method likewise and i'll just remove this for a second when we're working here
+- [01:12:08] in visual studio code you can just type the period and suddenly a list of all of these different
+- [01:12:13] methods can show up including the one i want which is ends with and you can search for them
+- [01:12:19] that way as well so now i'll just put in the letter z again save and we'll run the code and
+- [01:12:25] of course we get true that yes first starts with the letter d a capital d but false it does not
+- [01:12:32] end with the letter z so now since we've brought up boolean data let's quickly discuss that and
+- [01:12:38] i'll just leave another comment here that says boolean data type and now after this i'm going
+- [01:12:45] to set my value equal to true now notice the true has a capital t if i remove that and just put true
+- [01:12:54] visual studio code tells us something is wrong here it needs to be proper case with a capital t
+- [01:13:00] or false will not work either it needs to be capital f for false so either way you do it
+- [01:13:08] just needs to be proper case whether you choose true or false now after this i'll set another
+- [01:13:13] variable just the letter x i'll set it equal to bool and i'll pass in false now this is the
+- [01:13:20] constructor function once again so you can set this data type in either way and once again we
+- [01:13:26] can print say type and check the type of x and we could also say print and say is instance that we
+- [01:13:35] see right there and then we could pass in my value say is it a bool value we should get true
+- [01:13:43] for both of those let's go ahead and run the code and well we didn't get true it just said what type
+- [01:13:49] it was actually we didn't check that against a value like bool so yes we get the output here
+- [01:13:55] what it is then yes true for the second one but just important to remember that boolean means
+- [01:14:00] you are working with true or false data let's move on to the numeric data types and there is
+- [01:14:06] definitely more than one so we'll start here and i'll just say numeric data types and the first
+- [01:14:14] type we'll work with is integer and we have seen this in previous lessons i'm going to set price
+- [01:14:19] equal to 100 then i'll set best price and i'm going to set this equal to the constructor
+- [01:14:26] function and pass in 80 so you can set an integer in either way and just like we did in the past
+- [01:14:33] as a matter of fact i could just copy these lines control c and then down here control v to paste
+- [01:14:40] and i could change x to price and we should see that it returns the type integer and then here
+- [01:14:49] i could change this to best price and we'll compare it not to bool but to an integer type
+- [01:14:57] and we'll see what we get for the output and yes it is a type integer and yes it's true that is
+- [01:15:03] an instance of integer after that let's do some more with numbers and we'll look at the float type
+- [01:15:10] float types have decimals so a grade point average gpa set that equal to 3.28 that would be a float
+- [01:15:18] type and that is a literal assignment just like we did with price up here but we could also use a
+- [01:15:24] constructor but it almost seems pointless because you still type the float so i'll just say y equals
+- [01:15:30] float 1.14 and of course this is a float data as well we just had to type a little bit more
+- [01:15:38] so here we could say print we'll check the type gpa and it should return float and of course we
+- [01:15:44] could do is instance as well if we wanted to but let's see what we get yes it is the type float
+- [01:15:51] now there is one more numeric type to quickly mention it is not a type we will use in these
+- [01:15:56] basic lessons but i should bring it up it's the complex type and it's often used in electrical
+- [01:16:02] engineering it uses a j notation so here we'd say comp value equals five plus three j i know
+- [01:16:11] that looks a little strange especially if you're not into engineering we can print type and we'll
+- [01:16:17] check the type for our comp value but now a complex value has a couple of property values we
+- [01:16:25] can check so let's go ahead and do that just so you see how we can say comp value dot real we can
+- [01:16:32] also say comp underscore value dot imagine which stands for imaginary this is based on a real
+- [01:16:41] number system and it has a real number value and an imaginary number value once again if you're not
+- [01:16:47] into engineering it may not make a whole lot of sense but python has so many applications it's
+- [01:16:52] pretty awesome that this is built in so let's go ahead and run this see what we get back yes it's
+- [01:16:58] a complex type and you can see when we return those individual property values they are float
+- [01:17:04] values but they are part of the complex data type okay i'm not going to go over all the different
+- [01:17:11] mathematical operations that you can do we have previously covered several of those in the past
+- [01:17:16] lessons so no need to rehash that we went over those especially with operators in the last lesson
+- [01:17:22] but there are some built-in functions for numbers so let me just highlight those with a comment
+- [01:17:27] this way built-in functions for numbers and let's print one of those out let's print the absolute
+- [01:17:35] value of the gpa that we previously created and remember that was a float type i think we said
+- [01:17:41] 3.28 so let's see what the absolute value of that gpa value would be it is 3.28 so no change there
+- [01:17:51] but once again this is checking the absolute value now let's see if we did something else
+- [01:17:56] with that that we could check we could say print and we could say round pass in the gpa there
+- [01:18:02] and then let's go ahead and do one other let's print round and say gpa and we can
+- [01:18:10] specify the decimal so the difference here would be this would round to the nearest integer
+- [01:18:16] this would round to the nearest decimal place that we specify so we have two decimal points
+- [01:18:24] here with our absolute value and you know what i should check this as well by saying print
+- [01:18:31] and since that didn't change before we can say gpa multiplied by minus one so you would expect
+- [01:18:40] to have a negative 3.28 but the absolute value will probably not be negative so now we can check
+- [01:18:46] all of this let's run and yes we got 3.28 twice without the negative although that would have
+- [01:18:53] been expected now the round rounded down to the nearest integer which was three but then when we
+- [01:19:00] specified the decimal point it rounded up from 3.28 to 3.3 so those are just a couple of built
+- [01:19:08] in functions that you can use with numbers without importing a module but there are some modules that
+- [01:19:14] provide many good mathematic helpers and one of those is simply the math module now if i type
+- [01:19:21] import math right here and when i save the file it's going to move this to the top of the file
+- [01:19:27] which is nice and that's because i have that python extension install that we previously talked about
+- [01:19:33] visual studio code just wants to help us format this what you should typically do is type your
+- [01:19:38] imports if you're bringing in a module which we'll get into more further in this series
+- [01:19:43] but you would type your imports at the top of the file i'm going to type it here to just give the
+- [01:19:48] example of how it will be moved to the top now after that i want to use this math module just
+- [01:19:56] to get the value of pi so i'm going to say math dot pi and once again we can use dot notation to
+- [01:20:02] check all of the different things available in this module for us i just want pi right there
+- [01:20:07] okay when i control s to save notice that import statement was moved it should be at the top and
+- [01:20:15] it is so vs code moved it right up here to the top above our first actual code if i was typing
+- [01:20:22] this at the top where i would normally put it is at the absolute top of the file okay after that
+- [01:20:29] let's scroll back down to where we were and we should just run our code once we're back here to
+- [01:20:34] check the value of pi so we'll do that and there is pi from the math module let's do a few more
+- [01:20:41] things with the math module because we've imported so let's use it i'll shift alt in the down arrow
+- [01:20:47] three more times and let's go ahead and use the square root function that we can use let's pass
+- [01:20:53] in like 64 and see what the square root of that is let's also use the seal function and here let's
+- [01:21:01] pass in our gpa and see what seal does and then let's use i want to go ahead and highlight that
+- [01:21:07] let's use floor and pass in gpa as well so we're going to see pi once again then we'll see the
+- [01:21:15] square root of 64 then the ceiling of our gpa value and the floor of our gpa value so control
+- [01:21:22] us to save run the code so after pi then we went ahead and found out the square root of 64 is 8
+- [01:21:31] and that is a float value that was returned but then when we checked the ceiling value
+- [01:21:36] of our gpa which was 3.28 it's now four so that rounded up to the nearest integer
+- [01:21:43] likewise math floor rounded down to the nearest integer and one more note earlier we cast a number
+- [01:21:50] to a string but we could also let's say here casting a string to a number we could also cast
+- [01:21:58] a string to a number so for example if i had zip code which is my variable and inside of it i had
+- [01:22:04] this zip code which is a string i could check that value or turn that string into a numeric value
+- [01:22:12] using the integer constructor function pass in zip code then i'll check the type of the zip value
+- [01:22:22] so now that i have that control s and run the code and yes it is an integer after we have cast
+- [01:22:30] that string to an integer with the constructor now a quick note you can and i'll scroll just
+- [01:22:38] for some more room again you can't have an error if you attempt to cast incorrect data so for
+- [01:22:47] example if i said zip underscore value equals and i said integer and then i passed in new
+- [01:22:56] york which i believe this is a zip code for new york but we pass in the actual words new
+- [01:23:02] york to our integer constructor python isn't going to like this so let's take a quick look at the error
+- [01:23:08] you can see it says invalid literal and it doesn't like what we did it really highlights it there so
+- [01:23:15] let's close out of that i'll comment this out but i'm going to leave it in the code for you
+- [01:23:20] in the course resources just so you can see this reference that this will be an error

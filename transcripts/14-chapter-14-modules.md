@@ -1,0 +1,179 @@
+# Chapter 14 - Modules
+
+Source: Python Tutorial for Beginners (with mini-projects) by freeCodeCamp.org
+URL: https://www.youtube.com/watch?v=qwAFL1597eM
+Time range: 04:42:15-04:59:47
+
+## Transcript
+
+- [04:42:17] open and you can see i have a new lesson 14 folder over here in the file tree let's create a new file
+- [04:42:24] and let's call this modules.py now inside of our modules.py we're going to actually import
+- [04:42:32] something first and we've done this previously so modules can be considered small code libraries
+- [04:42:38] that are based on related features and one example of this is the math module and it contains
+- [04:42:44] functions and constant values for use in mathematical equations so we can import math and that's a
+- [04:42:50] built-in module in python so python comes with this module but you have to import it to use it
+- [04:42:57] and now let's go ahead and access something from math and if we want to do that we can just print
+- [04:43:03] and then say math and then i'll use dot notation and notice what happens all of these different
+- [04:43:09] things that are available in the math module come up and i'm going to scroll through here just so
+- [04:43:14] you can see a lot of them but we're choosing a constant and i'm going to choose pi so we're
+- [04:43:19] just going to print pi inside of our output window and i'm going to add a couple of extra lines just
+- [04:43:24] so that doesn't scroll up on me like that and then i'm going to go over here to our drop down
+- [04:43:29] and run the python file and notice we get the value of pi here in our output once again i'm
+- [04:43:35] going to go to view and appearance and then to panel position and move that to the right just so
+- [04:43:40] we can see our output over here today but now you know what i'm doing i'm either getting functions
+- [04:43:46] or constant values from the math module and of course we could bring in any type of data that
+- [04:43:52] could be in the module there may be a dictionary in there or a tuple or something else that we can
+- [04:43:57] access now earlier in our series we also imported a couple of other modules that we're using in our
+- [04:44:01] rock paper scissors game one of those was sys and another was random and now later in the code we
+- [04:44:10] were using some functions so one we used to exit the program and that was sys.exit and then we
+- [04:44:16] call that function and then another one we used was random and or random.choice actually i should
+- [04:44:23] say random.choice and we pull that up and then it chose one of the characters of a string we
+- [04:44:29] provided like one two three so just a couple of functions that are available from other modules
+- [04:44:34] that we've already used now here we're importing the entire module and then we're using dot notation
+- [04:44:40] to pull a function or a value from that module but instead of that we can just pull out what we need
+- [04:44:48] and you have seen that once already in this series too because in our rock paper scissors game we're
+- [04:44:53] using enum and to do that we say from enum which is the module then we say import enum or we could
+- [04:45:01] do any of the other things that are available from that module but now we're only importing enum
+- [04:45:07] from the enum module and i know with the same name that's a little confusing but just for example
+- [04:45:12] if we didn't want to say math.py instead of import math we could say from math so we would say from
+- [04:45:19] math here and then we would just say import pi and then notice how vs code already realizes we're
+- [04:45:27] now using the wrong syntax then we would just refer to pi as we want that output and we can
+- [04:45:33] run our code again and we still see the same value output here now something else we can do
+- [04:45:39] is create an alias so if we don't want to refer to a module by its name say random we could create
+- [04:45:45] an alias by just typing the word as after and then i could say rdm and then i could refer to
+- [04:45:53] rdm. and then still have all of these choices here so like the choice function that i was using
+- [04:45:59] before so how do we know what to use from a module well there's a few ways to find out what's inside
+- [04:46:04] of a module one of those ways and i'll just create an extra line here but it is to use the dir
+- [04:46:10] function so i'm going to print here just so we can see the output and then i'll call the dir function
+- [04:46:16] and then inside of that which dir i believe would be an abbreviation for directory if i'm not
+- [04:46:21] mistaken and then inside of that we can just pass whatever module we want to now i've got an alias
+- [04:46:26] for random so i'll just put that alias in here and this will work but notice the output when i
+- [04:46:32] go ahead and run the code after i save it it's got a list of everything in the module but boy
+- [04:46:39] is that kind of hard to read it's literally a list so list type data and then we've got everything
+- [04:46:46] in here and it's all jumbled together but we can make this more legible for us actually because
+- [04:46:52] what we'd like to do is just put one of these on each line and then see everything inside of the
+- [04:46:57] module so let's just loop through it so i'll say for item in dir and then pass our random module
+- [04:47:04] but i'm passing in the alias of course that we created and now i'm not going to print the
+- [04:47:09] directory of random here instead i'm just going to print each item as we go through the loop
+- [04:47:15] so i'll save this and run the code again much easier to read now and we can see everything
+- [04:47:22] that is inside that module now of course i already showed another way to do that and that is with
+- [04:47:26] dot notation so i just type the module name or the alias of that module and then i use dot notation
+- [04:47:33] so i type a period and vs code helps us out so we can see all of these different things
+- [04:47:38] that are available inside of this module but neither one of these ways actually tell you
+- [04:47:44] what any of these constants or different data types or functions are inside of the module so
+- [04:47:50] for that let's go to the docs quickly i'm in the python documentation now as you can see here at
+- [04:47:56] the top it says documentation for python 3.11.3 and we're at the python module index now if you're
+- [04:48:04] watching this in the future and python has gone to a newer version that's okay you should still
+- [04:48:09] be able to find this python module index and here is an alphabetical list of all the different
+- [04:48:15] modules that are available and then if you go into the module so let's find one we were using like
+- [04:48:20] enum here i'll click this and it takes you to a page that shows all of the details for that module
+- [04:48:27] and it details everything and describes everything inside of the module so this is a great reference
+- [04:48:32] and of course i'll link this in the course resources for you to go with this lesson okay
+- [04:48:37] now we're back in vs code and we're going to look at a custom module that i created notice it's
+- [04:48:43] named kansas.py so like any other python file it ends in.py and then inside of the file we've got
+- [04:48:52] some values here so i've set the capital the bird the flower and the song for kansas and that's the
+- [04:48:58] state that i'm from so you could create one of these files or modules if you will for where
+- [04:49:04] you're from if you want to just as an example to go along with what i'm doing but we've got a few
+- [04:49:09] values here and then we've got a function that says random fun fact and you can see inside of
+- [04:49:15] this random fun fact function i have a list that has four fun facts about kansas and then notice
+- [04:49:23] i'm also importing something from another module because you can do that inside of modules that
+- [04:49:29] you create as well just like other python files so from random i'm importing the choice function
+- [04:49:35] so then down here i'm creating the index value using the choice function and choosing between
+- [04:49:42] zero because remember our list would start with an index of zero so zero through three so it's
+- [04:49:48] going to choose one of those and this is a string so then when we use the index we need to convert
+- [04:49:54] it to an integer here and we're doing that with the constructor and then we're just referencing
+- [04:49:59] which index it is inside of fun fact and we print that so this might surprise you but there's really
+- [04:50:06] nothing special inside of a module we've got data and we can have functions as well and you can use
+- [04:50:13] other modules inside of a module that you create and so that's what we have here let's go back to
+- [04:50:19] our modules file now inside of this file we can import our kansas module or if you created one
+- [04:50:25] for wherever you live that's fine too so we've imported kansas now let's use what we get from
+- [04:50:32] the module so i want to print the kansas capital and notice with dot notation i see the other
+- [04:50:38] things available in the module as well i'm going to choose capital so i should print out that value
+- [04:50:44] now remember our function already prints so i don't need to call print here so i'll just say kansas
+- [04:50:50] and then random fun fact and we'll just call that function and it already prints if we go back you'll
+- [04:50:57] see at the bottom here it returns a print and we don't really need that return there even i don't
+- [04:51:03] think i had that before so let's just go ahead and remove the return it should still be fine without
+- [04:51:08] it and i think that's what i showed you before so here we'll go ahead and save and now let's run
+- [04:51:14] our code and see what we get from bringing in the kansas capital and the random fun fact so here at
+- [04:51:21] the bottom the kansas capital is tapika and then we have our random fun fact which ataw is the
+- [04:51:27] largest city in the state but many would guess that that is kansas city that's also true much
+- [04:51:32] of kansas city is actually in missouri okay so we're using our new custom module now and now we
+- [04:51:38] need to talk about one special value that every module has and that is the name value and it is
+- [04:51:44] surrounded by two underscores both before the word name and after so let's look at that and we can
+- [04:51:51] print the name of the module that we're running so let's print and then let's just say two underscores
+- [04:51:57] name and two more underscores now do you think this will be modules it possibly could be but
+- [04:52:04] maybe it won't be let's go ahead and see what we get when we run our code again and notice the name
+- [04:52:09] is main and main also has two underscores both before and after the name main that is because
+- [04:52:16] this is the module we're running so we if we print the name of the kansas module for example
+- [04:52:23] we could say kansas dot and if we scroll through here we should find name there it is so that's
+- [04:52:29] available to our custom module i'll save let's run this notice the name of the kansas module
+- [04:52:36] is kansas and that's because we're importing that module so it gets the file name just like we have
+- [04:52:43] here kansas dot pi so the name is kansas but the file that we're running modules dot pi its current
+- [04:52:50] name is main and that indicates that that's the file that is being ran now this can be very useful
+- [04:52:56] so for example i'm going to go back to the kansas module and at the very end of the file
+- [04:53:01] here i'm going to put an if statement and i'm going to say if two underscores name two underscores
+- [04:53:08] equals and then i'm going to put in quotes main with the underscores then inside of that we're
+- [04:53:16] going to go ahead and run our random fun fact function so now this function is only going to
+- [04:53:23] run that's only going to be called into action if this is the main file oh and i only put one
+- [04:53:28] equals sign there we actually need two as we compare we're not assigning we're comparing
+- [04:53:34] here so that needs the two equals so if name equals main and you'll see this in many modules
+- [04:53:40] because this way they'll only run this code after this if statement if they are the main file in
+- [04:53:47] other words this file is being called into action so let's go ahead and run our kansas file now and
+- [04:53:53] see what we get we have a fun fact from kansas kansas is considered flat but it does have a
+- [04:53:59] mountain i believe we saw that one before so this file will run this function if it is the main
+- [04:54:05] file so that can be very useful when you create modules now if we come back to our modules here
+- [04:54:12] and we go ahead and run this modules.py we won't see anything different than what we had before
+- [04:54:19] we don't see the fun fact function running twice as a matter of fact i could comment out the fun
+- [04:54:25] fact function and now we shouldn't see it run at all if we do that and we don't we just have
+- [04:54:30] tapika and then the two different name values here main and kansas that we printed at the bottom but
+- [04:54:36] it's important to do that if you want to have something called inside of your module because
+- [04:54:42] if we don't do that it will run every time so if i comment out the if statement here and then we'll
+- [04:54:49] have to of course change our indentation let's bring this back to the front now when we import
+- [04:54:55] the kansas module this will run so we should see a fun fact executed twice because we're also doing
+- [04:55:02] it inside of our modules file let's go ahead and double check that i'll run the code and well we're
+- [04:55:08] not seeing the result here because of this long list but if we're to scroll up there's actually
+- [04:55:12] another random fun fact at the very top of the list and here we see it Wichita is the largest
+- [04:55:18] city in the state so we see that before we even print pi let me go ahead and comment these out
+- [04:55:23] again i'll select all of those and do control with the slash and it will comment those out
+- [04:55:29] and now it won't be so far between when we see our output here we'll run the code again
+- [04:55:34] and notice we've got a considerable portion of kansas city is in missouri and oh i commented
+- [04:55:41] out the other kansas information too i meant to just do the loop let me try that again i'll
+- [04:55:46] uncomment by doing the same thing select what you want and then control in the slash and i
+- [04:55:51] uncommented both of those let's save and run the code again okay now now we actually have two fun
+- [04:55:58] facts running even though we're only calling it once in this file and that's because this first
+- [04:56:02] fun fact runs right now when kansas is imported the kansas module that's because we don't have
+- [04:56:09] this if statement another important thing is if you leave this over here it could actually be
+- [04:56:16] included in the import list let's see if it is i'm not so sure if it is or not but let's check
+- [04:56:22] say kansas and then we'll dot and we have random fun fact here let's see if another one is included
+- [04:56:28] it's not by vs code at least knows not to do that however maybe not all tools with python do so
+- [04:56:35] one thing to consider is you don't want this included in what's available to import as well
+- [04:56:40] if another python tool were to allow that so it's much better to put this if name equals main and
+- [04:56:47] and then of course we need to indent this back with tab there we go and now we'll only get the
+- [04:56:53] fun fact that we intend to run inside of our modules file and this will not run unless kansas
+- [04:56:59] is the main file so let's go ahead and run our code one more time just to prove that and yes
+- [04:57:04] the first thing we get is the pi value and that's up here and then we get the capital then we get
+- [04:57:10] the fun fact and the two names okay now that we've covered the name value let's close the terminal
+- [04:57:15] window let's create a new file over here and we'll call this rps7.py now we're just going to start
+- [04:57:23] with the code that we finished with in the last lesson on closures which was rps6 for our rock
+- [04:57:29] paper scissors game so i'm just pasting this in and this is the exact code you should have finished
+- [04:57:34] with in the previous lesson for rock paper scissors now we just want to make a couple of
+- [04:57:40] changes here to make our rps7.py a module so let's go ahead and scroll to the very bottom
+- [04:57:49] and once we get to the bottom here of our file what we're going to do is i'm going to rename
+- [04:57:54] this play and i'm going to name it rock underscore paper underscore scissors and we're setting that
+- [04:58:02] equal to the rps function and that's because we're using a closure that we learned about in
+- [04:58:07] the last lesson now the nice thing when we make this a module is the rock paper scissors function
+- [04:58:13] that we want to call will be available to import now underneath this let's go ahead and delete this
+- [04:58:20] let's put our if statement so if two underscores name two underscores equals with two equals
+- [04:58:27] then two underscores main two underscores inside of this if statement we'll go ahead and call our
+- [04:58:34] rock paper scissors function so this will only execute if our rps7.py is the main file so
+- [04:58:44] if we go ahead and run this code rock paper scissors would execute but when we import the
+- [04:58:50] file it will not automatically run it will allow us to call the rock paper scissors function
+- [04:58:56] where we want to so now inside of our modules.py let's go ahead and import this and i'm going to
+- [04:59:02] say from rps7 and i'm going to import rock paper scissors now of course we could just import rps7
+- [04:59:11] and then we would have to refer to this as rps7.rockpaperscissors but here is our rock paper
+- [04:59:17] scissors function and it's ready to be used so we will call it right here at the bottom of our
+- [04:59:22] modules file and now after we see these different values print out the game should start so let's
+- [04:59:28] go ahead and run our modules file and yes we're ready for a game of rock paper scissors let's go
+- [04:59:34] ahead and play and python one so i'll go ahead and quit this time instead of playing till i win
+- [04:59:39] but now you know more about modules we've got built-in modules in python or you can create
+- [04:59:45] custom modules as well i've got vs code open i have an open folder over here named lesson 15

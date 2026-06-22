@@ -1,0 +1,232 @@
+# Chapter 13 - f-Strings
+
+Source: Python Tutorial for Beginners (with mini-projects) by freeCodeCamp.org
+URL: https://www.youtube.com/watch?v=qwAFL1597eM
+Time range: 04:19:32-04:42:15
+
+## Transcript
+
+- [04:19:39] a new file inside this folder called f underscore strings dot pi now as we talk about f strings
+- [04:19:48] we're going to learn what we have been doing with strings and what we could do to format
+- [04:19:54] strings that might be better so what i want to do first is just paste in an example of something
+- [04:19:59] from the previous tutorial and we'll look at how this is put together so we have a variable that
+- [04:20:05] says person then we've got a variable of coins and you can see we concatenate everything in this
+- [04:20:11] string we're using four plus symbols to create one string it starts with the new line character as
+- [04:20:17] we see the slash n then we have the value of person and each time we insert a value we essentially
+- [04:20:23] have to wrap it in plus symbols to concatenate it to the rest of the values of the string where
+- [04:20:30] we see has right here inside of quotes and then at the end we have coins left inside of quotes
+- [04:20:36] and now today we're going to learn a better way to do this but before we get to f strings let's
+- [04:20:41] cover some ways that used to be used to format strings that could still be used but f strings
+- [04:20:48] are potentially better however it's good to know the older ways because you may see those in cold
+- [04:20:53] code examples that were created previously so let's look at another example of this same string
+- [04:20:59] but we're going to use the percent s method of formatting the string so i'll start out with
+- [04:21:04] let's create a message first and then we'll just print the message so i'll say message equals then
+- [04:21:10] i'll start with a quote and we can put in our new line character and then we're going to put in
+- [04:21:15] a percent s and we don't really need the space but i want you to see the separation of these two as
+- [04:21:22] they're different characters so let me remove that space but the percent s marks where we're
+- [04:21:27] going to put the person value after that we'll say has and then percent s again to mark where
+- [04:21:34] we're going to put the coins value and then we'll say coins left so that's a little easier to read
+- [04:21:40] so far but then we need to put another percent and then parentheses and at the end we'll put in
+- [04:21:46] person and coins now what this does is it inserts person where the first percent s is and inserts
+- [04:21:53] coin where the second is and you need to keep these in order if we flip them around it would insert
+- [04:21:58] coins first so after this let's just print the message and we'll save our file and i'll go to
+- [04:22:05] the drop menu here and choose run python file and you see we've got dave has three coins left
+- [04:22:11] and again dave has three coins left so two different ways of creating the same string
+- [04:22:17] we had been concatenating with the plus symbol but this appears to be just a little bit easier
+- [04:22:23] than what we've been doing but again this is an older way of doing this and there are newer ways
+- [04:22:29] so we'll continue to move forward and cover those first i want to move this to the right once again
+- [04:22:33] as you've seen me do before so go to the view menu in vs code appearance and then align panel
+- [04:22:40] and no panel position there we go and move that to the right so we'll just see our output over
+- [04:22:45] here i'm also going to press control and the letter b to hide the file tree so we can see
+- [04:22:50] more of our code here on the left and then eventually alt and the letter z so anytime our
+- [04:22:57] code is longer and running off the screen still it will wrap down instead to this next line so
+- [04:23:03] now let's look at another newer method than using the percent s and that is to use the format
+- [04:23:08] method so i'm going to highlight our last example press control c to copy and then just underneath
+- [04:23:14] control v to paste this i'm going to change this string to use the format method approach and so
+- [04:23:21] now we're still going to start with the slash n for a new line but then we'll no longer have a
+- [04:23:27] percent s here instead we're going to put in the curly brace and i'll just delete that percent s
+- [04:23:32] so now you see the slash n and then the opening and closing curly brace or bracket some people
+- [04:23:38] call them curly braces some call them curly brackets either way and then i put a space here
+- [04:23:44] just so you can see the separation once again because this is what we're talking about but i
+- [04:23:48] really don't want a space at the beginning so i'll remove it i just want you to see the separation
+- [04:23:53] of the new line character versus the opening and closing brackets once again we'll use the same
+- [04:23:59] thing here instead of the next percent s so we have these opening and closing curly brackets
+- [04:24:05] indicating where we're going to insert our values and then at the end here we won't use the percent
+- [04:24:11] either instead we'll use dot notation to chain on to the end of the string value we'll chain dot
+- [04:24:18] format which calls this method and then we'll pass in person and coins to the format method
+- [04:24:25] so let's save this and run our code once again and now we see the same output again so another way
+- [04:24:32] of achieving the same format of our string but now we're using the format method however there
+- [04:24:38] are some other things we can do with this format method so let me once again highlight both of
+- [04:24:44] these this time instead of ctrl c i'll tell you another way to do this and that is to press shift
+- [04:24:49] alt and the down arrow and it will make a copy right underneath and then i'll just press enter
+- [04:24:54] one time to create that space now we're still going to use the format method but we can put in
+- [04:24:59] index numbers to say which position of the value is going in so i'm going to flip these around and
+- [04:25:06] i'm going to put one here instead of zero and i'll put zero here but that means i'll want to flip
+- [04:25:11] these values as well so it will start with a zero and then it will end with the one so we'll want
+- [04:25:19] to put person here where the one is because it has the index of one and we'll put coins where
+- [04:25:24] the zero is because it has the index of zero so if we save run our code again we get the same
+- [04:25:31] output but now we can essentially not track the order of these if we want to flip those around
+- [04:25:38] and then insert the values by which number they are as far as the index inside of the format
+- [04:25:45] method we can do that and remember the index starts with zero so we refer to coins as zero and person
+- [04:25:51] as one but there's even more we can do with the format method so i'll scroll up just a little bit
+- [04:25:56] i'll highlight this example and once again shift alt in the down arrow to copy it down and now
+- [04:26:03] let's refer to these as the names that they have but we're going to have to do something else
+- [04:26:08] inside of the format method as well so here i'm going to put person and here i'm going to put
+- [04:26:15] coins but now we actually assign these values inside the format method here so i'm going to say
+- [04:26:22] coins equals coins and likewise person equals person so now we're setting the values
+- [04:26:30] of these parameters essentially for the format method and then it will pull them in here by name
+- [04:26:37] so let's save once again run our code and we get the same output again and i can see vs code
+- [04:26:44] brought this down to the next line and that's okay you could even have your closing brace on
+- [04:26:48] the last line if you want to and we have the opening one here this will still run the same
+- [04:26:54] okay before we move on from format let's look at one more example so i'm going to highlight all
+- [04:26:59] of this again shift alt in the down arrow move it down and i'll press enter about three times now
+- [04:27:05] because i need just a little more space i want to create a dictionary here so i'm going to say
+- [04:27:10] player is going to hold our dictionary there we start with curly braces for a dictionary i'm
+- [04:27:16] going to define person inside of the dictionary and i'll just assign person my name dave and then
+- [04:27:23] coins and then i'll give coins a value of three here but this is all inside of a dictionary now
+- [04:27:30] now we can still refer to person and coins inside of our string but what i'm going to do here
+- [04:27:38] is put in and i can get rid of the extra returns here so format's all on the same line again
+- [04:27:44] but i can put in the dictionary and i just start it with two asterisks and then put in
+- [04:27:49] player and it's going to pull these values in from the dictionary based on what we have assigned
+- [04:27:56] the keys here as the person is a key and coins is a key for the values of dave and three so
+- [04:28:03] let's once again run our code and we see the same output once again so a dictionary can actually
+- [04:28:11] shorten that up because then we just use two asterisks and the name of the dictionary which
+- [04:28:16] is player in this one to pass into the format method and then it pulls those out based on the
+- [04:28:21] key names so when we talk about these different ways of formatting strings we have to look at why
+- [04:28:28] have we moved on to newer methods i even format is an older method than the f string which is what
+- [04:28:33] we're going to learn next and that's what you want to use going forward but when we look back
+- [04:28:38] at this percent method let's talk about what works for it and it does work but what doesn't work is
+- [04:28:44] this can get complicated quickly so you see percent s everywhere you've got all these percent signs
+- [04:28:50] and imagine if you had more values to pass in what if you had 10 values this just gets longer
+- [04:28:55] and longer as you pass in the values now as you might guess the same with the format approach
+- [04:29:01] here as we pass things in except for the dictionary at least but as we pass things in it was also
+- [04:29:07] getting longer and longer if we had more values to pass in but format gave us a little bit more
+- [04:29:12] control here with the index numbers or with the name references than we had with the percent
+- [04:29:19] method but we can shorten all of this up and it won't be so verbose if we use f strings so now
+- [04:29:25] that we're ready to move on to f strings let me scroll up for some more room and i'll put in a
+- [04:29:29] little break so you see it in the source code and know when we have moved on to f strings and notice
+- [04:29:34] my mandalorian reference this is the way so here we're going to have a message so we'll define our
+- [04:29:40] message once again and then equals and we'll start with the letter f and lowercase is what i usually
+- [04:29:46] use and then let's go ahead and put in the new line character and then let's refer to our person
+- [04:29:51] which remember was defined above as well before we put it inside of a dictionary here we had
+- [04:29:57] actually defined person and coins here at the very top of the file so we're referring to that
+- [04:30:03] and after our person we can just say has then coins and that's referring to the coins definition
+- [04:30:10] at the top as well and coins left now that's a lot shorter isn't it we're just inserting the values
+- [04:30:17] of those variables but we're starting out with the letter f to indicate this is an f string so
+- [04:30:22] let's print message and save and now let's run our code once again and we once again see the same
+- [04:30:30] output not nearly as verbose we don't have to add anything at the end of the string or insert values
+- [04:30:36] into a method we just use the letter f at the beginning and then we insert the values we want
+- [04:30:43] inside of curly braces inside the string now i want to highlight the fact that we do not
+- [04:30:48] have to necessarily insert these predetermined variable values as well so let's copy this down
+- [04:30:54] once again and now instead of coins i'll leave person there but we could pass in an equation
+- [04:31:00] like two times five and this will work so if we run the code now we should see the difference
+- [04:31:05] and it says dave has 10 coins down here at the bottom of our output and i'll copy this once again
+- [04:31:11] to show we can actually use methods inside of this as well so in this example i'm going to say person
+- [04:31:17] and then dot lower so if you remember our string methods we learned this should make everything
+- [04:31:23] lower case so dave should be lower case now in this new output and if i run us yes dave is lower
+- [04:31:29] case on the bottom line so you can see we can do things inside of these curly braces besides just
+- [04:31:36] passing in a value so let's look at one more example here and remember our player dictionary
+- [04:31:42] above where we have player with person and coins as the keys let's come down here and we'll use
+- [04:31:48] that so i'm going to copy this down with shift alt in the down arrow and now inside of our curly
+- [04:31:54] braces we're going to do this just a little differently we'll refer to player our dictionary
+- [04:32:00] and then we'll use brackets and then we need to put the key inside of quotes so we'll use person
+- [04:32:06] now it's important to note that i'm using a double quote out here and then single quotes
+- [04:32:11] in here if i had single quotes out here this wouldn't work with single quotes we would get
+- [04:32:15] an error so if you wrap your string in double quotes then you can use single quotes inside
+- [04:32:22] so here we've got player person and we could refer to player coins as well but i'll just leave the
+- [04:32:28] two point or two times five right there let's go ahead and run the code and once again we have
+- [04:32:33] dave has 10 coins left so you see how we can insert different things inside of these curly
+- [04:32:39] braces and it still doesn't make our string much longer not much more verbose if you will which
+- [04:32:46] means adding more code we're trying to minimize code and f strings do a great job of that compared
+- [04:32:52] to the previous methods of inserting values into strings now i also want to share that you can pass
+- [04:32:58] options into these f strings so i'll put another line here in our code with a comment just saying
+- [04:33:05] you can pass formatting options so you'll know what this is an example of let's start out with
+- [04:33:09] a variable that is equal to the number 10 and now we'll print an f string and so i'll start with f
+- [04:33:15] once again and then i'm going to use a new line character then i'm going to say 2.25 times and
+- [04:33:22] i'll insert the number value so times 10 in this case is and now we'll have a bracket here for the
+- [04:33:30] result and i'll say 2.25 times num but i want to put some formatting on this so i get a fixed
+- [04:33:38] decimal so i'm going to start with a colon and all formatting will start with this to indicate
+- [04:33:44] then you're going to say how to format it i'm going to say 0.2 to indicate i want two decimals
+- [04:33:49] and this f stands for fixed so now i'll go ahead and save this string and we'll run the code once
+- [04:33:57] again and we get 2.25 times 10 is 22.5 and remember we wanted two decimals so that's why we see the zero
+- [04:34:05] at the end now this is just one of many examples of how to format and i'm going to show you where
+- [04:34:11] to find more of those here in just a minute as well but first i want to highlight that you can
+- [04:34:16] also put this in a loop so now let's copy this line down at least i'll just highlight that and
+- [04:34:23] shift alt in the down arrow and then i'll press enter a couple of times and i'm going to say
+- [04:34:28] 4 num in range and i want to go 1 through 11 so i get 10 numbers if you remember how we covered
+- [04:34:37] range now i need to indent this or we'll have that error because remember the indentations in python
+- [04:34:42] are important so we're going to loop through this so you should see this print several times let me
+- [04:34:48] go ahead and remove the new line character because this will allow each line to at least have an
+- [04:34:53] output there so it doesn't take up our full screen like this does i can go ahead and put a new line
+- [04:34:59] character here at the end of this one so at least we see the separation before our loop starts so
+- [04:35:05] now let's go ahead and run this same code and see what we get and you can see we've got 10 different
+- [04:35:12] lines of output here for the numbers 1 through 10 if you remember the range here once we reach 11
+- [04:35:17] is when it stops it doesn't put 11 into this loop as well so we've got 2.25 times 1 is 2.25
+- [04:35:25] and it goes all the way through 10 giving us the result of each one now let's look at one more
+- [04:35:30] example of this so i can copy this down but then i'm going to change the value so shift alt in the
+- [04:35:35] down arrow one more time and now in this one we're going to use the same range i'm going to switch
+- [04:35:41] some things around so i'm going to say num then i'm going to say divided by and then we'll have
+- [04:35:49] 2.25 is and then we'll go ahead and put what we're calculating here so i'm going to have num
+- [04:35:56] divided by and you know what let's change this number i want to do something that always gives
+- [04:36:01] us some type of decimal output so i'll just say like 4.52 so let's make it 4.52 here 4.52
+- [04:36:10] there we go now not the letter m there we go so now we need our colon and we'll have a period
+- [04:36:16] and then i'm going to have the number 2 but instead of this fixed place i want to have a percent
+- [04:36:22] so it's going to put a percent output it's still going to have two decimal points though and that's
+- [04:36:28] what we're going to see for our output here i'll go ahead and save this and let's look at the output
+- [04:36:34] of this loop as well so now we have one divided by 4.52 is 22.12 percent essentially it is one
+- [04:36:45] would be 22.12 percent of 4.52 as you can see as we get closer to four it gets closer to 100
+- [04:36:53] and as we go beyond four it's over 100 eventually where 10 divided by 4.52 is over 200 percent
+- [04:37:01] so we're getting the output expected and that's kind of showing you how to loop through
+- [04:37:05] and format a string and get those results as you go okay i'm on the w3 schools website and i'm on
+- [04:37:12] the python string format method which i said was one of the older methods but you can still use
+- [04:37:18] the formatting options that i was talking about even if you're using the older format method so
+- [04:37:23] this is where they have this current information and i'm going to of course include this link in
+- [04:37:27] the course resources and in the description of this video so i'll scroll down here and where
+- [04:37:32] i want you to see is down here when it says formatting types and it starts to show all of
+- [04:37:37] these examples and it shows what or it says what they do and it gives little try it buttons where
+- [04:37:43] it will launch a code play pin for you to try all of that out and you can see there are so many
+- [04:37:48] different ones here we used the percent one and before we used the fixed point number format in
+- [04:37:54] my examples but there are many others that you can try out as well so i'll put this link inside of
+- [04:38:00] the course resources i'm back in vs code and you can see i've created a new file named rps6 which
+- [04:38:07] is our rock paper scissors game and i've pulled in the code from the previous lesson on closures
+- [04:38:13] and that was our rps5 version so right now i essentially have the ending code from the
+- [04:38:19] previous lesson that was in the rps5.py file so now we can apply some f strings to modify our
+- [04:38:27] rock paper scissors game and there's a few lines that actually need them so let's go take a look
+- [04:38:32] and we'll scroll down here to line 33 and you can see on line 33 and 34 we've got some longer
+- [04:38:38] strings and vs code's wrapping one kind of strangely as well let's first hide the file
+- [04:38:43] tree once again with ctrl b we can see this a little bit better and let's modify the first one
+- [04:38:49] so we'll start with the letter f once again here and now we don't have to use the plus symbol to
+- [04:38:56] concatenate this string so let's highlight everything we have right here from the extra
+- [04:39:01] quote and the plus symbol and instead put a curly brace now we just need to find where the end of
+- [04:39:07] this string we're creating is and we're chaining the replace method and the title method so the
+- [04:39:12] end is really right here after title so let's put our curly brace there then let's delete the plus
+- [04:39:19] symbol and the extra quote as well and now it looks like we have made a full string here that's a
+- [04:39:26] little tidier by using an f string so now let's do the same thing and maybe vs code will like what
+- [04:39:32] we're doing better and will not wrap this down in a strange way so we'll start with the letter f here
+- [04:39:37] and we'll have python chose and then we'll highlight the quote and the plus symbol once again
+- [04:39:43] and instead we'll put a curly brace now let's get rid of this weird space vs code is added
+- [04:39:50] and now we'll be going to the end here so here's the replace and the title so at the end of the
+- [04:39:55] title we'll put another curly brace that looks better already now let's delete the plus symbol
+- [04:40:01] and the quote as well and now we have the period and then another new line character and that's
+- [04:40:07] all fine so let's save and well vs code wrapped it down but i like where it wrapped things better
+- [04:40:13] because now after the parentheses for the print we just have this long f string so let's go ahead
+- [04:40:18] and move this closing parentheses down the next line as well and save and that formats quite a
+- [04:40:24] bit better and you can have that opening and closing parentheses on separate lines and then
+- [04:40:30] our f string is all on one line as well and now let's scroll down to line 63 and we have these
+- [04:40:37] different outputs here for the game count player wins and python wins and you can see we're still
+- [04:40:42] concatenating a value so let's once again make these f strings i'll just start all three of
+- [04:40:47] those with the letter f now we can highlight the quote and the plus symbol delete those and start
+- [04:40:53] with the curly brace and really if i highlight one and press control d it will highlight the next as
+- [04:40:59] well i'll press backspace to change both at the same time and then add the opening curly brace
+- [04:41:05] to both at the same time as well so that's nice afterwards we need to put a bracket here
+- [04:41:11] in between these two parentheses so we could of course highlight both and then control d
+- [04:41:17] and control d now we've selected all three i'll arrow to the right to go to the end and then
+- [04:41:24] arrow to the left once and there i'm in the middle of all three and so then i'm going to add that
+- [04:41:29] closing cursor as well and after that we need to put a closing quote so now we have a full f string
+- [04:41:38] in each one of these print statements and we can save the file and now let's try our game out just
+- [04:41:43] to make sure everything is working as expected we'll choose run python file here and it's asking
+- [04:41:48] us to play we'll make a choice i chose rock and everything looks like it works as expected even
+- [04:41:54] though we lost the game so let's play one more time we don't like to quit when we're losing
+- [04:41:59] and we still lost maybe again we'll keep going with rock and python's beating us every time
+- [04:42:05] but we finally won on the fourth game and everything works as expected so now you know
+- [04:42:10] how to use f strings and we've applied those to our rock paper scissors game i've got vs code

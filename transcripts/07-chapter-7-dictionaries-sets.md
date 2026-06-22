@@ -1,0 +1,272 @@
+# Chapter 7 - Dictionaries & Sets
+
+Source: Python Tutorial for Beginners (with mini-projects) by freeCodeCamp.org
+URL: https://www.youtube.com/watch?v=qwAFL1597eM
+Time range: 02:17:00-02:46:23
+
+## Transcript
+
+- [02:17:01] i've got visual studio code open and i've got a new folder over here in the file tree for lesson
+- [02:17:06] seven let's create a new file let's call this dictionaries and after that we'll end it with a
+- [02:17:13] dot py dot pi and then let's open a terminal window with control and the back tick and you
+- [02:17:20] can see mine opens here at the bottom but i'm going to choose view and then go to appearance
+- [02:17:25] go to panel position and choose right so it's over here on the right finally i'm going to press
+- [02:17:30] control b to hide the file tree so we have our code here on the left taking up all of that part
+- [02:17:35] of the screen and on the right is where we have our terminal window today we're talking about python
+- [02:17:41] dictionaries so i'll just put dictionaries here at the top and really dictionaries are used to
+- [02:17:47] store data values that are in key value pairs and you'll see what i mean and just like when i
+- [02:17:53] accidentally called python lists arrays a few times python dictionaries look a lot like javascript
+- [02:18:00] objects and so i may accidentally refer to them as objects when i'm talking but if i do it's
+- [02:18:05] unintentional because we're talking about python dictionaries so let's look at an example i'll set
+- [02:18:11] band equal to a dictionary now they have curly braces and here's the key i'll say vocals and
+- [02:18:19] then i put a colon and after that i put the value so i'll say plant now i'll put another key and
+- [02:18:25] here i'll say guitar and then i'll put the value and i'll say page so that is a python dictionary
+- [02:18:33] and of course you could have more key value pairs it's not limited to two you could make a large one
+- [02:18:38] if you want to as well and it can be different data types it doesn't just have to be a string
+- [02:18:43] as the value now here i typed out this dictionary let me create a second dictionary that has the
+- [02:18:48] same values but i'm going to use the constructor function for a dictionary so i'll call this band
+- [02:18:54] two and i'll set this equal to the constructor function which is D I C T then use parentheses
+- [02:19:01] and then i'll say vocals equals then i'll put in plant after that a comma and i can say guitar
+- [02:19:09] equals and i'll put in page now we'll be able to see that both of these create essentially
+- [02:19:16] the same structure for a dictionary here so i'll print band and then i'm going to use shift alt
+- [02:19:22] and the down arrow to copy that line down and then just print band two well i've typed in three a
+- [02:19:28] couple of times band two is what i want there we go control s to save we'll run our code here
+- [02:19:34] and oh i got an error python was not found let's first run it using run python file the first time
+- [02:19:40] there we go after that we should be able to click play so we've got the same structure here here is
+- [02:19:46] our first dictionary band and just below it is band two they look the same you can create
+- [02:19:52] dictionaries in either way we can also check the type so i'll say print use type i'll pass it in
+- [02:19:59] band now i'm going to use shift alt and the down arrow one more time and here instead of type i'm
+- [02:20:05] going to use the length function once again because we can also check the length of a dictionary so
+- [02:20:10] now when i run this we see the type as well and we see the length so it's saying it has two key
+- [02:20:16] value pairs inside of the dictionary i'm going to scroll for just a little room and i'll put
+- [02:20:22] another comment because i want to talk about how we access items in a dictionary there's a couple
+- [02:20:27] of ways to do it i'm going to use a print statement so we can see the output but we refer to the
+- [02:20:31] dictionary such as band and then we can use brackets and then we can name the key and the
+- [02:20:38] output will be the value the other way we can do this and i'm going to copy this down again
+- [02:20:43] with shift alt and the down arrow but is to use band dot get and that is a method that we can
+- [02:20:50] call on dictionaries and then we pass in the key once again so i'll pass in the key guitar here
+- [02:20:56] that's going to return the value that is paired with guitar so control s to save run our code and
+- [02:21:02] you can see we get plant from our first print line and we get page from our second and those
+- [02:21:08] are the values that are aligned with those keys in our band dictionary now what if we want to list
+- [02:21:14] all the keys so let me put in another comment and i'll just say list all keys here i would
+- [02:21:20] say print and then band and then dot keys and then i'll save and we'll run the code and let's
+- [02:21:27] see what we get so here we get a list of dictionary keys so we get vocals and guitar
+- [02:21:34] likewise we might want to list all values so i'll say list all values here in the comment
+- [02:21:40] then print and as you might guess it's band dot values and we can run that code and now you can see
+- [02:21:49] we get a list of the dictionary values plant and page we can also return the key value pairs as
+- [02:21:56] tuples and so here i'll say list of key value pairs as tuples and now i'm going to say print
+- [02:22:06] and then i'll just say band dot items and let's run this code again and you'll see what i mean
+- [02:22:12] when we get the output over here it's the dictionary items now inside of this list each
+- [02:22:20] item is a tuple so you see vocals plant and then you see another tuple that says guitar page now
+- [02:22:26] just because these are wrapping down and it looks a little strange i'm going to see if i can drag
+- [02:22:30] this window over a little and it might make our console a little easier to read because i'm not
+- [02:22:35] going to usually need to type past about this width okay so our dictionary items wrapped down but
+- [02:22:41] the keys and values for example did not so this is just a little easier to read here now one more
+- [02:22:46] thing we might need to do is verify if a key exists in the dictionary so that's what i'll put
+- [02:22:51] here verify a key exists and now we'll say print and we can just see if guitar is in band now let
+- [02:23:01] me do another one so i'll shift alt the down arrow again and instead of guitar i'll look for
+- [02:23:07] triangle maybe i should have looked for cowbell let's run this see what we get so first guitar
+- [02:23:12] and band is true but triangle and band is false let's scroll for some more room again and we'll
+- [02:23:18] look at how we can change values in a dictionary so i'll put change values here in my comment
+- [02:23:25] and after this i'm going to say band and then i'm going to specify the vocals key so i'm using
+- [02:23:30] brackets and then the key once again and i'll set this equal to coverdale now that would set
+- [02:23:38] the key value pair to vocals coverdale instead of vocals plant so the value for the key vocals has
+- [02:23:45] changed once i do that now something else you can do is use band and call the update method but now
+- [02:23:52] we need to pass in curly braces and we need to give the key as well now we could update vocals
+- [02:23:58] or guitar here but we can also create a new key value pair so that's what i'm going to do
+- [02:24:04] and i'll make this base and then i'll pass in the value jpj and then if we check our band afterwards
+- [02:24:11] you should see we have changed vocals to coverdale and we should have added a new key value pair as
+- [02:24:18] well that says base and jpj so let's run this code and see what we get here is our dictionary now it
+- [02:24:24] has vocals coverdale guitar page base jpj now what about removing items so i'll comment that as well
+- [02:24:32] remove items so we'll print and then i'm going to look at band dot pop now the reason i'm printing
+- [02:24:40] is because pop will return a value it will return what we remove from the dictionary so here i'm
+- [02:24:47] going to say base and so we'll see what gets returned or what gets output here from the print
+- [02:24:55] by doing band dot pop base and so after that i need to go ahead and print band one more time
+- [02:25:01] and let's run this and you can see we don't get a tuple or the full key value pair pop does return
+- [02:25:09] the value though of what was removed because then we print band afterwards and we see it no longer
+- [02:25:15] has base jpj in the dictionary that key value pair has been removed but pop only returns the
+- [02:25:21] value now i'm going to add a new value like we learned before so i'll say band use bracket
+- [02:25:26] pairs here and add drums going to set this equal to bottom and after i do that i'll go ahead and
+- [02:25:34] print the band again just so we can see that the new value has been added but now we'll also print
+- [02:25:41] and then we'll say band dot pop item if i spell item correctly what pop item does is it removes
+- [02:25:50] the last thing that was added the last key value pair that was added to the dictionary
+- [02:25:55] but what we will see is this is going to return a tuple so i'll print band here as well so what we
+- [02:26:02] last had was the removal here from base the jpj and then it once again had our dictionary
+- [02:26:09] down to two key value pairs so we'll see this twice afterwards as well save and run the code
+- [02:26:16] now let's look at what we get here so we added bottom and then we print band and that's what
+- [02:26:21] we should see here is a dictionary that has vocals guitar and drums and the value for drums
+- [02:26:26] is bottom then we used the pop item method and so it removed what was last added the full
+- [02:26:33] key value pair and it returns it as a tuple and that's what we see here so then when we finally
+- [02:26:39] printed band here the last time our dictionary is once again back to just vocals and guitar
+- [02:26:45] now this deals with removing items from a dictionary what if we want to delete or clear
+- [02:26:50] items so once again a comment here and i'll put delete and clear and then if we want to delete
+- [02:26:56] an item first i need to add that item again let me just copy this from above here on line 41 we're
+- [02:27:02] going to add key value pair of drums and bottom back to our band and then after that let's go
+- [02:27:09] ahead and delete with the keyword dell and i'll say band and say drums and you can see visual
+- [02:27:16] studio code wants to help me it knows what's in the dictionary so that's very useful don't always
+- [02:27:20] have to type that out so now we're deleting that from the dictionary and i can print band once
+- [02:27:26] again so we will once again see that it has been removed what we could do though and remember we
+- [02:27:33] created another band up here at the top we've also got band two so what we could do is empty out
+- [02:27:40] a dictionary completely by using band two is our dictionary and then saying clear the clear method
+- [02:27:46] and then i'll print band two which should be an empty dictionary so we should just see the curly
+- [02:27:53] braces and after that i'm going to delete band two delete the entire dictionary and we do that with
+- [02:28:00] the delete keyword also but we don't specify any specific key we just name the dictionary and it
+- [02:28:06] completely deletes it so i can save and run this and we won't see everything that we just had there
+- [02:28:12] we'll see the print once again of the band dictionary after it just has vocals and guitar
+- [02:28:20] we'll also i guess it's this line right here we'll also see the empty band two dictionary and that's
+- [02:28:26] why we just see the curly braces there is no output after we delete the band two dictionary it has
+- [02:28:32] just been deleted from our application now let's scroll up and talk about copying dictionaries so
+- [02:28:38] here i'm going to leave a comment and say copy dictionaries after this i need to talk about the
+- [02:28:46] way not to copy dictionaries first so let's say band two i'm going to create a new band two because
+- [02:28:52] i just deleted it above if i set this equal to band that doesn't really create a copy it creates
+- [02:28:59] a reference and so i want to put this here creates a reference and what that means is they're both
+- [02:29:08] referring to the same place in memory for the same dictionary so after you create band two
+- [02:29:16] and you add or remove something to it it's going to also add or remove the same thing to band
+- [02:29:23] so this is why we don't want to do this because they were actually refer to the same thing
+- [02:29:28] view it as a place a storage place and both of these variable names are referring to the same
+- [02:29:34] thing so what i'm going to do here is say print and i'm going to say bad copy because you really
+- [02:29:41] don't want to do this and i'll give the example of what it actually does so here i'm going to say
+- [02:29:46] print band two and then i'm going to use shift alt in the down arrow and we'll also print band
+- [02:29:53] but after we do that let's go ahead come down an extra line and say band two and then we'll put
+- [02:30:01] in drums so we'll add drums to band two and i'll set drums equal to dave this time after we do
+- [02:30:09] that let's just print band once again because we didn't do anything to band right so you wouldn't
+- [02:30:14] expect it to change let's go ahead and run the code and see what we get so we can see band two
+- [02:30:21] is the first one we print right after it says bad copy and then band one and they look the same
+- [02:30:27] but then we add drums to band two with the value of dave but we just print band well that last
+- [02:30:35] print of band already has drums and dave in it so this is what you do not want to do so i'm going
+- [02:30:41] to comment these things out i'll just highlight all of those and press control and the slash
+- [02:30:47] and it will add comments to all of those lines but i did want to show you that because that's not the
+- [02:30:51] way you want to create a copy so how do you want to create a copy well let's go ahead and say band two
+- [02:30:57] equals band dot copy and we can call that copy method and now they will not have the same
+- [02:31:04] reference so i can say band two as a matter of fact i can just copy these lines control c
+- [02:31:11] speaking of copy and then we'll go ahead and paste them in with control v and then i'll print
+- [02:31:17] band here and after that i might as well print band two as well so you can see that they're
+- [02:31:23] different so we're just adding drums to band two again after we use the copy method now let's run
+- [02:31:29] this code and what happens is we have band here the first one and then we have band two on the
+- [02:31:36] next line and only band two as drums with the value of dave but both were printed after we added
+- [02:31:44] drums to band two so to be consistent i guess i should add the line here good copy and i'll leave
+- [02:31:50] the commented lines inside of the course code as well so if you're getting this course from github
+- [02:31:56] at the course resources link you'll be able to see this this is what you do not want to do and
+- [02:32:01] that's why i said bad copy this is what we want here with good copy now there is another way to
+- [02:32:07] make a copy and that is using the constructor function so let me comment that as well i'll put
+- [02:32:12] or use the dictionary constructor function so we can make a copy this way also so i'll say band
+- [02:32:21] three equals then i'll use the constructor function and i'll pass in band so this makes
+- [02:32:27] a copy that is not a reference as well so i'm going to print good copy here as well and after
+- [02:32:34] that i'll print band three and we'll go ahead and run the code again and you can see we didn't add
+- [02:32:43] anything to band three but you can see it made a copy and this is a good copy so that's another
+- [02:32:48] way to do it okay one more thing to discuss about dictionaries and it can seem a little complicated
+- [02:32:52] when you first learn about it but i think you'll get the hang of it after you experiment with it a
+- [02:32:56] little bit and that is nested dictionaries this means that the value for a key value pair can be
+- [02:33:06] another dictionary so let's look at this and i'll create a dictionary called member one and i'll set
+- [02:33:13] this equal to of course curly braces then i'll have name and let's say plant here and then i'll have
+- [02:33:21] instrument and here i'll put vocals now i'm going to just highlight all of this and do shift alt and
+- [02:33:30] the down arrow i'll turn this into member two so a second dictionary here i'll make this name page
+- [02:33:38] and i'll make this instrument guitar okay now let's create a third dictionary and let's call
+- [02:33:44] this band and in this dictionary we'll have a key called member one and we'll put member one the
+- [02:33:54] dictionary we created above as the value and let's do the same here member two and let's put member
+- [02:34:02] two the dictionary we created above as the value so you can see band is going to have
+- [02:34:07] nested dictionaries here so member one is the key but the value will be a dictionary so let's go
+- [02:34:15] ahead and print this see what it looks like inside of our terminal when we run the code
+- [02:34:22] so here's our dictionary band and well i started one line ahead there we go here is our dictionary
+- [02:34:28] band it's got member one for a key but the value is another dictionary member two for a key but the
+- [02:34:36] value is another dictionary now if we want to get a specific value here we have to go one level
+- [02:34:43] deeper so print and then we would say band and let's go ahead and use our brackets and you can
+- [02:34:50] see bs code wants to help us once again so i'm going to say member one and then from that i'm
+- [02:34:56] going to use brackets again and now it's not helping us so much notice we had name or instrument
+- [02:35:03] and i don't see those readily available here so i'm just going to type name because we want to get
+- [02:35:11] member one so there we're going one level deep and then we want to get name so that's the second
+- [02:35:19] level deep save this and run the code and you can see the output here is plant that's because we
+- [02:35:25] were able to drill down into our nested dictionary to get that value by adding another bracket and
+- [02:35:33] you need to do that every time you'd have a level could you have another level deeper and so on
+- [02:35:38] yes you could okay a final note on dictionaries before we move on to working with sets and i'll
+- [02:35:43] scroll once again i'll just type in band as our typical dictionary here remember in vs code you
+- [02:35:49] can use dot notation so type a dot after your dictionary and all of the different methods will
+- [02:35:55] pop up so you can experiment with these we covered quite a few of these today but not necessarily
+- [02:36:00] all of them but vs code will help you see what methods exist or a dictionary or a list or whatever
+- [02:36:07] data collection type you are using okay now let's move on to sets i'll just type sets here now sets
+- [02:36:14] are the fourth and final uh data collection type that we are going to cover so now let's look at
+- [02:36:20] creating a set i'll say nums equals i'm using curly braces again but it's not a key value
+- [02:36:26] pair i'm just going to say one two three four and that is creating a set we can also create a set
+- [02:36:34] with the constructor function so i'll say nums two i'll set this equal to set now we have
+- [02:36:39] parentheses but now we need double parentheses and i'll say one two three four so we've created
+- [02:36:46] two different sets that way i'll print nums and then i'll go ahead and do shift alt in the down
+- [02:36:53] arrow and i'll print nums two i'll do this one more time and inside of here i'm going to say
+- [02:37:01] type nums and finally one more copy down with shift alt in the down arrow and instead of type
+- [02:37:08] i'm going to check the length because we can do all of those things again with a set so now when
+- [02:37:12] i run the code we have got our first set we created we've got our second set we created with
+- [02:37:19] the constructor function we can see what data type we have and we see the length there are four
+- [02:37:25] elements in our set now scrolling up we'll look at one of the top advantages of a set of data and
+- [02:37:32] that is no duplicates are allowed so i'll just type this here no duplicates allowed and then
+- [02:37:38] i'm going to say nums once again equals and i'll create a set here but it'll be a little different
+- [02:37:44] data than above notice i put in two number twos okay after this i'll go ahead and print nums
+- [02:37:52] what do you think we'll get for output once i put both of these in but we know a set doesn't allow
+- [02:37:58] any duplicate let's take a look i'll run the code and the output is a set that does not have a
+- [02:38:04] duplicate at all it didn't create an error because i put one in it just ignored the duplicate and
+- [02:38:10] that's what happens when you try to put something else in a set so we should also note that a true
+- [02:38:16] value true is a dupe i'll say of one and false is a dupe of zero now i'm scrolling over so i'm
+- [02:38:28] going to press alt z so the code or the comment line wraps down to the next line see how 111 is
+- [02:38:34] a little bit deeper here compared to the other lines so it's all still one line it's just wrapping
+- [02:38:40] down now i'm going to create a nums set once again and inside of this set i'm going to say one true
+- [02:38:48] two false three four zero so now let's think about what we might get returned and we'll analyze this
+- [02:38:57] after we actually check our output here so i'm going to print nums once again and now nums has
+- [02:39:03] some duplicate data remember one and true are considered to be duplicates false and zero are
+- [02:39:10] considered to be duplicates any guesses as to what will the output be let's take a look
+- [02:39:16] and we get false one two three four so number one was in here first and so it ignored the
+- [02:39:25] duplicate true alts was in here first so it ignored the duplicate zero then notice it's in
+- [02:39:31] order also so false comes before the numbers which is also zero so if we had zero it would
+- [02:39:38] essentially be in order as well worth noting but notice it did remove the duplicates when
+- [02:39:44] we were working with boolean data that true and false because one is considered true usually in
+- [02:39:50] programming and zero is usually considered false as well so those are considered duplicates in a
+- [02:39:56] set you can also check if a value is in a set and we can do that with the n keyword once again so
+- [02:40:05] i'll say print two in nums and if we run this code we get back true yes because two is in our nums
+- [02:40:15] set we see it right here as well so that is true so you can check to see if any value is inside
+- [02:40:20] the set but i'll put an extra note here but you cannot refer to an element in the set with an
+- [02:40:31] index position as we had with lists or a key as we did with dictionaries so you can't refer to
+- [02:40:40] any specific value based on a position like that and there's also no key to refer to but you can
+- [02:40:46] check to see if the value is in the set scrolling up again for room let's talk about adding a new
+- [02:40:52] value to a set so here we'll say add a new element to a set and we can do that with nums.add and then
+- [02:41:02] i'll just pass the number eight and we'll print nums once again and we'll check our set so let's
+- [02:41:09] run the code and now here's our set once again but it also has the number eight in there after
+- [02:41:15] that you can add i guess i need a space between these let me put a little extra line there you
+- [02:41:22] can add elements from one set to another and to do that let me create another set just called
+- [02:41:29] more nums set this equal to a set that has five six and seven in there then after we do that
+- [02:41:38] say nums our original set dot update and then we'll pass in more nums and i'm not sure why i
+- [02:41:48] put a space there we don't need that space and remember see that error there spaces and tabs are
+- [02:41:54] indents are important in python so an extra space like that could cause problems but here we are
+- [02:42:00] using the update method for nums and we're passing in the more nums set as well so we're adding
+- [02:42:07] elements from more nums to the nums set so we'll print out nums run our code and you can see now
+- [02:42:15] our nums set also has five six and seven added to it i'll add an extra comment here as well
+- [02:42:22] underneath and this comment is you can use update with lists tuples and dictionaries too and what
+- [02:42:35] i mean by that is you don't have to pass in another set here you could pass in a list to update or a
+- [02:42:43] tuple or a dictionary as well update will still work now with update we took all the values inside
+- [02:42:50] of the more nums set and we added them to the nums set but what if we want to merge two different
+- [02:42:58] sets and then create a new set from those two so let me comment that here merge two sets to create
+- [02:43:07] a new set and now i'll have to create the sets first i'll say one and let me put this equal
+- [02:43:13] to a set that has one two three and then let me create another one and i'll just copy down here
+- [02:43:21] i'll rename this two but i want to change the values also i don't want duplicates right now
+- [02:43:27] so it's five six and seven and after we've created both of those let's say my new set is going to
+- [02:43:36] equal one and then i'm going to use the union method and i'm going to pass in two so here
+- [02:43:43] we're merging these one and two to create a new set so i want to print oops print my new set
+- [02:43:52] and we should see the merger of those two but that didn't change the original set one or the
+- [02:43:59] original set two let's look at a couple of more useful methods when we're working with two sets
+- [02:44:04] so i'm going to copy lines 131 through 133 with control c and i'll just paste here below again
+- [02:44:12] but instead of merging two sets to create a new set here we're going to keep only the duplicates
+- [02:44:18] from the two different sets now right now i don't have any duplicates so let me change the values
+- [02:44:26] here in two so we have some overlap so two and three would be duplicates in both of these sets
+- [02:44:32] now and now that i've done that we'll say one dot intersection update and here we'll pass in
+- [02:44:40] two now let's print one this didn't create a new set so what happens is it actually changes the
+- [02:44:49] first set here that we call intersection update on one to only include duplicates so we should
+- [02:44:56] expect to get a set that only has two and three back so when we run our code that's what we've
+- [02:45:02] got here is two and three now kind of the opposite of that so i'm going to go ahead and copy this
+- [02:45:09] down again three lines that start everything and instead of keeping only the duplicates we're going
+- [02:45:15] to keep everything except the duplicates so here's one and two as well so two and three
+- [02:45:24] the numbers two and three are the duplicates so we're not going to keep those so now we're going
+- [02:45:29] to expect return a set that has one and four only we're going to do that with a different method
+- [02:45:36] here's one and then it's called symmetric difference update here we'll pass in the second
+- [02:45:43] set notice it's still happening or being applied to the first set that we call the method on as
+- [02:45:49] well so we're going to print one i'll save that and we run our code and you can see the set that
+- [02:45:56] we get here is the output just contains one and four so it was the opposite of the intersection
+- [02:46:03] update so that just about covers it for sets once again a reminder that you can use your set and
+- [02:46:09] then use dot notation to pull up all the different available methods and there's some here that we
+- [02:46:14] didn't cover today so you could experiment with these as well and look those up in the documentation
+- [02:46:20] and of course is linked in the course resources i've got visual studio code open you can see i
